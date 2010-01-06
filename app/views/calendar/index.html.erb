@@ -1,0 +1,7 @@
+<% content_for :head do %>
+<%= javascript_include_tag 'event_calendar' %>
+<%= stylesheet_link_tag 'event_calendar' %>
+<% end %>
+<%= event_calendar %>
+<%= link_to t('event.new'), new_event_path %>
+<%= link_to "export", :controller => "events", :action => "export_events", :id => 5 %>

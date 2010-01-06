@@ -1,0 +1,20 @@
+<h1>Editing roles_user</h1>
+
+<% form_for(@roles_user) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user_id %>
+	<%= collection_select(:roles_user, :user_id, User.all, :id, :email) %>
+  </p>
+  <p>
+    <%= f.label :role_id %>
+	<%= collection_select(:roles_user, :role_id, Role.all, :id, :name) %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @roles_user %> |
+<%= link_to 'Back', roles_users_path %>

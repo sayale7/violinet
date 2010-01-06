@@ -1,0 +1,121 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  common:
+    edit: Edit
+    back: Back
+    save: Save
+    password_confirmation: Confirm Password
+    password: Password
+    activate: Activate
+    email: Email
+    login: Login
+    logout: Logout
+    login_name: Username
+    remember_me: Remember Me
+    change_password: Change Password
+    account_change: Change My Account
+    my_profile: My Account
+    register: Register
+    confirm_logout: Are you sure, to logout?
+    confirm: Are you sure?
+    country: en
+    my_personals: Personalities
+    my_blog: My Blog
+    my_blog_archive: My Blog Archive
+    my_profile: My Profile
+    my_account: My Account
+    profile_img_upload: Upload Profile Image
+    blogs: Blogs
+    created: Created at
+    by: by 
+    upload: Upload
+    profile_entries: Pinboard
+    write_new_profile_entries: New Entry
+    create_profile_entry: Create Entry
+    comments: Comments
+    create: Create
+    submit: Submit
+    delete: Delete
+    new: New
+    my_albums: My Photo Albums
+    photo_album_name: Name of the Album
+    photo_album_description: Description of the Ablum
+    new_ablum: New Album
+    edit_album: Edit Album
+    create_ablum: Create Album
+    update_album: Update Album Info
+    edit_photo_comment: Edit Photo Comment
+    all_photo_album: Photo albums
+    show_photo_album: Show Photo album
+    edit_photo_album: Edit Photo album
+    activated: Your account has been activated
+    delete_success: Deletion was successfull!
+    created: Creation was successfull!
+    updated: Update was successful!
+    max_count_photos: Maximum Count of Images is 10
+    max_count_photos_reached: You have reached the Maximum of 10 Images
+    send_message_to_user: Send this user a message
+  event:
+    begin: Begin
+    end: Ende
+    spot: Ort
+    name: Name
+    to_calendar: To Event Calendar
+    description: Description
+    new: New Event
+  group:
+    description: Description
+    name: Name
+    need_confirm: User need you to confirm, if he want to be a member of your group
+    category: Category
+  forgot_password:
+    password_reset: Reset Password
+    forgot: Forgot Password?
+    paragraph: Fill out the form below and instructions to reset your password will be emailed to you
+    update_and_login: Update my password and log me in
+    h1_change_my_password: Change My Password
+  profile:
+    login_count: Login Counts
+    last_request: Last Request
+    last_login: Last Login
+    current_login: Current Login
+    last_login_ip: Last Login IP
+    current_login_ip: Current Login IP
+  activation:
+    account_is_active: Your account has been activated.
+    copy_paste_url: If the above URL does not work try copying and pasting it into your browser. If you continue to have problem, please feel free to contact us.
+    click_to_activate: Thank you for creating an account! Click the url below to activate your account!
+    sent_password_request: A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request just click the link below 
+    activate_account: Activate your account
+  mail:
+    from: From
+    to: To
+    subject: Subject
+    received_at: Received at
+    move_to: Move To
+    inbox: Inbox
+    box: Box
+  user:
+    gender: Gender
+    title: Title
+    firstname: Firstname
+    lastname: Lastname
+    name: Name
+    street: Street
+    city: City
+    administrative_area: Administrative Area
+    district: District
+    state: State
+    zip: Zip
+    optional_address_attributes: Optionale Adressangaben
+    www: Website
+    phone: Phone
+    address_validation: validate address
+    passwort_reset_instructions: Instructions to reset your password have been emailed to you. Please check your email.
+    passwort_reset_instructions_no_email: No user was found with that email address
+  post:
+    new: New Post
+    edit: Edit Post
+    

@@ -1,0 +1,257 @@
+# German translations for Ruby on Rails 
+# by Clemens Kofler (clemens@railway.at)
+
+de:
+  common:
+    edit: Bearbeiten
+    back: Zurück
+    save: Speichern
+    password_confirmation: Passwort bestätigen
+    password: Passwort
+    activate: Aktivieren
+    email: Email
+    login: Einloggen
+    logout: Ausloggen
+    login_name: Benutzername
+    remember_me: Passwort merken
+    change_password: Passwort ändern
+    account_change: Meinen Account ändern
+    my_profile: Mein Profil
+    register: Registrieren
+    confirm_logout: Sind Sie sicher, dass Sie sich ausloggen wollen?
+    confirm: Sind Sie Sicher?
+    country: de
+    my_personals: Persönliches
+    my_blog: Mein Blog
+    my_blog_archive: Mein Blog Archiv
+    my_profile: Mein Profil
+    my_account: Mein Konto
+    profile_img_upload: Profilbild hochladen
+    blogs: Blogs
+    created: Erstellt am 
+    by: von
+    upload: Hochladen
+    profile_entries: Pinnwand
+    write_new_profile_entries: Neuer Eintrag
+    create_profile_entry: Eintrag erstellen
+    comments: Kommentare
+    create: Erstellen
+    submit: Zurück
+    delete: Löschen
+    my_albums: Meine Foto Alben
+    photo_album_name: Name des Albums
+    photo_album_description: Beschreibung des Albums
+    new_ablum: New Album
+    edit_album: Edit Album
+    create_ablum: Create Album
+    update_album: Update Album Info
+    edit_photo_comment: Foto Kommentar ändern
+    all_photo_album: Fotoalben
+    show_photo_album: Fotoalbum anzeigen
+    edit_photo_album: Fotoalbum bearbeiten
+    activated: Ihr Konto wurde aktiviert
+    delete_success: Erfolgreich gelöscht!
+    created: Erfolgreich angelegt!
+    updated: Erfolgreich geändert!
+    max_count_photos: Maximale Anzahl an Bildern ist 10
+    max_count_photos_reached: Du hast das Maximum von 10 Bildern erreicht
+    send_message_to_user: Diesem Benutzer eine Nachricht schicken
+  event:
+    begin: Begin
+    end: Ende
+    spot: Ort
+    name: Name
+    to_calendar: Zum Kalender
+    description: Beschreibung
+    new: Neuer Event
+  group:
+    description: Beschreibung
+    name: Name
+    need_confirm: Benutzer benötigen Deine Zustimmung, wenn sie zur Gruppe hinzu wollen
+    category: Kategorie
+  forgot_password:
+    password_reset: Passwort zurücksetzen
+    forgot: Passwort vergessen?
+    paragraph: Füllen Sie bitte das untere Feld aus und die Rücksetzoptionen werden Ihnen per Email an Ihre Adresse gemailt
+    update_and_login: Passwort ändern und einloggen
+    h1_change_my_password: Mein Passwort ändern
+  profile:
+    login_count: Anzahl der Logins
+    last_request: Letzte Änderung am
+    last_login: Letzter Login am
+    current_login: Jetztiger Login am
+    last_login_ip: IP des letzten Logins
+    current_login_ip: IP des jetzigen Logins
+  activation:
+    account_is_active: Ihr Account wurde aktiviert
+    copy_paste_url: Wenn die Url nicht funktioniert, kopieren Sie sie und fügen sie in Ihren Browser ein. Sollten Sie weiterhin Probleme haben kontaktieren Sie uns.
+    click_to_activate: Klicken Sie auf den unteren Link um Ihren Account zu aktivieren
+    sent_password_request: Um Ihr Passwort zurückzusetzen klicken Sie bitte auf den den Link. Wenn Sie keine Anfrage zum Zurücksetzen des Passwortes bei uns gemacht haben ignorieren Sie bitte diese Mail
+    activate_account: Profil aktivieren 
+  mail:
+    from: Von
+    to: An
+    subject: Betreff
+    received_at: Empfangen am
+    move_to: Verschieben nach
+    inbox: Posteingang
+    box: Postfach
+  user:
+    gender: Geschlecht
+    title: Titel
+    firstname: Vorname
+    lastname: Nachname
+    street: Strasse
+    city: Stadt
+    administrative_area: Bundesland
+    district: Bezirk
+    state: Staat
+    zip: Postleitzahl
+    optional_address_attributes: Optionale Adressangaben
+    www: Website
+    phone: Telefon
+    address_validation: Adresse validieren
+    name: Name
+    passwort_reset_instructions: Sie haben ein Mail mit Ihrer Passwort Rücksetz Anleitung bekommmen!
+    passwort_reset_instructions_no_email: Kein Benutzer mit dieser Mailadresse gefunden!
+  post:
+    new: Neuer Post
+    edit: Post Pearbeiten
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%e. %b"
+      long: "%e. %B %Y"
+      only_day: "%e"
+
+    day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
+    abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
+    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+    order: [ :day, :month, :year ]
+  
+  time:
+    formats:
+      default: "%A, %d. %B %Y, %H:%M Uhr"
+      short: "%d. %B, %H:%M Uhr"
+      long: "%A, %d. %B %Y, %H:%M Uhr"
+      time: "%H:%M"
+
+    am: "vormittags"
+    pm: "nachmittags"
+      
+  datetime:
+    distance_in_words:
+      half_a_minute: 'eine halbe Minute'
+      less_than_x_seconds:
+        zero: 'weniger als 1 Sekunde'
+        one: 'weniger als 1 Sekunde'
+        other: 'weniger als {{count}} Sekunden'
+      x_seconds:
+        one: '1 Sekunde'
+        other: '{{count}} Sekunden'
+      less_than_x_minutes:
+        zero: 'weniger als 1 Minute'
+        one: 'weniger als eine Minute'
+        other: 'weniger als {{count}} Minuten'
+      x_minutes:
+        one: '1 Minute'
+        other: '{{count}} Minuten'
+      about_x_hours:
+        one: 'etwa 1 Stunde'
+        other: 'etwa {{count}} Stunden'
+      x_days:
+        one: '1 Tag'
+        other: '{{count}} Tage'
+      about_x_months:
+        one: 'etwa 1 Monat'
+        other: 'etwa {{count}} Monate'
+      x_months:
+        one: '1 Monat'
+        other: '{{count}} Monate'
+      about_x_years:
+        one: 'etwa 1 Jahr'
+        other: 'etwa {{count}} Jahre'
+      over_x_years:
+        one: 'mehr als 1 Jahr'
+        other: 'mehr als {{count}} Jahre'
+    prompts:
+      second: "Sekunden"
+      minute: "Minuten"
+      hour: "Stunden"
+      day: "Tag"
+      month: "Monat"
+      year: "Jahr"
+
+  number:
+    format:
+      precision: 2
+      separator: ','
+      delimiter: '.'
+    currency:
+      format:
+        unit: '€'
+        format: '%n%u'
+        separator: 
+        delimiter: 
+        precision: 
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+      storage_units:
+        # Storage units output formatting.
+        # %u is the storage unit, %n is the number (default: 2 MB)
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " und "
+      last_word_connector: " und "
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "Konnte dieses {{model}} Objekt nicht speichern: 1 Fehler."
+          other:  "Konnte dieses {{model}} Objekt nicht speichern: {{count}} Fehler."
+        body: "Bitte überprüfen Sie die folgenden Felder:"
+
+      messages:
+        inclusion: "ist kein gültiger Wert"
+        exclusion: "ist nicht verfügbar"
+        invalid: "ist nicht gültig"
+        confirmation: "stimmt nicht mit der Bestätigung überein"
+        accepted: "muss akzeptiert werden"
+        empty: "muss ausgefüllt werden"
+        blank: "muss ausgefüllt werden"
+        too_long: "ist zu lang (nicht mehr als {{count}} Zeichen)"
+        too_short: "ist zu kurz (nicht weniger als {{count}} Zeichen)"
+        wrong_length: "hat die falsche Länge (muss genau {{count}} Zeichen haben)"
+        taken: "ist bereits vergeben"
+        not_a_number: "ist keine Zahl"
+        greater_than: "muss größer als {{count}} sein"
+        greater_than_or_equal_to: "muss größer oder gleich {{count}} sein"
+        equal_to: "muss genau {{count}} sein"
+        less_than: "muss kleiner als {{count}} sein"
+        less_than_or_equal_to: "muss kleiner oder gleich {{count}} sein"
+        odd: "muss ungerade sein"
+        even: "muss gerade sein"
+      models:
+      
+      

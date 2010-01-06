@@ -1,0 +1,11 @@
+<%= form.label t "common.login_name" %><br />
+<%= form.text_field :login %><br />
+<br />
+<%= form.label t "common.email" %><br />
+<%= form.text_field :email %><br />
+<br />
+<%= form.label t("common.password"), form.object.new_record? ? nil : t("common.change_password") %><br />
+<%= form.password_field :password %><br />
+<br />
+<%= form.label t "common.password_confirmation" %><br />
+<%= form.password_field :password_confirmation %><br />

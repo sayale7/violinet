@@ -1,0 +1,49 @@
+	<% content_for :head do %>
+	<%= javascript_include_tag 'jquery-1.3.2', 'jquery.tokeninput', 'ddm' %>
+	<% end %>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){  
+			$(".wojs").remove();
+			$("ul#js").prepend("Empfänger <input type='text' id='tokenize' name='blah2'/><li></li>	");
+		});
+	
+	    $(document).ready(function(){
+	        $("#tokenize").tokenInput("/all_users", {
+	            classes: {
+	                tokenList: "token-input-list-facebook",
+	                token: "token-input-token-facebook",
+	                tokenDelete: "token-input-delete-token-facebook",
+	                selectedToken: "token-input-selected-token-facebook",
+	                highlightedToken: "token-input-highlighted-token-facebook",
+	                dropdown: "token-input-dropdown-facebook",
+	                dropdownItem: "token-input-dropdown-item-facebook",
+	                dropdownItem2: "token-input-dropdown-item2-facebook",
+	                selectedDropdownItem: "token-input-selected-dropdown-item-facebook",
+	                inputToken: "token-input-input-token-facebook"
+	            }
+	        });
+	    });
+	</script>
+    <%= error_messages_for :message %>
+    <% form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
+   <ul id="js">
+		
+		<li class="wojs">
+	    Empfänger
+	      <%= checklist "message[to][]", User.find(:all), :id, :login, @message.to %>
+	  </li>
+	
+		<li>
+			Betreff <br></br>
+          <%= f.text_field :subject, :class => "tb_mail"%>
+		</li>
+		<li>
+			Nachricht <br></br>
+          <%= f.text_area :body, :class => "tb_mail_area" %>
+		</li>
+		<li>
+			<%= submit_tag "Send" %>
+		</li>
+    </ul>  
+    <% end %>

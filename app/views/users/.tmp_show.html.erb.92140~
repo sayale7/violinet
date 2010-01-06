@@ -1,0 +1,153 @@
+<div class="profile_image">
+    <% if @profile_image %>
+    <%= image_tag(@profile_image.public_filename()) %>
+    <% end %>
+</div>
+<div class="right">
+</div>
+<div class="account_info">
+    <ul>
+        <li>
+            <%= t "common.login_name" %>: <%=h @user.login %>
+        </li>
+        <li>
+            <% if @user.last_login_at %>
+            <%= t "profile.last_login" %>: <%= l @user.last_login_at, :format => :long %>
+            <% end %>
+        </li>
+        <li>
+            <%= t "common.email" %>: <%= mail_to h@user.email %>
+        </li>
+    </ul>
+</div>
+<div>
+    <div class="personal_info">
+        <h1><%= t "common.my_personals" %></h1>
+        <dl>
+            <% if !(@user_common.gender.to_s == "") %>
+            <dt>
+                <%= t "user.gender" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.gender %>
+            </dd>
+            <% end %>
+            <% if !(@user_common.title.to_s == "") %>
+            <dt>
+                <%= t "user.title" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.title %>
+            </dd>
+            <% end %>
+            <% if !((@user_common.firstname.to_s == "") && (@user_common.lastname.to_s == "")) %>
+            <dt>
+                <%= t "user.name" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.firstname %>
+                <%= " " %>
+                <%= @user_common.lastname %>
+            </dd>
+            <% end %>
+            <% if !(@user_common.street.to_s == "") %>
+            <dt>
+                <%= t "user.street" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.street %>
+            </dd>
+            <% end %>
+            <% if !(@user_common.zip.to_s == "") %>
+            <dt>
+                <%= t "user.zip" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.zip %>
+            </dd>
+            <% end %>
+            <% if !(@user_common.city.to_s == "") %>
+            <dt>
+                <%= t "user.city" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.city %>
+            </dd>
+            <% end %>
+            <% if !(@user_common.district.to_s == "") %>
+            <dt>
+                <%= t "user.district" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.district %>
+            </dd>
+            <% end %>
+            <% if !(@user_common.administrative_area.to_s == "") %>
+            <dt>
+                <%= t "user.administrative_area" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.administrative_area %>
+            </dd>
+            <% end %>
+            <% if !(@user_common.state.to_s == "") %>
+            <dt>
+                <%= t "user.state" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.state %>
+            </dd>
+            <% end %>
+            <% if !(@user_common.www.to_s == "") %>
+            <dt>
+                <%= t "user.www" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.www %>
+            </dd>
+            <% end %>
+            <% if !(@user_common.phone.to_s == "") %>
+            <dt>
+                <%= t "user.phone" %>
+                <%= ":" %>
+            </dt>
+            <dd>
+                <%= @user_common.phone %>
+            </dd>
+            <% end %>
+        </dl>
+    </div>
+    <div class="profile_entries">
+        <h1><%= t "common.profile_entries" %></h1>
+        <a href="#" onclick="Element.toggle('profile_entries_new')"><%= t("common.write_new_profile_entries") %></a>
+        <div id="new_entry">
+            <%= render :partial => "profile_entries/new_entry" %>
+        </div>
+        <div id="profile_entry_display_all">
+            <%= render :partial => @user.profile_entries.reverse %>
+        </div>
+    </div>
+    <!--
+    <p><%= t "profile.last_login_ip" %>:<%= @user.last_login_ip %>
+    <%= t "profile.login_count" %>:<%=h @user.login_count %>
+    </p>
+    <p>
+    <%= t "profile.last_request" %>:<%= l @user.last_request_at, :format => :long %>
+    </p>
+    <p>
+    <%= t "profile.current_login" %>:<%= l @user.current_login_at, :format => :long %>
+    </p>
+    <p>
+    <%= t "profile.current_login_ip" %>:<%= @user.current_login_ip %>
+    </p>
+    -->

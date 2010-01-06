@@ -1,0 +1,80 @@
+<h1><%= t "common.new_ablum" %></h1>
+<% form_for(@photo_ablum) do |f| %>
+<%= f.error_messages %>
+<%= f.label t ("common.photo_album_name") %>
+<br/>
+<%= f.text_field :name %>
+<br/>
+<br/>
+<%= f.label t ("common.photo_album_description") %>
+<br/>
+<%= f.text_field :description %>
+<br/>
+<%= f.submit t("common.create_ablum") %>
+<% end %>
+<script type='text/javascript'>
+    var swfu;
+    
+    window.onload = function(){
+        swfu = new SWFUpload({
+            // Create the custom swfupload_photos_path in the routes.rb file
+            upload_url: '<%= swfupload_photos_path -%>?token=<%= @photo_ablum.id %>',
+            // flash_url : '/assets/swfupload_f9.swf',
+            
+            file_size_limit: '0.5 MB',
+            file_types: '*',
+            file_types_description: 'All',
+            file_upload_limit: '5',
+            
+            file_queue_error_handler: fileQueueError,
+            file_dialog_complete_handler: fileDialogComplete,
+            upload_progress_handler: uploadProgress,
+            upload_error_handler: uploadError,
+            upload_success_handler: uploadSuccess,
+            upload_complete_handler: uploadComplete,
+            
+            custom_settings: {
+                upload_target: 'divFileProgressContainer'
+            },
+            
+            // Button Settings
+            button_image_url: "/images/spyglass.png",
+            button_placeholder_id: "spanButtonPlaceholder",
+            button_width: 280,
+            button_height: 18,
+            button_text: '<span class="button">Select Images <span class="buttonSmall">(0.5 MB Max and Maximum 5 Images)</span></span>',
+            button_text_style: '.button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt; } .buttonSmall { font-size: 10pt; }',
+            button_text_top_padding: 0,
+            button_text_left_padding: 18,
+            button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+            button_cursor: SWFUpload.CURSOR.HAND,
+            
+            // Flash Settings
+            flash_url: "/assets/swfupload.swf",
+            
+            custom_settings: {
+                upload_target: "divFileProgressContainer"
+            },
+            
+            debug: false
+        
+        });
+    };
+</script>
+<div style="margin: 0px 10px;">
+    <div>
+        <form>
+            <div style="display: inline; border: solid 1px #7FAAFF; background-color: #C5D9FF; padding: 2px;">
+                <span id="spanButtonPlaceholder"></span>
+            </div>
+        </form>
+    </div>
+    <div id="divFileProgressContainer" style="height: 75px;">
+    </div>
+    <div id="thumbnails">
+        <% @photos.each do |photo| %>
+            <%= link_to image_tag(photo.public_filename(:thumb)), photo_path(photo) %>
+            <%= link_to 'Delete', photo, :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
+    </div>
+</div>

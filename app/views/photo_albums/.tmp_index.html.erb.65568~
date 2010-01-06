@@ -1,0 +1,1 @@
+<%= link_to 'New Alb', :controller => "photo_albums", :action => "new" %>

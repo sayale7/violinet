@@ -1,0 +1,42 @@
+
+
+#wrapper {
+    width: 700px;
+    margin: 0 auto;
+    background-color: #000;
+}
+
+#img {
+	text-align:center;
+    position: relative;
+    width: 700px;
+    margin-bottom: 1em;
+}
+
+#gallery { }
+
+#wrapper, #img, #gallery li {
+}
+
+#gallery li {
+    float: left;
+    padding: 1px;
+    background: transparent url(/images/ajax-loader-small.gif) 50% 50% no-repeat;
+	background-color:#000;
+    border-color: #345;
+    cursor: pointer;
+}
+
+.caption {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 96%;
+    height: 50px;
+    padding: 0 2%;
+    line-height: 50px;
+    color: #fff;
+    background-color: #000;
+    opacity: .8;
+}

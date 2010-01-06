@@ -1,0 +1,63 @@
+<% javascript 'jquery-1.3.2', 'jquery.url_utils', 'pagination', 'delete_undelete_messages', 'ddm' %> 
+
+<table>
+	<thead>
+		<tr>
+			<th>
+			</th>
+			<th>
+				<%= t("mail.from") %>
+			</th>
+			<th>
+				<%= t("mail.subject") %>
+			</th>
+			<th>
+				<%= t("mail.received_at") %>
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @messages.each do |message| %>
+		<tr>
+			<% unless message.read %>
+			<td>
+				<%= link_to image_tag("email.jpg", :border=>0), :controller => "messages", :action => "read", :id => message.id %>
+			</td>
+			<% else %>
+			<td>
+				<%= link_to image_tag("openemail.jpg", :border=>0) , :controller => "messages", :action => "read", :id => message.id  %>
+			</td>
+			<% end %>
+			<% if message.message_id != nil %>
+			<td>
+				<%= User.find_by_id(message.recipient_id).login %>
+			</td>
+			<% else %>
+			<td>
+				<p>
+					gelöscht
+				</p>
+			</td>
+			<% end %>
+			<td style="overflow:hidden;">
+				<% if message.message_id != nil %>
+					<%=  message.subject %>
+				<% end %>
+			</td>
+			<td>
+				<%= message.updated_at.strftime("%d. %m. %Y um %H:%M Uhr") %>
+			</td>
+			<% unless message.deleted %>
+			<td>
+				<div id="edit_messages">
+					<%= link_to image_tag("trash_klein.jpg", :border=>0), :controller => "mailbox", :action => "delete", :id => message.id %>
+				</div>
+			</td>
+			<% else %>
+			<% end %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= will_paginate @messages %>

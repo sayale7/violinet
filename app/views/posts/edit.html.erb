@@ -1,0 +1,23 @@
+<h1><%= t "post.edit"%></h1>
+<%= render :partial => "form" %>
+
+<div class="tags_of_post">
+    <% form_for(@tags_post) do |f| %>
+    <%= f.error_messages %>
+    <p>
+        <%= hidden_field :tags_post, :post_id, :value => @post.id %>
+        <%= collection_select(:tags_post, :tag_id, @tags, :id, :name) %>
+    </p>
+    <p>
+        <%= f.submit t'common.create' %>
+    </p>
+    <% end %>
+    <% @tags_post = TagsPost.find_all_by_post_id(@post.id) %>
+    <% for tags_post in @tags_post %>
+    <% tag = Tag.find_by_id(tags_post.tag_id) %>
+    <p>
+        <%= tag.name %>
+        <%= link_to t('common.delete'), tags_post, :confirm => t('common.confirm'), :method => :delete %>
+    </p>
+    <% end %>
+</div>

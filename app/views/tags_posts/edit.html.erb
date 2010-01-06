@@ -1,0 +1,18 @@
+<h1>Editing tag_posts</h1>
+<% form_for(@tag_posts) do |f| %>
+<%= f.error_messages %>
+<p>
+    <%= f.label :tag_id %>
+    <br/>
+    <%= collection_select(:tags_post, :tag_id, Tag.all, :id, :name) %>
+</p>
+<p>
+    <%= f.label :post_id %>
+    <br/>
+    <%= collection_select(:tags_post, :post_id, Post.all, :id, :title) %>
+</p>
+<p>
+    <%= f.submit 'Update' %>
+</p>
+<% end %>
+<%= link_to 'Show', @tag_posts %> |<%= link_to 'Back', tags_post_path %>

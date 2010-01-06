@@ -1,0 +1,8 @@
+<% @photo_ablums.each do |album| %>
+<% photo = Photo.first(:conditions => ["photo_album_id = ?", album.id]) %>
+<% if !photo.nil? %>
+<%= link_to image_tag(photo.public_filename(:thumb)), edit_photo_album_path(album) %>
+<% end %>
+<% end %>
+
+<%= link_to 'New Alb', :controller => "photo_albums", :action => "new" %>

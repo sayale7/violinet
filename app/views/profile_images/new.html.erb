@@ -1,0 +1,12 @@
+<%= error_messages_for :profile_image %>
+
+<% form_for(:profile_image, :url => profile_images_path, 
+                      :html => { :multipart => true }) do |f| -%>
+  <p>
+    <label for="profile_image"><%= t "common.profile_img_upload" %></label>
+    <%= f.file_field :uploaded_data %>
+  </p>
+  <p>
+    <%= submit_tag t("common.upload") %>
+  </p>
+<% end -%>

@@ -1,0 +1,22 @@
+<h1>Listing user_to_groups</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Group</th>
+  </tr>
+
+<% @user_to_groups.each do |user_to_group| %>
+  <tr>
+    <td><%=h user_to_group.user_id %></td>
+    <td><%=h user_to_group.group_id %></td>
+    <td><%= link_to 'Show', user_to_group %></td>
+    <td><%= link_to 'Edit', edit_user_to_group_path(user_to_group) %></td>
+    <td><%= link_to 'Destroy', user_to_group, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New user_to_group', new_user_to_group_path %>

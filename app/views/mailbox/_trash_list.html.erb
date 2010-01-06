@@ -1,0 +1,113 @@
+<% javascript 'jquery-1.3.2', 'jquery.url_utils', 'delete_undelete_messages', 'pagination', 'ddm' %> 
+
+<% if @box == 'in' %>
+<h2>Eingang</h2>
+<br></br>
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th>
+				<%= t("mail.from") %>
+			</th>
+			<th>
+				<%= t("mail.subject") %>
+			</th>
+			<th>
+				<%= t("mail.received_at") %>
+			</th>
+			<th>
+				<%= t("mail.move_to") %>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @messages.each do |message| %>
+		<tr>
+			<% unless message.read %>
+			<td>
+				<%= link_to image_tag("email.jpg", :border=>0), :controller => "messages", :action => "read", :id => message.id %>
+			</td>
+			<% else %>
+			<td>
+				<%= link_to image_tag("openemail.jpg", :border=>0) , :controller => "messages", :action => "read", :id => message.id  %>
+			</td>
+			<% end %>
+			<td>
+				<%= User.find_by_id(message.recipient_id).login %>
+			</td>
+			<td>
+				<%=  h(message.subject) %>
+			</td>
+			<td>
+				<%= message.updated_at.strftime("%d. %m. %Y um %H:%M Uhr") %>
+			</td>
+			<% unless message.deleted %>
+			<td>
+				<%= link_to image_tag("trash_klein.jpg", :border=>0), :controller => "messages", :action => "html_undelete", :id => message.id %>
+			</td>
+			<% else %>
+			<td>
+				<div id="edit_messages">
+					<%= link_to image_tag("inbox.jpg", :border=>0, :title => "Posteingang"), :controller => "mailbox", :action => "recover", :id => message.id %>
+					<%= link_to image_tag("delete_mail.jpg", :border=>0, :title => "Endgültig löschen"), {:controller => "mailbox", :action => "delete_complete", :id => message.id }, :confirm => t("common.confirm")%>
+				</div>	
+			</td>
+			<% end %>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= will_paginate @messages%>
+<% end %>
+
+<% if @box == 'out' %>
+<h2>Ausgang</h2>
+<br></br>
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th>
+				<%= t("mail.to") %>
+			</th>
+			<th>
+				<%= t("mail.subject") %>
+			</th>
+			<th>
+				<%= t("mail.received_at") %>
+			</th>
+			<th>
+				<%= t("mail.move_to") %>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @out.reverse.each do |message| %>
+	<tr>
+		<td>
+			<%= link_to image_tag("email.jpg", :border=>0), sent_path(message) %>
+			<%=  image_tag("delete_mail.jpg", :border=>0) %>
+			
+		</td>
+		<td>
+			<%= User.find_by_id(Recipient.find_by_message_id(message.id).user_id).login %>
+		</td>
+		<td>
+			<%= message.subject %>
+		</td>
+		<td>
+			<%= message.created_at.strftime("%d. %m. %Y um %H:%M Uhr") %>
+		</td>
+		<td>
+			<div id="edit_messages">
+				<%= link_to image_tag("inbox.jpg", :border=>0, :title => "Gesendet"), :controller => "mailbox", :action => "recover_out", :id => message.id %>
+				<%= link_to image_tag("delete_mail.jpg", :border=>0, :title => "Endgültig löschen"), {:controller => "mailbox", :action => "delete_complete_out", :id => message.id }, :confirm => t("common.confirm")%>
+			</div>
+		</td>
+	</tr>
+	<% end %>
+	</tbody>
+</table>
+<%= will_paginate @out %>
+<% end %>

@@ -1,0 +1,3 @@
+page.insert_html :top, :profile_entry_display_all, :partial => @profile_entry
+page[:new_profile_entry].reset
+page.toggle 'profile_entries_new'

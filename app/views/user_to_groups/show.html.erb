@@ -1,0 +1,13 @@
+<p>
+  <b>User:</b>
+  <%=h @user_to_group.user_id %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%=h @user_to_group.group_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_to_group_path(@user_to_group) %> |
+<%= link_to 'Back', user_to_groups_path %>

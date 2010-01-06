@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <title><%= controller.controller_name %>: <%= controller.action_name %></title>
+        <%= stylesheet_link_tag 'application' %>
+        <%= javascript_include_tag :defaults %>
+        <%= javascript_include_tag 'swfupload' %>
+        <%= javascript_include_tag 'handlers' %>
+        <%= stylesheet_link_tag 'scaffold' %>
+        <%= yield :head %>
+    </head>
+    <body onload="toggle_entry_textarea();">
+        <div id="container">
+            <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+            <% end %>
+            <div id="user_nav">
+                <a href="http://de.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("de.png", :border=>0) %></a>
+                <a href="http://en.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("gb.png", :border=>0) %></a>
+                <% if !current_user %>
+                <ul>
+                    <li>
+                        <%= link_to t("common.register"), new_account_path %>
+                    </li>
+                    <li>
+                        <%= link_to t("common.login"), new_user_session_path %>
+                    </li>
+                    <li>
+                        <%= link_to t("common.blogs"), posts_path %>
+                    </li>
+                </ul>
+                <% else %>
+                <ul>
+                    <li>
+                        <%= link_to t("common.my_profile"), user_path(:current) %>
+                    </li>
+                    <li>
+                        <%= link_to t("common.my_account"), edit_user_path(:current) %>
+                    </li>
+                    <li>
+                        <%= link_to t("common.my_personals"), :controller => "user_commons", :action => "edit", :id => current_user.id %>
+                    </li>
+                    <li>
+                        <%= link_to t("common.my_blog"), myblog_path %>
+                    </li>
+                    <li>
+                        <%= link_to t("common.my_blog_archive"), myblogarchiv_path %>
+                    </li>
+                    <li>
+                        <%= link_to t("common.logout"), logout_path, :method => :delete, :confirm => t("common.confirm_logout") %>
+                    </li>
+                </ul>
+                <% end %>
+            </div>
+            <div class="left">
+            </div>
+            <div id="content">
+                <%= yield %>
+            </div>
+        </div>
+    </body>
+</html>

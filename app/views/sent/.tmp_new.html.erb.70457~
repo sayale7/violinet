@@ -1,0 +1,67 @@
+<% content_for :head do %>
+<%= javascript_include_tag 'jquery-1.3.2', 'jquery.tokeninput' %>
+<% end %>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#tokenize2").tokenInput("/all_users", {
+            classes: {
+                tokenList: "token-input-list-facebook",
+                token: "token-input-token-facebook",
+                tokenDelete: "token-input-delete-token-facebook",
+                selectedToken: "token-input-selected-token-facebook",
+                highlightedToken: "token-input-highlighted-token-facebook",
+                dropdown: "token-input-dropdown-facebook",
+                dropdownItem: "token-input-dropdown-item-facebook",
+                dropdownItem2: "token-input-dropdown-item2-facebook",
+                selectedDropdownItem: "token-input-selected-dropdown-item-facebook",
+                inputToken: "token-input-input-token-facebook"
+            }
+        });
+    });
+</script>
+<div id="mail_right">
+</div>
+<div id="inbox">
+    <%= error_messages_for :message %>
+    <% form_for :message, :url => {:controller => "sent", :action => "create"} do |f| %>
+    <table>
+        <tr>
+            <td class="full">
+                Empfänger
+            </td>
+            <td class="full">
+                <input type="text" id="tokenize2" name="blah2" />
+            </td>
+        </tr>
+        <tr>
+            <td class="full">
+                Betreff
+            </td>
+            <td class="full" id="auto_comp">
+                <%= f.text_field :subject %>
+            </td>
+        </tr>
+        <tr>
+            <td class="full">
+                Nachricht
+            </td>
+            <td class="full">
+                <%= f.text_area :body %>
+            </td>
+        </tr>
+        <tr>
+            <td class="full">
+            </td>
+            <td class="full">
+                <%= submit_tag "Send" %>
+            </td>
+        </tr>
+    </table>
+    <% end %>
+</div>
+<div id="mailbox_list">
+    <%= render :partial => "layouts/mailbox_container" %>
+    <div id="mailbox_trash">
+        <%= render :partial => "layouts/trash_container" %>
+    </div>
+</div>

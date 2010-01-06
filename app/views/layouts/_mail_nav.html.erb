@@ -1,0 +1,29 @@
+<ul id="jsddm">
+	<li><%= link_to "Eingang", inbox_path %></li>
+	<li><%= link_to "Gesendet", :controller => "sent", :action => "index" %></li>
+	<li><%= link_to "Neue Nachricht", new_sent_path %></li>
+	<span class="wojs">
+	<li>
+		<%= link_to "Eingang (gelöscht)", trash_in_path %>
+	</li>
+	<li>
+		<%= link_to "Gesendet (gelöscht)", trash_out_path %>
+	</li>
+	</span>
+	<li id="js" class="wjs"><a href="#">Papierkorb</a>
+		<ul>
+			<li><%= link_to "Eingang", trash_in_path %></li>
+			<li><%= link_to "Gesendet", trash_out_path %></li>
+		</ul>
+	</li>
+</ul>
+
+
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){  
+		$(".wojs").remove();
+		$("#js").removeClass("wjs");
+		$("#js").addClass("wjs_visible");
+	});
+</script>

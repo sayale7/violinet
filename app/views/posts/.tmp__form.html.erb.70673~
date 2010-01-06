@@ -1,0 +1,19 @@
+<div class="post_edit">
+    <% form_for(@post) do |f| %>
+    <%= f.error_messages %>
+    <p>
+        <%= f.label t("post.title") %>
+        <br/>
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label t("post.body") %>
+        <br/>
+        <%= f.text_area :body %>
+    </p>
+    <p>
+        <%= f.submit t'common.submit' %>
+    </p>
+    <% end %>
+    <%= link_to t('common.back'), posts_path %>
+</div>

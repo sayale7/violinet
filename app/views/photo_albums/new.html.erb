@@ -1,0 +1,14 @@
+<h1><%= t "common.new_ablum" %></h1>
+<% form_for(@photo_ablum) do |f| %>
+<%= f.error_messages %>
+<%= f.label t ("common.photo_album_name") %>
+<br/>
+<%= f.text_field :name %>
+<br/>
+<br/>
+<%= f.label t ("common.photo_album_description") %>
+<br/>
+<%= f.text_area :description, :rows => 10 %>
+<br/><br/>
+<%= f.submit t("common.create_ablum") %>
+<% end %>

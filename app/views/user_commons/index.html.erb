@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for user_common in @user_commons %>
+    <tr>
+      <td><%=h user_common.user.login %></td>
+      <td><%= link_to "Show", user_common %></td>
+      <td><%= link_to "Edit", edit_user_common_path(user_common) %></td>
+      <td><%= link_to "Destroy", user_common, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New User Common", new_user_common_path %></p>

@@ -1,0 +1,22 @@
+<h1><%= t "common.account_change" %></h1>
+<% if @profile_image %>
+<%= image_tag(@profile_image.public_filename()) %>
+<% end %>
+<%= error_messages_for :profile_image %>
+<% form_for(:profile_image, :url => profile_images_path,
+:html => { :multipart => true }) do |f| -%>
+<p><%= f.hidden_field :user_id, :value => current_user.id %>
+    <label for="profile_image">
+        <%= t "common.profile_img_upload" %>
+    </label>
+    <%= f.file_field :uploaded_data %>
+</p>
+<p>
+    <%= submit_tag t("common.upload") %>
+</p>
+<% end -%>
+<% form_for @user, :url => account_path do |f| %>
+<%= f.error_messages %>
+<%= render :partial => "form", :object => f %>
+<%= f.submit t "common.save" %>
+<% end %>

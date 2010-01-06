@@ -1,0 +1,709 @@
+html {
+    overflow-y: scroll;
+    overflow: -moz-scrollbars-vertical;
+}
+
+body {
+    background-color: #4B7399;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+}
+
+a {
+    color: green;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+a:hover {
+    color: red;
+}
+
+h1, h2, h2 {
+    padding: 0px;
+    margin: 0px;
+    color: #4B7399;
+}
+
+img {
+    border: none;
+}
+
+ul{
+	margin:0;
+	padding:0;
+}
+
+li{
+	list-style-type: none;
+	margin-bottom:10px;
+}
+
+#flash{
+	clear:both;
+}
+
+/* Textbox Class*/
+.tb_mail{
+	width: 385px;
+	background: #ECECEC;
+	color : #000000;
+	height:20px;
+	border:0;
+	padding:8px;
+	padding-bottom:0;
+	margin-bottom:0px;
+}
+
+.tb_mail_area {
+	width: 385px;
+	background: #ECECEC;
+	color : #000000;
+	height:200px;
+	border:0;
+	padding:4px 8px;
+	margin-bottom:0px;
+}
+
+ #container {
+	clear:both;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #FFF;
+    border: solid 1px black;
+	border-top:none;
+    padding: 10px;
+	overflow:hidden;
+} #content {
+    width: 75%;
+    min-height: 20em;
+    padding: 20px;
+    padding-bottom: 40px;
+    overflow: hidden;
+} #user_nav {
+	width: 90%;
+	margin: 0 auto;
+	background: white;
+	overflow:hidden;
+    border: solid 1px black;
+    padding: 10px;
+} #user_nav ul {
+	float:left;
+	padding:0;
+	margin:0;
+}
+
+#user_nav ul li {
+	display: inline;
+}
+#user_nav ul li a {
+	display: block;
+	float: left;
+	font-size: 15px;
+	font-family: Verdana;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	margin-right:1px;
+	color: #FFFFFF;
+	background: #4B7399;
+	text-decoration: none;
+/*	border: solid 1px #666666;*/
+}
+
+#user_nav ul li a:hover {
+	color: #000000;
+	background-color: #ECECEC;
+	border-color: #666666;
+}
+
+.wjs{
+	visibility:hidden;
+}
+.wjs_visible{
+	visibility:visible;
+}
+
+
+#choose_country {
+	float:right;
+}
+
+.left {
+    float: left;
+    width: 1%;
+} .right {
+    float: right;
+    width: 1%;
+} .profile_image {
+    width: 230px;
+    background: #000;
+    float: left;
+    display: table-cell;
+    text-align: center;
+}.account_info {
+	float:right;
+    width: 350px;
+}.account_info ul {
+    list-style-type: none;
+}.account_info ul li {
+    background: #e2ecff;
+    margin: 1px;
+    border: thin solid #000;
+    text-align: right;
+    padding: 3px;
+    padding-right: 20px;
+}.personal_info {
+    clear: both;
+    float: left;
+    padding: 5px;
+    padding-left: 0;
+    width: 40%;
+} .personal_info dl {
+    color: #000;
+    padding: 0.0em
+}.personal_info dt {
+    padding: 0.1em;
+    color: gray;
+    font-weight: bold;
+}.personal_info dd {
+    margin-left: 13em;
+    margin-top: -2.0em;
+    padding: 0.5em;
+} #flash_notice, #flash_error {
+    padding: 5px 8px;
+    margin: 10px 0;
+} #flash_notice {
+    background-color: #CFC;
+    border: solid 1px #6C6;
+} #flash_error {
+    background-color: #FCC;
+    border: solid 1px #C66;
+} .clear {
+    clear: both;
+} #articles h2 {
+    font-size: 16px;
+    margin-bottom: 2px;
+} #articles h2 .comments {
+    font-size: 12px;
+    font-weight: normal;
+} #articles .author {
+    font-style: italic;
+    color: #333;
+} .profile_entries {
+    float: right;
+} .profile_entry_display {
+    clear: both;
+    padding: 10px 0 10px 0;
+    border-bottom: silver solid thin;
+    overflow: hidden;
+} .profile_entry_info {
+    float: left;
+} .profile_entry_content {
+    float: right;
+}
+
+/* #comments {
+ font-size: 12px;
+ background-color: #DDD;
+ padding: 0 20px;
+ width: 325px;
+ border: solid 1px #333;
+ } .comment {
+ border-bottom: solid 1px #999;
+ margin: 15px 0;
+ } .comment .author_name {
+ font-weight: bold;
+ }*/ .comment_display {
+    width: 650px;
+    padding: 10px 0 0 0;
+    clear: both;
+} .comments {
+    padding-top: 10px;
+    clear: both;
+} .comments p {
+    margin-bottom: 5px;
+} .comment_info {
+    float: right;
+    max-width: 100px;
+    overflow: auto;
+    padding: 0px;
+    margin-right: 10px;
+    overflow: hidden;
+    text-align: left;
+} .comment_content {
+    float: left;
+    padding: 10px;
+    width: 500px;
+    border: solid thin silver;
+} .fieldWithErrors {
+    display: inline;
+} #errorExplanation {
+    width: 400px;
+    border: 2px solid #CF0000;
+    padding: 0px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+} #errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: 0px;
+    background-color: #c00;
+    color: #fff;
+} #errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 8px;
+} #errorExplanation ul {
+    margin: 2px 24px;
+} #errorExplanation ul li {
+    font-size: 12px;
+    list-style: disc;
+}
+
+/*
+ * Styles for definition Lists in Forms
+ */ .dl_form {
+    background-color: #eaffe7;
+    width: 40em;
+    color: #000;
+    padding: 0.6em
+}.dt_form {
+    padding: 0.5em;
+}.dd_form {
+    margin-left: 17em;
+    margin-top: -2.4em;
+    padding: 0.5em;
+}
+
+
+/* Example tokeninput style #2: Facebook style */
+
+ul.token-input-list-facebook {
+    overflow: hidden;
+    height: auto !important;
+    height: 1%;
+    width: 400px;
+    border: 1px solid #8496ba;
+    cursor: text;
+    font-size: 12px;
+    font-family: Verdana;
+    min-height: 1px;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+ul.token-input-list-facebook {
+    list-style-type: none;
+}
+
+ul.token-input-list-facebook li input {
+    border: 0;
+    width: 100px;
+    padding: 3px 8px;
+    background-color: white;
+    margin: 2px 0;
+}
+
+li.token-input-token-facebook {
+    overflow: hidden;
+    height: auto !important;
+    height: 1%;
+    margin: 3px;
+    padding: 1px 3px;
+    background-color: #eff2f7;
+    color: #000;
+    cursor: default;
+    border: 1px solid #ccd5e4;
+    font-size: 11px;
+    border-radius: 5px;
+    /*-moz-border-radius: 5px;
+     -webkit-border-radius: 5px;*/
+    float: left;
+}
+
+li.token-input-token-facebook p {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+li.token-input-token-facebook span {
+    color: #a6b3cf;
+    margin-left: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+li.token-input-selected-token-facebook {
+    background-color: #5670a6;
+    border: 1px solid #3b5998;
+    color: #fff;
+}
+
+li.token-input-input-token-facebook {
+    float: left;
+}
+
+div.token-input-dropdown-facebook {
+    position: absolute;
+    width: 400px;
+    background-color: #fff;
+    overflow: hidden;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    cursor: default;
+    font-size: 11px;
+    font-family: Verdana;
+    z-index: 1;
+}
+
+div.token-input-dropdown-facebook p {
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+    color: #777;
+}
+
+div.token-input-dropdown-facebook ul {
+    margin: 0;
+    padding: 0;
+}
+
+div.token-input-dropdown-facebook ul li {
+    background-color: #fff;
+    padding: 3px;
+}
+
+div.token-input-dropdown-facebook ul li.token-input-dropdown-item-facebook {
+    background-color: #fff;
+}
+
+div.token-input-dropdown-facebook ul li.token-input-dropdown-item2-facebook {
+    background-color: #fff;
+}
+
+div.token-input-dropdown-facebook ul li em {
+    font-weight: bold;
+    /*font-style: none;*/
+}
+
+div.token-input-dropdown-facebook ul li.token-input-selected-dropdown-item-facebook {
+    background-color: #3b5998;
+    color: #fff;
+}
+
+/*
+ * Email
+ */ 
+
+
+#mailbox_list {
+    float: left;
+    list-style: none;
+    text-align: center;
+    width: 140px;
+    border: solid silver thin;
+    margin: 0px 0;
+    padding: 10px;
+    position: fixed;
+} #mailbox_trash {
+    padding: 5px;
+    border: silver solid thin;
+    width: 130px;
+} #mailbox_inbox {
+    padding: 5px;
+    border: silver solid thin;
+    width: 130px;
+} #mailbox_inbox a {
+    margin: 0px;
+} #mailbox_sent {
+    padding: 5px;
+    border: silver solid thin;
+    width: 130px;
+} #mail_right {
+    width: 5px;
+    float: right;
+} #inbox {
+	clear:both;
+	padding-top:20px;
+}
+ 
+#inbox table, td {
+	border: 1px solid #84785e;
+	border-collapse: collapse;
+	font: 100% "Verdana", Arial, Helvetica, sans-serif;
+	padding: 4px;
+}
+
+#inbox 	table {
+	border: 1px solid #84785e;
+}
+
+#inbox 	thead th {
+	background-color: #812A22;
+	border: 0;
+	color: #ffffff;  
+	padding: .75em;
+}
+
+#inbox 	tbody th {
+	border-top: 1px solid #84785e;
+	font-weight: normal;
+	padding-left: .75em;
+}
+
+#inbox 	tbody tr td {
+	padding: .75em;
+}
+
+#inbox 	tfoot td, tfoot th {
+	background-color: #a24116;
+	border-left: none;
+	border-top: 1px solid #84785e;
+	color: #ffffff;
+	padding: .75em;
+}
+
+#inbox 	caption {
+	text-align: left;
+	font-size: 100%;
+	padding: .75em;
+	color: #000;
+}
+
+/* ----- Changes odd row to fffce1 */
+
+#inbox 	tr.odd {
+	background-color: #fffce1;
+	color: #101011;
+}
+
+/* ----- Changes row color to a24116 for those browsers that support tr:hover */
+
+#inbox 	tr:hover, tr.odd:hover {
+	background-color: #ECECEC;
+	color: #000000;
+}
+
+/* ----- Changes link color to 101011 */
+
+#inbox 	table a:link {
+	color: #101011;
+	text-decoration: none;
+}
+
+#inbox 	table a:visited {
+	color: #101011;
+	text-decoration: none;
+}
+
+#inbox 	table a:hover, table a:active {
+	text-decoration: underline;
+}
+
+/* ----- Changes link color to white for those browsers that support the tr:hover */
+
+#inbox 	tr:hover a:link, tr.odd:hover a:link {
+	color: #ffffff;
+}
+
+#inbox 	tr:hover a:visited, tr.odd:hover a:visited {
+	color: #ffffff;
+}
+
+
+
+
+
+
+
+
+.inbox_messages {
+    cursor: move;
+    background: silver;
+} #mail_for_user {
+    max-width: 550px;
+    max-height: 500px;
+	text-align:left;
+} .link {
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+} #search_results {
+    padding: 5px;
+} #search_results ul {
+} #search_results ul li {
+    list-style: none;
+    margin-bottom: 20px;
+    padding: 0;
+} #search_form {
+    float: right;
+    margin-top: 1px;
+    height: 25px;
+    padding: 2px;
+    padding-top: 4px;
+    background-color: #ffdddd;
+}
+
+/*
+ * SWF Upload Style
+ */ #btnSubmit {
+    margin: 0 0 0 155px;
+}
+
+/* -- Table Styles ------------------------------- */
+td {
+    font: 10pt Helvetica, Arial, sans-serif;
+    vertical-align: top;
+} .progressWrapper {
+    width: 357px;
+    overflow: hidden;
+} .progressContainer {
+    border: solid 1px #E8E8E8;
+    background-color: #F7F7F7;
+    overflow: hidden;
+}
+
+/* Message */ .message {
+    margin: 1em 0;
+    padding: 10px 20px;
+    border: solid 1px #FFDD99;
+    background-color: #FFFFCC;
+    overflow: hidden;
+}
+
+/* Error */ .red {
+    border: solid 1px #B50000;
+    background-color: #FFEBEB;
+}
+
+/* Current */ .green {
+    border: solid 1px #DDF0DD;
+    background-color: #EBFFEB;
+}
+
+/* Complete */ .blue {
+    border: solid 1px #CEE2F2;
+    background-color: #F0F5FF;
+} .progressName {
+    font-size: 8pt;
+    font-weight: 700;
+    color: #555;
+    width: 323px;
+    height: 14px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+} .progressBarInProgress, .progressBarComplete, .progressBarError {
+    font-size: 0;
+    width: 0%;
+    height: 2px;
+    background-color: blue;
+    margin-top: 2px;
+} .progressBarComplete {
+    width: 100%;
+    background-color: green;
+    visibility: hidden;
+} .progressBarError {
+    width: 100%;
+    background-color: red;
+    visibility: hidden;
+} .progressBarStatus {
+    margin-top: 2px;
+    width: 337px;
+    font-size: 7pt;
+    font-family: Arial;
+    text-align: left;
+    white-space: nowrap;
+}
+
+a.progressCancel {
+    font-size: 0;
+    display: block;
+    height: 14px;
+    width: 14px;
+    background-image: url(/images/cancelbutton.gif);
+    background-repeat: no-repeat;
+    background-position: -14px 0px;
+    float: right;
+}
+
+a.progressCancel:hover {
+    background-position: 0px 0px;
+}
+
+/* -- SWFUpload Object Styles ------------------------------- */ .swfupload {
+    vertical-align: top;
+} #thumbnails {
+} .new_thumbs {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+} .new_thumbs * {
+    vertical-align: middle;
+}
+
+/*\*/ /*/
+ .wraptocenter {
+ display: block;
+ }
+ .wraptocenter span {
+ display: inline-block;
+ height: 100%;
+ width: 1px;
+ }
+ /**/ .new_thumbs span {
+    display: inline-block;
+    height: 100%;
+}.new_thumbs img {
+}.new_thumbs_out {
+    width: 110px;
+    height: 120px;
+    float: left;
+}.new_thumbs_delete {
+    clear: both;
+    text-align: right;
+    margin-top: -12px;
+    margin-right: 3px;
+}.new_thumbs_edit {
+    clear: both;
+    text-align: right;
+    margin-top: -40px;
+    margin-right: 5px;
+}.edit-photo {
+    text-align: center;
+}#photo_description {
+}
+
+pre {
+    display: block;
+    font: 100% "Courier New", Courier, monospace;
+    padding: 10px;
+    border: 1px solid #bae2f0;
+    background: #e3f4f9;
+    margin: .5em 0;
+    overflow: auto;
+    width: 800px;
+} #preview {
+    margin-top: -450px;
+    position: absolute;
+    border: 1px solid #ccc;
+    background: #333;
+    padding: 5px;
+    display: none;
+    color: #fff;
+}
+
+
