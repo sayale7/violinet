@@ -31,12 +31,6 @@
 				<%= link_to t("common.my_profile"), user_path(:current) %>
 			</li>
 			<li>
-				<%= link_to t("common.my_account"), edit_user_path(:current) %>
-			</li>
-			<li>
-				<%= link_to t("common.my_personals"), :controller => "user_commons", :action => "edit", :id => current_user.id %>
-			</li>
-			<li>
 				<%= link_to t("common.my_blog"), myblog_path %>
 			</li>
 			<li>
@@ -59,7 +53,12 @@
 			<% end %>
 		</div>
 	</div>
-	<div id="user_nav_two"></div>
+	<div id="user_nav_two">
+		<!-- Navigation for Users -->
+		<div class="whole_width" id="jsddm">
+		<%= render :partial => '/layouts/user_small_nav' %>
+		</div>
+	</div>
 	<div id="container">
 		<%= yield %>
 	</div>

@@ -44,7 +44,7 @@ li{
 }
 
 /* Textbox Class*/
-.tb_mail{
+.tb{
 	width: 385px;
 	background: #ECECEC;
 	color : #000000;
@@ -55,7 +55,7 @@ li{
 	margin-bottom:0px;
 }
 
-.tb_mail_area {
+.tb_area {
 	width: 385px;
 	background: #ECECEC;
 	color : #000000;
@@ -67,7 +67,7 @@ li{
 
  #container {
 	clear:both;
-    width: 90%;
+    width: 1080px;
     margin: 0 auto;
     background-color: #FFF;
     border: solid 1px black;
@@ -75,13 +75,13 @@ li{
     padding: 10px;
 	overflow:hidden;
 } #content {
-    width: 75%;
+    width: 900px;
     min-height: 20em;
     padding: 20px;
     padding-bottom: 40px;
     overflow: hidden;
 } #user_nav {
-	width: 90%;
+	width: 1080px;
 	margin: 0 auto;
 	background: white;
 	overflow:hidden;
@@ -125,6 +125,16 @@ li{
 	visibility:visible;
 }
 
+#user_nav_two{
+	margin: 0 auto;
+	width:1080px;
+	height:30px;
+	padding:10px;
+	background:#ffffff;
+	border: 1px solid #000000;
+	border-top:none;
+}
+
 
 #choose_country {
 	float:right;
@@ -139,12 +149,12 @@ li{
 } .profile_image {
     width: 230px;
     background: #000;
-    float: left;
     display: table-cell;
     text-align: center;
+	margin-right:20px;
 }.account_info {
 	float:right;
-    width: 350px;
+    width: 400px;
 }.account_info ul {
     list-style-type: none;
 }.account_info ul li {
@@ -155,11 +165,8 @@ li{
     padding: 3px;
     padding-right: 20px;
 }.personal_info {
-    clear: both;
-    float: left;
-    padding: 5px;
-    padding-left: 0;
-    width: 40%;
+	float:left;
+	width:400px;
 } .personal_info dl {
     color: #000;
     padding: 0.0em
@@ -192,7 +199,8 @@ li{
     font-style: italic;
     color: #333;
 } .profile_entries {
-    float: right;
+	float:right;
+	width:400px;
 } .profile_entry_display {
     clear: both;
     padding: 10px 0 10px 0;
@@ -202,6 +210,9 @@ li{
     float: left;
 } .profile_entry_content {
     float: right;
+} .info_and_entry{
+	float: right;
+	width:400px;
 }
 
 /* #comments {

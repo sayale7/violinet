@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   
   def show
     @message = current_user.received_messages.find(params[:id])
+    render :layout => "sent", :action => "show"
   end
   
   
@@ -9,12 +10,7 @@ class MessagesController < ApplicationController
     @message = MessageCopy.find(params[:id])
     @message.update_attribute("read", true)
     show
-    render :action => "show"
   end
-  
-
-  
-  
   
   private
   

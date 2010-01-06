@@ -10,7 +10,13 @@ class SentController < ApplicationController
   
   def new
     @message = current_user.sent_messages.build
-    get_users
+    if params[:user] != nil
+      @user = User.find(params[:user])
+      @to = false
+    else
+      get_users
+      @to = true
+    end
   end
   
   def create
@@ -27,7 +33,7 @@ class SentController < ApplicationController
         end
       end
       flash[:notice] = "Nachricht geschickt."
-      redirect_to :action => "index"
+      redirect_to :action => "/user/show"
     else
       get_users
       render :action => "new"
@@ -47,7 +53,7 @@ class SentController < ApplicationController
         end
       end
       flash[:notice] = "Nachricht geschickt."
-      redirect_to "users/show"
+      redirect_to "/users/show"
     else
     end
   end

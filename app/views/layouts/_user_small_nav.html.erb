@@ -1,0 +1,11 @@
+	<ul>
+		<li>
+			<%= link_to t("common.my_profile"), user_path(:current) %>
+		</li>
+		<li>
+			<%= link_to t("common.my_account"), edit_user_path(:current) %>
+		</li>
+		<li>
+			<%= link_to t("common.my_personals"), :controller => "user_commons", :action => "edit", :id => current_user.id %>
+		</li>
+	</ul>
