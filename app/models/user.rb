@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   has_many :recipients
   has_many :photo_albums
   
-  
   before_create :build_inbox
   before_create :build_trash
   

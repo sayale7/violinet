@@ -42,6 +42,10 @@ li{
 #flash{
 	clear:both;
 }
+.clear_both{
+	float:left;
+	clear:both;
+}
 
 /* Textbox Class*/
 .tb{
@@ -64,6 +68,75 @@ li{
 	padding:4px 8px;
 	margin-bottom:0px;
 }
+
+/* table design */
+
+table, td {
+	border: 1px solid #84785e;
+	border-collapse: collapse;
+	font: 100% "Verdana", Arial, Helvetica, sans-serif;
+	padding: 4px;
+}
+
+table {
+	border: 1px solid #84785e;
+}
+
+thead th {
+	background-color: #812A22;
+	border: 0;
+	color: #ffffff;  
+	padding: .75em;
+}
+
+tbody th {
+	border-top: 1px solid #84785e;
+	font-weight: normal;
+	padding-left: .75em;
+}
+
+tbody tr td {
+	padding: .75em;
+}
+
+tfoot td, tfoot th {
+	background-color: #a24116;
+	border-left: none;
+	border-top: 1px solid #84785e;
+	color: #ffffff;
+	padding: .75em;
+}
+
+caption {
+	text-align: left;
+	font-size: 100%;
+	padding: .75em;
+	color: #000;
+}
+
+/* ----- Changes odd row to fffce1 */
+
+tr.odd {
+	background-color: #fffce1;
+	color: #101011;
+}
+
+/* ----- Changes row color to a24116 for those browsers that support tr:hover */
+
+tr:hover, tr.odd:hover {
+	background-color: #ECECEC;
+	color: #000000;
+}
+
+/* ----- Changes link color to 101011 */
+
+table a:link {
+	color: #101011;
+	text-decoration: none;
+}
+
+
+/* end table design */
 
  #container {
 	clear:both;
@@ -201,7 +274,12 @@ li{
 } .profile_entries {
 	float:right;
 	width:400px;
-} .profile_entry_display {
+} #profile_entry_display_all{	
+	border: silver solid thin;
+	padding:5px;
+	background:#ECECEC;
+	margin-top:10px;
+}.profile_entry_display {
     clear: both;
     padding: 10px 0 10px 0;
     border-bottom: silver solid thin;
@@ -210,9 +288,14 @@ li{
     float: left;
 } .profile_entry_content {
     float: right;
+	width:300px;
 } .info_and_entry{
 	float: right;
 	width:400px;
+} #new_entry_link{
+	visibility:hidden;
+} .close{
+	visibility:hidden;
 }
 
 /* #comments {
@@ -275,6 +358,67 @@ li{
     font-size: 12px;
     list-style: disc;
 }
+
+
+/* Tags and Posts */
+
+#not_tags_of_post{
+	width:500px;
+	min-height:100px;
+	float:right;
+}
+#tags_of_post{
+	clear:right;
+	min-height:100px;
+	width:500px;
+	float:right;
+}
+#post{
+	float:left;
+}
+.clickable_items_to_add{
+	float:left;
+	border:1px solid #000000;
+	font-weight:bold;
+	padding:5px;
+	margin:5px;
+}
+.clickable_items_to_remove{
+	float:left;
+	border:1px solid #000000;
+	font-weight:bold;
+	padding:5px;
+	margin:5px;
+}
+.clickable_items_selected_to_add{
+	float:left;
+	background:#4B7399;
+	color:white;
+	border:1px solid #000000;
+	font-weight:bold;
+	padding:5px;
+	margin:5px;
+}
+.clickable_items_selected_to_remove{
+	float:left;
+	background:#4B7399;
+	color:white;
+	border:1px solid #000000;
+	font-weight:bold;
+	padding:5px;
+	margin:5px;
+}
+.new_click_boxes{
+	visibility:hidden;
+}
+.plain_old_checkboxes{
+	margin-top:-30px;
+	float:left;
+	clear:both;
+	padding-bottom:10px;
+}
+
+/* End Tags of Posts */
 
 /*
  * Styles for definition Lists in Forms

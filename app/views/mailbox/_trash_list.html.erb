@@ -48,7 +48,7 @@
 			<td>
 				<div id="edit_messages">
 					<%= link_to image_tag("inbox.jpg", :border=>0, :title => "Posteingang"), :controller => "mailbox", :action => "recover", :id => message.id %>
-					<%= link_to image_tag("delete_mail.jpg", :border=>0, :title => "Endgültig löschen"), {:controller => "mailbox", :action => "delete_complete", :id => message.id }, :confirm => t("common.confirm")%>
+					<%= link_to image_tag("delete_mail.jpg", :border=>0, :title => "Endgültig löschen"), {:controller => "mailbox", :action => "delete_complete", :id => message.id }%>
 				</div>	
 			</td>
 			<% end %>
@@ -85,8 +85,6 @@
 	<tr>
 		<td>
 			<%= link_to image_tag("email.jpg", :border=>0), sent_path(message) %>
-			<%=  image_tag("delete_mail.jpg", :border=>0) %>
-			
 		</td>
 		<td>
 			<%= User.find_by_id(Recipient.find_by_message_id(message.id).user_id).login %>
@@ -100,7 +98,7 @@
 		<td>
 			<div id="edit_messages">
 				<%= link_to image_tag("inbox.jpg", :border=>0, :title => "Gesendet"), :controller => "mailbox", :action => "recover_out", :id => message.id %>
-				<%= link_to image_tag("delete_mail.jpg", :border=>0, :title => "Endgültig löschen"), {:controller => "mailbox", :action => "delete_complete_out", :id => message.id }, :confirm => t("common.confirm")%>
+				<%= link_to image_tag("delete_mail.jpg", :border=>0, :title => "Endgültig löschen"), {:controller => "mailbox", :action => "delete_complete_out", :id => message.id } %>
 			</div>
 		</td>
 	</tr>

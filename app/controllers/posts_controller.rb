@@ -33,6 +33,32 @@ class PostsController < ApplicationController
     end
   end
   
+  def add_tags
+    @post = Post.find(params[:id])
+    tags = Tag.find_all_by_id(params[:tags])
+    tags.each do |tag|
+      Tagging.find_or_create_by_tag_id_and_post_id(tag.id, @post.id)
+    end
+    @not_in_post_tags = Tag.all() - @post.tags
+    respond_to do |format|
+      format.html { redirect_to('/posts/' + params[:id].to_s + '/edit') }
+      format.js
+    end
+  end
+  
+  def remove_tags
+    @post = Post.find(params[:id])
+    tags = Tag.find_all_by_id(params[:tags])
+    tags.each do |tag|
+      Tagging.find_by_tag_id_and_post_id(tag.id, @post.id).destroy
+    end
+    @not_in_post_tags = Tag.all() - @post.tags
+    respond_to do |format|
+      format.html { redirect_to('/posts/' + params[:id].to_s + '/edit') }
+      format.js
+    end
+  end
+  
   # GET /posts/1
   # GET /posts/1.xml
   def show
@@ -53,24 +79,13 @@ class PostsController < ApplicationController
       format.xml  { render :xml => @post }
     end
   end
-  
+
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
-    @tags_post = TagsPost.new
-    @tags_posts = Array.new
-    @tags_posts = TagsPost.find_all_by_post_id(@post.id)
-    @tags = Array.new
-    @tags = Tag.all
-    for tag_post in @tags_posts do
-      for tag in @tags do
-        if tag.id == tag_post.tag_id
-          @tags.delete(tag)
-        end
-      end
-    end
+    @not_in_post_tags = Tag.all() - @post.tags
   end
-  
+
   # POST /posts
   # POST /posts.xml
   def create
@@ -127,4 +142,5 @@ class PostsController < ApplicationController
     end
     
   end
+  
 end

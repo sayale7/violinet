@@ -1,7 +1,7 @@
 class SentController < ApplicationController
   
   def index
-    @messages = current_user.sent_messages.find_all_by_folder_id(1, :order => "created_at DESC").paginate :per_page => 2, :page => params[:page]
+    @messages = current_user.sent_messages.find_all_by_folder_id(1, :order => "created_at DESC").paginate :per_page => 5, :page => params[:page]
   end
   
   def show
@@ -10,12 +10,10 @@ class SentController < ApplicationController
   
   def new
     @message = current_user.sent_messages.build
+    get_users
     if params[:user] != nil
       @user = User.find(params[:user])
-      @to = false
-    else
-      get_users
-      @to = true
+      @users_hash = @users_hash.merge({ @user.id =>  true})
     end
   end
   
@@ -33,7 +31,7 @@ class SentController < ApplicationController
         end
       end
       flash[:notice] = "Nachricht geschickt."
-      redirect_to :action => "/user/show"
+      redirect_to('/sent')
     else
       get_users
       render :action => "new"
@@ -72,6 +70,7 @@ class SentController < ApplicationController
     @namesarray = Array.new
     @idsarray = Array.new
     for user in @users do
+      @users_hash = { user.id => false }
       @namesarray.push(user.login+" ")
       @idsarray.push(user.email)
     end

@@ -1,11 +1,10 @@
 class ProfileImage < ActiveRecord::Base
   
-  
   has_attachment :content_type => :image, 
   :storage => :file_system, 
   :max_size => 500.kilobytes,
   :resize_to => '200x200>',
-  :thumbnails => { :thumb => '100x100>' }
+  :thumbnails => { :thumb => '60x60>' }
   
   validates_as_attachment
   
@@ -20,6 +19,7 @@ class ProfileImage < ActiveRecord::Base
   before_thumbnail_saved do |thumbnail|
     image = ProfileImage.find_by_id(thumbnail.parent_id)
     thumbnail.user_id = image.user_id
+    
   end
   
 end

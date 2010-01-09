@@ -1,23 +1,48 @@
-<h1><%= t "post.edit"%></h1>
-<%= render :partial => "form" %>
+<%= javascript 'jquery-1.3.2', 'application' %>
 
-<div class="tags_of_post">
-    <% form_for(@tags_post) do |f| %>
-    <%= f.error_messages %>
-    <p>
-        <%= hidden_field :tags_post, :post_id, :value => @post.id %>
-        <%= collection_select(:tags_post, :tag_id, @tags, :id, :name) %>
-    </p>
-    <p>
-        <%= f.submit t'common.create' %>
-    </p>
-    <% end %>
-    <% @tags_post = TagsPost.find_all_by_post_id(@post.id) %>
-    <% for tags_post in @tags_post %>
-    <% tag = Tag.find_by_id(tags_post.tag_id) %>
-    <p>
-        <%= tag.name %>
-        <%= link_to t('common.delete'), tags_post, :confirm => t('common.confirm'), :method => :delete %>
-    </p>
-    <% end %>
+<div id="post">
+	<h1><%= t "post.edit"%></h1>
+	<%= render :partial => "form" %>
 </div>
+
+
+<div id="not_tags_of_post">
+	<% form_tag '/posts/add_tags', :class => "add_tags" do %>
+	<% unless @not_in_post_tags.empty?  %>
+	<br></br>
+	<h2><%= t('tag.add_tags_to_post') %></h2>
+	<div class="new_click_boxes">
+		<% @not_in_post_tags.each do |tag|  %>
+		<span class="clickable_items_to_add" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>
+		<% end %>
+	</div>
+	<div class="plain_old_checkboxes">
+		<%= tag_checklist_to_add(@not_in_post_tags)  %>
+	</div>
+	<%= hidden_field_tag 'id', @post.id %>
+	<%= submit_tag t("tags.add_to_post"), :class => "clear_both" %>
+	<% end %>
+	<% end %>
+</div>
+
+<div id="tags_of_post">
+	<% form_tag '/posts/remove_tags', :class => "remove_tags" do %>
+	<% unless @post.tags.empty?  %>
+	<br></br>
+	<h2><%= t('tag.remove_tags_from_post') %></h2>
+	<div class="new_click_boxes">
+		<% for tag in @post.tags do %>
+		<span class="clickable_items_to_remove" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>
+		<% end %>
+	</div>
+	<div class="plain_old_checkboxes">
+		<%= tag_checklist_to_add(@post.tags)  %>
+	</div>
+	<%= hidden_field_tag 'id', @post.id %>
+	<%= submit_tag t("tags.remove_from_post"), :class => "clear_both" %>
+	<% end %>
+	<% end %>
+</div>
+
+
+

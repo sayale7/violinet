@@ -5,8 +5,8 @@ class ProfileEntriesController < ApplicationController
     @profile_entry = @user.profile_entries.new(params[:profile_entry])
     @profile_image = ProfileImage.find_by_user_id(@user.id)
     if @profile_entry.save
+      flash[:notice] = t("common.created")
       respond_to do |format|
-        flash[:notice] = t("common.created")
         format.html { redirect_to @user }
         format.js
       end

@@ -1,18 +1,27 @@
 <h1>Listing tags</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
+<br />
 
-<% @tags.each do |tag| %>
-  <tr>
-    <td><%=h tag.name %></td>
-    <td><%= link_to 'Show', tag %></td>
-    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<% @tags.each do |tag| %>
+	<tbody>
+		<tr>
+			<td><%=h tag.tag_names.first.name %> / <%=h tag.tag_names.last.name %></td>
+			<td><%= link_to 'Show', tag %></td>
+			<td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+			<td><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></td>
+		</tr>
+	</tbody>
+	<% end %>
 </table>
 
 <br />

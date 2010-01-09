@@ -65,8 +65,8 @@ class MailboxController < ApplicationController
   
   def get_messages(folder)
     @folder = Folder.find_by_user_id_and_name(current_user.id, folder);
-    @messages = @folder.messages.all(:order => "created_at DESC").paginate :per_page => 2, :page => params[:page], :include => :message
-    @out = current_user.sent_messages.find_all_by_folder_id(2, :order => "created_at DESC").paginate :per_page => 2, :page => params[:page], :include => :message
+    @messages = @folder.messages.all(:order => "created_at DESC").paginate :per_page => 5, :page => params[:page], :include => :message
+    @out = current_user.sent_messages.find_all_by_folder_id(2, :order => "created_at DESC").paginate :per_page => 5, :page => params[:page], :include => :message
   end
   
   def recover_message

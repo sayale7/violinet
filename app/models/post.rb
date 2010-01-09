@@ -1,6 +1,12 @@
 class Post < ActiveRecord::Base
-  validates_presence_of :title, :body
-  has_many :comments
+  
+  has_many :taggings, :dependent => :destroy
+  
+  has_many :tags, :through => :taggings
+  
+  has_many :comments, :dependent => :destroy
+  
   belongs_to :user
-  has_and_belongs_to_many :tags
+  
+  validates_presence_of :title, :body
 end

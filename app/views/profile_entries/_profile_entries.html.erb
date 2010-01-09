@@ -1,0 +1,30 @@
+<% for profile_entry in @entries %>
+<div class="profile_entry_display">
+	<div class="profile_entry_info">
+		<% if !profile_entry.author_id.to_s.eql?("0") %>
+			<% if @profile_image %>
+				<% @profile_image = ProfileImage.find_by_user_id(profile_entry.user_id) %>
+				<%= image_tag(@profile_image.public_filename(:thumb)) %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="profile_entry_content">
+		<% if profile_entry.author_id.to_s.eql?("0") %>
+		anonym, 
+		<% else %>
+		<%= link_to (profile_entry.user.login.to_s + ", "), profile_entry.user %>
+		<% end %>
+		<%= profile_entry.created_at.strftime("%d. %m. %Y um %H:%M Uhr") %>
+		<br/>
+		<%= simple_format(profile_entry.body) %>
+		<% if current_user %>
+		<% if ((current_user.id == profile_entry.user_id)) %>
+		<br/>
+		<%= link_to "Löschen", :controller => "profile_entries", :action => "destroy", :id => profile_entry.id %>
+		<% end %>
+		<% end %>
+	</div>
+</div>
+<% end %>
+<br/>
+<%= will_paginate @entries %>

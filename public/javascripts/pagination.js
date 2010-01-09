@@ -1,4 +1,4 @@
-$(function (){  
+$(document).ready(function() { 
 	$('.pagination a').live("click", function () {  
     	$.setFragment({ page: $.queryString(this.href).page });
 		$(".pagination").html("loading ...");

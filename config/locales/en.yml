@@ -57,6 +57,7 @@ en:
     max_count_photos: Maximum Count of Images is 10
     max_count_photos_reached: You have reached the Maximum of 10 Images
     send_message_to_user: Send this user a message
+    close: Close
   event:
     begin: Begin
     end: Ende

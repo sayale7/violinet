@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :categorytogroups
+
+  map.resources :categories
+
+  map.resources :categories
+
   
   map.resources :user_to_groups
 
@@ -35,7 +41,6 @@ ActionController::Routing::Routes.draw do |map|
   #map.root :controller => "user_sessions", :action => "new" # optional, this just sets the root route
   
   map.resources :recipients
-  
   
   map.inbox 'inbox', :controller => "mailbox", :action => "index"
   map.trash_in 'trash_in', :controller => "mailbox", :action => "trash", :box => "in"

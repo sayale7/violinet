@@ -6,19 +6,29 @@ class ProfileImagesController < ApplicationController
   
   def new
     @profile_image = ProfileImage.new
+    if ProfileImage.find_by_user_id(current_user) != nil
+      @profile_image_to_show = ProfileImage.find_by_user_id(current_user)
+    end
+    render :layout => '/layouts/users'
   end
   
   def create
-    if ProfileImage.find_by_user_id(current_user) != nil
-      profile_image = ProfileImage.find_by_user_id(current_user)
-      profile_image.destroy
-    end
+    begin
+    profile_id = ProfileImage.find_by_user_id(current_user).id unless nil?
     @profile_image = ProfileImage.new(params[:profile_image])
     if @profile_image.save
-        flash[:notice] = t("common.created")
-      redirect_to edit_account_url
-    else
-      render :action => :new
+      image_to_destroy = ProfileImage.find(profile_id)
+      image_to_destroy.destroy
+      flash[:notice] = t("profile_image.created")
+      @profile_image_to_show = ProfileImage.find_by_user_id(current_user)
+      redirect_to(new_profile_image_path)
+    else    
+      flash[:error] = t("profile_image.error")
+      redirect_to(new_profile_image_path)
+    end
+    rescue
+      flash[:error] = t("profile_image.error")
+      redirect_to(new_profile_image_path)
     end
   end
   

@@ -1,6 +1,7 @@
 class Message < ActiveRecord::Base
   
   validates_presence_of :to, :message => "(Empfänger) Darf nicht leer sein"
+  validates_presence_of :subject, :body
   
   belongs_to :author, :class_name => "User"
   
@@ -21,7 +22,8 @@ class Message < ActiveRecord::Base
       get_users(touser)
       @users.each do |user|
         @folder = Folder.find_by_user_id_and_name("#{user.id}", 'Inbox');
-        message_copies.build(:recipient_id => user.id, :folder_id => @folder.id, :subject => self.subject, :body => self.body, :author_id => user.id)
+        self.folder_id = @folder.id
+        message_copies.build(:recipient_id => user.id, :folder_id => @folder.id, :subject => self.subject, :body => self.body, :author_id => user.id, :read => 0, :deleted => 0)
       end
     end
   end

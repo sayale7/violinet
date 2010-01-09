@@ -252,7 +252,7 @@
             li_data = settings.prePopulate;
             if (li_data && li_data.length) {
                 //for (var i in li_data) {
-                var this_token = $("<li><p>" + li_data[0].name + "</p> <input type=\"hidden\" value=" + li_data[0].id + " name=\"message[to][]\"/>  </li>").addClass(settings.classes.token).insertBefore(input_token);
+                var this_token = $("<li><p>" + li_data[0].name + "</p> <input class='added_token' type=\"hidden\" value=" + li_data[0].id + " name=\"message[to][]\"/>  </li>").addClass(settings.classes.token).insertBefore(input_token);
                 $("<span>x</span>").addClass(settings.classes.tokenDelete).appendTo(this_token).click(function(){
                     delete_token($(this).parent());
                     return false;

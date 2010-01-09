@@ -1,0 +1,12 @@
+<% form_for @category do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :german_name %><br />
+    <%= f.text_field :german_name %>
+  </p>
+  <p>
+    <%= f.label :english_name %><br />
+    <%= f.text_field :english_name %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

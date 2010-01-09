@@ -1,6 +1,5 @@
 <%= render :partial => 'write_message' %>
-<%= javascript 'mail' %>
-
+<%= javascript 'mail', 'toggle_comment', 'jquery.url_utils', 'pagination', 'application' %>
 
 <div class="personal_info">
 	<h1><%= t "common.my_personals" %></h1>
@@ -126,35 +125,31 @@
 			<li>
 				<%= t "common.email" %>: <%= mail_to h@user.email %>
 			</li>
+			<% if current_user %>
 			<li>
 				<div id="button_popup">
 					<a href="/sent/new?user=<%= @user.id %>"><%= t("common.send_message_to_user") %></a>
 				</div>
 			</li>
+			<% end %>
 		</ul>
 	</div>
 
 
 	<div class="profile_entries">
 		<h1><%= t "common.profile_entries" %></h1>
-		<script type="text/javascript" charset="utf-8">
-		$(document).ready(function() {
-			$("#profile_entries_new").hide();
-			$("#new_entry_link").click(function () { 
-				$("#profile_entries_new").toggle("slow");
-			});
-
-		});
-		</script>
 		<a href="#" id="new_entry_link"><%= t("common.write_new_profile_entries") %></a>
 		<div id="new_entry">
 			<%= render :partial => "profile_entries/new_entry" %>
 		</div>
+		<% if @entries.size > 0 %>
 		<div id="profile_entry_display_all">
-			<%= render :partial => @user.profile_entries.reverse %>
+			<%= render :partial => 'profile_entries/profile_entries' %>
 		</div>
+		<% end %>
 	</div>
 </div>
+
 
 
 <div class="profile_image">

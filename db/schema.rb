@@ -9,9 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090929191143) do
+ActiveRecord::Schema.define(:version => 20100108144827) do
 
   create_table "all_users", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "german_name"
+    t.string   "english_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20090929191143) do
     t.datetime "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
   end
 
   create_table "folders", :force => true do |t|
@@ -44,20 +50,14 @@ ActiveRecord::Schema.define(:version => 20090929191143) do
     t.datetime "updated_at"
   end
 
-  create_table "group_categories", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.integer  "group_category_id"
     t.string   "description"
     t.boolean  "need_confrim"
+    t.boolean  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "message_copies", :force => true do |t|
@@ -99,9 +99,9 @@ ActiveRecord::Schema.define(:version => 20090929191143) do
     t.integer  "width"
     t.integer  "height"
     t.integer  "photo_album_id"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
   end
 
   create_table "posts", :force => true do |t|
@@ -115,10 +115,10 @@ ActiveRecord::Schema.define(:version => 20090929191143) do
   create_table "profile_entries", :force => true do |t|
     t.text     "body"
     t.string   "author"
+    t.string   "author_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "author_id"
   end
 
   create_table "profile_images", :force => true do |t|
@@ -154,15 +154,22 @@ ActiveRecord::Schema.define(:version => 20090929191143) do
     t.datetime "updated_at"
   end
 
-  create_table "tags", :force => true do |t|
+  create_table "tag_names", :force => true do |t|
     t.string   "name"
+    t.string   "language"
+    t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "tags_posts", :force => true do |t|
-    t.integer  "tag_id"
+  create_table "taggings", :force => true do |t|
     t.integer  "post_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -202,6 +209,8 @@ ActiveRecord::Schema.define(:version => 20090929191143) do
     t.string   "persistence_token",                      :null => false
     t.string   "single_access_token",                    :null => false
     t.string   "perishable_token",                       :null => false
+    t.boolean  "mail"
+    t.boolean  "active",              :default => false, :null => false
     t.integer  "login_count",         :default => 0,     :null => false
     t.integer  "failed_login_count",  :default => 0,     :null => false
     t.datetime "last_request_at"
@@ -211,8 +220,6 @@ ActiveRecord::Schema.define(:version => 20090929191143) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",              :default => false, :null => false
-    t.boolean  "mail"
   end
 
 end

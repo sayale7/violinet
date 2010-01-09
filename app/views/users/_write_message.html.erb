@@ -1,5 +1,5 @@
 <% content_for :head do %>
-<%= javascript_include_tag 'jquery-1.3.2', 'jquery.tokeninput' %>
+<%= javascript_include_tag 'jquery-1.3.2', 'jquery.tokeninput'%>
 <% end %>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -22,28 +22,40 @@
             }
         });
     });
+		$("#mail_for_user").live("mouseover", function() {
+			var i = 0;
+			$(".token-input-delete-token-facebook").each(function(){
+				i ++;
+			});
+			if(i == 0 || ($(".tb").attr("value") == "") || ($(".tb_area").attr("value") == "")){
+				$(".to_submit").attr("disabled", true);
+			}else{
+				$(".to_submit").attr("disabled", false);
+			}
+		});
 </script>
 <div id="popupContact" style="display: none; position: fixed; text-align:center; position: absolute; background: #FFFFFF; border: 5px solid #000000; z-index: 2; padding: 12px; font-size: 13px; ">
 	<div id="mail_for_user">
 		<%= error_messages_for :message %>
 		<% form_for :message, :url => {:controller => "sent", :action => "create_from_a_user"} do |f| %>
 		<ul>
-			Empfänger
+			Empfänger *
 			<input type="text" id="tokenize" name="blah2"/>	
 			<li></li>
 			<li>
-				Betreff <br></br>
+				Betreff *<br></br>
 				<%= f.text_field :subject, :class => "tb"%>
 			</li>
 			<li>
-				Nachricht <br></br>
+				Nachricht *<br></br>
 				<%= f.text_area :body, :class => "tb_area" %>
 			</li>
 			<li>
-				<%= submit_tag "Send" %>
+				<%= submit_tag "Send", :disabled => true, :class => "to_submit" %>
 				<button type="button" id="popupContactClose">Abbrechen</button>
 			</li>
 		</ul>
+		* <%= t("common.duty") %>
 		<% end %>
 	</div>
 </div>

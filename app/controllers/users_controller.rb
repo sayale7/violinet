@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new
-    
     if @user.signup!(params)
       @user_common = UserCommon.new
       if @user_common.save
@@ -32,6 +31,7 @@ class UsersController < ApplicationController
     end
     @user_common = UserCommon.find_by_user_id(@user.id)
     @profile_image = ProfileImage.find_by_user_id(@user.id)
+    @entries = @user.profile_entries.all(:order => "created_at DESC").paginate :per_page => 3, :page => params[:page], :include => :profile_entry
   end
   
   def edit

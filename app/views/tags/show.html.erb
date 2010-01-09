@@ -1,6 +1,12 @@
+<h1><%= t('tag.names') %></h1>
+<br></br>
 <p>
-  <b>Name:</b>
-  <%=h @tag.name %>
+  <b>t('tag.german_name')</b>
+  <%=h @tag.tag_names.find_by_language('de').name %>
+</p>
+<p>
+  <b>t('tag.english_name')</b>
+  <%=h @tag.tag_names.find_by_language('en').name %>
 </p>
 
 
