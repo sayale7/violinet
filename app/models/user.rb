@@ -3,13 +3,13 @@ class User < ActiveRecord::Base
   has_one :user_common
   has_one :profile_image
   has_many :posts
-  has_many :comments
   has_many :profile_entries
   has_many :sent_messages, :class_name => "Message", :foreign_key => "author_id"
   has_many :received_messages, :class_name => "MessageCopy", :foreign_key => "recipient_id"
   has_many :folders, :dependent => :destroy
   has_many :recipients
   has_many :photo_albums
+  has_many :comments, :as => :commentable
   
   before_create :build_inbox
   before_create :build_trash

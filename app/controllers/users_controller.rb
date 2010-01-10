@@ -24,13 +24,17 @@ class UsersController < ApplicationController
   end
   
   def show
-    if current_user
+    if params[:id].to_s.eql?('current') || params[:id].to_s.eql?(current_user.id.to_s)
       @user = current_user
+      @current_one = true
     else
-      @user = User.find(params[:id]) 
+      @user = User.find(params[:id])
+      @current_one = false 
     end
     @user_common = UserCommon.find_by_user_id(@user.id)
     @profile_image = ProfileImage.find_by_user_id(@user.id)
+    @comment = Comment.new
+    @comments = @user.comments
     @entries = @user.profile_entries.all(:order => "created_at DESC").paginate :per_page => 3, :page => params[:page], :include => :profile_entry
   end
   

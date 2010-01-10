@@ -140,7 +140,7 @@ table a:link {
 
  #container {
 	clear:both;
-    width: 1080px;
+    width: 950px;
     margin: 0 auto;
     background-color: #FFF;
     border: solid 1px black;
@@ -153,8 +153,8 @@ table a:link {
     padding: 20px;
     padding-bottom: 40px;
     overflow: hidden;
-} #user_nav {
-	width: 1080px;
+} #user_nav {	
+    width: 950px;
 	margin: 0 auto;
 	background: white;
 	overflow:hidden;
@@ -200,7 +200,7 @@ table a:link {
 
 #user_nav_two{
 	margin: 0 auto;
-	width:1080px;
+    width: 950px;
 	height:30px;
 	padding:10px;
 	background:#ffffff;
@@ -215,12 +215,12 @@ table a:link {
 
 .left {
     float: left;
-    width: 1%;
+	padding: 10px;
 } .right {
     float: right;
     width: 1%;
 } .profile_image {
-    width: 230px;
+    width: 150px;
     background: #000;
     display: table-cell;
     text-align: center;
@@ -239,7 +239,7 @@ table a:link {
     padding-right: 20px;
 }.personal_info {
 	float:left;
-	width:400px;
+	width:350px;
 } .personal_info dl {
     color: #000;
     padding: 0.0em
@@ -262,7 +262,7 @@ table a:link {
     border: solid 1px #C66;
 } .clear {
     clear: both;
-} #articles h2 {
+}/* #articles h2 {
     font-size: 16px;
     margin-bottom: 2px;
 } #articles h2 .comments {
@@ -271,28 +271,27 @@ table a:link {
 } #articles .author {
     font-style: italic;
     color: #333;
-} .profile_entries {
-	float:right;
-	width:400px;
-} #profile_entry_display_all{	
-	border: silver solid thin;
-	padding:5px;
-	background:#ECECEC;
+} */
+#comments {
 	margin-top:10px;
-}.profile_entry_display {
+} 
+.comment_display{
+	background: #D6E6FC;
+	width:380px;
+	padding:10px;
+	margin:1px;
     clear: both;
-    padding: 10px 0 10px 0;
-    border-bottom: silver solid thin;
-    overflow: hidden;
-} .profile_entry_info {
+    border: silver solid thin;
+	overflow:hidden;
+}
+.comment_info {
     float: left;
-} .profile_entry_content {
+} .comment_content {
     float: right;
-	width:300px;
 } .info_and_entry{
 	float: right;
 	width:400px;
-} #new_entry_link{
+} #new_comment_link{
 	visibility:hidden;
 } .close{
 	visibility:hidden;
@@ -309,29 +308,29 @@ table a:link {
  margin: 15px 0;
  } .comment .author_name {
  font-weight: bold;
- }*/ .comment_display {
-    width: 650px;
-    padding: 10px 0 0 0;
-    clear: both;
-} .comments {
-    padding-top: 10px;
-    clear: both;
-} .comments p {
-    margin-bottom: 5px;
-} .comment_info {
-    float: right;
-    max-width: 100px;
-    overflow: auto;
-    padding: 0px;
-    margin-right: 10px;
-    overflow: hidden;
-    text-align: left;
-} .comment_content {
-    float: left;
-    padding: 10px;
-    width: 500px;
-    border: solid thin silver;
-} .fieldWithErrors {
+ }./comment_display {
+     width: 650px;
+     padding: 10px 0 0 0;
+     clear: both;
+ } .comments {
+     padding-top: 10px;
+     clear: both;
+ } .comments p {
+     margin-bottom: 5px;
+ } .comment_info {
+     float: right;
+     max-width: 100px;
+     overflow: auto;
+     padding: 0px;
+     margin-right: 10px;
+     overflow: hidden;
+     text-align: left;
+ } .comment_content {
+     float: left;
+     padding: 10px;
+     width: 500px;
+     border: solid thin silver;
+ }*/ .fieldWithErrors {
     display: inline;
 } #errorExplanation {
     width: 400px;
@@ -373,8 +372,19 @@ table a:link {
 	width:500px;
 	float:right;
 }
+#tags{
+	top: 114px; 
+	left: 50%; 
+	margin-left: 228px; /* Hälfte des Wertes die das Element breit ist */
+	position:fixed;
+	background: #D6E6FC;
+	width:300px;
+	padding:10px;
+    border: silver solid thin;
+}
 #post{
 	float:left;
+	padding:10px;
 }
 .clickable_items_to_add{
 	float:left;

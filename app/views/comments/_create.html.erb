@@ -1,0 +1,21 @@
+<% unless @comments.empty? %>
+<% for comment in @comments.reverse %>
+<div class="comment_display">
+	
+	<p>
+		<%= t"common.created_at" %><%= comment.created_at.strftime(" %d. %m. %Y um %H:%M Uhr ") %><%= t "common.by" %><%= " " %>
+		<% if comment.author_id != 0 %>
+		<%= link_to (User.find(comment.author_id).login), User.find(comment.author_id)  %>
+		<% else %>
+		<%= t('common.guest') unless comment.author_id != 0 %>
+	</p>
+	<% end %>
+	<%= simple_format h comment.content %>
+	<% unless current_user.nil? %>
+	<% if current_user.id == comment.author_id || (@current_one unless nil?) %>	
+	<%= link_to t('common.delete'), ('/'+comment.commentable_type.to_s.downcase.pluralize + '/' + comment.commentable_id.to_s + '/comments/'  + comment.id.to_s), :method => :delete, :confirm  => t('common.confirm'), :class  => 'destroy_comment' %>
+	<% end %>
+	<% end %>
+</div>
+<% end %>
+<% end %>

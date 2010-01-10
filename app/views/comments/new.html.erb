@@ -1,19 +1,5 @@
-<h1>New comment</h1>
+<% title "New Comment" %>
 
-<% form_for(@comment) do |f| %>
-  <%= f.error_messages %>
+<%= render :partial => 'form' %>
 
-  <p>
-    <%= f.label :post_id %><br />
-    <%= f.text_field :post_id %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', comments_path %>
+<p><%= link_to "Back to List", comments_path %></p>

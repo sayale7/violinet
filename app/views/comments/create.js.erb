@@ -1,0 +1,14 @@
+<% if !@blank %>
+$("#comments").html("<%= escape_javascript(render('create')) %>");
+$("#new_comment")[0].reset();
+$("#new_comment").before('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$('#flash_notice').fadeOut(2000);
+$("#new_comment").hide();
+$("#new_comment_link").fadeIn('fast');
+setTimeout(function() { 
+	$('#flash_notice').remove();
+}, 2000);
+
+<% else %>
+alert(<%= t("comment.blank") %>);
+<% end %>

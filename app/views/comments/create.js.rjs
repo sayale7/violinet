@@ -1,3 +1,0 @@
-page.insert_html :top, :comment_display_all, :partial => @comment
-page[:new_comment].reset
-page.toggle 'profile_entries_new'

@@ -1,5 +1,4 @@
 <%= render :partial => 'write_message' %>
-<%= javascript 'mail', 'toggle_comment', 'jquery.url_utils', 'pagination', 'application' %>
 
 <div class="personal_info">
 	<h1><%= t "common.my_personals" %></h1>
@@ -135,18 +134,10 @@
 		</ul>
 	</div>
 
-
-	<div class="profile_entries">
-		<h1><%= t "common.profile_entries" %></h1>
-		<a href="#" id="new_entry_link"><%= t("common.write_new_profile_entries") %></a>
-		<div id="new_entry">
-			<%= render :partial => "profile_entries/new_entry" %>
-		</div>
-		<% if @entries.size > 0 %>
-		<div id="profile_entry_display_all">
-			<%= render :partial => 'profile_entries/profile_entries' %>
-		</div>
-		<% end %>
+	<h1><%= t "common.profile_entries" %></h1>
+	<%= render '/comments/form' %>
+	<div id="comments">
+		<%= render :partial => '/comments/create' %>
 	</div>
 </div>
 

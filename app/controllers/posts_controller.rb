@@ -63,7 +63,13 @@ class PostsController < ApplicationController
   # GET /posts/1.xml
   def show
     @post = Post.find(params[:id])
-    
+    if current_user.id.to_s.eql?(@post.user_id.to_s)
+      @current_one = true
+    else
+      @current_one = false
+    end
+    @comment = Comment.new
+    @comments = @post.comments
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }

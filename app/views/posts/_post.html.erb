@@ -1,9 +1,8 @@
 <% div_for post do %>
 <h2><%= link_to_unless_current h(post.title), post %></h2>
 <p>
-    <p>
-        <%= t"common.created" %><%= post.created_at.strftime(" %d. %m. %Y um %H:%M Uhr ") %><%= t "common.by" %><%= " " %><%= link_to (post.user.login), post.user %>
-    </p>
+	<%= t"common.created_at" %><%= post.created_at.strftime(" %d. %m. %Y um %H:%M Uhr ") %><%= t "common.by" %><%= " " %><%= link_to (post.user.login), post.user %>
 </p>
+
 <%= simple_format h(post.body) %>
 <% end %>

@@ -4,7 +4,7 @@
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<title><%= controller.controller_name %>: <%= controller.action_name %></title>
 	<%= stylesheet_link_tag 'application', 'ddm' %>
-	<%= javascript_include_tag 'jquery', 'jquery.url_utils', 'pagination', 'ddm', 'application'  %>
+	<%= javascript_include_tag   'jquery', 'mail', 'jquery.url_utils', 'pagination', 'application' %>
 	<%= yield :head %>
 </head>
 <body>
@@ -31,12 +31,6 @@
 				<%= link_to t("common.my_profile"), user_path(:current) %>
 			</li>
 			<li>
-				<%= link_to t("common.my_account"), edit_user_path(:current) %>
-			</li>
-			<li>
-				<%= link_to t("common.my_personals"), :controller => "user_commons", :action => "edit", :id => current_user.id %>
-			</li>
-			<li>
 				<%= link_to t("common.my_blog"), myblog_path %>
 			</li>
 			<li>
@@ -59,9 +53,14 @@
 			<% end %>
 		</div>
 	</div>
+	<% if current_user %>
 	<div id="user_nav_two">
-		<%= render "/layouts/mail_nav" %>
+		<!-- Navigation for Users -->
+		<div class="whole_width" id="jsddm">
+		<%= render :partial => '/layouts/user_small_nav' %>
+		</div>
 	</div>
+	<% end %>
 	<div id="container">
 		<%= yield %>
 	</div>

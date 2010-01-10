@@ -119,4 +119,6 @@ en:
   post:
     new: New Post
     edit: Edit Post
+  flash:
+    comment_destroyed: Eintrag gelöscht
     

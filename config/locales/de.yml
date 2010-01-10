@@ -28,7 +28,7 @@ de:
     my_account: Mein Konto
     profile_img_upload: Profilbild hochladen
     blogs: Blogs
-    created: Erstellt am 
+    created_at: Erstellt am 
     by: von
     upload: Hochladen
     profile_entries: Pinnwand
@@ -36,7 +36,7 @@ de:
     create_profile_entry: Eintrag erstellen
     comments: Kommentare
     create: Erstellen
-    submit: Zurück
+    submit: Abschicken
     delete: Löschen
     my_albums: Meine Foto Alben
     photo_album_name: Name des Albums
@@ -118,6 +118,8 @@ de:
   post:
     new: Neuer Post
     edit: Post Pearbeiten
+  flash:
+    comment_destroyed: Eintrag gelöscht
   date:
     formats:
       default: "%d.%m.%Y"

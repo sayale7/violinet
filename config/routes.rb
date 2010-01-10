@@ -1,11 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.resources :categorytogroups
 
   map.resources :categories
 
-  map.resources :categories
-
-  
   map.resources :user_to_groups
 
   map.resources :group_categories
@@ -26,7 +24,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :profile_images
   
-  map.resources :posts, :has_many => :comments
+  map.resources :posts, :has_many  => :comments
+  
+  map.resources :users, :has_many  => :comments
   
   # Added custom post action (swfupload) to the photo resource
   map.resources :photos, :collection => { :swfupload => :post }
@@ -47,7 +47,7 @@ ActionController::Routing::Routes.draw do |map|
   map.trash_out 'trash_out', :controller => "mailbox", :action => "trash", :box => "out"
   
   
-  map.resources :users, :sent
+  map.resources :sent
   #map.resources :mailbox, :collection => { :trash => :get }
   map.resources :messages, :member => { :reply => :get, :forward => :get, :reply_all => :get, :undelete => :put }
   
