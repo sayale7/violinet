@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       if @user_common.save
         @user_common.update_attribute("user_id", @user.id)
       end
-      @user.deliver_activation_instructions!
+      # @user.deliver_activation_instructions!
       flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
       redirect_to root_url
     else
@@ -24,12 +24,17 @@ class UsersController < ApplicationController
   end
   
   def show
-    if params[:id].to_s.eql?('current') || params[:id].to_s.eql?(current_user.id.to_s)
-      @user = current_user
-      @current_one = true
+    if current_user
+      if params[:id].to_s.eql?('current') || params[:id].to_s.eql?(current_user.id.to_s)
+        @user = current_user
+        @current_one = true
+      else
+        @user = User.find(params[:id])
+        @current_one = false
+      end
     else
       @user = User.find(params[:id])
-      @current_one = false 
+      @current_one = false
     end
     @user_common = UserCommon.find_by_user_id(@user.id)
     @profile_image = ProfileImage.find_by_user_id(@user.id)
@@ -48,7 +53,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       @profile_image = ProfileImage.find_by_user_id(@user.id)
       flash[:notice] = "Account updated!"
-      redirect_to account_url
+      redirect_to user_path(@user)
     else
       render :action => :edit
     end

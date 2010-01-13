@@ -52,7 +52,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :messages, :member => { :reply => :get, :forward => :get, :reply_all => :get, :undelete => :put }
   
   # mappings for register users
-  map.resource :account, :controller => "users"
   map.edit_account "edit_account", :controller => "users", :action => "edit"
   map.resources :users, :has_many => :profile_entries
   map.resource :personals, :controller => "user_commons"

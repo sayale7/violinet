@@ -1,6 +1,8 @@
 <% if !@blank %>
 $("#comments").html("<%= escape_javascript(render('create')) %>");
 $("#new_comment")[0].reset();
+$('#flash_notice').remove();
+$('#flash_error').remove();
 $("#new_comment").before('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>');
 $('#flash_notice').fadeOut(2000);
 $("#new_comment").hide();
@@ -10,5 +12,10 @@ setTimeout(function() {
 }, 2000);
 
 <% else %>
-alert(<%= t("comment.blank") %>);
+	$(".loading").html("");
+	$("#new_comment").before('<div id="flash_error"><%= escape_javascript(flash.delete(:error)) %></div>');
+	$('#flash_error').fadeOut(2000);
+	setTimeout(function() { 
+		$('#flash_error').remove();
+	}, 2000);
 <% end %>

@@ -27,21 +27,11 @@
 				<%= link_to image_tag("openemail.jpg", :border=>0) , :controller => "messages", :action => "read", :id => message.id  %>
 			</td>
 			<% end %>
-			<% if message.message_id != nil %>
 			<td>
-				<%= User.find_by_id(message.recipient_id).login %>
+				<%= User.find(message.author_id).login %>
 			</td>
-			<% else %>
-			<td>
-				<p>
-					gelöscht
-				</p>
-			</td>
-			<% end %>
 			<td style="overflow:hidden;">
-				<% if message.message_id != nil %>
-					<%=  message.subject %>
-				<% end %>
+				<%= message.subject %>
 			</td>
 			<td>
 				<%= message.updated_at.strftime("%d. %m. %Y um %H:%M Uhr") %>

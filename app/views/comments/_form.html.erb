@@ -1,5 +1,6 @@
 <a href="#form" id="new_comment_link"><%= t("common.write_new_comment") %></a>
 <% form_tag (request.path.to_s + '/comments'), :id  => 'new_comment' do %>
+
   <p>
     <%= text_area_tag 'comment[content]', @comment.content, :class => 'tb_area' %>
   </p>

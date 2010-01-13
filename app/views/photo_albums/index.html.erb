@@ -1,10 +1,33 @@
 <% @photo_ablums.each do |album| %>
+
+<div class="photo_album">
 <% photo = Photo.first(:conditions => ["photo_album_id = ?", album.id]) %>
-<% if !photo.nil? %>
-<%= image_tag(photo.public_filename(:thumb)) %>
+
+<h2><%= album.name %></h2>
+<br></br><% unless photo.nil? %>
+<%= image_tag(photo.public_filename(:medium)) %>
 <br/>
-<%= link_to t("common.edit_photo_album"), edit_photo_album_path(album) %> | <%= link_to t("common.show_photo_album"), photo_album_path(album) %>
+<p>
+<%= link_to t("common.show"), photo_album_path(album) %> | <%= link_to t("common.edit"), edit_photo_album_path(album) %> 
+</p>
+<% else %>
+<div style="height:320px; width:400px; background:#4B7399;"></div>
+<img src="/images/place_holder_album.jpg" height="320px" style=" display:none;"></img>
+<p>
+<%= link_to t("common.edit"), edit_photo_album_path(album) %> 
+</p>
 <% end %>
+
+
+</div>
+
+
 <% end %>
-<br/>
+
+
+
+
+<div class="clear">
 <%= link_to 'New Alb', :controller => "photo_albums", :action => "new" %>
+
+</div>

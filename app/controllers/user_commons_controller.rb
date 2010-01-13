@@ -20,7 +20,7 @@ class UserCommonsController < ApplicationController
     @user_common = UserCommon.new(params[:user_common])
     if @user_common.save
       flash[:notice] = "Successfully created user common."
-      redirect_to @user_common
+      redirect_to edit_user_common_path(@user_common)
     else
       render :action => 'new'
     end
@@ -35,7 +35,7 @@ class UserCommonsController < ApplicationController
     @user_common = UserCommon.find(params[:id])
     if @user_common.update_attributes(params[:user_common])
       flash[:notice] = "Successfully updated user common."
-      redirect_to account_url
+      redirect_to '/users/' + current_user.id.to_s
     else
       render :action => 'edit'
     end

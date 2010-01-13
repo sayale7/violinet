@@ -24,7 +24,7 @@
 					<%= link_to image_tag("email.jpg", :border=>0), sent_path(message) %>
 				</td>
 				<td>
-					<%= User.find_by_id(Recipient.find_by_message_id(message.id).user_id).login %>
+					<%= message.recipients.to_s[2, message.recipients.to_s.size] %>
 				</td>
 				<td>
 					<%= message.subject %>

@@ -4,12 +4,12 @@
     <p>
         <%= f.label t("post.title") %>
         <br/>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, :class  => 'tb' %>
     </p>
     <p>
         <%= f.label t("post.body") %>
         <br/>
-        <%= f.text_area :body %>
+        <%= f.text_area :body, :class  => 'tb_area' %>
     </p>
     <p>
         <%= f.submit t'common.submit' %>

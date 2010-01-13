@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_locale
   before_filter :set_default_url_for_mails
+  filter_parameter_logging :password, :password_confirmation
   
   rescue_from 'Acl9::AccessDenied', :with => :access_denied
   
   helper :all
   helper_method :current_user_session, :current_user
-  filter_parameter_logging :password, :password_confirmation
   
   def set_locale
     # if this is nil then I18n.default_locale will be used
@@ -39,7 +39,6 @@ class ApplicationController < ActionController::Base
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record
   end
-    
   
 #  def require_user
 #    unless current_user
@@ -68,15 +67,15 @@ class ApplicationController < ActionController::Base
 #    session[:return_to] = nil
 #  end
 #  
-#  def access_denied
-#    if current_user
-#      flash[:notice] = 'Access denied.'
-#      redirect_to account_url
-#    else
-#      flash[:notice] = 'Access denied. Try to log in first.'
-#      redirect_to root_url
-#    end
-#  end    
+ def access_denied
+   if current_user
+     flash[:notice] = 'Access denied.'
+     redirect_to account_url
+   else
+     flash[:notice] = 'Access denied. Try to log in first.'
+     redirect_to root_url
+   end
+ end    
   
   
   

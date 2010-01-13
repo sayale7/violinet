@@ -3,7 +3,7 @@
         <%= "<strong>Betreff: </strong>" + @message.subject %>
     </p>
     <p>
-        <%= "<strong>Von: </strong>" + User.find_by_id(@message.recipient_id).login %>
+        <%= "<strong>Von: </strong>" + User.find_by_id(@message.author_id).login %>
     </p>
     <p>
         <%= "<strong>Am: </strong>" + @message.created_at.to_s(:long) %>

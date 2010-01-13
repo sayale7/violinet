@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	
-	$(".destroy_comment a").click(function(){
-		alert('You are going to visit: ' + this.href);
-	});
+	//hide none js div for image gallery
+	$("#all_images").removeClass(".wjs_visible").addClass("wjs");
+	// $("all_images_slider").removeClass(".wjs").addClass("wjs_visible");
 	
 	$(".plain_old_checkboxes").remove();
 	
@@ -72,17 +72,26 @@ $(document).ready(function(){
 	// post new comment through ajax
 	
 	$("#new_comment").live("submit", function(){
+		$(".loading").html("loading ...");
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
 	  	return false;
 	});
 	
-	// delete comment through ajax
+	// destry comment through ajax
 	
-	// $(".destroy_comment").live("click", function(){
-	// 	$(".destroy_comment").html("loading ...");
-	// 	//$.getScript(this.href);
-	//   	return false;
-	// });
+	$(".destroy_comment").live("click", function(){
+		$(".loading").html("loading ...");
+		$.getScript(this.href);
+		return false;
+	});
+	
+	// ajaxing photo description update
+	$(".edit_photo").live("submit", function(){
+		$("#edit_description").html("loading ...");
+		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
+	  	return false;
+	});
+	
 
 	
 });

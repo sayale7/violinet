@@ -49,6 +49,7 @@ $(document).ready(function(){
 	<li>
 		Nachricht *<br></br>
 		<%= f.text_area :body, :class => "tb_area" %>
+		<%= f.hidden_field :author_id, :value  => current_user.id %>
 	</li>
 	<li>
 		<%= submit_tag "Send", :class => 'to_submit' %>

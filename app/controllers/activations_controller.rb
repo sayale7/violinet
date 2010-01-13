@@ -14,7 +14,7 @@
     if @user.activate!(params)
       @user.deliver_activation_confirmation!
       flash[:notice] = t("common.activated")
-      redirect_to account_url
+      redirect_to user_path(@user)
     else
       render :action => :new
     end

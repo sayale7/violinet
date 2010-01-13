@@ -1,3 +1,4 @@
+<div class="loading"></div>
 <% unless @comments.empty? %>
 <% for comment in @comments.reverse %>
 <div class="comment_display">
@@ -13,7 +14,7 @@
 	<%= simple_format h comment.content %>
 	<% unless current_user.nil? %>
 	<% if current_user.id == comment.author_id || (@current_one unless nil?) %>	
-	<%= link_to t('common.delete'), ('/'+comment.commentable_type.to_s.downcase.pluralize + '/' + comment.commentable_id.to_s + '/comments/'  + comment.id.to_s), :method => :delete, :confirm  => t('common.confirm'), :class  => 'destroy_comment' %>
+	<%= link_to t('common.delete'), ('/comments/destroy/' + comment.id.to_s),  :confirm  => t('common.confirm'), :class  => 'destroy_comment' %>
 	<% end %>
 	<% end %>
 </div>

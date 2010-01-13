@@ -4,7 +4,8 @@ class ProfileImage < ActiveRecord::Base
   :storage => :file_system, 
   :max_size => 500.kilobytes,
   :resize_to => '150x150>',
-  :thumbnails => { :thumb => '60x60>' }
+  :thumbnails => { :thumb => '60x60>' },
+  :processor  => :MiniMagick
   
   validates_as_attachment
   

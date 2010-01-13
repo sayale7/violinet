@@ -1,208 +1,130 @@
-<% content_for :head do %>
-<%= javascript_include_tag 'jquery-1.3.2', 'main', 'swfupload', 'handlers' %>
-<% end %>
+<% javascript 'jquery', 'swfupload', 'handlers', 'main' %>
+
+
 <div style="float:left;">
     <h1><%= t "common.edit_album" %></h1>
+	<p><%= link_to t("common.delete"), photo_album_path(@photo_ablum), :method  => :delete, :confirm  => t("common.confirm") %></p>
     <% form_for(@photo_ablum) do |f| %>
-    <%= f.error_messages %>
-    <%= f.label t ("common.photo_album_name") %>
-    <br/>
-    <%= f.text_field :name %>
-    <br/>
-    <br/>
-    <%= f.label t ("common.photo_album_description") %>
-    <br/>
-    <%= f.text_area :description, :rows => 10 %>
-    <br/>
-    <br/>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= render 'form', :f => f %>
     <%= f.submit t("common.update_album") %>
     <% end %>
 </div>
-<script type='text/javascript'>
-    var swfu;
-    
-    window.onload = function(){
-        swfu = new SWFUpload({
-            // Create the custom swfupload_photos_path in the routes.rb file
-            upload_url: '<%= swfupload_photos_path -%>?token=<%= @photo_ablum.id %>',
-            // flash_url : '/assets/swfupload_f9.swf',
-            
-            file_size_limit: '0.5 MB',
-            file_types: '*',
-            file_types_description: 'All',
-            file_upload_limit: '<%= 10 - @photos.size %>',
-			file_queue_limit: '<%= 10 - @photos.size %>',
-            
-            file_queue_error_handler: fileQueueError,
-            file_dialog_complete_handler: fileDialogComplete,
-            upload_progress_handler: uploadProgress,
-            upload_error_handler: uploadError,
-            upload_success_handler: uploadSuccess,
-            upload_complete_handler: uploadComplete,
-            
-            custom_settings: {
-                upload_target: 'divFileProgressContainer'
-            },
-            
-            // Button Settings
-            button_image_url: "/images/spyglass.png",
-            button_placeholder_id: "spanButtonPlaceholder",
-            button_width: 550,
-            button_height: 40,
-            button_text: '<span class="button">Select Images <span class="buttonSmall">(0.5 MB Max and Maximum <%= 10 - @photos.size %> Image(s), only png and jpeg)</span></span>',
-            button_text_style: '.button { font-family: Helvetica, Arial, sans-serif; font-size: 15px; font-weight:bold; } .buttonSmall { font-size: 13px; font-weight:bold;}',
-            button_text_top_padding: 12,
-            button_text_left_padding: 15,
-            button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
-            button_cursor: SWFUpload.CURSOR.HAND,
-            
-            // Flash Settings
-            flash_url: "/assets/swfupload.swf",
-            
-            custom_settings: {
-                upload_target: "divFileProgressContainer"
-            },
-            
-            debug: false
-        
-        });
-    };
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$('#old_image_upload_form').remove();
+	$('#new_image_upload_form').show();
+	$('.no_js').each(function(){
+		$(this).remove();
+	});
+	$('.js').each(function(){
+		$(this).show();
+	});
+	
+});
+
+
+Shadowbox.init({
+	language: 'en',
+	players:  ['img', 'html', 'iframe'],
+	onClose:function(){ window.location.reload(true) }
+});
+
+var swfu;
+var max_file_size = 15 - <%= @photos.size %>;
+
+window.onload = function(){
+	swfu = new SWFUpload({
+		// Create the custom swfupload_photos_path in the routes.rb file
+		upload_url: '<%= swfupload_photos_path -%>?token=<%= @photo_ablum.id %>',
+		// flash_url : '/assets/swfupload_f9.swf',
+
+		file_size_limit: '0.5 MB',
+		file_types: '*',
+		file_types_description: 'All',
+		file_upload_limit: max_file_size,
+		file_queue_limit: '0',
+
+		file_queue_error_handler: fileQueueError,
+		file_dialog_complete_handler: fileDialogComplete,
+		upload_progress_handler: uploadProgress,
+		upload_error_handler: uploadError,
+		upload_success_handler: uploadSuccess,
+		upload_complete_handler: uploadComplete,
+
+		custom_settings: {
+			upload_target: 'divFileProgressContainer'
+		},
+
+		// Button Settings
+		button_image_url: "/images/spyglass.png",
+		button_placeholder_id: "spanButtonPlaceholder",
+		button_width: 350,
+		button_height: 40,
+		button_text: '<span class="button">Select max ' + max_file_size + ' Images <span class="buttonSmall">(0.5 MB, *.png, *.jpeg)</span>',
+		button_text_style: '.button { font-family: Verdana, Lucida Grande,Lucida Sans Unicode,Helvetica,Arial,sans-serif; font-size: 12px; font-weight:bold; } .buttonSmall { font-size: 13px; font-weight:bold;}',
+		button_text_top_padding: 12,
+		button_text_left_padding: 15,
+		button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+		button_cursor: SWFUpload.CURSOR.HAND,
+
+		// Flash Settings
+		flash_url: "/assets/swfupload.swf",
+
+		custom_settings: {
+			upload_target: "divFileProgressContainer"
+		},
+
+		debug: false
+
+	});
+};
 </script>
-<div style="padding:20px 0 0 0; clear:both;">
-    <div>
-        <form>
-            <% if @photos.size < 10 %>
-            <p>
-                <%=	t "common.max_count_photos" %>
-            </p>
-            <div style="border: solid 1px #7FAAFF; background-color: #C5D9FF; padding: 2px; height:40px; width: 550px;">
-                <span id="spanButtonPlaceholder"></span>
-            </div>
-            <% else %>
-            <%=	t "common.max_count_photos_reached" %>
-            <% end %>
-        </form>
-    </div>
-    <div id="divFileProgressContainer" style="height: 40px; margin:0px; padding:0px;">
-    </div>
-    <div id="thumbnails">
-        <% @photos.each do |photo| %>
-        <div id="<%= photo.id %>backgroundPopup" style="display: none; position: fixed; position: absolute; height: 100%; width: 100%; top: 0; left: 0; background: black; border: 1px  solid #cecece; z-index: 1;">
-        </div>
-        <div class="new_thumbs_out">
-            <div class="new_thumbs">
-                <a href="<%= photo.public_filename(:medium) %>" class="preview" title="<%= photo.description %>"><%= image_tag(photo.public_filename(:thumb)) %></a>
-            </div>
-            <div class="new_thumbs_delete">
-                <%= link_to image_tag("delete.png"), photo, :method => :delete %>
-            </div>
-            <div class="new_thumbs_edit">
-                <div id="<%= photo.id %>button">
-                    <a type="submit"><%= image_tag("edit.jpg") %></a>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            //SETTING UP OUR POPUP
-            //0 means disabled; 1 means enabled;
-            var popupStatus = 0;
-            //loading popup with jQuery magic!
-            function loadPopup(photo_id){
-                //loads popup only if it is disabled
-                if (popupStatus == 0) {
-                    $("#" + photo_id + "backgroundPopup").css({
-                        "opacity": "0.9"
-                    });
-                    $("#" + photo_id + "backgroundPopup").fadeIn("fast");
-                    $("#" + photo_id + "popupContact").fadeIn("fast");
-                    
-                    popupStatus = 1;
-                }
-            }
-            
-            //disabling popup with jQuery magic!
-            function disablePopup(photo_id){
-                //disables popup only if it is enabled
-                if (popupStatus == 1) {
-                    $("#" + photo_id + "backgroundPopup").fadeOut("fast");
-                    $("#" + photo_id + "popupContact").fadeOut("fast");
-                    popupStatus = 0;
-                }
-            }
-            
-            //centering popup
-            function centerPopup(photo_id, photo_width){
-                //request data for centering
-                var windowWidth = document.documentElement.clientWidth;
-                var windowHeight = document.documentElement.clientHeight;
-                var popupHeight = $("#" + photo_id + "popupContact").height();
-                var popupWidth = $("#" + photo_id + "popupContact").width();
-                //centering
-                $("#" + photo_id + "popupContact").css({
-                    "position": "absolute",
-                    "top": windowHeight / 2 - popupHeight / 2,
-                    "left": windowWidth / 2 - popupWidth / 2
-                });
-                //only need force for IE6
-                
-                $("#" + photo_id + "backgroundPopup").css({
-                    "height": 1000
-                });
-                //document.getElementById("photo_description").style.width = "500px";
-                //document.getElementById("photo_description").style.overflow = "hidden";
-            
-            }
-            
-            //CONTROLLING EVENTS IN jQuery
-            $(document).ready(function(){
-            
-                //LOADING POPUP
-                //Click the button event!
-                $("#<%= photo.id %>button").click(function(){
-                    var photo_id = "<%= photo.id %>";
-                    var photo_width = "<%= photo.width %>";
-                    //centering with css
-                    centerPopup(photo_id, photo_width);
-                    //load popup
-                    loadPopup(photo_id);
-                });
-                
-                //CLOSING POPUP
-                //Click the x event!
-                $("#<%= photo.id %>popupContactClose").click(function(){
-                    var photo_id = "<%= photo.id %>";
-                    disablePopup(photo_id);
-                });
-                //Click out event!
-                $("#<%= photo.id %>backgroundPopup").click(function(){
-                    disablePopup("<%= photo.id %>");
-                });
-                //Press Escape event!
-                //$(document).keypress(function(e){
-                //    if (e.keyCode == 27 && popupStatus == 1) {
-                //        disablePopup("<%= photo.id %>");
-                //    }
-                //});
-            
-            });
-        </script>
-        <div id="<%= photo.id %>popupContact" style="display: none; position: fixed; text-align:center; position: absolute; background: #333; border: 2px solid #cecece; z-index: 2; padding: 12px; font-size: 13px; ">
-            <a id="<%= photo.id %>popupContactClose" style=" font-size: 14px; line-height: 14px; right: 6px; top: 4px; position: absolute; color: #6fa5fd; font-weight: 700; display: block; text-align:center;">x</a>
-            <h1 style="clear:both; text-align:center; padding-bottom:10px;"><%=t"common.edit_photo_comment" %></h1>
-            <img src="<%= photo.public_filename(:medium) %>" style="clear:both; padding:10px;">
-            <br/>
-            <% @photo = photo %>
-            <% remote_form_for(@photo) do |f| %>
-            <br/>
-            <p>
-                <%= f.text_area :description, :rows => 5 , :cols=>46 %>
-            </p>
-            <p>
-                <%= f.submit t('common.create_profile_entry') %>
-            </p>
-            <% end %>
-        </div>
-        <% end %>
-    </div>
+
+<div style="padding:20px 0 0 0;">
+	<% unless @photos.size > 14 %>
+	<div id="old_image_upload_form">
+		<% form_for(:photo, :url => photos_path,
+		:html => { :multipart => true }) do |f| -%>
+		<p><%= f.hidden_field :photo_album_id, :value => @photo_ablum.id %>
+		    <%= f.file_field :uploaded_data %>
+		</p>
+		<p>
+		    <%= submit_tag t("common.upload") %>
+		</p>
+		<% end -%>
+	</div>
+	<div id="new_image_upload_form">
+		<form>
+			<div style="border: solid 1px #7FAAFF; background-color: #C5D9FF; float:right; padding: 2px; margin-right:70px; height:40px; width: 425px;">
+				<span id="spanButtonPlaceholder"></span>
+			</div>
+		</form>
+
+	</div>
+	<% end %>
+	<div id="thumbnails">
+		<% @photos.each do |photo| %>
+		<div class="new_thumbs_out">
+			<div class="new_thumbs">
+				<div class="js" style="display:none;">
+					<a href="<%= edit_photo_path(photo) %>" title="<%= h(photo.description) %>" rel="shadowbox;width=500;height=665"><%= image_tag(photo.public_filename(:thumb)) %></a>
+				</div>
+				<div class="no_js">
+					<a href="<%= edit_photo_path(photo) %>?js=false"  title="<%= h(photo.description) %>" ><%= image_tag(photo.public_filename(:thumb)) %></a>
+				</div>
+			</div>
+			<div class="new_thumbs_delete">
+				<%= link_to image_tag("delete.png"), :controller => 'photos', :action  => 'destroy', :id  => photo.id %>
+			</div>	
+		</div>
+		<% end %>
+	</div>
+
 </div>
+
+
+<div id="divFileProgressContainer" style=" float:right; margin-right:145px;">
+</div>
+

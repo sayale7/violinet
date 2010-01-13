@@ -1,7 +1,7 @@
 class SentController < ApplicationController
   
   def index
-    @messages = current_user.sent_messages.find_all_by_folder_id(1, :order => "created_at DESC").paginate :per_page => 5, :page => params[:page]
+    @messages = current_user.sent_messages.find_all_by_folder_id(current_user.folders.find_by_name("Inbox").id, :order => "created_at DESC").paginate :per_page => 5, :page => params[:page]
   end
   
   def show
@@ -19,7 +19,6 @@ class SentController < ApplicationController
   
   def create
     @message = current_user.sent_messages.build(params[:message])
-    @message.folder_id = 1
     if @message.save
       recived_messages = MessageCopy.find_all_by_message_id(@message.id)
       user_for_id = recived_messages[0]
@@ -51,14 +50,14 @@ class SentController < ApplicationController
         end
       end
       flash[:notice] = "Nachricht geschickt."
-      redirect_to "/users/show"
+      redirect_to "/users/" + params[:id]
     else
     end
   end
   
   def delete
     @message = Message.find(params[:id])
-    @message.update_attribute('folder_id', 2)
+    @message.update_attribute('folder_id', current_user.folders.find_by_name("Trash").id)
     index
     render :action => 'index'
   end

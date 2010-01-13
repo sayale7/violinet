@@ -1,0 +1,43 @@
+		<div id="choose_country">
+			<a href="http://de.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("de.png", :border=>0) %></a>
+			<a href="http://en.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("gb.png", :border=>0) %></a>
+		</div>
+		<% if !current_user %>
+		<ul>
+			<li>
+				<%= link_to t("common.register"), new_user_path %>
+			</li>
+			<li>
+				<%= link_to t("common.login"), new_user_session_path %>
+			</li>
+			<li>
+				<%= link_to t("common.blogs"), posts_path %>
+			</li>
+		</ul>
+		<% else %>
+		<ul>
+			<li>
+				<%= link_to t("common.my_profile"), user_path(:current) %>
+			</li>
+			<li>
+				<%= link_to t("common.my_blog"), myblog_path %>
+			</li>
+			<li>
+				<%= link_to t("common.my_blog_archive"), myblogarchiv_path %>
+			</li>
+			<li>
+				<%= link_to t("mail.inbox"), inbox_path %>
+			</li>
+			<li>
+				<%= link_to t("common.all_photo_album"), photo_albums_path %>
+			</li>
+			<li>
+				<%= link_to t("common.logout"), logout_path, :method => :delete, :confirm => t("common.confirm_logout") %>
+			</li>
+		</ul>
+		<% end %>
+		<div id="flash">
+			<% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %>
+		</div>

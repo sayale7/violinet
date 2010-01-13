@@ -1,0 +1,6 @@
+$("#edit_description").html("<%= escape_javascript(render('form')) %>");
+$("#edit_photo").before('<div id="flash_notice" style="width:429px; margin-left:20px;"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$('#flash_notice').fadeOut(1500);
+setTimeout(function() { 
+	$('#flash_notice').remove();
+}, 1500);

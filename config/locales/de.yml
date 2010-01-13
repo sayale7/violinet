@@ -4,6 +4,7 @@
 de:
   common:
     edit: Bearbeiten
+    show: Anzeigen
     back: Zurück
     save: Speichern
     password_confirmation: Passwort bestätigen
@@ -47,8 +48,6 @@ de:
     update_album: Update Album Info
     edit_photo_comment: Foto Kommentar ändern
     all_photo_album: Fotoalben
-    show_photo_album: Fotoalbum anzeigen
-    edit_photo_album: Fotoalbum bearbeiten
     activated: Ihr Konto wurde aktiviert
     delete_success: Erfolgreich gelöscht!
     created: Erfolgreich angelegt!

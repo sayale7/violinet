@@ -17,7 +17,6 @@ class MailboxController < ApplicationController
   end
   
   def trash
-    debugger
     if(params[:box] == 'in' || @box == 'in')
       @box = 'in'
     else
@@ -66,7 +65,7 @@ class MailboxController < ApplicationController
   def get_messages(folder)
     @folder = Folder.find_by_user_id_and_name(current_user.id, folder);
     @messages = @folder.messages.all(:order => "created_at DESC").paginate :per_page => 5, :page => params[:page], :include => :message
-    @out = current_user.sent_messages.find_all_by_folder_id(2, :order => "created_at DESC").paginate :per_page => 5, :page => params[:page], :include => :message
+    @out = current_user.sent_messages.find_all_by_folder_id(current_user.folders.find_by_name("Trash").id, :order => "created_at DESC").paginate :per_page => 5, :page => params[:page]
   end
   
   def recover_message
@@ -87,7 +86,7 @@ class MailboxController < ApplicationController
   
   def recover_message_out
     @message = current_user.sent_messages.find(params[:id])
-    @message.update_attribute('folder_id', 1)
+    @message.update_attribute('folder_id', current_user.folders.find_by_name("Inbox").id)
   end
   
 end

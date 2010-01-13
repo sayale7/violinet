@@ -4,6 +4,7 @@
 en:
   common:
     edit: Edit
+    show: Show
     back: Back
     save: Save
     password_confirmation: Confirm Password
@@ -48,8 +49,6 @@ en:
     update_album: Update Album Info
     edit_photo_comment: Edit Photo Comment
     all_photo_album: Photo albums
-    show_photo_album: Show Photo album
-    edit_photo_album: Edit Photo album
     activated: Your account has been activated
     delete_success: Deletion was successfull!
     created: Creation was successfull!

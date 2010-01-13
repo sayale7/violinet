@@ -1,4 +1,6 @@
+<% if current_user %>
 <%= render :partial => 'write_message' %>
+<% end %>
 
 <div class="personal_info">
 	<h1><%= t "common.my_personals" %></h1>
