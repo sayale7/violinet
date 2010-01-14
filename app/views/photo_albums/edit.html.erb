@@ -109,10 +109,10 @@ window.onload = function(){
 		<div class="new_thumbs_out">
 			<div class="new_thumbs">
 				<div class="js" style="display:none;">
-					<a href="<%= edit_photo_path(photo) %>" title="<%= h(photo.description) %>" rel="shadowbox;width=500;height=665"><%= image_tag(photo.public_filename(:thumb_for_slideshow)) %></a>
+					<a href="<%= edit_photo_path(photo) %>" title="<%= h(photo.description) %>" rel="shadowbox;width=500;height=665"><%= image_tag(photo.public_filename(:thumb)) %></a>
 				</div>
 				<div class="no_js">
-					<a href="<%= edit_photo_path(photo) %>?js=false"  title="<%= h(photo.description) %>" ><%= image_tag(photo.public_filename(:thumb_for_slideshow)) %></a>
+					<a href="<%= edit_photo_path(photo) %>?js=false"  title="<%= h(photo.description) %>" ><%= image_tag(photo.public_filename(:thumb)) %></a>
 				</div>
 			</div>
 			<div class="new_thumbs_delete">

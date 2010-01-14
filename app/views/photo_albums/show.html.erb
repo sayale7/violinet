@@ -42,7 +42,7 @@ $(document).ready(function(){
 		<% @photos.each do |photo| %>
 		<li>
 			<a class="thumb" name="leaf" href="<%= photo.public_filename() %>" title="Title #0">
-				<img src="<%= photo.public_filename(:thumb_for_slideshow) %>" alt="Title #0" />
+				<img src="<%= photo.public_filename(:thumb) %>" alt="Title #0" />
 			</a>
 			<div class="caption">
 				<div class="image-desc"><%= h(photo.description) %></div>
