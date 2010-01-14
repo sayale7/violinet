@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title("Mein Blog")
+  feed.title(User.find(@posts.first.user_id).login.pluralize.to_s + ' Blog')
   feed.updated(@posts.first.created_at)
   
   @posts.each do |post|

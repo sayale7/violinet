@@ -1,5 +1,9 @@
+<% if !@posts.empty? && @main.to_s.eql?('false') %>
+<%= link_to t('post.abo'), formatted_user_posts_url(:user_id => @posts.reverse.first.user_id, :format  => :atom) %>
+<% end %>
+
 <% @posts.reverse.each do |post| %>
-<div>
+<div class="clear">
     <h1><%= link_to_unless_current h(post.title), post %> 
     </h1>
 	<p><%= t"common.created_at" %><%= post.created_at.strftime(" %d. %m. %Y um %H:%M Uhr ") %><%= t "common.by" %><%= " " %><%= link_to (post.user.login), post.user%></p>
@@ -7,5 +11,6 @@
         <%= simple_format post.body %>
     </p>
 </div>
+<br></br>
 <% end %>
 

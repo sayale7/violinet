@@ -26,7 +26,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :posts, :has_many  => :comments
   
-  map.resources :users, :has_many  => :comments
+  map.resources :users, :has_many  => :comments 
   
   # Added custom post action (swfupload) to the photo resource
   map.resources :photos, :collection => { :swfupload => :post }
@@ -53,7 +53,7 @@ ActionController::Routing::Routes.draw do |map|
   
   # mappings for register users
   map.edit_account "edit_account", :controller => "users", :action => "edit"
-  map.resources :users, :has_many => :profile_entries
+  map.resources :users, :has_many  => :posts
   map.resource :personals, :controller => "user_commons"
   
   # for account activation

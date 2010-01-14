@@ -4,5 +4,6 @@
 	<%= t"common.created_at" %><%= post.created_at.strftime(" %d. %m. %Y um %H:%M Uhr ") %><%= t "common.by" %><%= " " %><%= link_to (post.user.login), post.user %>
 </p>
 
-<%= simple_format h(post.body) %>
+<%= simple_format (post.body) %>
+
 <% end %>

@@ -19,7 +19,7 @@
 		<%= tag_checklist_to_add(@not_in_post_tags)  %>
 	</div>
 	<%= hidden_field_tag 'id', @post.id %>
-	<%= submit_tag t("tags.add_to_post"), :class => "clear_both" %>
+	<%= submit_tag t("tag.add_to_post"), :class => "clear_both" %>
 	<% end %>
 	<% end %>
 </div>
@@ -38,7 +38,7 @@
 		<%= tag_checklist_to_add(@post.tags)  %>
 	</div>
 	<%= hidden_field_tag 'id', @post.id %>
-	<%= submit_tag t("tags.remove_from_post"), :class => "clear_both" %>
+	<%= submit_tag t("tag.remove_from_post"), :class => "clear_both" %>
 	<% end %>
 	<% end %>
 </div>

@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
     else
       @comment.author_id = 0
     end
+    is_owner?
     if @comment.save
       @blank = false
       @comments = @commentable.comments.find_all_by_commentable_type(@commentable.class.name)

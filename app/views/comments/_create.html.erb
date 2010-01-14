@@ -2,7 +2,6 @@
 <% unless @comments.empty? %>
 <% for comment in @comments.reverse %>
 <div class="comment_display">
-	
 	<p>
 		<%= t"common.created_at" %><%= comment.created_at.strftime(" %d. %m. %Y um %H:%M Uhr ") %><%= t "common.by" %><%= " " %>
 		<% if comment.author_id != 0 %>
@@ -14,7 +13,7 @@
 	<%= simple_format h comment.content %>
 	<% unless current_user.nil? %>
 	<% if current_user.id == comment.author_id || (@current_one unless nil?) %>	
-	<%= link_to t('common.delete'), ('/comments/destroy/' + comment.id.to_s),  :confirm  => t('common.confirm'), :class  => 'destroy_comment' %>
+	<%= link_to t('common.delete'), ('/comments/destroy/' + comment.id.to_s), :class  => 'destroy_comment' %>
 	<% end %>
 	<% end %>
 </div>

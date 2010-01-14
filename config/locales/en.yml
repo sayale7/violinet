@@ -22,12 +22,6 @@ en:
     confirm_logout: Are you sure, to logout?
     confirm: Are you sure?
     country: en
-    my_personals: Personalities
-    my_blog: My Blog
-    my_blog_archive: My Blog Archive
-    my_profile: My Profile
-    my_account: My Account
-    profile_img_upload: Upload Profile Image
     blogs: Blogs
     created: Created at
     by: by 
@@ -115,9 +109,25 @@ en:
     address_validation: validate address
     passwort_reset_instructions: Instructions to reset your password have been emailed to you. Please check your email.
     passwort_reset_instructions_no_email: No user was found with that email address
+    my_personals: Personalities
+    my_blog: My Blog
+    my_blog_archive: My Blog Archive
+    my_profile: My Profile
+    my_account: My Account
+    profile_img_upload: Upload Profile Image
   post:
     new: New Post
     edit: Edit Post
+    abo: Subscribe
+    of_this_user: Show me the Blog of this User
+    title: Title
+    body: Body
+    all_of_this_user: Show me all Posts of 
+  tag:
+      remove_tags_from_post: Tags of this Post
+      remove_from_post: Remove
+      add_tags_to_post: Available Tags
+      add_to_post: Add
   flash:
     comment_destroyed: Eintrag gelöscht
     

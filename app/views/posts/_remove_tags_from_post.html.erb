@@ -6,6 +6,6 @@
 	<span class="clickable_items_to_remove" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>
 	<% end %>
 	<%= hidden_field_tag 'id', @post.id %>
-	<%= submit_tag t("tags.remove_from_post"), :class => "clear_both" %>
+	<%= submit_tag t("tag.remove_from_post"), :class => "clear_both" %>
 	<% end %>
 	<% end %>

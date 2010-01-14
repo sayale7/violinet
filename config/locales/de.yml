@@ -16,18 +16,11 @@ de:
     login_name: Benutzername
     remember_me: Passwort merken
     change_password: Passwort ändern
-    account_change: Meinen Account ändern
-    my_profile: Mein Profil
+    account_change: Mein Konto ändern
     register: Registrieren
     confirm_logout: Sind Sie sicher, dass Sie sich ausloggen wollen?
     confirm: Sind Sie Sicher?
     country: de
-    my_personals: Persönliches
-    my_blog: Mein Blog
-    my_blog_archive: Mein Blog Archiv
-    my_profile: Mein Profil
-    my_account: Mein Konto
-    profile_img_upload: Profilbild hochladen
     blogs: Blogs
     created_at: Erstellt am 
     by: von
@@ -114,9 +107,26 @@ de:
     name: Name
     passwort_reset_instructions: Sie haben ein Mail mit Ihrer Passwort Rücksetz Anleitung bekommmen!
     passwort_reset_instructions_no_email: Kein Benutzer mit dieser Mailadresse gefunden!
+    my_personals: Persönliches
+    my_blog: Mein Blog
+    my_blog_archive: Mein Blog Archiv
+    my_profile: Mein Profil
+    my_account: Mein Konto
+    my_profile: Mein Profil
+    profile_img_upload: Profilbild hochladen
   post:
     new: Neuer Post
     edit: Post Pearbeiten
+    abo: Abonnieren
+    of_this_user: Blog dieses Benutzers zeigen
+    title: Titel
+    body: Content
+    all_of_this_user: Alle Artikel von 
+  tag:  
+    remove_tags_from_post: Tags des Eintrags
+    remove_from_post: Entfernen
+    add_tags_to_post: Verfügbare Tags
+    add_to_post: Hinzufügen
   flash:
     comment_destroyed: Eintrag gelöscht
   date:

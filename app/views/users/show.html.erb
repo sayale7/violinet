@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="personal_info">
-	<h1><%= t "common.my_personals" %></h1>
+	<h1><%= t "user.my_personals" %></h1>
 	<dl>
 		<% if !(@user_common.gender.to_s == "") %>
 		<dt>
@@ -133,6 +133,9 @@
 				</div>
 			</li>
 			<% end %>
+			<li>
+				<%= link_to t('post.of_this_user'), user_posts_url(@user) %>
+			</li>
 		</ul>
 	</div>
 

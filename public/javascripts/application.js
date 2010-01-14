@@ -1,5 +1,9 @@
 $(document).ready(function(){
 	
+	//hide normal textarea and textbox in posts
+	$('#post_form_area').removeClass('tb_area_extended').addClass('mceEditor');  
+	$('#post_form_text').removeClass('tb').addClass('tb_extended'); 
+	
 	//hide none js div for image gallery
 	$("#all_images").removeClass(".wjs_visible").addClass("wjs");
 	// $("all_images_slider").removeClass(".wjs").addClass("wjs_visible");

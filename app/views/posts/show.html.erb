@@ -1,17 +1,23 @@
-
+<% unless @tags.empty? %>
 <div id="tags">
 	<%= @tags.join(", ") %> 
+	<p>
+		<%= link_to (t('post.all_of_this_user').to_s << " " << User.find(@post.user_id).login.to_s), user_posts_url(@post.user_id) %>
+	</p>
 </div>
+<% end %>
 
 <div id="post">
 <%= render :partial => @post %>
+<div class="clear">
 <% if current_user %>
-<% if current_user.id == @post.user_id %>
-<p>
-    <%= link_to t('post.edit'), edit_post_path(@post) %> | <%= link_to t('common.delete'), @post, :method => :delete, :confirm => t("common.confirm") %>
-</p>
-<% end %>
-<% end %>
+	<% if current_user.id == @post.user_id %>
+	<p>
+		<%= link_to t('post.edit'), edit_post_path(@post) %> | <%= link_to t('common.delete'), @post, :method => :delete, :confirm => t("common.confirm") %>
+	</p>
+	<% end %>
+	<% end %>
+</div>
 </div>
 
 
