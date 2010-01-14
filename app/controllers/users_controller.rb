@@ -9,15 +9,16 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new
-    if @user.signup!(params)
+    @user = User.new(params[:user])
+    if @user.save #signup!(params)
+      @user.update_attribute(:active, true)
       @user_common = UserCommon.new
       if @user_common.save
         @user_common.update_attribute("user_id", @user.id)
       end
       # @user.deliver_activation_instructions!
-      flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
-      redirect_to root_url
+      flash[:notice] = t("register.success")
+      redirect_to login_url
     else
       render :action => :new
     end
