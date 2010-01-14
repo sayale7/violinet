@@ -1,19 +1,29 @@
-<html>
-	<head>
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-		<title>Galleriffic | Thumbnail rollover effects and slideshow crossfades</title>
-		<link rel="stylesheet" href="/stylesheets/application.css" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="/shadowbox/shadowbox.css">
-		<script type="text/javascript" src="/shadowbox/shadowbox.js"></script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title><%= h(yield(:title) || "Untitled") %></title>	
+	<%= include_tiny_mce_if_needed %>
+	<%= stylesheet_link_tag 'application'%>
+	<%= javascript_include_tag 'jquery' %>
 
-		<%= yield :head %>
-	</head>
-	<body>
-		<div id="user_nav">
-			<%= render :partial => '/layouts/main_nav' %>
-		</div>
-		<div id="container">
-			<%= yield %>
-		</div>
-	</body>
+	<link rel="stylesheet" type="text/css" href="/shadowbox/shadowbox.css">
+	<script type="text/javascript" src="/shadowbox/shadowbox.js"></script>
+	<script type="text/javascript">
+	Shadowbox.init({
+		language: 'en',
+		players:  ['img', 'html', 'iframe']
+	});
+
+	</script>
+	<%= yield :head %>
+</head>
+<body>
+	<div id="user_nav">
+		<%= render :partial => '/layouts/main_nav' %>
+	</div>
+	<div id="container">
+		<%= yield %>
+	</div>
+</body>
 </html>

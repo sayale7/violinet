@@ -879,29 +879,19 @@ a.progressCancel:hover {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
-    background-color: black;
+    width: 75px;
+    height: 75px;
 } .new_thumbs * {
     vertical-align: middle;
 }
 
-/*\*/ /*/
- .wraptocenter {
- display: block;
- }
- .wraptocenter span {
- display: inline-block;
- height: 100%;
- width: 1px;
- }
- /**/ .new_thumbs span {
+.new_thumbs span {
     display: inline-block;
     height: 100%;
 }.new_thumbs img {
 }.new_thumbs_out {
-    width: 110px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
     float: left;
 }.new_thumbs_delete {
     clear: both;
