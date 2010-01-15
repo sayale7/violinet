@@ -1,9 +1,5 @@
 $(document).ready(function(){
-	
-	jQuery.ajaxSetup({ 
-	  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-	})
-	
+
 	
 	//hide normal textarea and textbox in posts
 	$('#post_form_area').removeClass('tb_area_extended').addClass('mceEditor');  
