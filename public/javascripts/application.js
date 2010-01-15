@@ -60,14 +60,14 @@ $(document).ready(function(){
 	
 
 
-	$(".add_tags").live("submit", function(){
+	$("#add_tags").live("submit", function(){
 		$("#not_tags_of_post").html("loading ...");
 		$("#tags_of_post").html("");
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
 	  	return false;
 	});
 	
-	$(".remove_tags").live("submit", function(){
+	$("#remove_tags").live("submit", function(){
 		$("#not_tags_of_post").html("loading ...");
 		$("#tags_of_post").html("");
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
@@ -90,12 +90,7 @@ $(document).ready(function(){
 		return false;
 	});
 	
-	// ajaxing photo description update
-	$(".edit_photo").live("submit", function(){
-		$("#edit_description").html("loading ...");
-		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
-	  	return false;
-	});
+
 	
 
 	
