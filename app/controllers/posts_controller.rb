@@ -20,7 +20,7 @@ class PostsController < ApplicationController
       @posts = @user.posts
       @main = false
     else
-      @posts = Post.all(:limit  => 5, :order  => 'created_at')
+      @posts = Post.all(:order  => 'created_at', :limit  => 20)
       @main = true
     end
     respond_to do |format|

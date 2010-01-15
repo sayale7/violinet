@@ -1,9 +1,9 @@
 <% javascript 'jquery' %>
 <div id="edit_photo">
+	<div id="edit_photo_image">
 	<%= image_tag @photo.public_filename(:medium) %>
-	<br/>
+	</div>
 	<div id="edit_description">
 		<%= render 'form' %>
 	</div>
-
 </div>

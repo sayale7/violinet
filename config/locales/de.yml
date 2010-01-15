@@ -129,6 +129,8 @@ de:
     add_to_post: Hinzufügen
   flash:
     comment_destroyed: Eintrag gelöscht
+  photo:
+    description: Beschreibung des Bildes
   date:
     formats:
       default: "%d.%m.%Y"

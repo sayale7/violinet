@@ -774,11 +774,11 @@ div.token-input-dropdown-facebook ul li.token-input-selected-dropdown-item-faceb
     background-color: #ffdddd;
 }
 #edit_photo{
-	margin:20px;
+	margin:10px;
 	padding:10px;
-	text-align:center;
 	border:1px solid black;
 	background:silver;
+	overflow:hidden;
 }
 
 
@@ -906,6 +906,12 @@ a.progressCancel:hover {
 }.edit-photo {
     text-align: center;
 }#photo_description {
+}
+#edit_description{
+	float:right;
+}
+#edit_photo_image{
+	float:left;
 }
 
 pre {

@@ -54,7 +54,7 @@ class PhotosController < ApplicationController
   def edit
     @photo = Photo.find(params[:id])
     unless params[:js].nil?
-      render :layout  => 'layouts/photo_albums'
+      render :layout  => 'layouts/popup'
     else  
       render  :layout => 'layouts/popup'
     end

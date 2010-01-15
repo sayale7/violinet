@@ -24,13 +24,6 @@ $(document).ready(function(){
  
 });
  
- 
-Shadowbox.init({
-	language: 'en',
-	players:  ['img', 'html', 'iframe'],
-	onClose:function(){ window.location.reload(true) }
-});
- 
 var swfu;
 var max_file_size = 15 - <%= @photos.size %>;
  
@@ -109,7 +102,7 @@ window.onload = function(){
 		<div class="new_thumbs_out">
 			<div class="new_thumbs">
 				<div class="js" style="display:none;">
-					<a href="<%= edit_photo_path(photo) %>" title="<%= h(photo.description) %>" rel="shadowbox;width=500;height=665"><%= image_tag(photo.public_filename(:thumb)) %></a>
+					<a href="<%= edit_photo_path(photo) %>" title="<%= h(photo.description) %>" rel="shadowbox;width=900;height=400"><%= image_tag(photo.public_filename(:thumb)) %></a>
 				</div>
 				<div class="no_js">
 					<a href="<%= edit_photo_path(photo) %>?js=false"  title="<%= h(photo.description) %>" ><%= image_tag(photo.public_filename(:thumb)) %></a>

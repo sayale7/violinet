@@ -130,4 +130,6 @@ en:
       add_to_post: Add
   flash:
     comment_destroyed: Eintrag gelöscht
+  photo:
+    description: Description of the Image
     
