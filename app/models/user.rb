@@ -79,9 +79,9 @@ class User < ActiveRecord::Base
   
   # we need to make sure that either a password or openid gets set
   # when the user activates his account
-  # def has_no_credentials?
-  #   self.crypted_password.blank?
-  # end
+  def has_no_credentials?
+    self.crypted_password.blank?
+  end
   # 
   def deliver_password_reset_instructions!  
     reset_perishable_token!  
