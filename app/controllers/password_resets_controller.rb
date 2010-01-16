@@ -24,11 +24,12 @@ class PasswordResetsController < ApplicationController
   end
   
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(params[:user]) 
-      flash[:notice] = t("common.updated")  
-      redirect_to user_path(@user)
-    else
+    begin
+      @user = User.find(params[:id])
+      @user.update_attributes(params[:user]) 
+        flash[:notice] = t("common.updated")  
+        redirect_to user_path(@user)
+    rescue Exception => e
       flash[:notice] =
       render :action => :edit
     end
