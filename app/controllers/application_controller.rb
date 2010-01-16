@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::Base
   
   before_filter :set_locale
+  before_filter :mailer_set_url_options
   before_filter :set_default_url_for_mails
   filter_parameter_logging :password, :password_confirmation
   
@@ -27,7 +28,9 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  
+  def mailer_set_url_options
+    ActionMailer::Base.default_url_options[:host] = request.host_with_port
+  end
   
   private
   def current_user_session
@@ -49,18 +52,18 @@ class ApplicationController < ActionController::Base
 #    end
 #  end
 #  
-#  def require_no_user
-#    if current_user
-#      store_location
-#      flash[:notice] = "You must be logged out to access this page"
-#      redirect_to account_url
-#      return false
-#    end
-#  end
+ def require_no_user
+   if current_user
+     store_location
+     flash[:notice] = "You must be logged out to access this page"
+     redirect_to account_url
+     return false
+   end
+ end
 #  
-#  def store_location
-#    session[:return_to] = request.request_uri
-#  end
+ def store_location
+   session[:return_to] = request.request_uri
+ end
 #  
 #  def redirect_back_or_default(default)
 #    redirect_to(session[:return_to] || default)

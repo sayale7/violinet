@@ -82,7 +82,7 @@ $(document).ready(function(){
 	  	return false;
 	});
 	
-	// destry comment through ajax
+	// destroy comment through ajax
 	
 	$(".destroy_comment").live("click", function(){
 		$(".loading").html("loading ...");
