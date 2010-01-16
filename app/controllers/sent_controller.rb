@@ -66,12 +66,9 @@ class SentController < ApplicationController
   
   def get_users
     @users = User.all()
-    @namesarray = Array.new
-    @idsarray = Array.new
-    for user in @users do
-      @users_hash = { user.id => false }
-      @namesarray.push(user.login+" ")
-      @idsarray.push(user.email)
+    @users_hash = Hash.new
+    @users.each do |user|
+      @users_hash = @users_hash.merge({ user.id =>  false})
     end
   end
   
