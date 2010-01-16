@@ -20,11 +20,12 @@ class PasswordResetsController < ApplicationController
   end
   
   def edit
-    @user = User.find_using_perishable_token(params[:reset_code])
+    render
+    # debugger
+    #     @user = User.find_using_perishable_token(params[:reset_code])
   end
   
   def update
-    debugger
     @user = User.find(params[:id])
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
