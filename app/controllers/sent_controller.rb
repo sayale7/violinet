@@ -65,7 +65,7 @@ class SentController < ApplicationController
   private
   
   def get_users
-    @users = User.all()
+    @users = current_user.friends
     @users_hash = Hash.new
     @users.each do |user|
       @users_hash = @users_hash.merge({ user.id =>  false})

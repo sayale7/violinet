@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :friendships
+
 
   map.resources :categorytogroups
 
@@ -76,7 +78,8 @@ ActionController::Routing::Routes.draw do |map|
   map.calendar "/calendar/:year/:month", :controller => "calendar", :action => "index", :year => Time.now.year, :month => Time.now.month
   #map.calendar_export "/calendar/:year/:month", :controller => "calendar", :action => "index", :year => Time.now.year, :month => Time.now.month
   
-  
+  map.destroy_friendship 'destroy_friendship', :controller => 'friendships', :action  => 'destroy'
+  map.add_friendship 'add_friendship', :controller => 'friendships', :action  => 'create'
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

@@ -1,15 +1,12 @@
-<table>
-  <tr>
-    <th>Loginname</th>
-    <th>Email</th>
-  </tr>
-  <% for user in @users %>
-    <tr>
-      <td><%=h user.login %></td>
-      <td><%=h user.email %></td>
-	  <td><%= link_to "Löschen", :controller => "users", :action => "destroy_user", :id => user.id %></td>
-    </tr>
-  <% end %>
-</table>
+<% title "User List" %>
 
-<p><%= link_to "New User", new_user_path %></p>
+<div id="users">
+<% for user in @users %>
+  <div class="user">
+    <p>
+      <%= link_to (h user.login), user_path(user) %>
+      <div class="clear"></div>
+    </p>
+  </div>
+<% end %>
+</div>

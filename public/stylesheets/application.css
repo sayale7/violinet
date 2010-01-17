@@ -301,7 +301,13 @@ table a:link {
     margin-left: 13em;
     margin-top: -2.0em;
     padding: 0.5em;
-} #flash_notice, #flash_error {
+} 
+#friends{
+	float:left;
+}
+
+
+#flash_notice, #flash_error {
     padding: 5px 8px;
     margin: 10px 0;
 } #flash_notice {
@@ -423,9 +429,6 @@ table a:link {
 	float:right;
 }
 #tags{
-/*	left: 50%; 
-	margin-left: 228px; 
-	position:relative;*/
 	float:right;
 	background: #D6E6FC;
 	width:150px;
@@ -440,6 +443,7 @@ table a:link {
 	float:left;
 	padding:10px;
 	width:750px;
+	overflow:auto;
 }
 .clickable_items_to_add{
 	float:left;

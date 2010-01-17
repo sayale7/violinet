@@ -114,6 +114,12 @@ de:
     my_account: Mein Konto
     my_profile: Mein Profil
     profile_img_upload: Profilbild hochladen
+    add: Als Freund hinzufügen
+    remove: Freundschaft auflösen
+    accept: Freundschaft akzeptieren
+    friends: Meine Freunde
+    friend_confirm: Freundschaftsanfragen
+    not_confirmed_yet: Noch nicht bestätigt
   post:
     new: Neuer Post
     edit: Post Pearbeiten

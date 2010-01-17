@@ -1,6 +1,1 @@
-<% @users = User.all(:select => "id, login as name", :conditions => "login LIKE '%#{params[:q]}%'")
-@array = Array.new
-for user in @users do
-@array.push(user.to_json.slice(8,user.to_json.length-10)+"},")
-end %>
-<%= "["+@array.to_s.slice(0,@array.to_s.length-1)+"]" %>
+<%= recipients %>

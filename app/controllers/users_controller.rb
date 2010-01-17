@@ -2,6 +2,14 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
+    if current_user
+      @user = User.find_all_by_id(current_user.id)
+      @friends = current_user.friends
+      @users = @users - @user 
+      unless @friends.empty?
+        @users = @users - @friends
+      end
+    end
   end
   
   def new

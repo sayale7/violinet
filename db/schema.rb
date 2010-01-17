@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100110182604) do
+ActiveRecord::Schema.define(:version => 20100116121155) do
 
   create_table "all_users", :force => true do |t|
     t.datetime "created_at"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(:version => 20100110182604) do
     t.datetime "updated_at"
   end
 
+  create_table "friendships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.integer  "group_category_id"
@@ -85,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20100110182604) do
 
   create_table "photo_albums", :force => true do |t|
     t.string   "name"
-    t.string   "description"
+    t.string   "description", :limit => 2000
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -100,7 +107,7 @@ ActiveRecord::Schema.define(:version => 20100110182604) do
     t.integer  "width"
     t.integer  "height"
     t.integer  "photo_album_id"
-    t.string   "description"
+    t.string   "description",    :limit => 1000
     t.datetime "created_at"
     t.datetime "updated_at"
   end
