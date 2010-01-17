@@ -137,17 +137,18 @@
 	</ul>
 	<% end %>
 	
-	
-	<% unless friendship_requests(@user).empty?  %>
+	<% if current_user && @current_one %>
+	<% unless friendship_requests.empty?  %>
 	<h2><%= t('user.friend_confirm') %></h2>
 	<ul>
-		<% for user in friendship_requests(@user) %>
+		<% for user in friendship_requests %>
 		<li>
 			<%= link_to (h user.login), user_path(user) %>
 			<%= link_to t('user.accept'), add_friendship_path(:friend_id  => user.id, :from_user_page  => true) %>
 		</li>
 		<% end %>
 	</ul>
+	<% end %>
 	<% end %>
 </div>
 
