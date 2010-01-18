@@ -12,7 +12,12 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = current_user.friendships.find(params[:id])
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      @friendship = user.friendships.find_by_friend_id(current_user.id)
+    else
+      @friendship = current_user.friendships.find_by_user_id(current_user.id)
+    end
     @inverse_friendship = Friendship.find_by_user_id_and_friend_id(@friendship.friend_id, current_user.id)
     @friendship.destroy 
     unless @inverse_friendship.nil?

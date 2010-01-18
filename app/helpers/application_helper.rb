@@ -66,13 +66,13 @@ module ApplicationHelper
   end
 
   def is_not_in_request_for_friendship(user)
+    no_friend = true
     current_user.friendships.each do |friendship|
       if friendship.friend_id.to_s.eql?(user.id.to_s)
-        return false
-      else
-        return true
+        no_friend = false
       end
     end
+    return no_friend
   end
 
   def friendship_requests
@@ -86,26 +86,5 @@ module ApplicationHelper
     return friends_to_accept
   end
 
-  private
-
-  # def for_every_user_im_a_friend_of(friend, me)
-  #   friend.friendships.each do |friendship|
-  #     if friendship.friend_id.to_s.eql?(me.id.to_s)
-  #       look_if_he_is_a_friend_of_me(friend, me)
-  #     end
-  #   end
-  # end
-  # 
-  # def look_if_he_is_a_friend_of_me(friend, me)
-  #   if me.friendships.empty?
-  #     @friends_to_accept.push(friend)
-  #   else
-  #     me.friendships.each do |my_friendship|
-  #       if my_friendship.friend_id.to_s.eql?(friend.id.to_s)
-  #         @friends_to_accept.push(friend)
-  #       end
-  #     end
-  #   end
-  # end
   
 end

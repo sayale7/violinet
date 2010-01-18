@@ -6,7 +6,7 @@
 			<%= link_to t("user.my_account"), edit_user_path(:current) %>
 		</li>
 		<li>
-			<%= link_to t("user.profile_img_upload"), new_profile_image_path %>
+			<%= link_to t("user.my_profile_img"), new_profile_image_path %>
 		</li>
 		<li>
 			<%= link_to t("user.my_personals"), :controller => "user_commons", :action => "edit", :id => current_user.id %>

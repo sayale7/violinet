@@ -1,7 +1,14 @@
 <div id="tags">
-	<%= @tags.join(", ") %> 
 	<p>
 		<%= link_to (t('post.all_of_this_user').to_s << " " << User.find(@post.user_id).login.to_s), user_posts_url(@post.user_id) %>
+	</p>
+	<p>
+		<%= image_tag("feed.gif", :border=>0, :width  => 12) %>
+		<%= link_to t('post.abo'), formatted_user_posts_url(:user_id => @post.user_id, :format  => :atom) %>
+	</p>
+	<h3>Tags</h3>
+	<p>
+		<%= @tags.join(", ") %>
 	</p>
 </div>
 

@@ -51,6 +51,7 @@ en:
     max_count_photos_reached: You have reached the Maximum of 10 Images
     send_message_to_user: Send this user a message
     close: Close
+    registered_users: User
   event:
     begin: Begin
     end: Ende
@@ -117,10 +118,13 @@ en:
     profile_img_upload: Upload Profile Image
     add: Add as Friend
     remove: Remove Friendship
-    accept: Accept Friendship
+    accept: Accept
+    decline: Decline
     friends: Friends
     friend_confirm: Requested Friendships
     not_confirmed_yet: Not confirmed yet
+    profile_img_upload: Upload your Profile Image
+    my_profile_img: Profile Image
   post:
     new: New Post
     edit: Edit Post

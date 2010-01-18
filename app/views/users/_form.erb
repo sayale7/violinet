@@ -1,11 +1,12 @@
+<br />
 <%= form.label t "common.login_name" %><br />
-<%= form.text_field :login %><br />
+<%= form.text_field :login, :class  => 'tb' %><br />
 <br />
 <%= form.label t "common.email" %><br />
-<%= form.text_field :email %><br />
+<%= form.text_field :email , :class  => 'tb' %><br />
 <br />
 <%= form.label t("common.password"), form.object.new_record? ? nil : t("common.change_password") %><br />
-<%= form.password_field :password %><br />
+<%= form.password_field :password , :class  => 'tb' %><br />
 <br />
 <%= form.label t "common.password_confirmation" %><br />
-<%= form.password_field :password_confirmation %><br />
+<%= form.password_field :password_confirmation , :class  => 'tb' %><br /><br />

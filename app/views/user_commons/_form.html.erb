@@ -1,104 +1,58 @@
 <% form_for @user_common do |f| %>
 <%= f.error_messages %>
-<dl class="dl_form">
-    <dt class="dt_form">
-        <%= t "user.gender" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.select(:gender, [['Weiblich'], ['Männlich']]) %>
-    </dd>
-    <dt class="dt_form">
-        <%= t "user.title" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :title %>
-    </dd>
-    <dt class="dt_form">
-        <%= t "user.firstname" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :firstname %>
-    </dd>
-    <dt class="dt_form">
-        <%= t "user.lastname" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :lastname %>
-    </dd>
-<!--    <dt class="dt_form">
-        <%= t "user.street" %>
-    </dt>
-    <dd class="dd_form">
-        <%= text_field_tag "street_validation" %>
-    </dd>
-    <dt class="dt_form">
-        <%= t "user.zip" %>
-    </dt>
-    <dd class="dd_form">
-        <%= text_field_tag "zip_validation" %>
-    </dd>
-    <dt class="dt_form">
-        <%= t "user.city" %>
-    </dt>
-    <dd class="dd_form">
-        <%= text_field_tag "city_validation" %>
-        <%= button_to_function t("user.address_validation"), "validateAdress(); return false;" %>
-    </dd> -->
-    <dt class="dt_form">
-        <%= t "user.street" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :street %>
-    </dd>
-    <dt class="dt_form">
-        <%= t "user.zip" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :zip %>
-    </dd>
-    <dt class="dt_form">
-        <%= t "user.city" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :city %>
-    </dd>
-	<dt class="dt_form">
-        <%= t "user.district" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :district %>
-    </dd>
-    <dt class="dt_form">
-        <%= t "user.administrative_area" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :administrative_area %>
-    </dd>
-    <dt class="dt_form">
-        <%= t "user.state" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :state %>
-    </dd>
-<!--    <dt class="dt_form">
-        <%= t "user.optional_address_attributes" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :optional_address_attributes %>
-    </dd> -->
-    <dt class="dt_form">
-        <%= t "user.www" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :www %>
-    </dd>
-    <dt class="dt_form">
-        <%= t "user.phone" %>
-    </dt>
-    <dd class="dd_form">
-        <%= f.text_field :phone %>
-    </dd>
-</dl>
+
+<p>    
+<%= t "user.gender" %>
+<%= f.select(:gender, [['Weiblich'], ['Männlich']]) %>
+</p>
+<p>
+<%= t "user.title" %><br></br>
+<%= f.text_field :title, :class  => 'tb'  %>
+</p>
+
+<%= t "user.firstname" %><br></br>
+<%= f.text_field :firstname, :class  => 'tb'  %>
+
+<p>
+<%= t "user.lastname" %><br></br>
+<%= f.text_field :lastname, :class  => 'tb'  %>
+</p>
+<p>
+<%= t "user.street" %><br></br>
+<%= f.text_field :street, :class  => 'tb'  %>
+</p>
+<p>
+<%= t "user.zip" %><br></br>
+<%= f.text_field :zip, :class  => 'tb'  %>
+</p>
+<p>
+<%= t "user.city" %><br></br>
+<%= f.text_field :city, :class  => 'tb'  %>
+</p>
+<p>
+<%= t "user.district" %><br></br>
+<%= f.text_field :district, :class  => 'tb'  %>
+</p>
+<p>
+<%= t "user.administrative_area" %><br></br>
+<%= f.text_field :administrative_area, :class  => 'tb'  %>
+</p>
+<p>
+<%= t "user.state" %><br></br>
+<%= f.text_field :state, :class  => 'tb'  %>
+</p>
+<p>
+<%= t "user.optional_address_attributes" %><br></br>
+<%= f.text_field :optional_address_attributes, :class  => 'tb'  %>
+</p>
+<p>
+<%= t "user.www" %><br></br>
+<%= f.text_field :www, :class  => 'tb'  %>
+</p>
+<p>
+<%= t "user.phone" %><br></br>
+<%= f.text_field :phone, :class  => 'tb'  %>
+</p>
 <p>
     <%= f.submit "Submit" %>
 </p>

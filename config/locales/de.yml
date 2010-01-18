@@ -49,6 +49,7 @@ de:
     max_count_photos_reached: Du hast das Maximum von 10 Bildern erreicht
     send_message_to_user: Diesem Benutzer eine Nachricht schicken
     close: Schließen
+    registered_users: Benutzer
   event:
     begin: Begin
     end: Ende
@@ -116,10 +117,13 @@ de:
     profile_img_upload: Profilbild hochladen
     add: Als Freund hinzufügen
     remove: Freundschaft auflösen
-    accept: Freundschaft akzeptieren
+    accept: Annehmen
+    decline: Ablehnen
     friends: Freunde
     friend_confirm: Freundschaftsanfragen
     not_confirmed_yet: Noch nicht bestätigt
+    profile_img_upload: Lade dein Profilbild hoch
+    my_profile_img: Profilfoto
   post:
     new: Neuer Post
     edit: Post Pearbeiten

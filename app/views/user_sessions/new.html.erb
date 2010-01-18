@@ -1,14 +1,15 @@
 <h1><%= t "common.login" %></h1>
+<br></br>
 <% form_for @user_session, :url => user_session_path do |f| %>
 <%= f.error_messages %>
 <%= t "common.email" %>
 <br/>
-<%= f.text_field :login %>
+<%= f.text_field :login, :class  => 'tb' %>
 <br/>
 <br/>
 <%= f.label t "common.password" %>
 <br/>
-<%= f.password_field :password %>
+<%= f.password_field :password, :class  => 'tb' %>
 <br/>
 <br/>
 <%= f.check_box :remember_me %><%= f.label t "common.remember_me" %>

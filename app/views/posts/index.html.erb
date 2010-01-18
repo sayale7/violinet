@@ -1,6 +1,4 @@
-<% if !@posts.empty? && @main.to_s.eql?('false') %>
-<%= link_to t('post.abo'), formatted_user_posts_url(:user_id => @posts.reverse.first.user_id, :format  => :atom) %>
-<% end %>
+
 
 <% @posts.reverse.each do |post| %>
 <div class="clear">

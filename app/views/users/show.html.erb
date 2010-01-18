@@ -3,9 +3,13 @@
 <% end %>
 
 <div class="personal_info">
-	<% if current_user && !current_user.id.to_s.eql?(@user.id.to_s) %>
-	<% if !is_friend_of_current(@user.id) || is_not_in_request_for_friendship(@user) %>
-	<%= link_to t('user.add'), add_friendship_path(:friend_id  => @user.id) %>
+	<% if current_user &&   !current_user.id.to_s.eql?(@user.id.to_s) %>
+	<% if is_not_in_request_for_friendship(@user) %>
+	<p><%= image_tag('plus_icon.gif', :width  => 13) %>
+	<%= link_to t('user.add'), add_friendship_path(:friend_id  => @user.id) %></p>
+	<% else %>
+		<p><%= image_tag('delete.png', :width  => 13) %>
+		<%= link_to t("user.remove"), destroy_friendship_path, :confirm  => t('common.confirm')  %></p>
 	<% end %>
 	<% end %>
 	<h1><%= t "user.my_personals" %></h1>
@@ -113,17 +117,18 @@
 		<% end %>
 	</dl>
 	<% unless @user.friendships.empty? %>
-	<h2><%= t('user.friends') %></h2>
+	<h1><%= t('user.friends') %></h1>
+	<br></br>
 	<ul>
 		<% for friendship in @user.friendships %>
 		<% if @current_one %>
 		<li>
 			<% if accepted_friendship(@user,friendship) %>
 			<%= link_to (h friendship.friend.login), user_path(friendship.friend) %>
-			(<%= link_to t("user.remove"), destroy_friendship_path(:id  => friendship.id), :confirm  => t('common.confirm')  %>)
 			<% else %>
 			<%= link_to (h friendship.friend.login), user_path(friendship.friend) %>
-			(<%= t('user.not_confirmed_yet') +  ", " %><%= link_to t("user.remove"), destroy_friendship_path(:id  => friendship.id), :confirm  => t('common.confirm') %>)
+			<%= " - " %>
+			<%= t('user.not_confirmed_yet')%>
 			<% end %>
 		</li>
 		<% else %>
@@ -139,12 +144,15 @@
 	
 	<% if current_user && @current_one %>
 	<% unless friendship_requests.empty?  %>
-	<h2><%= t('user.friend_confirm') %></h2>
+	<h1><%= t('user.friend_confirm') %></h1>
+	<br></br>
 	<ul>
 		<% for user in friendship_requests %>
 		<li>
 			<%= link_to (h user.login), user_path(user) %>
+			<%= " - " %>
 			<%= link_to t('user.accept'), add_friendship_path(:friend_id  => user.id, :from_user_page  => true) %>
+			<%= link_to t("user.decline"), destroy_friendship_path(:user_id  => user.id), :confirm  => t('common.confirm')  %></p>
 		</li>
 		<% end %>
 	</ul>
