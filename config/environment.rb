@@ -21,7 +21,8 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "authlogic"
-  config.gem "be9-acl9", :source => "http://gems.github.com", :lib => "acl9" 
+  config.gem "be9-acl9", :source => "http://gems.github.com", :lib => "acl9"
+  config.gem "searchlogic"
   config.gem 'mislav-will_paginate', :version => '~> 2.3.8', :lib => 'will_paginate', 
   :source => 'http://gems.github.com'
   config.gem "calendar_date_select"

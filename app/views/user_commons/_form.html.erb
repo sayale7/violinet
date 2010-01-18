@@ -1,18 +1,18 @@
 <% form_for @user_common do |f| %>
-<%= f.error_messages %>
-
-<p>    
-<%= t "user.gender" %>
-<%= f.select(:gender, [['Weiblich'], ['Männlich']]) %>
+	<%= f.error_messages %>
+	<div class="left">
+		<p>    
+		<%= t "user.gender" %><br></br>
+		<%= f.select(:gender, [['Weiblich'], ['Männlich']], :include_blank  => true) %>
+	</p>
+	<p>
+	<%= t "user.title" %><br></br>
+	<%= f.text_field :title, :class  => 'tb'  %>
 </p>
 <p>
-<%= t "user.title" %><br></br>
-<%= f.text_field :title, :class  => 'tb'  %>
-</p>
-
 <%= t "user.firstname" %><br></br>
 <%= f.text_field :firstname, :class  => 'tb'  %>
-
+</p>
 <p>
 <%= t "user.lastname" %><br></br>
 <%= f.text_field :lastname, :class  => 'tb'  %>
@@ -25,10 +25,13 @@
 <%= t "user.zip" %><br></br>
 <%= f.text_field :zip, :class  => 'tb'  %>
 </p>
-<p>
-<%= t "user.city" %><br></br>
-<%= f.text_field :city, :class  => 'tb'  %>
+	<p>
+	<%= t "user.city" %><br></br>
+	<%= f.text_field :city, :class  => 'tb'  %>
 </p>
+
+</div>
+<div class="right">
 <p>
 <%= t "user.district" %><br></br>
 <%= f.text_field :district, :class  => 'tb'  %>
@@ -54,6 +57,8 @@
 <%= f.text_field :phone, :class  => 'tb'  %>
 </p>
 <p>
-    <%= f.submit "Submit" %>
+	<%= f.submit "Submit" %>
 </p>
+
+</div>
 <% end %>

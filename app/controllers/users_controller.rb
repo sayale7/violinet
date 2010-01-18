@@ -1,15 +1,25 @@
 class UsersController < ApplicationController
   
   def index
-    @users = User.all
-    if current_user
-      @user = User.find_all_by_id(current_user.id)
-      @friends = current_user.friends
-      @users = @users - @user 
-      unless @friends.empty?
-        @users = @users - @friends
+    if params[:login_like]
+      @users = User.login_like(params[:login_like])
+      if params[:login_like].to_s.match(" ")
+        split = params[:login_like].split(' ', 2)
+        @user_commons = UserCommon.all(:conditions  => "firstname LIKE '%#{split.first}%' and lastname LIKE '%#{split.second}%'")
+        @user_commons.each do |user_common|
+          @users = @users + User.find_all_by_id(user_common.user_id)
+        end
+      else
+        @user_commons = UserCommon.firstname_like_or_lastname_like(params[:login_like])
+        @user_commons.each do |user_common|
+          @users = @users + User.find_all_by_id(user_common.user_id)
+        end
       end
+    else
+      @users = User.all
     end
+    @users = @users.uniq
+    render :layout  => '/layouts/application'
   end
   
   def new

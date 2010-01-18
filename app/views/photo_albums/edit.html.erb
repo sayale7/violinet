@@ -3,7 +3,11 @@
  
 <div style="float:left;">
     <h1><%= t "common.edit_album" %></h1>
-	<p><%= link_to t("common.delete"), photo_album_path(@photo_ablum), :method  => :delete, :confirm  => t("common.confirm") %></p>
+	<p>
+		<%= link_to t("common.delete"), photo_album_path(@photo_ablum), :method  => :delete, :confirm  => t("common.confirm") %>
+		<%= ' / ' %>
+		<%= link_to t("common.show"), photo_album_path(@photo_ablum) %>
+	</p>
     <% form_for(@photo_ablum) do |f| %>
 	<%= render 'form', :f => f %>
     <%= f.submit t("common.update_album") %>
@@ -53,10 +57,10 @@ window.onload = function(){
 		// Button Settings
 		button_image_url: "/images/spyglass.png",
 		button_placeholder_id: "spanButtonPlaceholder",
-		button_width: 350,
+		button_width: 400,
 		button_height: 40,
-		button_text: '<span class="button">Select max ' + max_file_size + ' Images <span class="buttonSmall">(0.5 MB, *.png, *.jpeg)</span>',
-		button_text_style: '.button { font-family: Verdana, Lucida Grande,Lucida Sans Unicode,Helvetica,Arial,sans-serif; font-size: 12px; font-weight:bold; } .buttonSmall { font-size: 13px; font-weight:bold;}',
+		button_text: '<span class="button"><%= t("photo.upload") %>  ' + max_file_size + ' <%= t("photo.kind") %></span>',
+		button_text_style: '.button { font-family: Verdana, Lucida Grande,Lucida Sans Unicode,Helvetica,Arial,sans-serif; font-size: 10px; font-weight:bold; }',
 		button_text_top_padding: 12,
 		button_text_left_padding: 15,
 		button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,

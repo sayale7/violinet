@@ -152,6 +152,7 @@
 			<%= link_to (h user.login), user_path(user) %>
 			<%= " - " %>
 			<%= link_to t('user.accept'), add_friendship_path(:friend_id  => user.id, :from_user_page  => true) %>
+			<%= " / " %>
 			<%= link_to t("user.decline"), destroy_friendship_path(:user_id  => user.id), :confirm  => t('common.confirm')  %></p>
 		</li>
 		<% end %>

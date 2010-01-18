@@ -52,6 +52,7 @@ en:
     send_message_to_user: Send this user a message
     close: Close
     registered_users: User
+    search: Search
   event:
     begin: Begin
     end: Ende
@@ -123,8 +124,11 @@ en:
     friends: Friends
     friend_confirm: Requested Friendships
     not_confirmed_yet: Not confirmed yet
-    profile_img_upload: Upload your Profile Image
+    profile_img_upload: Upload your Profile Image (smaller than 0.5MB and jpeg, gif or png)
     my_profile_img: Profile Image
+  profile_image:
+      created: Image created!
+      error: Image could not be created (should be smaller than 0.5MB and jpeg, gif or png)
   post:
     new: New Post
     edit: Edit Post
@@ -133,13 +137,17 @@ en:
     title: Title
     body: Body
     all_of_this_user: Show me all Posts of 
+    new_comment: New Comment
   tag:
       remove_tags_from_post: Tags of this Post
       remove_from_post: Remove
       add_tags_to_post: Available Tags
       add_to_post: Add
   flash:
-    comment_destroyed: Eintrag gelöscht
+    comment_destroyed: Entry deleted
+    comment_created: Entry created
+    content_blank: Entry can't be blank
   photo:
     description: Description of the Image
-    
+    upload: Select max  
+    kind: Images (smaller than 0.5MB and jpeg, gif or png)

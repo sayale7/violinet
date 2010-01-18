@@ -35,10 +35,10 @@ de:
     my_albums: Meine Foto Alben
     photo_album_name: Name des Albums
     photo_album_description: Beschreibung des Albums
-    new_ablum: New Album
-    edit_album: Edit Album
-    create_ablum: Create Album
-    update_album: Update Album Info
+    new_ablum: Neues Album
+    edit_album: Album bearbeiten
+    create_ablum: Album anlegen
+    update_album: Album updaten
     edit_photo_comment: Foto Kommentar ändern
     all_photo_album: Fotoalben
     activated: Ihr Konto wurde aktiviert
@@ -50,6 +50,7 @@ de:
     send_message_to_user: Diesem Benutzer eine Nachricht schicken
     close: Schließen
     registered_users: Benutzer
+    search: Suche
   event:
     begin: Begin
     end: Ende
@@ -122,8 +123,11 @@ de:
     friends: Freunde
     friend_confirm: Freundschaftsanfragen
     not_confirmed_yet: Noch nicht bestätigt
-    profile_img_upload: Lade dein Profilbild hoch
+    profile_img_upload: Lade dein Profilbild hoch (kleiner 0.5MB und jpeg, gif oder png)
     my_profile_img: Profilfoto
+  profile_image:
+      created: Profilbild angelegt!
+      error: Profilbild konnte nicht angelegt werden (sollte kleiner 0.5MB und jpeg, gif oder png sein)
   post:
     new: Neuer Post
     edit: Post Pearbeiten
@@ -132,6 +136,7 @@ de:
     title: Titel
     body: Content
     all_of_this_user: Alle Artikel von 
+    new_comment: Neuer Kommentar
   tag:  
     remove_tags_from_post: Tags des Eintrags
     remove_from_post: Entfernen
@@ -139,8 +144,12 @@ de:
     add_to_post: Hinzufügen
   flash:
     comment_destroyed: Eintrag gelöscht
+    comment_created: Eintrag erstellt
+    content_blank: Eintrag darf nicht leer sein
   photo:
     description: Beschreibung des Bildes
+    upload: Maximal
+    kind: Bilder auswählen (kleiner 0.5MB und jpeg, gif oder png)
   date:
     formats:
       default: "%d.%m.%Y"
