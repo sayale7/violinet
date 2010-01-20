@@ -1,0 +1,11 @@
+<% if is_not_in_request_for_friendship(@user) %>
+<p>
+<%= image_tag('plus_icon.gif', :width  => 13) %>
+<%= link_to t('user.add'), add_friendship_path(:friend_id  => @user.id), :from_current  => false %>
+</p>
+<% else %>
+<p>
+	<%= image_tag('delete.png', :width  => 13) %>
+	<%= link_to t("user.remove"), destroy_friendship_path, :confirm  => t('common.confirm'), :from_current  => false  %>
+</p>
+<% end %>

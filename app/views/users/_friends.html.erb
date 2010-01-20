@@ -1,0 +1,15 @@
+<% unless confirmed_friendships(@user).empty? %>
+<h1><%= t('user.friends') %></h1>
+<p>
+	<%= confirmed_friendships(@user).collect {|friend| link_to(friend.login, user_path(friend))}.join(", ") %>
+</p>
+<% end %>
+
+<% if current_user && @current_one %>
+<% unless inverse_friendship_requests.empty? %>
+<h1><%= t('user.not_confirmed_yet') %></h1>
+<p>
+	<%= inverse_friendship_requests.collect {|friend| link_to(friend.login, user_path(friend))}.join(", ") %>
+</p>
+<% end %>
+<% end %>

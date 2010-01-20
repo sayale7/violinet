@@ -48,8 +48,13 @@ module ApplicationHelper
     return recipients
   end
 
-
-  
+  def is_friend_of_current(user_id)
+    if Friendship.find_by_friend_id_and_user_id(user_id, current_user.id).nil?
+      return false
+    else
+      return true
+    end
+  end
 
   def confirmed_friendships(user)
     return (user.friends & user.inverse_friends)

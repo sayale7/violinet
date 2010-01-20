@@ -3,14 +3,10 @@
 <% end %>
 
 <div class="personal_info">
-	<% if current_user && !current_user.id.to_s.eql?(@user.id.to_s) %>
-	<% if is_not_in_request_for_friendship(@user) %>
-	<p><%= image_tag('plus_icon.gif', :width  => 13) %>
-	<%= link_to t('user.add'), add_friendship_path(:friend_id  => @user.id) %></p>
-	<% else %>
-		<p><%= image_tag('delete.png', :width  => 13) %>
-		<%= link_to t("user.remove"), destroy_friendship_path, :confirm  => t('common.confirm')  %></p>
-	<% end %>
+	<% if current_user && !@current_one %>
+	<div class="friendship_links_top">
+		<%= render 'friendship_links_top' %>
+	</div>	
 	<% end %>
 	<h1><%= t "user.my_personals" %></h1>
 	<dl>
@@ -117,40 +113,12 @@
 		<% end %>
 	</dl>
 	
-	
-	<% unless confirmed_friendships(@user).empty? %>
-	<h1><%= t('user.friends') %></h1>
-	<p>
-		<%= confirmed_friendships(@user).collect {|friend| link_to(friend.login, user_path(friend))}.join(", ") %>
-	</p>
-	<% end %>
-
-	<% if current_user && @current_one %>
-	<% unless inverse_friendship_requests.empty? %>
-	<h1><%= t('user.not_confirmed_yet') %></h1>
-	<p>
-		<%= inverse_friendship_requests.collect {|friend| link_to(friend.login, user_path(friend))}.join(", ") %>
-	</p>
-	<% end %>
-	<% end %>
-	
-	<% if current_user && @current_one %>
-	<% unless friendship_requests.empty?  %>
-	<h1><%= t('user.friend_confirm') %></h1>
-	<ul>
-		<% for user in friendship_requests %>
-		<li>
-			<%= link_to (h user.login), user_path(user) %>
-			<%= " - " %>
-			<%= link_to t('user.accept'), add_friendship_path(:friend_id  => user.id, :from_user_page  => true) %>
-			<%= " / " %>
-			<%= link_to t("user.decline"), destroy_friendship_path(:user_id  => user.id), :confirm  => t('common.confirm')  %></p>
-		</li>
-		<% end %>
-	</ul>
-	<% end %>
-	<% end %>
-	
+	<div class="friends">
+		<%= render :partial => 'friends' %>
+	</div>
+	<div class="friendship_links_bottom">
+		<%= render 'friendship_links_bottom' %>
+	</div>
 	
 </div>
 

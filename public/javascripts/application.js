@@ -90,6 +90,20 @@ $(document).ready(function(){
 		return false;
 	});
  
+	// remove_frienship through ajax
+ 
+	$(".friendship_links_top a").live("click", function(){
+		$.getScript(this.href);
+		$("#friendship_links").html("loading ...");
+		return false;
+	});
+	
+	$(".friendship_links_bottom a").live("click", function(){
+		$.getScript(this.href);
+		$("#friendship_links").html("loading ...");
+		return false;
+	});
+	
  
  
 });
