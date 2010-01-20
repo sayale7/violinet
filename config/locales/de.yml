@@ -51,6 +51,8 @@ de:
     close: Schließen
     registered_users: Benutzer
     search: Suche
+    from: Von
+    to: Bis
   event:
     begin: Begin
     end: Ende
@@ -89,7 +91,7 @@ de:
     subject: Betreff
     received_at: Empfangen am
     move_to: Verschieben nach
-    inbox: Posteingang
+    inbox: Mail
     box: Postfach
   user:
     gender: Geschlecht
@@ -137,6 +139,7 @@ de:
     body: Content
     all_of_this_user: Alle Artikel von 
     new_comment: Neuer Kommentar
+    my_posts: Meine Posts
   tag:  
     remove_tags_from_post: Tags des Eintrags
     remove_from_post: Entfernen

@@ -5,7 +5,7 @@
 	<title><%= h(yield(:title) || "Untitled") %></title>	
 	<%= include_tiny_mce_if_needed %>
 	<%= stylesheet_link_tag 'application'%>
-	<%= javascript_include_tag 'jquery' %>
+	<%= javascript_include_tag 'jquery', 'jquery.ui', 'jquery.datepicker' %>
 
 	<link rel="stylesheet" type="text/css" href="/shadowbox/shadowbox.css">
 	<script type="text/javascript" src="/shadowbox/shadowbox.js"></script>

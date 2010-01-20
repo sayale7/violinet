@@ -53,6 +53,8 @@ en:
     close: Close
     registered_users: User
     search: Search
+    from: From
+    to: To
   event:
     begin: Begin
     end: Ende
@@ -91,7 +93,7 @@ en:
     subject: Subject
     received_at: Received at
     move_to: Move To
-    inbox: Inbox
+    inbox: Mail
     box: Box
   user:
     gender: Gender
@@ -138,6 +140,7 @@ en:
     body: Body
     all_of_this_user: Show me all Posts of 
     new_comment: New Comment
+    my_posts: My Posts
   tag:
       remove_tags_from_post: Tags of this Post
       remove_from_post: Remove

@@ -1,3 +1,18 @@
+<% form_tag posts_path, :method => :get do %>
+
+<p> 
+	<%= t('common.from') %>
+	<input type="text" id="from" name="from" class="tb_datepicker"/>
+	<%= t('common.to') %>
+	<input type="text" id="to" name="to" class="tb_datepicker"/>
+	<span id="date_format"> (TT/MM/JJJJ)</span>
+</p>
+<p>	 
+	<%= text_field_tag :search, params[:search], :class  => 'tb' %>
+	<%= submit_tag "Search", :name => nil %>
+</p>
+<% end %>
+
 <% @posts.reverse.each do |post| %>
 <div class="clear">
     <h1><%= link_to_unless_current h(post.title), post %> 

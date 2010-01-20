@@ -1,7 +1,23 @@
+<h2><%= t('post.my_posts') %></h3>
+<% form_tag myblog_path, :method => :get do %>
+
+<p> 
+	<%= t('common.from') %>
+	<input type="text" id="from" name="from" class="tb_datepicker"/>
+	<%= t('common.to') %>
+	<input type="text" id="to" name="to" class="tb_datepicker"/>
+	<span id="date_format"> (TT/MM/JJJJ)</span>
+</p>
+<p>	 
+	<%= text_field_tag :search, params[:search], :class  => 'tb' %>
+	<%= submit_tag "Search", :name => nil %>
+</p>
+<% end %>
+
 <% @posts.reverse.each do |post| %>
 <div>
-    <h1><%= link_to_unless_current h(post.title), post %> 
-    </h1>
+	<h1><%= link_to_unless_current h(post.title), post %> 
+	</h1>
 	<p><%= t"common.created_at" %><%= post.created_at.strftime(" %d. %m. %Y um %H:%M Uhr ") %><%= t "common.by" %><%= " " %><%= link_to (post.user.login), post.user%></p>
 </div>
 <% end %>

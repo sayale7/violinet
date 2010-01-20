@@ -15,14 +15,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    unless params[:user_id].nil?
-      @user = User.find(params[:user_id])
-      @posts = @user.posts
-      @main = false
-    else
-      @posts = Post.all(:order  => 'created_at', :limit  => 20)
-      @main = true
-    end
+    interval_search = Post.from_date(from(params[:from]), to(params[:to]))
+    sphinx_search = Post.search params[:search]
+    @posts = interval_search & sphinx_search
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
@@ -31,19 +26,9 @@ class PostsController < ApplicationController
   end
   
   def myblog
-    @posts = Post.all(:conditions => ["user_id = " + current_user.id.to_s + " and created_at  > '" + (Time.now - 60.day).strftime("%Y-%m-%d %H:%M:%S") + "'"])
-    #@posts = Post.all(:conditions => {:created_at => (Time.now.midnight - 2.day)})
-    
-    respond_to do |format|
-      format.html # myblog.html.erb
-      format.xml  { render :xml => @posts }
-      format.atom
-    end
-  end
-  
-  def myblogarchiv
-    @posts = Post.all(:conditions => ["user_id = " + current_user.id.to_s + " and created_at  < '" + (Time.now - 60.day).strftime("%Y-%m-%d %H:%M:%S") + "'"])
-    #@posts = Post.all(:conditions => {:created_at => (Time.now.midnight - 2.day)})
+    interval_search = Post.my_posts(current_user.id).from_date(from(params[:from]), to(params[:to]))
+    sphinx_search = Post.search params[:search]
+    @posts = interval_search & sphinx_search
     
     respond_to do |format|
       format.html # myblog.html.erb
@@ -170,6 +155,28 @@ class PostsController < ApplicationController
       end
     end
     
+  end
+  
+  
+  private
+  
+  def from(time)
+    from = Time.new
+    if time.to_s.eql?("")
+      from = 6.weeks.ago
+    else
+      from = Time.parse(time.to_s)
+    end
+    
+  end
+  
+  def to(time)
+    to = Time.new
+    if time.to_s.eql?("")
+      to = Time.now
+    else
+      to = Time.parse(time.to_s)
+    end
   end
   
 end

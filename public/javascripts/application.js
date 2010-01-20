@@ -90,8 +90,9 @@ $(document).ready(function(){
 		return false;
 	});
 	
-
-	
+	$('#date_format').remove();
+	$("#from").datepicker();
+	$("#to").datepicker();
 
 	
 });
