@@ -7,13 +7,6 @@
 	<%= javascript_include_tag   'jquery', 'jquery.url_utils',  'application', 'jquery.ui', 'jquery.datepicker'  %>
 	<%= include_tiny_mce_if_needed %>
 	<%= yield :head %>
-	<script type="text/javascript" charset="utf-8">
-		$(document).ready(function(){
-			$('#date_format').remove();
-			$("#from").datepicker();
-			$("#to").datepicker();
-		});
-	</script>
 </head>
 <body>
 	<div id="user_nav">

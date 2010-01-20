@@ -61,8 +61,8 @@ $(document).ready(function(){
 
 
 	$("#add_tags").live("submit", function(){
-		$("#not_tags_of_post").html("loading ...");
-		$("#tags_of_post").html("");
+		// $("#not_tags_of_post").html("loading ...");
+		// $("#tags_of_post").html("");
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
 	  	return false;
 	});

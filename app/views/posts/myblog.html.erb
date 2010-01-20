@@ -1,3 +1,12 @@
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+		$('#date_format').remove();
+		$("#from").datepicker();
+		$("#to").datepicker();
+	});
+</script>
+
 <h2><%= t('post.my_posts') %></h2>
 <% form_tag myblog_path, :method => :get do %>
 
