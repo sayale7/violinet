@@ -2,15 +2,13 @@
 $(document).ready(function(){
 	// ajaxing photo description update
 	$("#edit_photo_<%= @photo.id %>").live("submit", function(){
-		$("#edit_description").html("loading ...");
-		alert($(this).attr("action"));
-		alert($(this).serialize());
+		$(".loading").html("loading ...");
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
 	  	return false;
 	});
 });
 </script>
-
+<div class="loading"></div>
 <h2><%= t("photo.description") %></h2>
 <% form_for(@photo) do |f| %>
 <br/>

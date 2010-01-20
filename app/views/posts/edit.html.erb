@@ -4,7 +4,7 @@
 <div class="left"><h1><%= t "post.edit"%></h1>
 <%= render :partial => "form" %></div>
 
-
+<div class="loading"></div>
 <div id="not_tags_of_post">
 	<% form_tag '/posts/add_tags', :id => "add_tags" do %>
 	<% unless @not_in_post_tags.empty?  %>
