@@ -129,6 +129,9 @@ en:
     not_confirmed_yet: Not confirmed yet
     profile_img_upload: Upload your Profile Image (smaller than 0.5MB and jpeg, gif or png)
     my_profile_img: Profile Image
+    friend_added: Added as Friend
+    add_friend_error: Unable to add as Friend
+    destroyed_friendship: Friendship destroyed
   profile_image:
       created: Image created!
       error: Image could not be created (should be smaller than 0.5MB and jpeg, gif or png)

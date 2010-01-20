@@ -8,7 +8,7 @@
 		<%= " - " %>
 		<%= link_to t('user.accept'), add_friendship_path(:friend_id  => user.id, :from_current  => true) %>
 		<%= " / " %>
-		<%= link_to t("user.decline"), destroy_friendship_path(:user_id  => user.id), :confirm  => t('common.confirm'), :from_current  => true  %>
+		<%= link_to t("user.decline"), destroy_friendship_path(:user_id  => user.id), :from_current  => true  %>
 	</li>
 	<% end %>
 </ul>

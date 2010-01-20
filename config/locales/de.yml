@@ -127,6 +127,9 @@ de:
     not_confirmed_yet: Noch nicht bestätigt
     profile_img_upload: Lade dein Profilbild hoch (kleiner 0.5MB und jpeg, gif oder png)
     my_profile_img: Profilfoto
+    friend_added: Als Freund hinzugefügt
+    add_friend_error: Konnte nicht als Freund hinzugefügt werden
+    destroyed_friendship: Freundschaft gelöscht
   profile_image:
       created: Profilbild angelegt!
       error: Profilbild konnte nicht angelegt werden (sollte kleiner 0.5MB und jpeg, gif oder png sein)

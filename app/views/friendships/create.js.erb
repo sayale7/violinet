@@ -1,7 +1,7 @@
 $(".friendship_links_bottom").html("<%= escape_javascript(render('/users/friendship_links_bottom')) %>");
 $(".friendship_links_top").html("<%= escape_javascript(render('/users/friendship_links_top')) %>");
 $(".friends").html("<%= escape_javascript(render('/users/friends')) %>");
-$(".friendship_links_top").before('<div id="flash_notice" style="width:200px;"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$(".personal_info").before('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>');
 $('#flash_notice').fadeOut(1500);
 setTimeout(function() { 
 	$('#flash_notice').remove();

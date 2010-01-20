@@ -4,9 +4,9 @@ class FriendshipsController < ApplicationController
     is_current?
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     if @friendship.save
-      flash[:notice] = "Added friend."
+      flash[:notice] = t('user.friend_added')
     else
-      flash[:error] = "Unable to add friend."
+      flash[:error] = t('user.add_friend_error')
     end
     if @current_one
       @user = current_user
@@ -33,7 +33,7 @@ class FriendshipsController < ApplicationController
     unless @inverse_friendship.nil?
       @inverse_friendship.destroy
     end
-    flash[:notice] = "Removed friendship."
+    flash[:notice] = t('user.destroyed_friendship')
     respond_to do |format|
       format.html { redirect_to current_user }
       format.js
