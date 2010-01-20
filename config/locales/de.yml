@@ -22,7 +22,6 @@ de:
     confirm: Sind Sie Sicher?
     country: de
     blogs: Blogs
-    created_at: Erstellt am 
     by: von
     upload: Hochladen
     profile_entries: Pinnwand
@@ -53,6 +52,7 @@ de:
     search: Suche
     from: Von
     to: Bis
+    created_at: Erstellt am
   event:
     begin: Begin
     end: Ende

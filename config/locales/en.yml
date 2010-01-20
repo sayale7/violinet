@@ -55,6 +55,7 @@ en:
     search: Search
     from: From
     to: To
+    created_at: Created at
   event:
     begin: Begin
     end: Ende

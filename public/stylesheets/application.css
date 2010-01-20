@@ -260,10 +260,18 @@ padding-top:20px;
 #new_image_upload_form{
 	display:none;
 }
-#old_image_upload_form{
+.upload_form{
 	border: solid 1px #7FAAFF; 
 	background-color: #C5D9FF; 
-	float:right; padding: 2px; 
+	float:right;
+	padding:14px;
+	margin-right:70px; 
+	height:80px; 
+	width: 400px;
+}
+.upload_form_no_float{
+	border: solid 1px #7FAAFF; 
+	background-color: #C5D9FF; 
 	padding:14px;
 	margin-right:70px; 
 	height:80px; 

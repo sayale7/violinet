@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="personal_info">
-	<% if current_user &&   !current_user.id.to_s.eql?(@user.id.to_s) %>
+	<% if current_user && !current_user.id.to_s.eql?(@user.id.to_s) %>
 	<% if is_not_in_request_for_friendship(@user) %>
 	<p><%= image_tag('plus_icon.gif', :width  => 13) %>
 	<%= link_to t('user.add'), add_friendship_path(:friend_id  => @user.id) %></p>
@@ -116,36 +116,27 @@
 		</dd>
 		<% end %>
 	</dl>
-	<% unless @user.friendships.empty? %>
+	
+	
+	<% unless confirmed_friendships(@user).empty? %>
 	<h1><%= t('user.friends') %></h1>
-	<br></br>
-	<ul>
-		<% for friendship in @user.friendships %>
-		<% if @current_one %>
-		<li>
-			<% if accepted_friendship(@user,friendship) %>
-			<%= link_to (h friendship.friend.login), user_path(friendship.friend) %>
-			<% else %>
-			<%= link_to (h friendship.friend.login), user_path(friendship.friend) %>
-			<%= " - " %>
-			<%= t('user.not_confirmed_yet')%>
-			<% end %>
-		</li>
-		<% else %>
-		<li>
-			<% if accepted_friendship(@user,friendship) %>
-			<%= link_to (h friendship.friend.login), user_path(friendship.friend) %>
-			<% end %>
-		</li>
-		<% end %>
-		<% end %>
-	</ul>
+	<p>
+		<%= confirmed_friendships(@user).collect {|friend| link_to(friend.login, user_path(friend))}.join(", ") %>
+	</p>
+	<% end %>
+
+	<% if current_user && @current_one %>
+	<% unless inverse_friendship_requests.empty? %>
+	<h1><%= t('user.not_confirmed_yet') %></h1>
+	<p>
+		<%= inverse_friendship_requests.collect {|friend| link_to(friend.login, user_path(friend))}.join(", ") %>
+	</p>
+	<% end %>
 	<% end %>
 	
 	<% if current_user && @current_one %>
 	<% unless friendship_requests.empty?  %>
 	<h1><%= t('user.friend_confirm') %></h1>
-	<br></br>
 	<ul>
 		<% for user in friendship_requests %>
 		<li>
@@ -159,6 +150,8 @@
 	</ul>
 	<% end %>
 	<% end %>
+	
+	
 </div>
 
 

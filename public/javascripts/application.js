@@ -89,10 +89,7 @@ $(document).ready(function(){
 		$.getScript(this.href);
 		return false;
 	});
-	
-	$('#date_format').remove();
-	$("#from").datepicker();
-	$("#to").datepicker();
+
 
 	
 });

@@ -1,6 +1,6 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  
+
   def checklist(name, collection)
     selected ||= []
 
@@ -22,14 +22,7 @@ module ApplicationHelper
           }).result(binding)
         end
   
-  
-  def is_friend_of_current(user_id)
-    if Friendship.find_by_friend_id_and_user_id(user_id, current_user.id).nil?
-      return false
-    else
-      return true
-    end
-  end
+
 
   def recipients
     users = User.all(:joins  => :user_common, :conditions => "login LIKE '%#{params[:q]}%' or firstname LIKE '%#{params[:q]}%' or lastname LIKE '%#{params[:q]}%'") 
@@ -55,14 +48,11 @@ module ApplicationHelper
     return recipients
   end
 
-  def accepted_friendship(me, my_friendship)
-    is_friend = false
-    my_friendship.friend.friendships.each do |inverse_friendship|
-      if inverse_friendship.friend_id.to_s.eql?(me.id.to_s)
-        is_friend = true
-      end
-    end
-    return is_friend
+
+  
+
+  def confirmed_friendships(user)
+    return (user.friends & user.inverse_friends)
   end
 
   def is_not_in_request_for_friendship(user)
@@ -76,15 +66,12 @@ module ApplicationHelper
   end
 
   def friendship_requests
-    friends_to_accept = Array.new
-    all_friendships_im_a_friend = Friendship.find_all_by_friend_id(current_user.id)
-    all_friendships_im_a_friend.each do |friendship|
-      if Friendship.find_by_friend_id_and_user_id(friendship.user_id, current_user.id).nil?
-        friends_to_accept.push(User.find(friendship.user_id))
-      end
-    end
-    return friends_to_accept
+    return (current_user.inverse_friends - current_user.friends)
+  end
+  
+  def inverse_friendship_requests
+    return (current_user.friends - current_user.inverse_friends)
   end
 
-  
+
 end

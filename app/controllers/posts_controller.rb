@@ -15,9 +15,17 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    interval_search = Post.from_date(from(params[:from]), to(params[:to]))
-    sphinx_search = Post.search params[:search]
-    @posts = interval_search & sphinx_search
+    if params[:user_id]
+      @posts = User.find(params[:user_id]).posts
+    else
+      interval_search = Post.from_date(from(params[:from]), to(params[:to]))
+      unless params[:search].to_s.eql?("")
+        sphinx_search = Post.search params[:search]
+        @posts = interval_search & sphinx_search
+      else
+        @posts = interval_search
+      end
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
