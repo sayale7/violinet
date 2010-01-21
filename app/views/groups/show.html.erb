@@ -1,23 +1,13 @@
-<p>
-  <b>Name:</b>
+<% title "Group" %>
+
+<h2>
   <%=h @group.name %>
-</p>
+</h2>
+(<%= t('group.founder') %><%= ": " %><%= link_to @group.owner.login, user_path(@group.owner) %>)
+<%= simple_format(h @group.description) %>
+
 
 <p>
-  <b>Group category:</b>
-  <%=h @group.group_category_id %>
+  <%= link_to t('common.edit'), edit_group_path(@group) %> |
+  <%= link_to t('common.delete'), @group, :confirm => 'Are you sure?', :method => :delete %>
 </p>
-
-<p>
-  <b>Description:</b>
-  <%=h @group.description %>
-</p>
-
-<p>
-  <b>Need confrim:</b>
-  <%=h @group.need_confrim %>
-</p>
-
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>

@@ -3,17 +3,18 @@ class User < ActiveRecord::Base
   has_one :user_common
   has_one :profile_image
   has_many :posts
-  has_many :profile_entries
   has_many :sent_messages, :class_name => "Message", :foreign_key => "author_id"
   has_many :received_messages, :class_name => "MessageCopy", :foreign_key => "recipient_id"
   has_many :folders, :dependent => :destroy
-  has_many :recipients
   has_many :photo_albums
   has_many :comments, :as => :commentable
   has_many :friendships
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :groups, :through  => :usergroups
+  
+  named_scope :from_user_common, :include => :user_common, :conditions => { 'user_common.hidden' => false }
   
   before_create :build_inbox
   before_create :build_trash

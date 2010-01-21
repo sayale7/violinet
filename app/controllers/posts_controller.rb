@@ -18,16 +18,18 @@ class PostsController < ApplicationController
     if params[:user_id]
       @posts = User.find(params[:user_id]).posts
     else
-      interval_search = Post.from_date(from(params[:from]), to(params[:to]))
-      unless params[:search].to_s.eql?("")
-        sphinx_search = Post.search params[:search]
-        @posts = interval_search & sphinx_search
-      else
-        @posts = interval_search
-      end
+        @posts = Post.from_date(from(params[:from]), to(params[:to])) 
+        if !params[:search].to_s.eql?("")
+          @posts = @posts & Post.title_like_or_body_like_or_user_login_like(params[:search])
+          get_all_user_ids(user_commons_searchlogic).each do |user_id|
+            @posts = @posts + Post.find_all_by_user_id(user_id)
+          end
+        end
+        @posts = @posts.uniq
     end
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.xml  { render :xml => @posts }
       format.atom
     end
@@ -185,6 +187,31 @@ class PostsController < ApplicationController
     else
       to = Time.parse(time.to_s)
     end
+  end
+  
+
+  
+  def post_from_user_searchlogic
+    return Post.user_login_like(params[:search])
+  end
+  
+  def user_commons_searchlogic
+    if params[:search].to_s.match(" ")
+      split = params[:search].split(' ', 2)
+      user_commons = UserCommon.all(:conditions  => "firstname LIKE '%#{split.first}%' and lastname LIKE '%#{split.second}%'")
+      user_commons = user_commons + UserCommon.all(:conditions  => "firstname LIKE '%#{split.second}%' and lastname LIKE '%#{split.first}%'")
+      return user_commons.uniq
+    else
+      return UserCommon.firstname_like_or_lastname_like(params[:search])
+    end
+  end
+  
+  def get_all_user_ids(user_commons)
+    user_ids = Array.new
+    user_commons.each do |user_common|
+      user_ids.push(user_common.user_id)
+    end
+    return user_ids
   end
   
 end

@@ -1,26 +1,15 @@
 <% title "User List" %>
 
-<% form_tag users_path, :method  => 'get' do |f| %>
-  <p>
-    <%= text_field_tag('login_like', '', :class  => 'tb')  %>
-    <%= submit_tag t('common.search') %>
-  </p>
+<% form_tag user_search_url, :id  => 'user_search', :method  => 'get' do |f| %>
+<p>
+	<%= text_field_tag('login_like', '', :class  => 'tb', :autocomplete => "off")  %>
+	<%= submit_tag t('common.search'), :id  => 'search_button' %>
+</p>
 <% end %>
 
 <div id="users">
-<% for user in @users %>
-  <div class="user">
-    <p>
-      <%= link_to (h user.login), user_path(user) %>
-		<% common = UserCommon.find_by_user_id(user.id) %>
-		<% unless (common.firstname.nil? || common.firstname.empty?) && (common.lastname.nil? || common.lastname.empty?) %>
-		<%= ' - ' %>
-		<%= common.firstname unless nil %>
-		<%= ' ' %>
-		<%= common.lastname unless nil %>
-		<% end %>
-      <div class="clear"></div>
-    </p>
-  </div>
-<% end %>
+
+<%= render  'users' %>
+
+
 </div>

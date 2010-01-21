@@ -53,6 +53,10 @@ de:
     from: Von
     to: Bis
     created_at: Erstellt am
+    name: Name
+    description: Beschreibung
+    groups: Gruppen
+    new: Neu
   event:
     begin: Begin
     end: Ende
@@ -62,10 +66,9 @@ de:
     description: Beschreibung
     new: Neuer Event
   group:
-    description: Beschreibung
-    name: Name
     need_confirm: Benutzer benötigen Deine Zustimmung, wenn sie zur Gruppe hinzu wollen
     category: Kategorie
+    founder: Gründer
   forgot_password:
     password_reset: Passwort zurücksetzen
     forgot: Passwort vergessen?

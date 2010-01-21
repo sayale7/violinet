@@ -1,26 +1,12 @@
-<h1>Listing groups</h1>
+<% title "Groups" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Group category</th>
-    <th>Description</th>
-    <th>Need confrim</th>
-  </tr>
-
-<% @groups.each do |group| %>
-  <tr>
-    <td><%=h group.name %></td>
-    <td><%=h group.group_category_id %></td>
-    <td><%=h group.description %></td>
-    <td><%=h group.need_confrim %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% for group in @groups %>
+<p>
+<h1><%= link_to group.name, group_path(group) %></h1>
+(<%= t('group.founder') %><%= ": " %><%= link_to group.owner.login, user_path(group.owner) %>)
+</p>
+	
 <% end %>
-</table>
 
-<br />
 
-<%= link_to 'New group', new_group_path %>
+<p><%= link_to t('common.new'), new_group_path %></p>

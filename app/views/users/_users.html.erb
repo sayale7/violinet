@@ -1,0 +1,20 @@
+<% for user in @users %>
+<div class="users_list">
+	<% unless user.profile_image.nil? %>
+	<%= image_tag (user.profile_image.public_filename(:thumb))%>
+	<% else %>
+	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
+	<% end %>
+</div>
+<div class="users_list">
+	<h3><%= link_to (h user.login), user_path(user) %></h3>
+	<% common = UserCommon.find_by_user_id(user.id) %>
+	<% unless (common.firstname.nil? || common.firstname.empty?) && (common.lastname.nil? || common.lastname.empty?) %>
+	<%= ' - ' %>
+	<%= common.firstname unless nil %>
+	<%= ' ' %>
+	<%= common.lastname unless nil %>
+	<% end %>
+</div>
+<div class="clear"></div>
+<% end %>

@@ -50,51 +50,39 @@ li{
 
 /* Textbox Class*/
 .tb{
-	width: 385px;
+	width: 380px;
 	font-family:Verdana,Lucida Grande, Lucida Sans Unicode,  Helvetica, Arial, sans-serif;
 	font-size:15px;
-	background: #ECECEC;
 	color : #000000;
 	height:30px;
-	border:0;
 	padding:8px;
 	padding-bottom:0;
-	margin-bottom:0px;
 }
 .tb_datepicker{
 	width: 100px;
 	font-family:Verdana,Lucida Grande, Lucida Sans Unicode,  Helvetica, Arial, sans-serif;
 	font-size:13px;
-	background: #ECECEC;
 	color : #000000;
 	height:20px;
-	border:0;
-	padding:2px;
+	padding:0px;
 	padding-bottom:0;
-	margin-bottom:0px;
 }
 
 .tb_extended{
 	width: 565px;
-	font-size:15px;
 	font-family:Verdana,Lucida Grande, Lucida Sans Unicode,  Helvetica, Arial, sans-serif;
-	background: #ECECEC;
+	font-size:15px;
 	color : #000000;
 	height:30px;
-	border:0;
 	padding:8px;
 	padding-bottom:0;
-	margin-bottom:0px;
 }
 
 .tb_area {
 	width: 385px;
 	font-family:Verdana,Lucida Grande, Lucida Sans Unicode,  Helvetica, Arial, sans-serif;
 	font-size:15px;
-	background: #ECECEC;
-	color : #000000;
 	height:200px;
-	border:0;
 	padding:4px 8px;
 	margin-bottom:0px;
 }
@@ -102,10 +90,8 @@ li{
 	width: 385px;
 	font-family:Verdana,Lucida Grande, Lucida Sans Unicode,  Helvetica, Arial, sans-serif;
 	font-size:15px;
-	background: #ECECEC;
 	color : #000000;
 	height:390px;
-	border:0;
 	padding:4px 8px;
 	margin-bottom:0px;
 }
@@ -120,6 +106,7 @@ li{
 	padding:4px 8px;
 	margin-bottom:0px;
 }
+
 
 /* table design */
 
@@ -227,16 +214,15 @@ padding-top:20px;
 	float: left;
 	font-size: 13px;
 	font-family: Verdana;
-	padding: 5px;
-	margin-right:10px;
-	background:#ddd; 
+	padding: 10px;
+	background:transparent; 
 	color:#333;
 	text-decoration: none;
 }
 
 #user_nav ul li a:hover {
-	background:#eee; 
-	color:#666;
+	background:#ddd; 
+	color:#333;
 }
 
 
@@ -336,6 +322,18 @@ padding-top:20px;
     margin-top: -2.0em;
     padding: 0.5em;
 } 
+
+#users {
+} 
+.users_list {
+	padding:10px;
+    float:left;
+}
+.users_right {
+	float:left;
+}
+
+
 #friends{
 	float:left;
 }

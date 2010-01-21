@@ -1,45 +1,54 @@
 require 'test_helper'
 
 class GroupsControllerTest < ActionController::TestCase
-  test "should get index" do
+  def test_index
     get :index
-    assert_response :success
-    assert_not_nil assigns(:groups)
+    assert_template 'index'
   end
-
-  test "should get new" do
+  
+  def test_show
+    get :show, :id => Group.first
+    assert_template 'show'
+  end
+  
+  def test_new
     get :new
-    assert_response :success
+    assert_template 'new'
   end
-
-  test "should create group" do
-    assert_difference('Group.count') do
-      post :create, :group => { }
-    end
-
-    assert_redirected_to group_path(assigns(:group))
+  
+  def test_create_invalid
+    Group.any_instance.stubs(:valid?).returns(false)
+    post :create
+    assert_template 'new'
   end
-
-  test "should show group" do
-    get :show, :id => groups(:one).to_param
-    assert_response :success
+  
+  def test_create_valid
+    Group.any_instance.stubs(:valid?).returns(true)
+    post :create
+    assert_redirected_to group_url(assigns(:group))
   end
-
-  test "should get edit" do
-    get :edit, :id => groups(:one).to_param
-    assert_response :success
+  
+  def test_edit
+    get :edit, :id => Group.first
+    assert_template 'edit'
   end
-
-  test "should update group" do
-    put :update, :id => groups(:one).to_param, :group => { }
-    assert_redirected_to group_path(assigns(:group))
+  
+  def test_update_invalid
+    Group.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => Group.first
+    assert_template 'edit'
   end
-
-  test "should destroy group" do
-    assert_difference('Group.count', -1) do
-      delete :destroy, :id => groups(:one).to_param
-    end
-
-    assert_redirected_to groups_path
+  
+  def test_update_valid
+    Group.any_instance.stubs(:valid?).returns(true)
+    put :update, :id => Group.first
+    assert_redirected_to group_url(assigns(:group))
+  end
+  
+  def test_destroy
+    group = Group.first
+    delete :destroy, :id => group
+    assert_redirected_to groups_url
+    assert !Group.exists?(group.id)
   end
 end

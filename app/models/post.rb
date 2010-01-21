@@ -14,11 +14,6 @@ class Post < ActiveRecord::Base
   
   validates_presence_of :title, :body
   
-  define_index do
-    indexes title, :sortable  => true
-    indexes body
-  end
-  
   
 end
 #(Time.now - 60.day).strftime("%Y-%m-%d %H:%M:%S")

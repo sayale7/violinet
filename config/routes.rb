@@ -1,20 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :usergroups
+
+  map.resources :groups
+
   map.resources :friendships
-
-
-  map.resources :categorytogroups
-
-  map.resources :categories
-
-  map.resources :user_to_groups
-
-  map.resources :group_categories
 
   map.resources :groups
 
   map.resources :all_users
-  
-  map.resources :tags_posts
   
   map.resources :tags
   
@@ -40,9 +33,6 @@ ActionController::Routing::Routes.draw do |map|
 
   # mappings for authlogic
   map.resource :user_session
-  #map.root :controller => "user_sessions", :action => "new" # optional, this just sets the root route
-  
-  map.resources :recipients
   
   map.inbox 'inbox', :controller => "mailbox", :action => "index"
   map.trash_in 'trash_in', :controller => "mailbox", :action => "trash", :box => "in"
@@ -80,6 +70,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.destroy_friendship 'destroy_friendship', :controller => 'friendships', :action  => 'destroy'
   map.add_friendship 'add_friendship', :controller => 'friendships', :action  => 'create'
+  
+  map.user_search 'user_search', :controller  => 'users', :action  => 'index'
+  map.post_search 'post_search', :controller  => 'posts', :action  => 'index'
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

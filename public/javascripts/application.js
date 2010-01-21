@@ -104,6 +104,25 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	//ajax searching
+	$('#search_button').hide();
+	$('#user_search').keyup(function(e){
+		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
+		$("#users").html("loading ...");
+	});
+	
+	$('#post_search').keyup(function(e){
+		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
+		$("#posts").html("loading ...");
+	});
+	
+	$('.tb_datepicker').live("change", function(e){
+		setTimeout(function() { 
+			$.post($('#post_search').attr("action"), $('#post_search').serialize(), null, 'script');
+			$("#posts").html("loading ...");
+		}, 500);
+		
+	});
  
  
 });

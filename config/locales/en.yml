@@ -56,6 +56,10 @@ en:
     from: From
     to: To
     created_at: Created at
+    name: Name
+    description: Description
+    groups: Groups
+    new: New
   event:
     begin: Begin
     end: Ende
@@ -65,10 +69,9 @@ en:
     description: Description
     new: New Event
   group:
-    description: Description
-    name: Name
     need_confirm: User need you to confirm, if he want to be a member of your group
     category: Category
+    founder: Founder
   forgot_password:
     password_reset: Reset Password
     forgot: Forgot Password?

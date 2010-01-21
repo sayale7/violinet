@@ -15,18 +15,16 @@
 		#jsddm li a
 		{	
 			display: block;
-			padding: 5px;
+			padding: 10px;
 			text-decoration: none;
-			border-right: 1px solid white;
-			margin-right:10px;
 			white-space: nowrap;
-			background:#eee; 
-			color:#666;
+			background:transparent; 
+			color:#333;
 			}
 
 			#jsddm li a:hover
 			{	background:#ddd; 
-				color:#333;
+				color:#666;
 			}
 
 			#jsddm li ul
@@ -42,7 +40,7 @@
 
 					#jsddm li ul li a
 					{	width: auto;
-						background:#eee; }
+						background:#F8F8F8; }
 
 						#jsddm li ul li a:hover
 						{	background:#ddd}

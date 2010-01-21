@@ -1,4 +1,6 @@
 class Group < ActiveRecord::Base
-  belongs_to :author, :class_name => "User"
-  has_many :members, :class_name => "User"
+  attr_accessible :name, :description, :user_id
+  
+  has_many :members, :through  => :usergroups
+  belongs_to :owner, :class_name  => 'User', :foreign_key => "user_id"
 end

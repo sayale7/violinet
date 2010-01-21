@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100116121155) do
+ActiveRecord::Schema.define(:version => 20100120192738) do
 
   create_table "all_users", :force => true do |t|
     t.datetime "created_at"
@@ -59,10 +59,8 @@ ActiveRecord::Schema.define(:version => 20100116121155) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
-    t.integer  "group_category_id"
-    t.string   "description"
-    t.boolean  "need_confrim"
-    t.boolean  "user_id"
+    t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -120,15 +118,6 @@ ActiveRecord::Schema.define(:version => 20100116121155) do
     t.datetime "updated_at"
   end
 
-  create_table "profile_entries", :force => true do |t|
-    t.text     "body"
-    t.string   "author"
-    t.string   "author_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "profile_images", :force => true do |t|
     t.integer "parent_id"
     t.string  "content_type"
@@ -138,13 +127,6 @@ ActiveRecord::Schema.define(:version => 20100116121155) do
     t.integer "width"
     t.integer "height"
     t.integer "user_id",      :default => 0, :null => false
-  end
-
-  create_table "recipients", :force => true do |t|
-    t.integer  "message_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "roles", :force => true do |t|
@@ -202,7 +184,7 @@ ActiveRecord::Schema.define(:version => 20100116121155) do
     t.integer  "user_id",                     :default => 0, :null => false
   end
 
-  create_table "user_to_groups", :force => true do |t|
+  create_table "usergroups", :force => true do |t|
     t.integer  "user_id"
     t.integer  "group_id"
     t.datetime "created_at"

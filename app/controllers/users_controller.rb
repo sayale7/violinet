@@ -19,7 +19,10 @@ class UsersController < ApplicationController
       @users = User.all
     end
     @users = @users.uniq
-    render :layout  => '/layouts/application'
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
   
   def new
@@ -59,7 +62,6 @@ class UsersController < ApplicationController
     @profile_image = ProfileImage.find_by_user_id(@user.id)
     @comment = Comment.new
     @comments = @user.comments
-    @entries = @user.profile_entries.all(:order => "created_at DESC").paginate :per_page => 3, :page => params[:page], :include => :profile_entry
   end
   
   def edit
