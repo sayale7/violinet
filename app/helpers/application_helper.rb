@@ -77,6 +77,10 @@ module ApplicationHelper
   def inverse_friendship_requests
     return (current_user.friends - current_user.inverse_friends)
   end
+  
+  def is_member(group)
+    return (User.find_all_by_id(current_user.id) & group.members).empty?
+  end
 
 
 end

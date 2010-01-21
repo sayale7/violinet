@@ -8,13 +8,27 @@
 </div>
 <div class="users_list">
 	<h3><%= link_to (h user.login), user_path(user) %></h3>
+	<p>
 	<% common = UserCommon.find_by_user_id(user.id) %>
 	<% unless (common.firstname.nil? || common.firstname.empty?) && (common.lastname.nil? || common.lastname.empty?) %>
 	<%= ' - ' %>
-	<%= common.firstname unless nil %>
+	<%= common.firstname unless nil? %>
 	<%= ' ' %>
-	<%= common.lastname unless nil %>
+	<%= common.lastname unless nil? %>
 	<% end %>
+	</p>
+	<p>
+		<% unless (common.street.nil? || common.street.empty?) && (common.zip.nil? || common.zip.empty?) && (common.city.nil? || common.city.empty?) && (common.state.nil? || common.state.empty?) %>
+		<%= ' - ' %>
+		<%= common.street.to_s + ", " unless nil? %>
+		<%= ' ' %>
+		<%= common.zip.to_s + ", " unless nil? %>
+		<%= ' ' %>
+		<%= common.city.to_s + ", " unless nil? %>
+		<%= ' ' %>
+		<%= common.state unless nil? %>
+		<% end %>
+	</p>
 </div>
 <div class="clear"></div>
 <% end %>

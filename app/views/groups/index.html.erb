@@ -1,12 +1,21 @@
 <% title "Groups" %>
 
-<% for group in @groups %>
-<p>
-<h1><%= link_to group.name, group_path(group) %></h1>
-(<%= t('group.founder') %><%= ": " %><%= link_to group.owner.login, user_path(group.owner) %>)
-</p>
+<% form_tag group_search_url, :id  => 'goup_search', :method => :get do %>
+
+<p>	 
+	<%= text_field_tag :search, params[:search], :class  => 'tb', :autocomplete => "off" %>
 	
+	<% unless params[:user_id].nil? %>
+		<%= hidden_field_tag :user_id_for_search, params[:user_id] %>
+	<% end %>
+	
+	<%= submit_tag t('common.search'), :id  => 'search_button' %>
+</p>
 <% end %>
 
 
-<p><%= link_to t('common.new'), new_group_path %></p>
+<div id="groups">
+	
+<%= render 'groups' %>
+
+</div>

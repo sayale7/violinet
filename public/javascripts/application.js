@@ -111,6 +111,11 @@ $(document).ready(function(){
 		$("#users").html("loading ...");
 	});
 	
+	$('#goup_search').keyup(function(e){
+		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
+		$("#groups").html("loading ...");
+	});
+	
 	$('#post_search').keyup(function(e){
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
 		$("#posts").html("loading ...");

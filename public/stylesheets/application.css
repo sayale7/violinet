@@ -477,6 +477,16 @@ padding-top:20px;
 	width:750px;
 	overflow:auto;
 }
+
+.group_description{
+	float:left;
+	width:650px;
+}
+.group_members{
+	float:left;
+	width:110px;
+}
+
 .clickable_items_to_add{
 	float:left;
 	border:1px solid #000000;

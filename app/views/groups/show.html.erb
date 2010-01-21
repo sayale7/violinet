@@ -1,13 +1,49 @@
 <% title "Group" %>
 
-<h2>
-  <%=h @group.name %>
-</h2>
-(<%= t('group.founder') %><%= ": " %><%= link_to @group.owner.login, user_path(@group.owner) %>)
-<%= simple_format(h @group.description) %>
+<div class="group_description">
+	<h2>
+		<%=h @group.name %>
+	</h2>
+	(<%= t('group.founder') %><%= ": " %><%= link_to @group.owner.login, user_path(@group.owner) %>)
+	<br></br>
+	<%= simple_format(h @group.description) %>
+</div>
+<div class="right">
+	<% unless @group.photo_file_name.nil? %>
+	<a href='<%= @group.photo.url %>' rel='shadowbox'><%= image_tag @group.photo.url(:medium) %></a>
+	<% else %>
+	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
+	<% end %>
+</div>
 
-
-<p>
-  <%= link_to t('common.edit'), edit_group_path(@group) %> |
-  <%= link_to t('common.delete'), @group, :confirm => 'Are you sure?', :method => :delete %>
+<p class="clear">
+	<% if current_user %>
+	<% if current_user == @group.owner %>
+	<%= link_to t('common.edit'), edit_group_path(@group) %> |
+	<%= link_to t('common.delete'), @group, :confirm => t('common.confirm'), :method => :delete %>
+	<% else %>
+	<% if is_member(@group) %>
+	<%= link_to t('group.attend'), add_usergroup_path(:group_id  => @group.id) %>
+	<% else %>
+	<%= link_to t('group.escape'), destroy_usergroup_path(:group_id  => @group.id)  %>
+	<% end %>
+	<% end %>
+	<% end %>
 </p>
+
+<div class"clear"></div>
+<% @group.members.each do |member| %>
+<div class="group_members">
+	<p>
+	<% unless member.profile_image.nil? %>
+	<%= image_tag(member.profile_image.public_filename(:thumb) )%>
+	<% else %>
+	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
+	<% end %>
+	</p>
+	<p>
+		<%= link_to member.login, user_path(member) %>
+	</p>
+</div>
+<% end %>
+

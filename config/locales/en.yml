@@ -60,6 +60,8 @@ en:
     description: Description
     groups: Groups
     new: New
+    my_groups: My Groups
+    duty: Mandatory Fields
   event:
     begin: Begin
     end: Ende
@@ -72,6 +74,13 @@ en:
     need_confirm: User need you to confirm, if he want to be a member of your group
     category: Category
     founder: Founder
+    new: New Group
+    photo: Upload a Image for your Group
+    attend: Join this Group
+    escape: Quit from Group
+    escaped: Succesfully quit from Group
+    attend_error: Error
+    attended: You successfully joined this group
   forgot_password:
     password_reset: Reset Password
     forgot: Forgot Password?

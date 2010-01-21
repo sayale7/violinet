@@ -46,6 +46,7 @@ ActionController::Routing::Routes.draw do |map|
   # mappings for register users
   map.edit_account "edit_account", :controller => "users", :action => "edit"
   map.resources :users, :has_many  => :posts
+  map.resources :users, :has_many  => :groups
   map.resource :personals, :controller => "user_commons"
   
   # for account activation
@@ -61,7 +62,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
   map.myblog "myblog", :controller => "posts", :action => "myblog"
-  map.myblogarchiv "myblogarchiv", :controller => "posts", :action => "myblogarchiv"
+  map.mygroups "mygroups", :controller => "groups", :action => "mygroups"
   
   map.root :controller => "posts", :action => "index"
   
@@ -73,6 +74,11 @@ ActionController::Routing::Routes.draw do |map|
   
   map.user_search 'user_search', :controller  => 'users', :action  => 'index'
   map.post_search 'post_search', :controller  => 'posts', :action  => 'index'
+  map.my_post_search 'my_post_search', :controller  => 'posts', :action  => 'myblog'
+  map.group_search 'group_search', :controller  => 'groups', :action  => 'index'
+  map.my_group_search 'my_group_search', :controller  => 'groups', :action  => 'mygroups'
+  map.add_usergroup 'add_usergroup', :controller  => 'usergroups', :action  => 'create'
+  map.destroy_usergroup 'destroy_usergroup', :controller  => 'usergroups', :action  => 'destroy'
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

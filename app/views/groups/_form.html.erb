@@ -1,12 +1,27 @@
-<% form_for @group do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label t('common.name') %><br />
-    <%= f.text_field :name, :class  => 'tb' %>
-  </p>
-  <p>
-    <%= f.label t('common.description') %><br />
-    <%= f.text_area :description, :class  => 'tb_area_extended' %>
-  </p>
-  <p><%= f.submit t('common.submit') %></p>
+<% form_for @group, :html  => { :multipart  => true } do |f| %>
+<%= f.error_messages %>
+<div class="right">
+<p>
+	<% unless @group.photo_file_name.nil? %>
+		<a href='<%= @group.photo.url %>' rel='shadowbox'><%= image_tag @group.photo.url(:medium) %></a>
+	<% else %>
+		<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
+	<% end %>
+</p>
+<p>
+	<%= t('group.photo') %>
+</p>
+<p>
+	<%= f.file_field :photo %>
+</p>
+</div>
+<p>
+	<%= f.label t('common.name') %><br />
+	<%= f.text_field :name, :class  => 'tb' %>
+</p>
+<p>
+	<%= f.label t('common.description') %><br />
+	<%= f.text_area :description, :class  => 'tb_area_extended' %>
+</p>
+<p><%= f.submit t('common.submit') %></p>
 <% end %>

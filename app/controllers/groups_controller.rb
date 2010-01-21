@@ -1,8 +1,38 @@
 class GroupsController < ApplicationController
+  
   def index
-    @groups = Group.all
+    if params[:user_id]
+      @groups = User.find(params[:user_id]).usergroups
+    else
+      unless params[:user_id_for_search].nil?
+        @groups = Group.name_like_or_description_like(params[:search])
+        @groups = @groups & User.find(params[:user_id_for_search]).usergroups
+      else
+        @groups = Group.name_like_or_description_like_or_owner_login_like(params[:search])
+        get_all_user_ids(user_commons_searchlogic).each do |user_id|
+          @groups = @groups + Group.find_all_by_user_id(user_id)
+        end
+      end
+    end
+    @groups = @groups.uniq
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js
+    end
   end
   
+  def mygroups
+    @groups = Group.my_groups(current_user.id)
+    if !params[:search].to_s.eql?("")
+      @groups = @groups & Group.name_like_or_description_like(params[:search])
+    end
+    
+    respond_to do |format|
+      format.html # myblog.html.erb
+      format.js
+    end
+  end
+
   def show
     @group = Group.find(params[:id])
   end
@@ -41,5 +71,26 @@ class GroupsController < ApplicationController
     @group.destroy
     flash[:notice] = "Successfully destroyed group."
     redirect_to groups_url
+  end
+  
+  private
+  
+  def user_commons_searchlogic
+    if params[:search].to_s.match(" ")
+      split = params[:search].split(' ', 2)
+      user_commons = UserCommon.all(:conditions  => "firstname LIKE '%#{split.first}%' and lastname LIKE '%#{split.second}%'")
+      user_commons = user_commons + UserCommon.all(:conditions  => "firstname LIKE '%#{split.second}%' and lastname LIKE '%#{split.first}%'")
+      return user_commons.uniq
+    else
+      return UserCommon.firstname_like_or_lastname_like(params[:search])
+    end
+  end
+  
+  def get_all_user_ids(user_commons)
+    user_ids = Array.new
+    user_commons.each do |user_common|
+      user_ids.push(user_common.user_id)
+    end
+    return user_ids
   end
 end

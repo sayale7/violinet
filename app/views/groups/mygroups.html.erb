@@ -1,0 +1,22 @@
+<% title "Groups" %>
+
+<% form_tag my_group_search_url, :id  => 'goup_search', :method => :get do %>
+
+<p>	 
+	<%= text_field_tag :search, params[:search], :class  => 'tb', :autocomplete => "off" %>
+	
+	<% unless params[:user_id].nil? %>
+		<%= hidden_field_tag :user_id_for_search, params[:user_id] %>
+	<% end %>
+	
+	<%= submit_tag t('common.search'), :id  => 'search_button' %>
+</p>
+<% end %>
+
+
+<div id="groups">
+	
+<%= render 'my_groups' %>
+
+</div>
+

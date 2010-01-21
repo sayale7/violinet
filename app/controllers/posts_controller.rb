@@ -18,6 +18,13 @@ class PostsController < ApplicationController
     if params[:user_id]
       @posts = User.find(params[:user_id]).posts
     else
+      unless params[:user_id_for_search].nil?
+        @posts = Post.from_date(from(params[:from]), to(params[:to])) 
+        if !params[:search].to_s.eql?("")
+          @posts = @posts & Post.title_like_or_body_like(params[:search])
+        end
+        @posts = @posts & User.find(params[:user_id_for_search]).posts
+      else
         @posts = Post.from_date(from(params[:from]), to(params[:to])) 
         if !params[:search].to_s.eql?("")
           @posts = @posts & Post.title_like_or_body_like_or_user_login_like(params[:search])
@@ -26,6 +33,7 @@ class PostsController < ApplicationController
           end
         end
         @posts = @posts.uniq
+      end
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -36,14 +44,16 @@ class PostsController < ApplicationController
   end
   
   def myblog
-    interval_search = Post.my_posts(current_user.id).from_date(from(params[:from]), to(params[:to]))
-    sphinx_search = Post.search params[:search]
-    @posts = interval_search & sphinx_search
+    @posts = Post.my_posts(current_user.id).from_date(from(params[:from]), to(params[:to]))
+    if !params[:search].to_s.eql?("")
+      @posts = @posts & Post.title_like_or_body_like(params[:search])
+    end
     
     respond_to do |format|
       format.html # myblog.html.erb
       format.xml  { render :xml => @posts }
       format.atom
+      format.js
     end
   end
   

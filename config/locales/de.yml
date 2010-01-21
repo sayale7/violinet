@@ -57,6 +57,8 @@ de:
     description: Beschreibung
     groups: Gruppen
     new: Neu
+    my_groups: Meine Gruppen
+    duty: Pflichtfelder
   event:
     begin: Begin
     end: Ende
@@ -69,6 +71,13 @@ de:
     need_confirm: Benutzer benötigen Deine Zustimmung, wenn sie zur Gruppe hinzu wollen
     category: Kategorie
     founder: Gründer
+    new: Neue Gruppe
+    photo: Laden Sie ein Foto für Ihre Gruppe hoch
+    attend: Dieser Gruppe beitreten
+    escape: Aus Gruppe austreten
+    escaped: Aus Gruppe ausgetreten
+    attend_error: Fehler beim Gruppenbeitritt
+    attended: Beigetreten
   forgot_password:
     password_reset: Passwort zurücksetzen
     forgot: Passwort vergessen?

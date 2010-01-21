@@ -4,8 +4,19 @@
 		$('#date_format').remove();
 		$("#from").datepicker();
 		$("#to").datepicker();
+		
+		$('.tb_datepicker').live("change", function(e){
+			setTimeout(function() { 
+				$.post($('#post_search').attr("action"), $('#post_search').serialize(), null, 'script');
+				$("#posts").html("loading ...");
+			}, 500);
+
+		});
 	});
 </script>
+
+
+
 
 <% form_tag post_search_url, :id  => 'post_search', :method => :get do %>
  
@@ -19,6 +30,10 @@
 
 <p>	 
 	<%= text_field_tag :search, params[:search], :class  => 'tb', :autocomplete => "off" %>
+	
+	<% unless params[:user_id].nil? %>
+		<%= hidden_field_tag :user_id_for_search, params[:user_id] %>
+	<% end %>
 	<%= submit_tag t('common.search'), :id  => 'search_button' %>
 </p>
 <% end %>
