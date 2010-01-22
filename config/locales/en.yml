@@ -62,6 +62,7 @@ en:
     new: New
     my_groups: My Groups
     duty: Mandatory Fields
+    clear: Reset Search
   event:
     begin: Begin
     end: Ende
@@ -162,6 +163,10 @@ en:
       remove_from_post: Remove
       add_tags_to_post: Available Tags
       add_to_post: Add
+      german_name: German Name
+      english_name: English Name
+      for: For
+      names: Tagnames
   flash:
     comment_destroyed: Entry deleted
     comment_created: Entry created

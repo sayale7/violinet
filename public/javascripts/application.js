@@ -105,7 +105,10 @@ $(document).ready(function(){
 	});
 	
 	//ajax searching
+	
 	$('#search_button').hide();
+	$('#clear_tb_datepicker').removeClass('hidden').addClass('visible');
+	
 	$('#user_search').keyup(function(e){
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
 		$("#users").html("loading ...");
@@ -121,13 +124,24 @@ $(document).ready(function(){
 		$("#posts").html("loading ...");
 	});
 	
+	
+	$('#clear_tb_datepicker').click(function(){
+		$('.tb_datepicker').val("");
+		$('.tb').val("");
+		$.post($('#post_search').attr("action"), $('#post_search').serialize(), null, 'script');
+		$("#posts").html("loading ...");
+		return false;
+	});
+	
 	$('.tb_datepicker').live("change", function(e){
 		setTimeout(function() { 
 			$.post($('#post_search').attr("action"), $('#post_search').serialize(), null, 'script');
 			$("#posts").html("loading ...");
 		}, 500);
-		
+		return false;
 	});
+	
+
  
  
 });

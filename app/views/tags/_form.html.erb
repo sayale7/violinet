@@ -1,17 +1,21 @@
 <% form_for(@tag) do |f| %>
-  <%= f.error_messages %>
+<%= f.error_messages %>
 
-  <p>
-    <%= f.label :german_name %><br />
-    <%= f.text_field :german_name %>
-  </p>
+<p>
+	<%= f.label :german_name %><br />
+	<%= f.text_field :german_name %>
+</p>
 
-  <p>
-    <%= f.label :english_name %><br />
-    <%= f.text_field :english_name %>
-  </p>
+<p>
+	<%= f.label :english_name %><br />
+	<%= f.text_field :english_name %>
+</p>
 
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+<p>
+	<%= f.select(:is_category, {'Gruppe'  => true, 'Blog'  => false }, :include_blank  => false) %>
+</p>
+
+<p>
+	<%= f.submit 'Update' %>
+</p>
 <% end %>

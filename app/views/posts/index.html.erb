@@ -4,14 +4,6 @@
 		$('#date_format').remove();
 		$("#from").datepicker();
 		$("#to").datepicker();
-		
-		$('.tb_datepicker').live("change", function(e){
-			setTimeout(function() { 
-				$.post($('#post_search').attr("action"), $('#post_search').serialize(), null, 'script');
-				$("#posts").html("loading ...");
-			}, 500);
-
-		});
 	});
 </script>
 
@@ -26,6 +18,7 @@
 	<%= t('common.to') %>
 	<input type="text" id="to" name="to" class="tb_datepicker"/>
 	<span id="date_format"> (TT/MM/JJJJ)</span>
+	<%= submit_tag t('common.clear'), :id  => 'clear_tb_datepicker', :class  => 'hidden' %>
 </p>
 
 <p>	 

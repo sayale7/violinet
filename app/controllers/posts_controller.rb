@@ -16,15 +16,18 @@ class PostsController < ApplicationController
   # GET /posts.xml
   def index
     if params[:user_id]
+      # blog from a specific user
       @posts = User.find(params[:user_id]).posts
     else
       unless params[:user_id_for_search].nil?
+      # search on a specific user blog
         @posts = Post.from_date(from(params[:from]), to(params[:to])) 
-        if !params[:search].to_s.eql?("")
+        unless params[:search].to_s.eql?("")
           @posts = @posts & Post.title_like_or_body_like(params[:search])
         end
         @posts = @posts & User.find(params[:user_id_for_search]).posts
       else
+      # search on all blogs
         @posts = Post.from_date(from(params[:from]), to(params[:to])) 
         if !params[:search].to_s.eql?("")
           @posts = @posts & Post.title_like_or_body_like_or_user_login_like(params[:search])
@@ -95,7 +98,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments
     @tags = Array.new
-    TagName.find_all_by_language_and_tag_id(I18n.locale.to_s, @post.tags).each do |item|
+    TagName.find_all_by_language_and_tag_id(I18n.locale.to_s, @post.tags - Tag.find_all_by_is_category(true)).each do |item|
       @tags.push(item.name)
     end
     respond_to do |format|
@@ -117,7 +120,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
-    @not_in_post_tags = Tag.all() - @post.tags
+    @not_in_post_tags = Tag.find_all_by_is_category(false) - @post.tags
   end
 
   # POST /posts

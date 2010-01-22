@@ -17,6 +17,7 @@
 	<%= t('common.to') %>
 	<input type="text" id="to" name="to" class="tb_datepicker"/>
 	<span id="date_format"> (TT/MM/JJJJ)</span>
+	<%= submit_tag t('common.clear'), :id  => 'clear_tb_datepicker', :class  => 'hidden' %>
 </p>
 <p>	 
 	<%= text_field_tag :search, params[:search], :class  => 'tb', :autocomplete  => 'off' %>

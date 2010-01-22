@@ -4,6 +4,8 @@ class Tag < ActiveRecord::Base
   
   has_many :posts, :through => :taggings
   
+  has_many :groups, :through => :taggings
+  
   has_many :tag_names, :dependent => :destroy
   
   attr_writer :german_name

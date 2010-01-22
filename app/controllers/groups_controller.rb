@@ -54,6 +54,7 @@ class GroupsController < ApplicationController
   
   def edit
     @group = Group.find(params[:id])
+    @not_in_group_tags = Tag.find_all_by_is_category(true) - @group.tags
   end
   
   def update
@@ -71,6 +72,32 @@ class GroupsController < ApplicationController
     @group.destroy
     flash[:notice] = "Successfully destroyed group."
     redirect_to groups_url
+  end
+  
+  def add_tags
+    @group = Group.find(params[:id])
+    tags = Tag.find_all_by_id(params[:tags])
+    tags.each do |tag|
+      Tagging.find_or_create_by_tag_id_and_group_id(tag.id, @group.id)
+    end
+    @not_in_group_tags = Tag.all() - @group.tags
+    respond_to do |format|
+      format.html { redirect_to('/group/' + params[:id].to_s + '/edit') }
+      format.js
+    end
+  end
+  
+  def remove_tags
+    @group = Group.find(params[:id])
+    tags = Tag.find_all_by_id(params[:tags])
+    tags.each do |tag|
+      Tagging.find_by_tag_id_and_group_id(tag.id, @group.id).destroy
+    end
+    @not_in_group_tags = Tag.all() - @group.tags
+    respond_to do |format|
+      format.html { redirect_to('/group/' + params[:id].to_s + '/edit') }
+      format.js
+    end
   end
   
   private

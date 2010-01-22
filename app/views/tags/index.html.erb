@@ -15,7 +15,13 @@
 	<% @tags.each do |tag| %>
 	<tbody>
 		<tr>
-			<td><%=h tag.tag_names.first.name %> / <%=h tag.tag_names.last.name %></td>
+			<td><%=h tag.tag_names.first.name %> / <%=h tag.tag_names.last.name %> / 
+				<% if tag.is_category %>
+					Gruppe
+				<% else %>
+					Blog
+				<% end %>
+			</td>
 			<td><%= link_to 'Show', tag %></td>
 			<td><%= link_to 'Edit', edit_tag_path(tag) %></td>
 			<td><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></td>

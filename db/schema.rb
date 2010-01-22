@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100121154338) do
+ActiveRecord::Schema.define(:version => 20100122191401) do
 
   create_table "all_users", :force => true do |t|
     t.datetime "created_at"
@@ -161,11 +161,13 @@ ActiveRecord::Schema.define(:version => 20100121154338) do
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
   end
 
   create_table "tags", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_category"
   end
 
   create_table "user_commons", :force => true do |t|

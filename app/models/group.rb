@@ -6,6 +6,10 @@ class Group < ActiveRecord::Base
   has_many :usergroups, :dependent  => :destroy
   has_many :members, :through  => :usergroups, :source  => :user
   
+  has_many :taggings, :dependent => :destroy
+  
+  has_many :tags, :through => :taggings
+  
   belongs_to :owner, :class_name  => 'User', :foreign_key => "user_id"
   
   has_attached_file :photo, :styles => { :small => "100x100#", :medium  => '250x250>' },

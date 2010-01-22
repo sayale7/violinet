@@ -59,6 +59,7 @@ de:
     new: Neu
     my_groups: Meine Gruppen
     duty: Pflichtfelder
+    clear: Zurücksetzen
   event:
     begin: Begin
     end: Ende
@@ -160,6 +161,10 @@ de:
     remove_from_post: Entfernen
     add_tags_to_post: Verfügbare Tags
     add_to_post: Hinzufügen
+    german_name: Deutscher Name
+    english_name: Englischer Name
+    for: Für
+    names: Tagnamen
   flash:
     comment_destroyed: Eintrag gelöscht
     comment_created: Eintrag erstellt
