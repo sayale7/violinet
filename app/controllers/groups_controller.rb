@@ -63,6 +63,8 @@ class GroupsController < ApplicationController
       flash[:notice] = "Successfully updated group."
       redirect_to @group
     else
+      @not_in_group_tags = Tag.find_all_by_is_category(true) - @group.tags
+      flash[:error] = "An Error Occured"
       render :action => 'edit'
     end
   end
@@ -80,7 +82,7 @@ class GroupsController < ApplicationController
     tags.each do |tag|
       Tagging.find_or_create_by_tag_id_and_group_id(tag.id, @group.id)
     end
-    @not_in_group_tags = Tag.all() - @group.tags
+    @not_in_group_tags = Tag.find_all_by_is_category(true) - @group.tags
     respond_to do |format|
       format.html { redirect_to('/group/' + params[:id].to_s + '/edit') }
       format.js
@@ -93,7 +95,7 @@ class GroupsController < ApplicationController
     tags.each do |tag|
       Tagging.find_by_tag_id_and_group_id(tag.id, @group.id).destroy
     end
-    @not_in_group_tags = Tag.all() - @group.tags
+    @not_in_group_tags = Tag.find_all_by_is_category(true) - @group.tags
     respond_to do |format|
       format.html { redirect_to('/group/' + params[:id].to_s + '/edit') }
       format.js

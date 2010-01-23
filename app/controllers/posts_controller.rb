@@ -66,7 +66,7 @@ class PostsController < ApplicationController
     tags.each do |tag|
       Tagging.find_or_create_by_tag_id_and_post_id(tag.id, @post.id)
     end
-    @not_in_post_tags = Tag.all() - @post.tags
+    @not_in_post_tags = Tag.find_all_by_is_category(false) - @post.tags
     respond_to do |format|
       format.html { redirect_to('/posts/' + params[:id].to_s + '/edit') }
       format.js
@@ -79,7 +79,7 @@ class PostsController < ApplicationController
     tags.each do |tag|
       Tagging.find_by_tag_id_and_post_id(tag.id, @post.id).destroy
     end
-    @not_in_post_tags = Tag.all() - @post.tags
+    @not_in_post_tags = Tag.find_all_by_is_category(false) - @post.tags
     respond_to do |format|
       format.html { redirect_to('/posts/' + params[:id].to_s + '/edit') }
       format.js
