@@ -5,3 +5,4 @@ config/database.yml
 config/deploy.rb
 public/photos/*
 public/profile_images/*
+
