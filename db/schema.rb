@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100122191401) do
+ActiveRecord::Schema.define(:version => 20100124110112) do
 
   create_table "all_users", :force => true do |t|
     t.datetime "created_at"
@@ -123,14 +123,11 @@ ActiveRecord::Schema.define(:version => 20100122191401) do
   end
 
   create_table "profile_images", :force => true do |t|
-    t.integer "parent_id"
-    t.string  "content_type"
-    t.string  "filename"
-    t.string  "thumbnail"
-    t.integer "size"
-    t.integer "width"
-    t.integer "height"
-    t.integer "user_id",      :default => 0, :null => false
+    t.integer  "user_id",             :default => 0, :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "roles", :force => true do |t|
@@ -157,17 +154,17 @@ ActiveRecord::Schema.define(:version => 20100122191401) do
   end
 
   create_table "taggings", :force => true do |t|
-    t.integer  "post_id"
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "group_id"
+    t.string   "taggable_type"
+    t.integer  "taggable_id"
   end
 
   create_table "tags", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_category"
+    t.string   "taggable_type"
   end
 
   create_table "user_commons", :force => true do |t|

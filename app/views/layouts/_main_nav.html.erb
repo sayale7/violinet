@@ -5,43 +5,43 @@
 <% if !current_user %>
 <ul>
 	<li>
-		<%= link_to t("common.blogs"), posts_path %>
+		<%= link_to_unless_current t("common.blogs"), posts_path %>
 	</li>
 	<li>
-		<%= link_to t("common.registered_users"), users_path %>
+		<%= link_to_unless_current t("common.registered_users"), users_path %>
 	</li>
 	<li>
-		<%= link_to t('common.groups'), groups_path %>
+		<%= link_to_unless_current t('common.groups'), groups_path %>
 	</li>
 	<li>
-		<%= link_to t("common.register"), new_user_path %>
+		<%= link_to_unless_current t("common.register"), new_user_path %>
 	</li>
 	<li>
-		<%= link_to t("common.login"), new_user_session_path %>
+		<%= link_to_unless_current t("common.login"), new_user_session_path %>
 	</li>
 </ul>
 <% else %>
 <ul>
 	<li>
-		<%= link_to t("user.my_profile"), user_path(:current) %>
+		<%= link_to_unless_current t("user.my_profile"), user_path(:current) %>
 	</li>
 	<li>
-		<%= link_to t("common.blogs"), posts_path %>
+		<%= link_to_unless_current t("common.blogs"), posts_path %>
 	</li>
 	<li>
-		<%= link_to t("mail.inbox"), inbox_path %>
+		<%= link_to_unless_current t("mail.inbox"), inbox_path %>
 	</li>
 	<li>
-		<%= link_to t("common.all_photo_album"), photo_albums_path %>
+		<%= link_to_unless_current t("common.all_photo_album"), photo_albums_path %>
 	</li>
 	<li>
-		<%= link_to t("common.registered_users"), users_path %>
+		<%= link_to_unless_current t("common.registered_users"), users_path %>
 	</li>
 	<li>
-		<%= link_to t('common.groups'), groups_path %>
+		<%= link_to_unless_current t('common.groups'), groups_path %>
 	</li>
 	<li>
-		<%= link_to t("common.logout"), logout_path, :method => :delete, :confirm => t("common.confirm_logout") %>
+		<%= link_to_unless_current t("common.logout"), logout_path, :method => :delete, :confirm => t("common.confirm_logout") %>
 	</li>
 </ul>
 <% end %>

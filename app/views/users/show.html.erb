@@ -164,7 +164,7 @@
 
 <div class="profile_image">
     <% if @profile_image %>
-    <a href="<%= @profile_image.public_filename() %>"  rel="shadowbox"><%= image_tag(@profile_image.public_filename(:small)) %></a>
+		<a href='<%= @profile_image.avatar.url %>' rel='shadowbox'><%= image_tag @profile_image.avatar.url(:small) %></a>
 	 <% else %>
 	 <%= image_tag '/images/anonymous.jpg', :width  => 150 %>
     <% end %>

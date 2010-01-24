@@ -1,5 +1,7 @@
-<% if @profile_image_to_show != nil %>
-<a href='<%= @profile_image_to_show.public_filename() %>' rel='shadowbox'><%= image_tag @profile_image_to_show.public_filename(:small) %></a>
+<% if @profile_image %>
+<a href='<%= @profile_image.avatar.url %>' rel='shadowbox'><%= image_tag @profile_image.avatar.url(:small) %></a>
+<% else %>
+<%= image_tag '/images/anonymous.jpg', :width  => 150 %>
 <% end %>
 
 
@@ -12,7 +14,7 @@
 
 <div class="upload_form_no_float">
 <p>
-    <%= f.file_field :uploaded_data %>
+    <%= f.file_field :avatar %>
 </p>
 <p>
     <%= submit_tag t("common.upload") %>

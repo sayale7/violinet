@@ -1,13 +1,13 @@
 <ul id="jsddm">
-	<li><%= link_to "Eingang", inbox_path %></li>
-	<li><%= link_to "Gesendet", :controller => "sent", :action => "index" %></li>
-	<li><%= link_to "Neue Nachricht", new_sent_path %></li>
+	<li><%= link_to_unless_current "Eingang", inbox_path %></li>
+	<li><%= link_to_unless_current "Gesendet", :controller => "sent", :action => "index" %></li>
+	<li><%= link_to_unless_current "Neue Nachricht", new_sent_path %></li>
 	<span class="wojs">
 	<li>
-		<%= link_to "Eingang (gelöscht)", trash_in_path %>
+		<%= link_to_unless_current "Eingang (gelöscht)", trash_in_path %>
 	</li>
 	<li>
-		<%= link_to "Gesendet (gelöscht)", trash_out_path %>
+		<%= link_to_unless_current "Gesendet (gelöscht)", trash_out_path %>
 	</li>
 	</span>
 	<li id="js" class="wjs"><a href="#">Papierkorb</a>

@@ -9,24 +9,26 @@
 	{	
 		float: left;
 		list-style: none;
-		font: 13px Tahoma, Arial
+		padding: 10px;
+		color:#333;
+		font: 13px Tahoma, Arial;
+		font-weight:bold;
 		}
 
 		#jsddm li a
 		{	
 			display: block;
-			padding: 10px;
 			text-decoration: none;
 			white-space: nowrap;
 			background:transparent; 
 			color:#333;
+			font-weight:normal;
 			}
 
 			#jsddm li a:hover
 			{	
 				color:#333;
 				font-weight:bold;
-				text-decoration: underline;
 			}
 
 			#jsddm li ul
@@ -38,7 +40,9 @@
 
 				#jsddm li ul li
 				{	float: none;
-					display: inline}
+					display: inline;
+					padding-:10px;
+					}
 
 					#jsddm li ul li a
 					{	width: auto;

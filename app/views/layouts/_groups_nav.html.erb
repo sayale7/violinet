@@ -1,8 +1,11 @@
 <ul>
 	<li>
-		<%= link_to t("common.my_groups"), mygroups_path %>
+		<%= link_to_unless_current t("common.my_groups"), mygroups_path %>
 	</li>
 	<li>
-		<%= link_to t('group.new'), new_group_path %>
+		<%= link_to_unless_current t('group.new'), new_group_path %>
+	</li>
+	<li>
+		<%= link_to_unless_current t('group.manage_categories'), '/tags?taggable_type=Group' %>
 	</li>
 </ul>

@@ -113,7 +113,6 @@ li{
 	margin-bottom:0px;
 }
 
-
 /* table design */
 
 table, td {
@@ -213,14 +212,22 @@ padding-top:20px;
 }
 
 #user_nav ul li {
-	display: inline;
+	display: block;
+	float: left;
+	font-size: 13px;
+	font-family: Verdana;
+	background:transparent; 
+	color:#333;
+	font-weight:bold;
+	text-decoration: none;
+	padding:10px;
 }
 #user_nav ul li a {
 	display: block;
 	float: left;
 	font-size: 13px;
 	font-family: Verdana;
-	padding: 10px;
+	font-weight:normal;
 	background:transparent; 
 	color:#333;
 	text-decoration: none;
@@ -230,7 +237,6 @@ padding-top:20px;
 	color:#333;
 	font-weight:bold;
 }
-
 
 
 #user_nav_two{

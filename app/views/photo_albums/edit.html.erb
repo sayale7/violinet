@@ -81,7 +81,7 @@ window.onload = function(){
  
 <div style="padding:20px 0 0 0;">
 	<% unless @photos.size > 14 %>
-	<div id="old_image_upload_form">
+	<div id="old_image_upload_form" class="upload_form">
 		<% form_for(:photo, :url => photos_path,
 		:html => { :multipart => true }) do |f| -%>
 		<p><%= f.hidden_field :photo_album_id, :value => @photo_ablum.id %>

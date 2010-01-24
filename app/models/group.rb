@@ -4,9 +4,10 @@ class Group < ActiveRecord::Base
   named_scope :my_groups, lambda { |argument| { :conditions => ["user_id = ?" , argument] } }
   
   has_many :usergroups, :dependent  => :destroy
+  
   has_many :members, :through  => :usergroups, :source  => :user
   
-  has_many :taggings, :dependent => :destroy
+  has_many :taggings, :as  => :taggable, :dependent => :destroy
   
   has_many :tags, :through => :taggings
   

@@ -26,11 +26,11 @@
 
 <div id="tags_of_post">
 	<% form_tag '/posts/remove_tags', :id => "remove_tags" do %>
-	<% unless (@post.tags - Tag.find_all_by_is_category(true)).empty?  %>
+	<% unless (@post.tags).empty?  %>
 	<br></br>
 	<h2><%= t('tag.remove_tags_from_post') %></h2>
 	<div class="new_click_boxes">
-		<% for tag in (@post.tags - Tag.find_all_by_is_category(true)) do %>
+		<% for tag in (@post.tags) do %>
 		<span class="clickable_items_to_remove" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>
 		<% end %>
 	</div>

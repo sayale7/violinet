@@ -1,10 +1,10 @@
 <% for user in @users %>
 <div class="users_list">
-	<% unless user.profile_image.nil? %>
-	<%= image_tag (user.profile_image.public_filename(:thumb))%>
-	<% else %>
-	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
-	<% end %>
+   <% if user.profile_image %>
+		<%= image_tag user.profile_image.avatar.url(:thumb) %>
+	 <% else %>
+	 <%= image_tag '/images/anonymous.jpg', :width  => 100 %>
+   <% end %>
 </div>
 <div class="users_list">
 	<h3><%= link_to (h user.login), user_path(user) %></h3>

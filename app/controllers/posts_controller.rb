@@ -64,9 +64,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     tags = Tag.find_all_by_id(params[:tags])
     tags.each do |tag|
-      Tagging.find_or_create_by_tag_id_and_post_id(tag.id, @post.id)
+      Tagging.find_or_create_by_tag_id_and_taggable_id_and_taggable_type(tag.id, @post.id, 'Post')
     end
-    @not_in_post_tags = Tag.find_all_by_is_category(false) - @post.tags
+    @not_in_post_tags = Tag.find_all_by_taggable_type('Post') - @post.tags
     respond_to do |format|
       format.html { redirect_to('/posts/' + params[:id].to_s + '/edit') }
       format.js
@@ -77,9 +77,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     tags = Tag.find_all_by_id(params[:tags])
     tags.each do |tag|
-      Tagging.find_by_tag_id_and_post_id(tag.id, @post.id).destroy
+      Tagging.find_or_create_by_tag_id_and_taggable_id_and_taggable_type(tag.id, @post.id, 'Post').destroy
     end
-    @not_in_post_tags = Tag.find_all_by_is_category(false) - @post.tags
+    @not_in_post_tags = Tag.find_all_by_taggable_type('Post') - @post.tags
     respond_to do |format|
       format.html { redirect_to('/posts/' + params[:id].to_s + '/edit') }
       format.js
@@ -98,7 +98,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments
     @tags = Array.new
-    TagName.find_all_by_language_and_tag_id(I18n.locale.to_s, @post.tags - Tag.find_all_by_is_category(true)).each do |item|
+    TagName.find_all_by_language_and_tag_id(I18n.locale.to_s, @post.tags).each do |item|
       @tags.push(item.name)
     end
     respond_to do |format|
@@ -120,7 +120,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
-    @not_in_post_tags = Tag.find_all_by_is_category(false) - @post.tags
+    @not_in_post_tags = Tag.find_all_by_taggable_type('Post') - @post.tags
   end
 
   # POST /posts
@@ -164,11 +164,6 @@ class PostsController < ApplicationController
   # DELETE /posts/1.xml
   def destroy
     @post = Post.find(params[:id])
-    @tags_posts = Array.new
-    @tags_posts = TagsPost.find_all_by_post_id(@post.id)
-    for tag_post in @tags_posts do
-      tag_post.destroy
-    end
     
     if @post.delete
       respond_to do |format|

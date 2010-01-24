@@ -82,6 +82,7 @@ en:
     escaped: Succesfully quit from Group
     attend_error: Error
     attended: You successfully joined this group
+    manage_tags: Manage Categories
   forgot_password:
     password_reset: Reset Password
     forgot: Forgot Password?
@@ -158,6 +159,7 @@ en:
     all_of_this_user: Show me all Posts of 
     new_comment: New Comment
     my_posts: My Posts
+    manage_tags: Manage Tags
   tag:
       remove_tags_from_post: Tags of this Post
       remove_from_post: Remove

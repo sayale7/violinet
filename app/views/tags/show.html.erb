@@ -8,14 +8,6 @@
 	<b><%= t('tag.english_name') %></b>
 	<%=h @tag.tag_names.find_by_language('en').name %>
 </p>
-<p>
-	<b><%= t('tag.for') %></b>
-	<% if @tag.is_category %>
-		Gruppe
-	<% else %>
-		Blog
-	<% end %>
-</p>
 
 <%= link_to 'Edit', edit_tag_path(@tag) %> |
 <%= link_to 'Back', tags_path %>

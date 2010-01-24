@@ -79,6 +79,7 @@ de:
     escaped: Aus Gruppe ausgetreten
     attend_error: Fehler beim Gruppenbeitritt
     attended: Beigetreten
+    manage_tags: Kategorien verwalten
   forgot_password:
     password_reset: Passwort zurücksetzen
     forgot: Passwort vergessen?
@@ -156,6 +157,7 @@ de:
     all_of_this_user: Alle Artikel von 
     new_comment: Neuer Kommentar
     my_posts: Meine Posts
+    manage_tags: Tags verwalten
   tag:  
     remove_tags_from_post: Tags des Eintrags
     remove_from_post: Entfernen

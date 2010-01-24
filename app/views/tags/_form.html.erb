@@ -10,10 +10,7 @@
 	<%= f.label :english_name %><br />
 	<%= f.text_field :english_name %>
 </p>
-
-<p>
-	<%= f.select(:is_category, {'Gruppe'  => true, 'Blog'  => false }, :include_blank  => false) %>
-</p>
+<%= f.hidden_field :taggable_type, :value  => @taggable_type %>
 
 <p>
 	<%= f.submit 'Update' %>

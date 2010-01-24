@@ -2,9 +2,9 @@ class Tag < ActiveRecord::Base
   
   has_many :taggings, :dependent => :destroy
   
-  has_many :posts, :through => :taggings
-  
-  has_many :groups, :through => :taggings
+  # has_many :posts, :through => :taggings
+  # 
+  # has_many :groups, :through => :taggings
   
   has_many :tag_names, :dependent => :destroy
   
