@@ -4,7 +4,12 @@
 	<h2>
 		<%=h @group.name %>
 	</h2>
-	(<%= t('group.founder') %><%= ": " %><%= link_to @group.owner.login, user_path(@group.owner) %>)
+	(<%= t('group.founder') %><%= ": " %>
+	<%= link_to @group.owner.login, user_path(@group.owner) %>
+	<%= " - " unless ( @group.owner.user_common.firstname.nil? || @group.owner.user_common.firstname.empty?) && (@group.owner.user_common.lastname.nil? || @group.owner.user_common.lastname.empty?)  %>
+	<%= @group.owner.user_common.firstname.to_s + " " unless nil? %>
+	<%= @group.owner.user_common.lastname unless nil? %>)
+	
 	<br></br>
 	<%= simple_format(h @group.description) %>
 </div>
@@ -16,7 +21,7 @@
 	<% end %>
 </div>
 
-<p class="clear">
+<p style="clear:left;">
 	<% if current_user %>
 	<% if current_user == @group.owner %>
 	<%= link_to t('common.edit'), edit_group_path(@group) %> |

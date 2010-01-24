@@ -1,10 +1,5 @@
 <% title "Edit Group" %>
-
-<%= render :partial => 'form' %>
-
-<%= javascript 'jquery', 'application' %>
-
-
+<div class="tags">
 <div class="loading"></div>
 <div id="not_tags_of_post">
 	<% form_tag '/groups/add_tags', :id => "add_tags" do %>
@@ -43,3 +38,10 @@
 	<% end %>
 	<% end %>
 </div>
+</div>
+<%= render :partial => 'form' %>
+
+<%= javascript 'jquery', 'application' %>
+
+
+

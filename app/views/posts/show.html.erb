@@ -1,4 +1,4 @@
-<div id="tags">
+<div class="tags">
 	<p>
 		<%= link_to (t('post.all_of_this_user').to_s << " " << User.find(@post.user_id).login.to_s), user_posts_url(@post.user_id) %>
 	</p>
@@ -8,11 +8,11 @@
 	</p>
 	<h3>Tags</h3>
 	<p>
-		<%= @tags.collect {|tag| link_to(tag)}.join(", ") %>
+		<%= @tags.collect {|tag| link_to(tag.name, "/posts?tag=#{tag.id}")}.join(", ") %>
 	</p>
 </div>
 
-<div id="post">
+<div class="post">
 <%= render :partial => @post %>
 <div class="clear">
 <% if current_user %>

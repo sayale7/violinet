@@ -38,6 +38,16 @@ class PostsController < ApplicationController
         @posts = @posts.uniq
       end
     end
+    
+    if params[:tag]
+      @taggings = Tagging.find_all_by_tag_id(TagName.find(params[:tag]).tag_id)
+      posts = Array.new
+      @taggings.each do |tagging|
+        posts = posts + Post.find_all_by_id(tagging.taggable_id)
+      end
+      @posts = @posts & posts
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.js
@@ -45,6 +55,7 @@ class PostsController < ApplicationController
       format.atom
     end
   end
+  
   
   def myblog
     @posts = Post.my_posts(current_user.id).from_date(from(params[:from]), to(params[:to]))
@@ -99,7 +110,7 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @tags = Array.new
     TagName.find_all_by_language_and_tag_id(I18n.locale.to_s, @post.tags).each do |item|
-      @tags.push(item.name)
+      @tags.push(item)
     end
     respond_to do |format|
       format.html # show.html.erb

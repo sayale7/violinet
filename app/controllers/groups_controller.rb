@@ -90,7 +90,7 @@ class GroupsController < ApplicationController
     end
     @not_in_group_tags = Tag.find_all_by_taggable_type('Group') - @group.tags
     respond_to do |format|
-      format.html { redirect_to('/group/' + params[:id].to_s + '/edit') }
+      format.html { redirect_to('/groups/' + params[:id].to_s + '/edit') }
       format.js
     end
   end

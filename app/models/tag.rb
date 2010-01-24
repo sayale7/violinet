@@ -1,11 +1,8 @@
 class Tag < ActiveRecord::Base
   
+  
   has_many :taggings, :dependent => :destroy
-  
-  # has_many :posts, :through => :taggings
-  # 
-  # has_many :groups, :through => :taggings
-  
+
   has_many :tag_names, :dependent => :destroy
   
   attr_writer :german_name
@@ -26,6 +23,7 @@ class Tag < ActiveRecord::Base
       self.tag_names.find_by_language('en').name
     end
   end
+
   
   private
   

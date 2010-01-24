@@ -1,9 +1,10 @@
 <%= javascript 'jquery', 'application' %>
 
 
-<div class="left"><h1><%= t "post.edit"%></h1>
+<div class="post"><h1><%= t "post.edit"%></h1>
 <%= render :partial => "form" %></div>
 
+<div class="tags">
 <div class="loading"></div>
 <div id="not_tags_of_post">
 	<% form_tag '/posts/add_tags', :id => "add_tags" do %>
@@ -42,6 +43,6 @@
 	<% end %>
 	<% end %>
 </div>
-
+</div>
 
 

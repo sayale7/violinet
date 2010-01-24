@@ -462,17 +462,16 @@ padding-top:20px;
 /* Tags and Posts */
 
 #not_tags_of_post{
-	width:300px;
-	min-height:100px;
-	float:right;
+	width:950px;
+	float:left;
+	margin-bottom:10px;
 }
 #tags_of_post{
-	clear:right;
-	min-height:100px;
-	width:300px;
-	float:right;
+	float:left;
+	width:950px;
+	margin-bottom:10px;
 }
-#tags{
+.tags{
 	float:right;
 	/*background: #D6E6FC;*/
 	width:150px;
@@ -483,7 +482,7 @@ padding-top:20px;
 #tags a{
 	font-size:10px;
 }
-#post{
+.post{
 	float:left;
 	padding:10px;
 	width:750px;

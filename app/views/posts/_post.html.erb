@@ -1,9 +1,11 @@
-<% div_for post do %>
 <h2><%= link_to_unless_current h(post.title), post %></h2>
 <p>
-	<%= t"common.created_at" %><%= post.created_at.strftime(" %d. %m. %Y um %H:%M Uhr ") %><%= t "common.by" %><%= " " %><%= link_to (post.user.login), post.user %>
+	<%= t"common.created_at" %><%= post.created_at.strftime(" %d. %m. %Y um %H:%M Uhr ") %><%= t "common.by" %>
+	<%= " " %><%= link_to (post.user.login), post.user %>
+	<%= " - " %>
+	<%= post.user.user_common.firstname unless nil? %>
+	<%= " " %>
+	<%= post.user.user_common.lastname unless nil? %>
 </p>
 
 <%= simple_format (post.body) %>
-
-<% end %>

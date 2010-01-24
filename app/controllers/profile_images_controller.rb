@@ -16,7 +16,9 @@ class ProfileImagesController < ApplicationController
   
   def create
     @profile_image = ProfileImage.find_by_user_id(current_user.id)
-    @profile_image.destroy
+    unless @profile_image.nil?
+      @profile_image.destroy
+    end
     @profile_image = ProfileImage.new(params[:profile_image])
     if @profile_image.save
       if params[:profile_image][:avatar].blank?
