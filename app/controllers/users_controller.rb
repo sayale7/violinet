@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   
   def index
     if params[:login_like]
-      @users = User.login_like(params[:login_like])
+      @users = User.login_like_or_user_common_street_like(params[:login_like])
+      @users = @users + User.user_common_city_like(params[:login_like])
+      @users = @users + User.user_common_state_like(params[:login_like])
       if params[:login_like].to_s.match(" ")
         split = params[:login_like].split(' ', 2)
         @user_commons = UserCommon.all(:conditions  => "firstname LIKE '%#{split.first}%' and lastname LIKE '%#{split.second}%'")
