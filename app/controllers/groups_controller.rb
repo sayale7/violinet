@@ -95,6 +95,21 @@ class GroupsController < ApplicationController
     end
   end
   
+  # DELETE /posts/1
+  # DELETE /posts/1.xml
+  def destroy
+    @group = Group.find(params[:id])
+    @group.photo.destroy
+    if @group.delete
+      respond_to do |format|
+        flash[:notice] = t("common.delete_success")
+        format.html { redirect_to(groups_url) }
+        format.xml  { head :ok }
+      end
+    end
+    
+  end
+  
   private
   
   def user_commons_searchlogic
