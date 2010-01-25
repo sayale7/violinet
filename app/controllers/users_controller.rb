@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       if params[:login_like].to_s.match(" ")
         split = params[:login_like].split(' ', 2)
         @user_commons = UserCommon.all(:conditions  => "firstname LIKE '%#{split.first}%' and lastname LIKE '%#{split.second}%'")
+        @user_commons = @user_commons + UserCommon.all(:conditions  => "lastname LIKE '%#{split.first}%' and firstname LIKE '%#{split.second}%'")
         @user_commons.each do |user_common|
           @users = @users + User.find_all_by_id(user_common.user_id)
         end
