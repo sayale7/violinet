@@ -1,8 +1,5 @@
 class RolesUsersController < ApplicationController
-  
-  access_control do
-    allow :admin
-  end
+
   
   # GET /roles_users
   # GET /roles_users.xml

@@ -1,9 +1,5 @@
 class UserCommonsController < ApplicationController
   
-  access_control do
-    allow logged_in, :to => [:edit, :update]
-  end
-  
   def index
     @user_commons = UserCommon.all
   end

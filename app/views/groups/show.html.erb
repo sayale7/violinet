@@ -41,7 +41,7 @@
 <div class="group_members">
 	<p>
 	<% unless member.profile_image.nil? %>
-	<%= image_tag(member.profile_image.avatar.url(:small) )%>
+	<%= image_tag(member.profile_image.avatar.url(:small))%>
 	<% else %>
 	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
 	<% end %>

@@ -108,7 +108,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.manage_categories 'manage_categories', :controller  => 'tags', :action  => 'manage_categories'
   
-  map.root :controller => "posts", :action => "index"
+  map.root :controller => "welcome", :action => "index"
   
 
   map.connect ':controller/:action/:id'

@@ -1,8 +1,5 @@
 class ProfileImagesController < ApplicationController
-  
-  access_control do
-    allow logged_in
-  end
+
 
   def new
     unless params[:edit].eql?('true')

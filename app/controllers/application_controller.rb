@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_default_url_for_mails
   filter_parameter_logging :password, :password_confirmation
   
-  rescue_from 'Acl9::AccessDenied', :with => :access_denied
+  # rescue_from 'Acl9::AccessDenied', :with => :access_denied
   
   helper :all
   helper_method :current_user_session, :current_user
@@ -43,6 +43,16 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.record
   end
   
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = t('common.access_denied')
+    redirect_to root_url
+  end
+  
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    flash[:error] = t('common.record_not_found')
+    redirect_to root_url
+  end
+  
 #  def require_user
 #    unless current_user
 #      store_location
@@ -70,15 +80,15 @@ class ApplicationController < ActionController::Base
 #    session[:return_to] = nil
 #  end
 #  
- def access_denied
-   if current_user
-     flash[:notice] = 'Access denied.'
-     redirect_to account_url
-   else
-     flash[:notice] = 'Access denied. Try to log in first.'
-     redirect_to root_url
-   end
- end    
+ # def access_denied
+ #   if current_user
+ #     flash[:notice] = 'Access denied.'
+ #     redirect_to root_url
+ #   else
+ #     flash[:notice] = 'Access denied. Try to log in first.'
+ #     redirect_to root_url
+ #   end
+ # end    
   
   
   

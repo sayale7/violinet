@@ -16,4 +16,3 @@ class Post < ActiveRecord::Base
   
   
 end
-#(Time.now - 60.day).strftime("%Y-%m-%d %H:%M:%S")

@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   
+  has_many :roles_users
+  has_many :roles, :through  => :roles_users
+  
+  
   has_many :own_groups, :class_name => 'Group', :dependent  => :destroy
   
   has_many :usergroups
@@ -23,7 +27,6 @@ class User < ActiveRecord::Base
   before_create :build_inbox
   before_create :build_trash
   
-  acts_as_authorization_subject
   
   acts_as_authentic do |c|
     c.validates_length_of_password_field_options = {:on => :update, :minimum => 4, :if => :has_no_credentials?}
@@ -31,6 +34,15 @@ class User < ActiveRecord::Base
   end
   
   attr_accessible :to, :login, :email, :password, :password_confirmation
+  
+  def role?(role)
+    roles.each do |_role|
+      if _role.name.to_s.eql?(role.to_s)
+        return true
+      end
+    end
+    return false
+  end
   
   def active?
     active

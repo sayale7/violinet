@@ -66,27 +66,42 @@ class UsersController < ApplicationController
     @comment = Comment.new
     @comments = @user.comments
   end
-  
+
   def edit
-    @user = current_user
-    @profile_image = ProfileImage.find_by_user_id(@user.id)
-  end
-  
-  def update
-    @user = current_user # makes our views "cleaner" and more consistent
-    if @user.update_attributes(params[:user])
+    if current_user
+      @user = current_user
       @profile_image = ProfileImage.find_by_user_id(@user.id)
-      flash[:notice] = "Account updated!"
-      redirect_to user_path(@user)
     else
-      render :action => :edit
+      flash[:error] = t('common.access_denied')
+      redirect_to root_url
     end
   end
   
+  def update
+    if current_user
+      @user = current_user # makes our views "cleaner" and more consistent
+      if @user.update_attributes(params[:user])
+        @profile_image = ProfileImage.find_by_user_id(@user.id)
+        flash[:notice] = "Account updated!"
+        redirect_to user_path(@user)
+      else
+        render :action => :edit
+      end
+    else
+      flash[:error] = t('common.access_denied')
+      redirect_to root_url
+    end
+  end
+
   def destroy_user
     @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = "Successfully destroyed user."
+    if current_user && (current_user == @user)
+      @user = User.find(params[:id])
+      @user.destroy
+      flash[:notice] = "Successfully destroyed user."
+    else
+      flash[:error] = t('common.access_denied')
+    end
     redirect_to root_url
   end
 end
