@@ -1,5 +1,5 @@
 <% title "User List" %>
-
+<p><%= t('user.search_field_description') %></p>
 <% form_tag user_search_url, :id  => 'user_search', :method  => 'get' do |f| %>
 <p>
 	<%= text_field_tag('login_like', '', :class  => 'tb', :autocomplete => "off")  %>

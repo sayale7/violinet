@@ -15,6 +15,16 @@ class GroupsController < ApplicationController
       end
     end
     @groups = @groups.uniq
+    
+    if params[:tag]
+      @taggings = Tagging.find_all_by_tag_id(TagName.find(params[:tag]).tag_id)
+      groups = Array.new
+      @taggings.each do |tagging|
+        groups = groups + Group.find_all_by_id(tagging.taggable_id)
+      end
+       @groups = @groups & groups
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.js
@@ -35,6 +45,10 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @tags = Array.new
+    TagName.find_all_by_language_and_tag_id(I18n.locale.to_s, @group.tags).each do |item|
+      @tags.push(item)
+    end
   end
   
   def new
@@ -45,8 +59,8 @@ class GroupsController < ApplicationController
     @group = Group.new(params[:group])
     @group.user_id = current_user.id
     if @group.save
-      flash[:notice] = "Successfully created group."
-      redirect_to @group
+      flash[:notice] = t('common.created')
+      redirect_to edit_group_path(@group)
     else
       render :action => 'new'
     end
@@ -62,11 +76,11 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     unauthorized! if cannot? :manage, @group
     if @group.update_attributes(params[:group])
-      flash[:notice] = "Successfully updated group."
+      flash[:notice] = t('common.updated')
       redirect_to @group
     else
       @not_in_group_tags = Tag.find_all_by_is_category(true) - @group.tags
-      flash[:error] = "An Error Occured"
+      flash[:error] = t('common.error')
       render :action => 'edit'
     end
   end

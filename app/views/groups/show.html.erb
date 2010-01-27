@@ -19,6 +19,14 @@
 	<% else %>
 	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
 	<% end %>
+	<p>
+		<%= link_to (t('group.all_of_this_user').to_s << " " << User.find(@group.user_id).login.to_s), user_groups_url(@group.user_id) %>
+	</p>
+
+	<h3>Tags</h3>
+	<p>
+		<%= @tags.collect {|tag| link_to(tag.name, "/groups?tag=#{tag.id}")}.join(", ") %>
+	</p>
 </div>
 
 <p style="clear:left;">
@@ -40,14 +48,17 @@
 <% @group.members.each do |member| %>
 <div class="group_members">
 	<p>
-	<% unless member.profile_image.nil? %>
-	<a href='<%= member.profile_image.avatar.url() %>' rel='shadowbox'><%= image_tag(member.profile_image.avatar.url(:thumb))%></a>
-	<% else %>
-	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
-	<% end %>
+		<% unless member.profile_image.nil? %>
+		<a href='<%= member.profile_image.avatar.url() %>' rel='shadowbox'><%= image_tag(member.profile_image.avatar.url(:thumb))%></a>
+		<% else %>
+		<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
+		<% end %>
 	</p>
 	<p>
-		<%= link_to member.login, user_path(member) %>
+		<%= link_to member.login, user_path(member) %>	<%= " - " unless ( member.user_common.firstname.nil? || member.user_common.firstname.empty?) && (@group.owner.user_common.lastname.nil? || member.user_common.lastname.empty?)  %>
+
+		<%= member.user_common.firstname.to_s + " " unless nil? %>
+		<%= member.user_common.lastname unless nil? %>
 	</p>
 </div>
 <% end %>

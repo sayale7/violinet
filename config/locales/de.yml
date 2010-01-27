@@ -61,6 +61,7 @@ de:
     duty: Pflichtfelder
     clear: Zurücksetzen
     access_denied: Zugriff nicht erlaubt!
+    destroyed: Erfolgreich gelöscht
   event:
     begin: Begin
     end: Ende
@@ -146,6 +147,7 @@ de:
     friend_added: Als Freund hinzugefügt
     add_friend_error: Konnte nicht als Freund hinzugefügt werden
     destroyed_friendship: Freundschaft gelöscht
+    search_field_description: Suchen Sie hier nach Namen, Usernamen oder Adresse eines Mitglieds
   profile_image:
       created: Profilbild angelegt!
       error: Profilbild konnte nicht angelegt werden (sollte kleiner 0.5MB und jpeg, gif oder png sein)

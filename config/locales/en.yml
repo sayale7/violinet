@@ -64,6 +64,7 @@ en:
     duty: Mandatory Fields
     clear: Reset Search
     access_denied: Access Denied
+    destroyed: Successfully deleted
   event:
     begin: Begin
     end: Ende
