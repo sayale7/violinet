@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   
   def index
     if params[:user_id]
-      @groups = User.find(params[:user_id]).usergroups
+      @groups = User.find(params[:user_id]).own_groups
     else
       unless params[:user_id_for_search].nil?
         @groups = Group.name_like_or_description_like(params[:search])
@@ -54,11 +54,13 @@ class GroupsController < ApplicationController
   
   def edit
     @group = Group.find(params[:id])
+    unauthorized! if cannot? :manage, @group
     @not_in_group_tags = Tag.find_all_by_taggable_type('Group') - @group.tags
   end
   
   def update
     @group = Group.find(params[:id])
+    unauthorized! if cannot? :manage, @group
     if @group.update_attributes(params[:group])
       flash[:notice] = "Successfully updated group."
       redirect_to @group
@@ -71,6 +73,7 @@ class GroupsController < ApplicationController
   
   def add_tags
     @group = Group.find(params[:id])
+    unauthorized! if cannot? :manage, @group
     tags = Tag.find_all_by_id(params[:tags])
     tags.each do |tag|
       Tagging.find_or_create_by_tag_id_and_taggable_id_and_taggable_type(tag.id, @group.id, 'Group')
@@ -84,6 +87,7 @@ class GroupsController < ApplicationController
   
   def remove_tags
     @group = Group.find(params[:id])
+    unauthorized! if cannot? :manage, @group
     tags = Tag.find_all_by_id(params[:tags])
     tags.each do |tag|
       Tagging.find_or_create_by_tag_id_and_taggable_id_and_taggable_type(tag.id, @group.id, 'Group').destroy
@@ -99,6 +103,7 @@ class GroupsController < ApplicationController
   # DELETE /posts/1.xml
   def destroy
     @group = Group.find(params[:id])
+    unauthorized! if cannot? :manage, @group
     @group.photo.destroy
     if @group.delete
       respond_to do |format|

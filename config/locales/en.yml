@@ -63,6 +63,7 @@ en:
     my_groups: My Groups
     duty: Mandatory Fields
     clear: Reset Search
+    access_denied: Access Denied
   event:
     begin: Begin
     end: Ende
@@ -83,6 +84,7 @@ en:
     attend_error: Error
     attended: You successfully joined this group
     manage_tags: Manage Categories
+    of_this_user: Groups of
   forgot_password:
     password_reset: Reset Password
     forgot: Forgot Password?
@@ -153,7 +155,7 @@ en:
     new: New Post
     edit: Edit Post
     abo: Subscribe
-    of_this_user: Show me the Blog of this User
+    of_this_user: Blog of
     title: Title
     body: Body
     all_of_this_user: Show me all Posts of 
@@ -177,3 +179,5 @@ en:
     description: Description of the Image
     upload: Select max  
     kind: Images (smaller than 0.5MB and jpeg, gif or png)
+  photo_album:
+      of_this_user: Photoalbums of from

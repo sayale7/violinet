@@ -60,6 +60,7 @@ de:
     my_groups: Meine Gruppen
     duty: Pflichtfelder
     clear: Zurücksetzen
+    access_denied: Zugriff nicht erlaubt!
   event:
     begin: Begin
     end: Ende
@@ -80,6 +81,7 @@ de:
     attend_error: Fehler beim Gruppenbeitritt
     attended: Beigetreten
     manage_tags: Kategorien verwalten
+    of_this_user: Gruppen von
   forgot_password:
     password_reset: Passwort zurücksetzen
     forgot: Passwort vergessen?
@@ -151,7 +153,7 @@ de:
     new: Neuer Post
     edit: Post Pearbeiten
     abo: Abonnieren
-    of_this_user: Blog dieses Benutzers zeigen
+    of_this_user: Blog von
     title: Titel
     body: Content
     all_of_this_user: Alle Artikel von 
@@ -175,6 +177,8 @@ de:
     description: Beschreibung des Bildes
     upload: Maximal
     kind: Bilder auswählen (kleiner 0.5MB und jpeg, gif oder png)
+  photo_album:
+      of_this_user: Fotoalben von
   date:
     formats:
       default: "%d.%m.%Y"

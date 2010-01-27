@@ -1,6 +1,8 @@
 class TagsController < ApplicationController
   # GET /tags
   # GET /tags.xml
+  load_and_authorize_resource
+  
   def index
     unless params[:taggable_type].nil?
       @taggable_type =  params[:taggable_type]

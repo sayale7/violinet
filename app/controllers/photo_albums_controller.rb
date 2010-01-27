@@ -1,7 +1,11 @@
 class PhotoAlbumsController < ApplicationController
   
   def index
-    @photo_ablums = PhotoAlbum.find_all_by_user_id(current_user)
+    if params[:user_id]
+      @photo_ablums = PhotoAlbum.find_all_by_user_id(params[:user_id])
+    else
+      @photo_ablums = PhotoAlbum.find_all_by_user_id(current_user)
+    end
   end
   
   def show
@@ -18,6 +22,7 @@ class PhotoAlbumsController < ApplicationController
     @photo_ablum = PhotoAlbum.find(params[:id])
     @photo = Photo.new
     @photos = Photo.find_all_by_photo_album_id_and_thumbnail(@photo_ablum.id, nil)
+    unauthorized! if cannot? :manage, @photo_ablum
   end
   
   def create
@@ -41,6 +46,7 @@ class PhotoAlbumsController < ApplicationController
   def update_photo
     @photo = Photo.find(params[:id])
     @photo_ablum = PhotoAlbum.find(@photo.photo_album_id)
+    unauthorized! if cannot? :manage, @photo_ablum
     respond_to do |format|
       format.html { redirect_to edit_photo_album_path(@photo_ablum) }
       format.js
@@ -49,6 +55,7 @@ class PhotoAlbumsController < ApplicationController
   
   def update
     @photo_album = PhotoAlbum.find(params[:id])
+    unauthorized! if cannot? :manage, @photo_ablums
     if @photo_album.update_attributes(params[:photo_album])
       flash[:notice] = t("common.updated")
       redirect_to edit_photo_album_path(@photo_album)
@@ -57,8 +64,14 @@ class PhotoAlbumsController < ApplicationController
   
   def destroy
     @photo_album = PhotoAlbum.find(params[:id])
-    if @photo_album.destroy
-      redirect_to photo_albums_path
+    unauthorized! if cannot? :manage, @photo_album
+    
+    if @photo_album.delete
+        respond_to do |format|
+          flash[:notice] = t("common.delete_success")
+          format.html { redirect_to photo_albums_path }
+          format.xml  { head :ok }
+        end
     end
   end
 end

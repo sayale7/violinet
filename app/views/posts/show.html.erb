@@ -15,12 +15,10 @@
 <div class="post">
 <%= render :partial => @post %>
 <div class="clear">
-<% if current_user %>
-	<% if current_user.id == @post.user_id %>
+<% if can? :manage, @post %>
 	<p>
 		<%= link_to t('post.edit'), edit_post_path(@post) %> | <%= link_to t('common.delete'), @post, :method => :delete, :confirm => t("common.confirm") %>
 	</p>
-	<% end %>
 	<% end %>
 </div>
 </div>

@@ -5,7 +5,9 @@
 	<li>
 		<%= link_to_unless_current t('group.new'), new_group_path %>
 	</li>
+	<% if can? :manage, Tag %>
 	<li>
 		<%= link_to_unless_current t('group.manage_tags'), '/tags?taggable_type=Group' %>
 	</li>
+	<% end %>
 </ul>

@@ -78,6 +78,7 @@ class PostsController < ApplicationController
       Tagging.find_or_create_by_tag_id_and_taggable_id_and_taggable_type(tag.id, @post.id, 'Post')
     end
     @not_in_post_tags = Tag.find_all_by_taggable_type('Post') - @post.tags
+    unauthorized! if cannot? :manage, @post
     respond_to do |format|
       format.html { redirect_to('/posts/' + params[:id].to_s + '/edit') }
       format.js
@@ -91,6 +92,7 @@ class PostsController < ApplicationController
       Tagging.find_or_create_by_tag_id_and_taggable_id_and_taggable_type(tag.id, @post.id, 'Post').destroy
     end
     @not_in_post_tags = Tag.find_all_by_taggable_type('Post') - @post.tags
+    unauthorized! if cannot? :manage, @post
     respond_to do |format|
       format.html { redirect_to('/posts/' + params[:id].to_s + '/edit') }
       format.js
@@ -121,22 +123,20 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = Post.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @post }
-    end
+    @post = Post.new   
   end
 
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
     @not_in_post_tags = Tag.find_all_by_taggable_type('Post') - @post.tags
+    unauthorized! if cannot? :manage, @post
   end
 
   # POST /posts
   # POST /posts.xml
   def create
+    # unauthorized! if cannot? :create, @post
     #@post = Post.new(params[:post])
     @user = User.find_by_id(current_user)
     @post = @user.posts.new(params[:post])
@@ -156,8 +156,8 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
-    #debugger
     @post = Post.find(params[:id])
+    unauthorized! if cannot? :manage, @post
     
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -175,6 +175,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.xml
   def destroy
     @post = Post.find(params[:id])
+    unauthorized! if cannot? :manage, @post
     
     if @post.delete
       respond_to do |format|

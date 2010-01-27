@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
   before_filter :set_default_url_for_mails
   filter_parameter_logging :password, :password_confirmation
   
-  # rescue_from 'Acl9::AccessDenied', :with => :access_denied
-  
   helper :all
   helper_method :current_user_session, :current_user
   
@@ -48,10 +46,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
   
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    flash[:error] = t('common.record_not_found')
-    redirect_to root_url
-  end
+  # rescue_from ActiveRecord::RecordNotFound do |exception|
+  #   flash[:error] = t('common.record_not_found')
+  #   redirect_to root_url
+  # end
   
 #  def require_user
 #    unless current_user

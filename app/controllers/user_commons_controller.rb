@@ -8,27 +8,15 @@ class UserCommonsController < ApplicationController
     @user_common = UserCommon.find(params[:id])
   end
   
-  def new
-    @user_common = UserCommon.new
-  end
-  
-  def create
-    @user_common = UserCommon.new(params[:user_common])
-    if @user_common.save
-      flash[:notice] = "Successfully created user common."
-      redirect_to edit_user_common_path(@user_common)
-    else
-      render :action => 'new'
-    end
-  end
-  
   def edit
     @user_common = UserCommon.find_by_user_id(params[:id])
+    unauthorized! if cannot? :manage, @user_common
     render :layout => 'users'
   end
   
   def update
     @user_common = UserCommon.find(params[:id])
+    unauthorized! if cannot? :manage, @user_common
     if @user_common.update_attributes(params[:user_common])
       flash[:notice] = "Successfully updated user common."
       redirect_to '/users/' + current_user.id.to_s
@@ -37,10 +25,4 @@ class UserCommonsController < ApplicationController
     end
   end
   
-  def destroy
-    @user_common = UserCommon.find(params[:id])
-    @user_common.destroy
-    flash[:notice] = "Successfully destroyed user common."
-    redirect_to user_commons_url
-  end
 end

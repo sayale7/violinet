@@ -6,7 +6,9 @@
 	<li>
 		<%= link_to_unless_current t('post.new'), new_post_path %>
 	</li>
+	<% if can? :manage, Tag %>
 	<li>
 		<%= link_to_unless_current t('post.manage_tags'), '/tags?taggable_type=Post' %>
 	</li>
+	<% end %>
 </ul>

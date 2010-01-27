@@ -43,15 +43,18 @@ class CommentsController < ApplicationController
   
   def edit
     @comment = Comment.find(params[:id])
+    unauthorized! if cannot? :manage, @comment
   end
 
 
   def destroy
     @comment = Comment.find(params[:id])
+    unauthorized! if cannot? :manage, @comment
     is_owner?
     @comment.destroy
     @comments = Comment.find_all_by_commentable_type_and_commentable_id(@comment.commentable_type, @comment.commentable_id)
     flash[:notice] = t('flash.comment_destroyed')
+    unauthorized! if cannot? :manage, @comment
    
     respond_to do |format|
       format.html {  redirect_to '/' + @comment.commentable_type.to_s.downcase.pluralize + '/' + @comment.commentable_id.to_s }

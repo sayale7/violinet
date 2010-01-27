@@ -1,4 +1,5 @@
 class Ability
+  
   include CanCan::Ability
   
   def initialize(user)
@@ -7,17 +8,39 @@ class Ability
     if user.role? :admin
       can :manage, :all
     else
-      can :manage, :all
-      # can :update, User do |comment|
-      #   comment.try(:user) == user || user.role?(:moderator)
-      # end
+      can :read, :all
+      cannot :index, Tag
+      if user.role? :moderator
+        can :manage, Tag
+      end
       
-      # if user.role?(:author)
-      #   can :create, Article
-      #   can :update, Article do |article|
-      #     article.try(:user) == user
-      #   end
-      # end
+      # manage only own posts
+      can :manage, Post do |post|
+        post[1].user_id == user.id
+      end
+      
+      # manage only own album
+      can :manage, PhotoAlbum do |photo_album|  
+        photo_album[1].user_id == user.id
+      end
+      
+      # manage only own personalities
+      can :manage, UserCommon do |user_common|  
+        user_common[1].user_id == user.id
+      end
+      
+      # manage only own groups
+      can :manage, Group do |group|  
+        group[1].user_id == user.id
+      end
+      
+      # manage only own comments
+      can :manage, Comment do |comment|  
+        comment[1].author_id == user.id || comment[1].commentable_id == user.id || (comment[1].commentable_type.to_s.eql?('Post') && Post.find(comment[1].commentable_id).user_id == user.id)
+      end
+      
+
+      
     end
   end
 end

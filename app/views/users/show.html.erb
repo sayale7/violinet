@@ -147,9 +147,21 @@
 				</div>
 			</li>
 			<% end %>
+			<% unless @user.photo_albums.empty? %>
 			<li>
-				<%= link_to t('post.of_this_user'), user_posts_url(@user) %>
+				<%= link_to (t('photo_album.of_this_user').to_s << ' ' << @user.login.to_s), user_photo_albums_url(@user) %>
 			</li>
+			<% end %>
+			<% unless @user.own_groups.empty? %>
+			<li>
+				<%= link_to (t('group.of_this_user').to_s << ' ' << @user.login.to_s), user_groups_url(@user) %>
+			</li>
+			<% end %>
+			<% unless @user.posts.empty? %>
+			<li>
+				<%= link_to (t('post.of_this_user').to_s << ' ' << @user.login.to_s), user_posts_url(@user) %>
+			</li>
+			<% end %>
 		</ul>
 	</div>
 

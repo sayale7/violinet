@@ -1,31 +1,33 @@
 class User < ActiveRecord::Base
   
-  has_one :user_common
-  has_one :profile_image
-  has_many :posts
+  has_one :user_common, :dependent  => :destroy
+  has_one :profile_image, :dependent  => :destroy
+  has_many :posts, :dependent  => :destroy
   has_many :sent_messages, :class_name => "Message", :foreign_key => "author_id"
   has_many :received_messages, :class_name => "MessageCopy", :foreign_key => "recipient_id"
   has_many :folders, :dependent => :destroy
-  has_many :photo_albums
-  has_many :comments, :as => :commentable
-  has_many :friendships
-  has_many :friends, :through => :friendships
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :photo_albums, :dependent  => :destroy
+  has_many :comments, :as => :commentable, :dependent  => :destroy
+  has_many :friendships, :dependent  => :destroy
+  has_many :friends, :through => :friendships, :dependent  => :destroy
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id", :dependent  => :destroy
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user, :dependent  => :destroy
   
-  has_many :roles_users
-  has_many :roles, :through  => :roles_users
+  has_many :roles_users, :dependent  => :destroy
+  has_many :roles, :through  => :roles_users, :dependent  => :destroy
   
   
   has_many :own_groups, :class_name => 'Group', :dependent  => :destroy
   
-  has_many :usergroups
-  has_many :groups, :through  => :usergroups
+  has_many :usergroups, :dependent  => :destroy
+  has_many :groups, :through  => :usergroups, :dependent  => :destroy
   
   named_scope :from_user_common, :include => :user_common, :conditions => { 'user_common.hidden' => false }
   
   before_create :build_inbox
   before_create :build_trash
+  
+  before_destroy :find_comments
   
   
   acts_as_authentic do |c|
@@ -108,6 +110,15 @@ class User < ActiveRecord::Base
     reset_perishable_token!  
     Notifier.deliver_password_reset_instructions(self)  
   end 
+  
+  private
+  
+  def find_comments
+    comments = Comment.find_all_by_author_id(self.id)
+    comments.each do |comment|
+      comment.destroy
+    end
+  end
   
   
   

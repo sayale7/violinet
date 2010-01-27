@@ -1,7 +1,6 @@
 atom_feed do |feed|
   feed.title(User.find(@posts.first.user_id).login.pluralize.to_s + ' Blog')
   feed.updated(@posts.first.created_at)
-  feed.website("http://drecksau.at")
   
   @posts.each do |post|
     feed.entry(post) do |entry|

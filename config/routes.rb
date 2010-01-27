@@ -45,6 +45,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :users, :has_many  => :groups
   
+  map.resources :users, :has_many  => :photo_albums
+  
   map.resource :personals, :controller => "user_commons"
   
 
