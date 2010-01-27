@@ -28,7 +28,7 @@ module ApplicationHelper
     users = User.all(:joins  => :user_common, :conditions => "login LIKE '%#{params[:q]}%' or firstname LIKE '%#{params[:q]}%' or lastname LIKE '%#{params[:q]}%'") 
     friends = Array.new 
     users.each do |user|
-      unless is_friend_of_current(user.id) 
+      if is_friend_of_current(user.id) 
         friends.push(user) 
       end 
     end 

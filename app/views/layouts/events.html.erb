@@ -3,25 +3,20 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<title><%= controller.controller_name %>: <%= controller.action_name %></title>
-	<%= stylesheet_link_tag 'application', 'ddm', 'jquery_ui' %>
-	<%= javascript_include_tag   'jquery', 'jquery.url_utils',  'application', '/shadowbox/shadowbox' %>
-	<link rel="stylesheet" type="text/css" href="/shadowbox/shadowbox.css">
-	<script type="text/javascript">
-	Shadowbox.init();
+	<%= stylesheet_link_tag 'application', 'ddm' %>
 	</script>
+	
 	<%= yield :head %>
 </head>
 <body>
 	<div id="user_nav">
-		<%= render '/layouts/main_nav' %>
-	</div>	
-	<% if current_user %>
+		<%= render :partial => '/layouts/main_nav' %>
+	</div>
 	<div id="user_nav_two">
 		<div id="jsddm">
-		<%= render '/layouts/groups_nav' %>
+		<%= render '/layouts/events_nav' %>
 		</div>
 	</div>
-	<% end %>
 	<div id="container">
 		<%= yield %>
 	</div>

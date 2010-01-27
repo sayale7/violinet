@@ -1,12 +1,8 @@
 <h1><%= t "forgot_password.forgot" %></h1>
-<%= t "forgot_password.paragraph" %>
-<br/>
-<br/>
+<p><%= t "forgot_password.paragraph" %></p>
 <% form_tag password_resets_path do %>
-<%= label_tag t "common.email" %>
+<p><%= label_tag t "common.email" %>
 <br/>
-<%= text_field_tag "email" %>
-<br/>
-<br/>
-<%= submit_tag t "forgot_password.password_reset" %>
+<%= text_field_tag "email",'', :class  => 'tb'%></p>
+<p><%= submit_tag t "forgot_password.password_reset" %></p>
 <% end %>

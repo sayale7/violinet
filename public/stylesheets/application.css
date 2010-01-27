@@ -5,9 +5,11 @@ html {
 
 body {
 /*    background-color: #4B7399;*/
-	background: #F8F8F8;
+	background: transparent;
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
     font-size: 0.8em;
+    background-image: url(/images/background.png);
+	background-repeat:repeat-x;
 }
 
 a {
@@ -35,6 +37,10 @@ ul{
 	padding:0;
 }
 
+p{
+	color:#333;
+}
+
 li{
 	list-style-type: none;
 	margin-bottom:10px;
@@ -53,6 +59,8 @@ li{
 .hidden{
 	display:none;
 }
+
+
 
 /* Textbox Class*/
 .tb{
@@ -73,6 +81,7 @@ li{
 	padding:0px;
 	padding-bottom:0;
 }
+
 
 .tb_extended{
 	width: 565px;
@@ -182,11 +191,45 @@ table a:link {
 
 /* end table design */
 
+.whole_width{
+    width: 950px;
+	overflow:hidden;
+	clear:both;
+	border-top:solid thin silver;
+}
+#container_welcome {
+	clear:both;
+    width: 950px;
+	height:700px;
+    margin: 0 auto;
+    background-image: url('/images/background_welcome.jpg');
+	border-top: 1px solid silver;
+    padding: 10px;
+	padding-top:20px;
+	overflow:hidden;
+}
+
+#welcome_right{
+	padding-top:15px;
+	padding-right:30px;
+	float:right;
+	width:350px;
+	text-align:left;
+}
+#welcome_left{
+	float:left;
+	width:350px;
+	padding-left:20px;
+	margin-top:550px;	
+}
+
+
  #container {
 	clear:both;
     width: 950px;
     margin: 0 auto;
-    background-color: #F8F8F8;
+    background-color: transparent;
+
 	border-top: 1px solid silver;
 /*    border: solid 1px black;*/
     padding: 10px;
@@ -201,9 +244,9 @@ padding-top:20px;
 } #user_nav {	
     width: 950px;
 	margin: 0 auto;
-	background: #F8F8F8;
+	background: transparent;
 	overflow:hidden;
-/*    border: solid 1px black;*/
+/*    border: solid 1px black; #F8F8F8s */
     padding: 10px;
 } #user_nav ul {
 	float:left;
@@ -244,7 +287,7 @@ padding-top:20px;
     width: 950px;
 	height:30px;
 	padding:10px;
-	background:#F8F8F8;
+	background:transparent;
 	border-top: 1px solid silver;
 }
 
@@ -491,11 +534,15 @@ padding-top:20px;
 
 .group_description{
 	float:left;
-	width:650px;
+	width:750px;
 }
 .group_members{
 	float:left;
 	width:110px;
+}
+.group_edit{
+	float:left;
+	width:670px;
 }
 
 .clickable_items_to_add{

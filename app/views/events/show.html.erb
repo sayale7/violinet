@@ -1,20 +1,19 @@
 <h1><%= @event.name %></h1>
 <% if !@event.end_at.nil? %>
 <p>
-    <%= t("event.begin") + ": " %><%= @event.start_at.strftime("%d. %m. %Y um %H:%M Uhr") %>
+    <%= t("event.begin") + ": " %><%= @event.start_at %>
 </p>
 <% end %>
 <% if !@event.end_at.nil? %>
 <p>
-    <%= t("event.end") + ": " %><%= @event.end_at.strftime("%d. %m. %Y um %H:%M Uhr") %>
+    <%= t("event.end") + ": " %><%= @event.end_at %>
 </p>
 <% end %>
 <p>
     <%= t("event.spot") + ": " %><%= @event.spot %>
 </p>
+
+
 <p>
-    <%= @event.description %>
+	<%= link_to t('common.edit'), edit_event_path(@event) %>
 </p>
-<%= link_to t('common.edit'), edit_event_path(@event) %> |
-<%= link_to t('event.to_calendar'), calendar_path(@event.start_at) %> |
-<%= link_to t('common.delete'), @event, :method => :delete, :confirm => t("common.confirm") %>

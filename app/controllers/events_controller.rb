@@ -1,55 +1,25 @@
-require 'icalendar' # Einbinden der iCalendar-Library
-require 'open-uri'
 class EventsController < ApplicationController
   
-  def export_events
-    @event = Event.find(params[:id])
-    @calendar = Icalendar::Calendar.new
-    event               = Icalendar::Event.new
-    event.start         = @event.start_at.strftime("%Y%m%dT%H%M%S")
-    event.end           = @event.end_at.strftime("%Y%m%dT%H%M%S")
-    event.summary       = @event.name
-    event.description   = @event.description
-    event.location      = @event.spot
-    @calendar.add event
-    @calendar.publish
-    headers['Content-Type'] = "text/calendar; charset=UTF-8"
-    render :layout => false, :text => @calendar.to_ical
-  end
-  
   def show
-    # Open a file or pass a string to the parser
-     cal_file  = open('http://www.google.com/calendar/ical/dasjetzt%40gmail.com/public/basic.ics') {|f| f.read }
-     
-     # Parser returns an array of calendars because a single file
-     # can have multiple calendars.
-     cals = Icalendar.parse(cal_file)
-     cal = cals.first
-
-     # Now you can access the cal object in just the same way I created it
-     event = cal.events.first
-     @event = Event.new
-     @event.start_at    =     event.start.strftime("%Y%m%dT%H%M%S")      
-     @event.end_at      =     event.end.strftime("%Y%m%dT%H%M%S")        
-     @event.name                                  =     event.summary    
-     @event.description                           =     event.description
-     @event.spot                                  =     event.location   
-     
-    #@event = Event.find(params[:id])  
+    @event = Event.find(params[:id])  
   end
-  
+
   def new
     @event = Event.new
   end
   
   def edit
     @event = Event.find(params[:id])
+    # unauthorized! if cannot? :manage, @event
   end
   
   def create
     @event = Event.new(params[:event])
-    
+    if @event.start_at > @event.end_at
+      render :action  => 'new'
+    end
     respond_to do |format|
+      @event.start_at = @event.start_at + 1.day
       if @event.save
         flash[:notice] = t("common.created")
         format.html { redirect_to event_path(@event) }
@@ -65,16 +35,19 @@ class EventsController < ApplicationController
   # PUT /posts/1.xml
   def update
     @event = Event.find(params[:id])
-    
-    respond_to do |format|
+    # unauthorized! if cannot? :manage, @event
+    unless params[:event][:start_at] > params[:event][:end_at]
+      @event.start_at = @event.start_at
       if @event.update_attributes(params[:event])
         flash[:notice] = t("common.updated")
-        format.html { redirect_to(@event) }
-        format.xml  { head :ok }
+        redirect_to(@event) 
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        flash[:error] = t("common.error")
+        render :action => "edit" 
       end
+    else
+      flash[:error] = t("event.date_missmatch")
+      render :action => "edit" 
     end
   end
   
@@ -82,6 +55,7 @@ class EventsController < ApplicationController
   # DELETE /posts/1.xml
   def destroy
     @event = Event.find(params[:id])
+    # unauthorized! if cannot? :manage, @event
     @event.delete
     
     respond_to do |format|

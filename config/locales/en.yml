@@ -65,6 +65,8 @@ en:
     clear: Reset Search
     access_denied: Access Denied
     destroyed: Successfully deleted
+    guest: Guest
+    events: Events
   event:
     begin: Begin
     end: Ende
@@ -73,6 +75,7 @@ en:
     to_calendar: To Event Calendar
     description: Description
     new: New Event
+    date_missmatch: End Date can't be before Start
   group:
     need_confirm: User need you to confirm, if he want to be a member of your group
     category: Category
@@ -86,6 +89,7 @@ en:
     attended: You successfully joined this group
     manage_tags: Manage Categories
     of_this_user: Groups of
+    all_of_this_user: All Groups of
   forgot_password:
     password_reset: Reset Password
     forgot: Forgot Password?
@@ -149,6 +153,7 @@ en:
     friend_added: Added as Friend
     add_friend_error: Unable to add as Friend
     destroyed_friendship: Friendship destroyed
+    register_success: Registration successfull
   profile_image:
       created: Image created!
       error: Image could not be created (should be smaller than 0.5MB and jpeg, gif or png)

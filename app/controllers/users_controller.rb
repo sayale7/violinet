@@ -41,7 +41,7 @@ class UsersController < ApplicationController
         @user_common.update_attribute("user_id", @user.id)
       end
       # @user.deliver_activation_instructions!
-      flash[:notice] = t("register.success")
+      flash[:notice] = t("user.register_success")
       redirect_to login_url
     else
       render :action => :new
@@ -98,7 +98,7 @@ class UsersController < ApplicationController
     if current_user && (current_user == @user)
       @user = User.find(params[:id])
       @user.destroy
-      flash[:notice] = "Successfully destroyed user."
+      flash[:notice] = t('common.destroyed')
     else
       flash[:error] = t('common.access_denied')
     end

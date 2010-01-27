@@ -35,8 +35,7 @@
 			{	margin: 0;
 				padding: 0;
 				position: absolute;
-				visibility: hidden;
-				border-top: 1px solid white}
+				visibility: hidden;}
 
 				#jsddm li ul li
 				{	float: none;
@@ -46,7 +45,7 @@
 
 					#jsddm li ul li a
 					{	width: auto;
-						background:#F8F8F8; }
+						background:transparent; }
 
 						#jsddm li ul li a:hover
 						{	}

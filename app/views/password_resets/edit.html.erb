@@ -1,15 +1,16 @@
 <h1><%= t "forgot_password.h1_change_my_password" %></h1>
 <% form_for @user, :url => password_reset_path(@user.id), :html => { :method => :post } do |f| %>
 <%= f.error_messages %>
+<p>
 <%= f.label t "common.password" %>
 <br/>
 <%= f.password_field :password %>
-<br/>
-<br/>
+</p>
+<p>
 <%= f.label t "common.password_confirmation" %>
 <br/>
 <%= f.password_field :password_confirmation %>
-<br/>
-<br/>
+</p>
+
 <%= f.submit t "forgot_password.update_and_login" %>
 <% end %>

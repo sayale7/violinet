@@ -19,10 +19,10 @@ class CommentsController < ApplicationController
     @comment.commentable_type = @commentable.class.name
     if current_user
       @comment.author_id = current_user.id
+      is_owner?
     else
       @comment.author_id = 0
     end
-    is_owner?
     if @comment.save
       @blank = false
       @comments = @commentable.comments.find_all_by_commentable_type(@commentable.class.name)

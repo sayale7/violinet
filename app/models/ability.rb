@@ -14,12 +14,23 @@ class Ability
       cannot :read, RolesUser
       cannot :manage, Role
       cannot :manage, RolesUser
+      # can :new, Event
+      #    can :create, Event
 
       cannot :index, Tag
 
       if user.role? :moderator
         can :manage, Tag
       end
+      
+      # if user.role? :moderator
+      #   can :manage, Event
+      # end
+      # 
+      # # manage only own events
+      # can :manage, Event do |event|
+      #   event[1].user_id == user.id
+      # end
 
       # manage only own posts
       can :manage, Post do |post|

@@ -1,9 +1,9 @@
 <% title "Group" %>
 
 <div class="group_description">
-	<h2>
+	<h1>
 		<%=h @group.name %>
-	</h2>
+	</h1>
 	(<%= t('group.founder') %><%= ": " %>
 	<%= link_to @group.owner.login, user_path(@group.owner) %>
 	<%= " - " unless ( @group.owner.user_common.firstname.nil? || @group.owner.user_common.firstname.empty?) && (@group.owner.user_common.lastname.nil? || @group.owner.user_common.lastname.empty?)  %>
@@ -15,7 +15,7 @@
 </div>
 <div class="right">
 	<% unless @group.photo_file_name.nil? %>
-	<a href='<%= @group.photo.url %>' rel='shadowbox'><%= image_tag @group.photo.url(:medium) %></a>
+	<a href='<%= @group.photo.url %>' rel='shadowbox'><%= image_tag @group.photo.url(:small) %></a>
 	<% else %>
 	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
 	<% end %>
@@ -44,7 +44,7 @@
 	<% end %>
 </p>
 
-<div class"clear"></div>
+<div class="whole_width">
 <% @group.members.each do |member| %>
 <div class="group_members">
 	<p>
@@ -62,4 +62,4 @@
 	</p>
 </div>
 <% end %>
-
+</div>

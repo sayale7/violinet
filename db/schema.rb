@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20100124110112) do
     t.string   "name"
     t.string   "spot"
     t.string   "color"
-    t.datetime "start_at"
-    t.datetime "end_at"
+    t.date "start_at"
+    t.date "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

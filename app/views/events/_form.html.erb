@@ -1,30 +1,39 @@
-<% content_for :head do %>
-<%= javascript_include_tag 'calendar_date_select/calendar_date_select', 'calendar_date_select/format_euro_24hr' %>
-<%= stylesheet_link_tag 'calendar_date_select/silver' %>
-<% end %>
+<% javascript 'jquery', 'jquery.ui', 'jquery.datepicker' %>
+<% stylesheet 'jquery_ui' %>
 
-<div class="event_edit">
-    <% form_for(@event) do |f| %>
-    <%= f.error_messages %>
-    <p>
-        <%= f.label t("event.name") + ": " %>
-        <%= f.text_field :name %>
-    </p>
-    <p>
-        <%= f.label t("event.description") %>
-        <br/>
-        <%= f.text_area :description %>
-    </p>
-	<p>
-        <%= f.label t("event.begin") + ": " %>
-        <%= calendar_date_select_tag 'event[start_at]', @event.start_at , :time => true  %>
-    </p>
-	<p>
-        <%= f.label t("event.end") + ": " %>
-        <%= calendar_date_select_tag 'event[end_at]', @event.end_at, :time => true  %>
-    </p>
-    <p>
-        <%= f.submit t'common.submit' %>
-    </p>
-    <% end %>
-</div>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+	$("#from").datepicker({ 
+	  dateFormat: 'yy-mm-dd'
+	});
+	$("#to").datepicker({ 
+	  dateFormat: 'yy-mm-dd'
+	});
+});
+</script>
+	<div class="event_edit">
+		<% form_for(@event) do |f| %>
+		<%= f.error_messages %>
+		<p>
+			<%= f.label t("event.name") %><br/>
+			<%= f.text_field :name, :class => 'tb' %>
+		</p>
+
+		<p>
+			<%= f.label t("event.begin") + ": " %><br/>
+			<%= f.text_field :start_at, :class  => 'tb', :id  => 'from' %>
+		</p>
+		<p>
+			<%= f.label t("event.end") + ": " %><br/>
+			<%= f.text_field :end_at, :class  => 'tb', :id  => 'to' %>
+			
+		</p>
+		<p>
+			<%= f.label t("event.spot") %><br/>
+			<%= f.text_field :spot, :class => 'tb' %>
+		</p>
+		<p>
+			<%= f.submit t'common.submit' %>
+		</p>
+		<% end %>
+	</div>
