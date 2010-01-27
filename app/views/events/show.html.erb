@@ -1,19 +1,27 @@
 <h1><%= @event.name %></h1>
-<% if !@event.end_at.nil? %>
 <p>
-    <%= t("event.begin") + ": " %><%= @event.start_at %>
-</p>
-<% end %>
-<% if !@event.end_at.nil? %>
-<p>
-    <%= t("event.end") + ": " %><%= @event.end_at %>
-</p>
-<% end %>
-<p>
-    <%= t("event.spot") + ": " %><%= @event.spot %>
-</p>
+    <h3><%= t("event.begin") + ": " %></h3>
 
-
+	<%= @event.start_at %>
+</p>
+<p>
+   <h3> <%= t("event.end") + ": " %></h3>
+	<%= @event.end_at %>
+</p>
+<p>
+    <h3><%= t("event.spot") + ": " %></h3>
+	<%= @event.spot %>
+</p>
+<p>
+	<h3><%= t('event.url_show') + ": " unless @event.url.nil? %></h3>
+	<%= link_to @event.url, ('http://' + @event.url.to_s), :popup  => true unless @event.url.nil? %>
+</p>
+<p>
+	<h2><%= t('event.description') + ": " unless @event.description.nil? %></h2>
+	<%= @event.description unless @event.description.nil? %>
+</p>
+<% if can? :manage, @event %>
 <p>
 	<%= link_to t('common.edit'), edit_event_path(@event) %>
 </p>
+<% end %>

@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   has_many :usergroups, :dependent  => :destroy
   has_many :groups, :through  => :usergroups, :dependent  => :destroy
   
+  has_many :events
+  
   named_scope :from_user_common, :include => :user_common, :conditions => { 'user_common.hidden' => false }
   
   before_create :build_inbox

@@ -14,7 +14,7 @@
 <div style="height:320px; width:400px; background:#4B7399;"></div>
 <img src="/images/place_holder_album.jpg" height="320px" style=" display:none;"></img>
 <p>
-<%= link_to t("common.edit"), edit_photo_album_path(album) %> 
+<% if can? :manage, album %>  <%= link_to t("common.edit"), edit_photo_album_path(album) %> <% end %>
 </p>
 <% end %>
 
@@ -23,11 +23,7 @@
 
 
 <% end %>
-
-
-
-
 <div class="clear">
-<%= link_to t('common.new_ablum'), :controller => "photo_albums", :action => "new" %>
+<%= link_to t('common.new_ablum'), :controller => "photo_albums", :action => "new" unless current_user.nil? %>
 
 </div>

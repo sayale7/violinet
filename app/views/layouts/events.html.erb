@@ -12,11 +12,13 @@
 	<div id="user_nav">
 		<%= render :partial => '/layouts/main_nav' %>
 	</div>
+	<% if current_user %>
 	<div id="user_nav_two">
 		<div id="jsddm">
 		<%= render '/layouts/events_nav' %>
 		</div>
 	</div>
+	<% end %>
 	<div id="container">
 		<%= yield %>
 	</div>

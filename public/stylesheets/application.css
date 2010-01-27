@@ -197,9 +197,10 @@ table a:link {
 	clear:both;
 	border-top:solid thin silver;
 }
+
 #container_welcome {
 	clear:both;
-    width: 950px;
+    width: 948px;
 	height:700px;
     margin: 0 auto;
     background-image: url('/images/background_welcome.jpg');

@@ -2,8 +2,12 @@
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function(){
 		$('#date_format').remove();
-		$("#from").datepicker();
-		$("#to").datepicker();
+		$("#from").datepicker({ 
+		  dateFormat: 'yy-mm-dd'
+		});
+		$("#to").datepicker({ 
+		  dateFormat: 'yy-mm-dd'
+		});
 	});
 </script>
 

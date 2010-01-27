@@ -51,7 +51,7 @@ en:
     max_count_photos_reached: You have reached the Maximum of 10 Images
     send_message_to_user: Send this user a message
     close: Close
-    registered_users: User
+    registered_users: Users
     search: Search
     from: From
     to: To
@@ -76,6 +76,8 @@ en:
     description: Description
     new: New Event
     date_missmatch: End Date can't be before Start
+    url: Homepage (insert without http://)
+    url_show: Homepage
   group:
     need_confirm: User need you to confirm, if he want to be a member of your group
     category: Category
@@ -154,6 +156,7 @@ en:
     add_friend_error: Unable to add as Friend
     destroyed_friendship: Friendship destroyed
     register_success: Registration successfull
+    search_field_description: Search for Name, Username or Address of a Registered User
   profile_image:
       created: Image created!
       error: Image could not be created (should be smaller than 0.5MB and jpeg, gif or png)
