@@ -65,6 +65,7 @@ de:
     guest: Gast
     events: Veranstaltungen
     error: Ein Fehler ist aufgetreten
+    service: Service
   event:
     begin: Begin
     end: Ende
@@ -140,6 +141,7 @@ de:
     passwort_reset_instructions: Sie haben ein Mail mit Ihrer Passwort Rücksetz Anleitung bekommmen!
     passwort_reset_instructions_no_email: Kein Benutzer mit dieser Mailadresse gefunden!
     my_personals: Persönliches
+    commons: Allgemeines
     my_blog: Mein Blog
     my_blog_archive: Mein Blog Archiv
     my_profile: Mein Profil
@@ -193,6 +195,10 @@ de:
     kind: Bilder auswählen (kleiner 0.5MB und jpeg, gif oder png)
   photo_album:
       of_this_user: Fotoalben von
+  service:
+      jobs: Jobs
+      living: Mit - Wohnen
+      changing: Tauschen
   date:
     formats:
       default: "%d.%m.%Y"

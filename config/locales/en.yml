@@ -68,6 +68,7 @@ en:
     guest: Guest
     events: Events
     error: An Error Occured
+    service: Service
   event:
     begin: Begin
     end: End
@@ -143,6 +144,7 @@ en:
     passwort_reset_instructions: Instructions to reset your password have been emailed to you. Please check your email.
     passwort_reset_instructions_no_email: No user was found with that email address
     my_personals: Personalities
+    commons: Common
     my_blog: My Blog
     my_blog_archive: My Blog Archive
     my_profile: My Profile
@@ -195,3 +197,7 @@ en:
     kind: Images (smaller than 0.5MB and jpeg, gif or png)
   photo_album:
       of_this_user: Photoalbums of from
+  service:
+      jobs: Jobs
+      living: Flatsharing
+      changing: Changing

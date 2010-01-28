@@ -110,6 +110,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.manage_categories 'manage_categories', :controller  => 'tags', :action  => 'manage_categories'
   
+  map.services 'services', :controller  => 'services'
+  
   map.root :controller => "welcome", :action => "index"
   
 
