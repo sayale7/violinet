@@ -14,8 +14,8 @@ class Group < ActiveRecord::Base
   belongs_to :owner, :class_name  => 'User', :foreign_key => "user_id"
   
   has_attached_file :photo, :styles => { :small => "100x100#", :medium  => '200x200#' },
-                    :url  => "/assets/products/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
+                    :url  => "/assets/groups/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/assets/groups/:id/:style/:basename.:extension"
 
   # validates_attachment_presence :photo
   # validates_attachment_size :photo, :less_than => 0.5.megabytes
