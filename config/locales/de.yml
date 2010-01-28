@@ -75,6 +75,7 @@ de:
     date_missmatch: Ende kann nicht vor dem Begin liegen
     url: Homepage (ohne http:// eingeben)
     url_show: Homepage
+    flyer: Flyer hochladen
   group:
     need_confirm: Benutzer benötigen Deine Zustimmung, wenn sie zur Gruppe hinzu wollen
     category: Kategorie

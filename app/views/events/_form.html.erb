@@ -11,38 +11,57 @@ $(document).ready(function(){
 	});
 });
 </script>
-	<div class="event_edit">
-		<% form_for(@event) do |f| %>
-		<%= f.error_messages %>
-		<%= f.hidden_field :user_id, :value  => current_user.id %>
-		<p>
-			<%= f.label t("event.name") %><br/>
-			<%= f.text_field :name, :class => 'tb' %>
-		</p>
 
-		<p>
-			<%= f.label t("event.begin") %><br/>
-			<%= f.text_field :start_at, :class  => 'tb', :id  => 'from' %>
-		</p>
-		<p>
-			<%= f.label t("event.end")  %><br/>
-			<%= f.text_field :end_at, :class  => 'tb', :id  => 'to' %>
-			
-		</p>
-		<p>
-			<%= f.label t("event.spot") %><br/>
-			<%= f.text_field :spot, :class => 'tb' %>
-		</p>
-		<p>
-			<%= f.label t("event.url") %><br/>
-			<%= f.text_field :url, :class => 'tb' %>
-		</p>
-		<p>
-			<%= f.label t("event.description") %><br/>
-			<%= f.text_area :description, :class => 'tb_area' %>
-		</p>
-		<p>
-			<%= f.submit t'common.submit' %>
-		</p>
-		<% end %>
-	</div>
+<% form_for @event, :html  => { :multipart  => true } do |f| %>
+<div id="event_flyer">
+<p>
+	<% unless @event.flyer_file_name.nil? %>
+	<a href='<%= @event.flyer.url %>' rel='shadowbox'><%= image_tag @event.flyer.url(:small) %></a>
+	<% else %>
+	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
+	<% end %>
+</p>
+<p>
+	<%= t('event.flyer') %>
+</p>
+<p>
+	<%= f.file_field :flyer %>
+</p>
+</div>
+
+<%= f.hidden_field :user_id, :value  => current_user.id %>
+<%= f.error_messages %>
+
+<p>
+	<%= f.label t("event.name") %><br/>
+	<%= f.text_field :name, :class => 'tb' %>
+</p>
+
+<p>
+	<%= f.label t("event.begin") %><br/>
+	<%= f.text_field :start_at, :class  => 'tb', :id  => 'from' %>
+</p>
+<p>
+	<%= f.label t("event.end")  %><br/>
+	<%= f.text_field :end_at, :class  => 'tb', :id  => 'to' %>
+
+</p>
+<p>
+	<%= f.label t("event.spot") %><br/>
+	<%= f.text_field :spot, :class => 'tb' %>
+</p>
+<p>
+	<%= f.label t("event.url") %><br/>
+	<%= f.text_field :url, :class => 'tb' %>
+</p>
+<p>
+	<%= f.label t("event.description") %><br/>
+	<%= f.text_area :description, :class => 'tb_area' %>
+</p>
+
+
+<p>
+	<%= f.submit t'common.submit' %>
+</p>
+<% end %>
+

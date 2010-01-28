@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100127191048) do
+ActiveRecord::Schema.define(:version => 20100127232726) do
 
   create_table "all_users", :force => true do |t|
     t.datetime "created_at"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(:version => 20100127191048) do
     t.integer  "user_id"
     t.text     "description"
     t.string   "url"
+    t.string   "flyer_file_name"
+    t.string   "flyer_content_type"
+    t.integer  "flyer_file_size"
+    t.datetime "flyer_updated_at"
   end
 
   create_table "folders", :force => true do |t|

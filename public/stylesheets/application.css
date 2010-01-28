@@ -225,6 +225,11 @@ table a:link {
 }
 
 
+#event_flyer{
+	float:right;
+	text-align:left;
+}
+
  #container {
 	clear:both;
     width: 950px;

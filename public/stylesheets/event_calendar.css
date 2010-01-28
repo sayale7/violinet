@@ -95,7 +95,7 @@ th.monthName {
  
 .event div { 
   cursor: pointer;
-  padding-left: 6px; 
+  padding-left: 8px; 
   color:#ffffff; 
   text-decoration: none;
 }

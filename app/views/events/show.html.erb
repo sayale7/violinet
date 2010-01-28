@@ -1,3 +1,12 @@
+<div id="event_flyer">
+	<% unless @event.flyer_file_name.nil? %>
+	<a href='<%= @event.flyer.url %>' rel='shadowbox'><%= image_tag @event.flyer.url(:small) %></a>
+	<% else %>
+	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
+	<% end %>
+
+</div>
+<div style="width:630px;">
 <h1><%= @event.name %></h1>
 <p>
     <h3><%= t("event.begin") + ": " %></h3>
@@ -22,6 +31,6 @@
 </p>
 <% if can? :manage, @event %>
 <p>
-	<%= link_to t('common.edit'), edit_event_path(@event) %>
+	<%= link_to t('common.edit'), edit_event_path(@event) %> | 	<%= link_to t('common.delete'), event_path(@event), :method  => :delete, :confirm  => t('common.confirm') %>
 </p>
-<% end %>
+<% end %></div>

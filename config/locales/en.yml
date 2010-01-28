@@ -69,8 +69,8 @@ en:
     events: Events
   event:
     begin: Begin
-    end: Ende
-    spot: Ort
+    end: End
+    spot: Spot
     name: Name
     to_calendar: To Event Calendar
     description: Description
@@ -78,6 +78,7 @@ en:
     date_missmatch: End Date can't be before Start
     url: Homepage (insert without http://)
     url_show: Homepage
+    flyer: Upload Flyer
   group:
     need_confirm: User need you to confirm, if he want to be a member of your group
     category: Category
