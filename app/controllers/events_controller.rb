@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     unauthorized! if cannot? :manage, @event
-    @event.delete
+    @event.destroy
     
     respond_to do |format|
       flash[:notice] = t("common.delete_success")
