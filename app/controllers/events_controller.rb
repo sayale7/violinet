@@ -15,15 +15,11 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
-    if @event.start_at != nil && @event.end_at != nil
-      if @event.start_at > @event.end_at
-        render :action  => 'new'
-      else
-        @event.save
-        flash[:notice] = t("common.created")
-        redirect_to event_path(@event)
-      end
+    if @event.save
+      flash[:notice] = t("common.created")
+      redirect_to event_path(@event)
     else
+      flash[:error] = t("event.error")
       render :action => "new"
     end
   end
@@ -33,17 +29,11 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     unauthorized! if cannot? :manage, @event
-    unless params[:event][:start_at] > params[:event][:end_at]
-      @event.start_at = @event.start_at
-      if @event.update_attributes(params[:event])
-        flash[:notice] = t("common.updated")
-        redirect_to(@event) 
-      else
-        flash[:error] = t("common.error")
-        render :action => "edit" 
-      end
+    if @event.update_attributes(params[:event])
+      flash[:notice] = t("common.updated")
+      redirect_to(@event) 
     else
-      flash[:error] = t("event.date_missmatch")
+      flash[:error] = t("event.error")
       render :action => "edit" 
     end
   end
@@ -57,7 +47,7 @@ class EventsController < ApplicationController
     
     respond_to do |format|
       flash[:notice] = t("common.delete_success")
-      format.html { redirect_to calendar_path(Time.now.strftime("%Y/%m"))}
+      format.html { redirect_to '/calendar' }
       format.xml  { head :ok }
     end
   end

@@ -64,6 +64,7 @@ de:
     destroyed: Erfolgreich gelöscht
     guest: Gast
     events: Veranstaltungen
+    error: Ein Fehler ist aufgetreten
   event:
     begin: Begin
     end: Ende
@@ -76,6 +77,9 @@ de:
     url: Homepage (ohne http:// eingeben)
     url_show: Homepage
     flyer: Flyer hochladen
+    flyer_format: Formate => gif, jpeg, jpg, png
+    flyer_size: Größe => kleiner 0.5 MB 
+    error: Pflichtfelder müssen ausgefüllt werden und Grösse und Format des Flyers beachten!
   group:
     need_confirm: Benutzer benötigen Deine Zustimmung, wenn sie zur Gruppe hinzu wollen
     category: Kategorie
