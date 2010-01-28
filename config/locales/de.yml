@@ -78,7 +78,7 @@ de:
     url: Homepage (ohne http:// eingeben)
     url_show: Homepage
     flyer: Flyer hochladen
-    flyer_format: Formate => gif, jpeg, jpg, png
+    flyer_format: Formate => jpeg, jpg
     flyer_size: Größe => kleiner 0.5 MB 
     error: Pflichtfelder müssen ausgefüllt werden und Grösse und Format des Flyers beachten!
   group:

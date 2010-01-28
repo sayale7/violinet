@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
   
   validates_attachment_presence :flyer
   validates_attachment_size :flyer, :less_than => 500.kilobytes
-  validates_attachment_content_type :flyer, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  validates_attachment_content_type :flyer, :content_type => 'image/jpeg'
         
   private
   

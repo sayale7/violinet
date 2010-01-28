@@ -81,7 +81,7 @@ en:
     url: Homepage (insert without http://)
     url_show: Homepage
     flyer: Upload Flyer
-    flyer_format: Formats => gif, jpeg, jpg, png
+    flyer_format: Formats => jpeg, jpg
     flyer_size: Size => smaller than 0.5 MB
     error: Mandatory Fields have to be filled in, and Content Type and Size of the Flyer must be right!
   group:
