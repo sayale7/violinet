@@ -213,6 +213,7 @@ table a:link {
 #container_welcome {
 	clear:both;
     width: 948px;
+	min-height:740px;
     margin: 0 auto;
     background-image: url('/images/background_welcome.jpg');
 	background-repeat: no-repeat;

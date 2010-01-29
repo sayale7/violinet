@@ -13,8 +13,8 @@
 	
 	<% form_for @user_session, :url => user_session_path do |f| %>
 	<%= f.error_messages %>
-	<input name="login" type="text" value="<%= t('common.email') %>" onfocus="this.value = ''" class="tb_login">
-	<input name="password" type="text" value="<%= t('common.password') %>" onfocus="this.value = ''" class="tb_login">
+	<input name="user_session[login]" type="text" value="<%= t('common.email') %>" onfocus="this.value = ''" class="tb_login">
+	<input name="user_session[password]" type="password" value="<%= t('common.password') %>" onfocus="this.value = ''" class="tb_login">
 	<%= f.submit t "common.login" %>
 	
 	<br/>
