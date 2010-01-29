@@ -73,7 +73,7 @@ de:
     name: Name
     to_calendar: Zum Kalender
     description: Beschreibung
-    new: Neuer Event
+    new: Neue Veranstaltung
     date_missmatch: Ende kann nicht vor dem Begin liegen
     url: Homepage (ohne http:// eingeben)
     url_show: Homepage
@@ -197,7 +197,7 @@ de:
       of_this_user: Fotoalben von
   service:
       jobs: Jobs
-      living: Mit - Wohnen
+      living: Mit-Wohnen
       changing: Tauschen
   date:
     formats:

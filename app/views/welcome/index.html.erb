@@ -1,12 +1,26 @@
 <div id="welcome_right">
-	<h2>Willkommen bei 4Strings</h2>
+	<h2>Willkommen in der Violounge!</h2>
 	<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+		Wirklich aktuell ist nur das Bleibende. Bach, Mozart … Freundschaften, gute Musik, Filme, Bücher … Ideen, intensive Gespräche, Begegnungen, Verbindungen ...
+	</p>
+	<p>
+		Zusammen sind wir mehr! Treffen Sie Musikerinnen und Musiker, Kolleginnen und Kollegen, finden Sie Jobs oder Wohnungen auf Zeit und mehr. Tauschen Sie sich, die Interessen sind vielleicht ähnlich, die Zugangsweisen unterschiedlich. Erfahren Sie! Anregungen, Tipps, Einblick, Hörbeispiele, Blogs und Videos.
 	</p>
 </div>
 
+<% unless current_user %>
 <div id="welcome_left">
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
+	
+	<% form_for @user_session, :url => user_session_path do |f| %>
+	<%= f.error_messages %>
+	<input name="login" type="text" value="<%= t('common.email') %>" onfocus="this.value = ''" class="tb_login">
+	<input name="password" type="text" value="<%= t('common.password') %>" onfocus="this.value = ''" class="tb_login">
+	<%= f.submit t "common.login" %>
+	
+	<br/>
+	<br/>
+	<%= link_to t("forgot_password.forgot"), :controller => "password_resets", :action => "new" %>
+	<%= link_to t("common.register"), new_user_path %>
+	<% end %>
 </div>
+<% end %>

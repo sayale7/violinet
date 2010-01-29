@@ -72,6 +72,18 @@ li{
 	padding:8px;
 	padding-bottom:0;
 }
+
+.tb_login{
+	width: 170px;
+	font-family:Verdana,Lucida Grande, Lucida Sans Unicode,  Helvetica, Arial, sans-serif;
+	font-size:13px;
+	color : #000000;
+	height:20px;
+	padding:8px;
+	padding-bottom:0;
+}
+
+
 .tb_datepicker{
 	width: 100px;
 	font-family:Verdana,Lucida Grande, Lucida Sans Unicode,  Helvetica, Arial, sans-serif;
@@ -201,9 +213,9 @@ table a:link {
 #container_welcome {
 	clear:both;
     width: 948px;
-	height:700px;
     margin: 0 auto;
     background-image: url('/images/background_welcome.jpg');
+	background-repeat: no-repeat;
 	border-top: 1px solid silver;
     padding: 10px;
 	padding-top:20px;
@@ -219,9 +231,8 @@ table a:link {
 }
 #welcome_left{
 	float:left;
-	width:350px;
 	padding-left:20px;
-	margin-top:550px;	
+	margin-top:580px;	
 }
 
 
