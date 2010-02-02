@@ -1,9 +1,9 @@
-<h1><%= @assign.english %></h1>
+<h1><%= @assign.english_name %></h1>
 <% for assign in @assign.children %>
 
 <p>
 
-	<span style="font-weight:bold"><%= assign.english %></span> <br/>
+	<span style="font-weight:bold"><%= assign.english_name %></span> <br/>
 	<!-- if attribute is a select_tag -->
 	<% if assign.html_attribute.to_s.eql?('select_tag') %>
 	<% if UserAssignValue.find_by_user_id_and_assign_id(current_user.id, assign.id).nil? %>
