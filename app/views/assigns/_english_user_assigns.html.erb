@@ -3,7 +3,7 @@
 
 <p>
 
-	<%= assign.german_name %><br/>
+	<%= assign.english_name %><br/>
 	<!-- if attribute is a select_tag -->
 	<% if assign.html_attribute.to_s.eql?('select_tag') %>
 	<% if UserAssignValue.find_by_user_id_and_assign_id(current_user.id, assign.id).nil? %>
