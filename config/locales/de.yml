@@ -169,7 +169,7 @@ de:
     add_friend_error: Kontakt konnte nicht hinzugefügt werden
     destroyed_friendship: Kontakt gelöscht
     friend_confirm: Kontaktanfragen
-    not_confirmed_yet: Noch nicht bestätigt(e) Kontakt(e)
+    not_confirmed_yet: Noch nicht bestätigt(e)r Kontakt(e)
   profile_image:
       created: Profilbild angelegt!
       error: Profilbild konnte nicht angelegt werden (sollte kleiner 0.5MB und jpeg, gif oder png sein)

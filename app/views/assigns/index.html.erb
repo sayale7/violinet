@@ -2,12 +2,13 @@
 
 <% for assign in Assign.roots %>
 	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
+	<%= link_to 'Bearbeiten', edit_assign_path(assign) %>
 	<dl style="padding-left:30px;">
 		<% for assign_child in assign.children %>
 			<dt>
 				<%= assign_child.assign_names.find_by_language(get_locale.to_s).name %> -
-				<%= link_to 'Edit', edit_assign_path(assign_child) %> /
-				<%= link_to 'Destroy', assign_child, :confirm => 'Are you sure?', :method => :delete %>
+				<%= link_to 'Bearbeiten', edit_assign_path(assign_child) %> /
+				<%= link_to 'Löschen', assign_child, :confirm => 'Sicher?', :method => :delete %>
 			</dt>
 		<% end %>
 	</dl>
