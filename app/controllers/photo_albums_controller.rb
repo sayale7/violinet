@@ -55,7 +55,6 @@ class PhotoAlbumsController < ApplicationController
   
   def update
     @photo_album = PhotoAlbum.find(params[:id])
-    unauthorized! if cannot? :manage, @photo_ablums
     if @photo_album.update_attributes(params[:photo_album])
       flash[:notice] = t("common.updated")
       redirect_to edit_photo_album_path(@photo_album)
