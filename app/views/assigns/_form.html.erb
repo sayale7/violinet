@@ -2,33 +2,34 @@
 <% form_for @assign do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :parent_id %><br />
+    <span style="font-weight:bold"><%= f.label :parent_id %></span><br />
     <%= f.collection_select :parent_id, Assign.find_all_by_assignable_type(@assignable_type), :id, :german_name, :include_blank => true %>
   </p>
   <p>
-    <%= f.label :ancestor_id %><br />
+    <span style="font-weight:bold"><%= f.label :ancestor_id %></span><br />
     <%= f.collection_select :ancestor_id, Assign.find_all_by_assignable_type(@assignable_type), :id, :german_name, :include_blank => true %>
   </p>
   <p>
-	<%= f.label :german_name %><br />
+	<span style="font-weight:bold"><%= f.label :german_name %></span><br />
 	<%= f.text_field :german_name %>
 </p>
 
 <p>
-	<%= f.label :english_name %><br />
+	<span style="font-weight:bold"><%= f.label :english_name %></span><br />
 	<%= f.text_field :english_name %>
 </p>
 <p>
-	<%= f.label :html_attribute %><br />
+	<span style="font-weight:bold"><%= f.label :html_attribute %></span><br />
    <%= f.select(:html_attribute, [['text_field'], ['text_area'], ['select_tag'], ['select_many']]) %> 
 </p>
 <p>
 	<% f.fields_for :admin_assign_values do |builder| %>
 	<p>
-		<%= builder.label :german_name %>
-		<%= builder.text_field :german_name %>
-		<%= builder.label :english_name %>
-		<%= builder.text_field :english_name %>
+		<span style="font-weight:bold"><%= builder.label :german_name %></span>
+		<%= builder.text_field :german_name, :class  => 'tb' %>
+		<br/>
+		<span style="font-weight:bold"><%= builder.label :english_name %></span>
+		<%= builder.text_field :english_name, :class  => 'tb' %>
 		<%= builder.check_box :_destroy %>
 		<%= builder.label :_destroy, t('admin_attribute.remove') %>
 	</p>
