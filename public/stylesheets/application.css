@@ -396,6 +396,23 @@ padding-top:20px;
     padding: 0.5em;
 } 
 
+.attributes {
+	float:left;
+	clear:left;
+	width:520px;
+} .attributes dl {
+    color: #000;
+    padding: 0.0em
+}.attributes dt {
+    padding: 0.0em;
+    color: gray;
+    font-weight: bold;
+}.attributes dd {
+    margin-left: 13em;
+    margin-top: -1.8em;
+    padding: 0.5em;
+}
+
 #users {
 } 
 .users_list {
