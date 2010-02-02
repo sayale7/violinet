@@ -1,8 +1,9 @@
+<h1><%= @assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
 <% for assign in @assign.children %>
 
 <p>
 
-	<%= assign.german_name %><br/>
+	<span style="font-weight:bold"><%= assign.german_name %></span> <br/>
 	<!-- if attribute is a select_tag -->
 	<% if assign.html_attribute.to_s.eql?('select_tag') %>
 	<% if UserAssignValue.find_by_user_id_and_assign_id(current_user.id, assign.id).nil? %>
@@ -14,10 +15,12 @@
 	<% end %>
 	
 	<!-- if attribute is a select_many -->
+	
 	<% if assign.html_attribute.to_s.eql?('select_many') %>
 		<%= admin_assign_values_checklist(AdminAssignValueName.find_all_by_language_and_admin_assign_value_id(get_locale.to_s, assign.admin_assign_values), assign.id) %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
+	
 	
 	<!-- if attribute is a text_field -->
 	<% if assign.html_attribute.to_s.eql?('text_field') %>
