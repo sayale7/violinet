@@ -6,8 +6,8 @@
 		<% for assign_child in assign.children %>
 			<dt>
 				<%= assign_child.assign_names.find_by_language(get_locale.to_s).name %> -
-				<%= link_to 'Edit', edit_assign_path(assign) %> /
-				<%= link_to 'Destroy', assign, :confirm => 'Are you sure?', :method => :delete %>
+				<%= link_to 'Edit', edit_assign_path(assign_child) %> /
+				<%= link_to 'Destroy', assign_child, :confirm => 'Are you sure?', :method => :delete %>
 			</dt>
 		<% end %>
 	</dl>
