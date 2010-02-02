@@ -154,22 +154,22 @@ de:
     my_account: Mein Konto
     my_profile: Mein Profil
     profile_img_upload: Profilbild hochladen
-    add: Als Freund hinzufügen
-    remove: Freundschaft auflösen
-    accept: Annehmen
-    decline: Ablehnen
-    friends: Freunde
-    friend_confirm: Freundschaftsanfragen
-    not_confirmed_yet: Noch nicht bestätigt
     profile_img_upload: Lade dein Profilbild hoch (kleiner 0.5MB und jpeg, gif oder png)
     my_profile_img: Profilfoto
-    friend_added: Als Freund hinzugefügt
-    add_friend_error: Konnte nicht als Freund hinzugefügt werden
-    destroyed_friendship: Freundschaft gelöscht
     search_field_description: Suchen Sie hier nach Namen, Usernamen oder Adresse eines Mitglieds
     register_success: Erfolgreich angemeldet
     manage_assigns: Attribute bearbeiten
     common: Allgemeines
+    add: Kontakt hinzufügen
+    remove: Kontakt entfernen
+    accept: Annehmen
+    decline: Ablehnen
+    friends: Kontakte
+    friend_added: Kontakt hinzugefügt
+    add_friend_error: Kontakt konnte nicht hinzugefügt werden
+    destroyed_friendship: Kontakt gelöscht
+    friend_confirm: Kontaktanfragen
+    not_confirmed_yet: Noch nicht bestätigt(e) Kontakt(e)
   profile_image:
       created: Profilbild angelegt!
       error: Profilbild konnte nicht angelegt werden (sollte kleiner 0.5MB und jpeg, gif oder png sein)

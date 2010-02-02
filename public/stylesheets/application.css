@@ -387,12 +387,12 @@ padding-top:20px;
     color: #000;
     padding: 0.0em
 }.personal_info dt {
-    padding: 0.1em;
+    padding: 0.0em;
     color: gray;
     font-weight: bold;
 }.personal_info dd {
     margin-left: 13em;
-    margin-top: -2.0em;
+    margin-top: -1.8em;
     padding: 0.5em;
 } 
 
@@ -609,7 +609,17 @@ padding-top:20px;
 
 /*
  * Styles for definition Lists in Forms
- */ .dl_form {
+ */ .	
+ add: Kontakt hinzufügen
+ remove: Kontakt entfernen
+ accept: Annehmen
+ decline: Ablehnen
+ friends: Kontakte
+ friend_added: Kontakt hinzugefügt
+ add_friend_error: Kontakt konnte nicht hinzugefügt werden
+ destroyed_friendship: Kontakt gelöscht
+ friend_confirm: Kontaktanfragen
+ not_confirmed_yet: Noch nicht bestätigt(e) Kontakt(e)_form {
     background-color: #eaffe7;
     width: 40em;
     color: #000;
@@ -618,7 +628,6 @@ padding-top:20px;
     padding: 0.5em;
 }.dd_form {
     margin-left: 17em;
-    margin-top: -2.4em;
     padding: 0.5em;
 }
 
