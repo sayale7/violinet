@@ -1,0 +1,25 @@
+<% title "Assigns" %>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<% @_assigns.each do |assign| %>
+	<tbody>
+		<tr>
+			<td><%=h assign.assign_names.first.name %> / <%=h assign.assign_names.last.name %> 
+			<td><%= link_to 'Edit', edit_assign_path(assign) %></td>
+			<td><%= link_to 'Destroy', assign, :confirm => 'Are you sure?', :method => :delete %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+<br />
+
+
+<%= link_to t('common.new'), '/assigns/new?assignable_type=' + @assignable_type.to_s %>

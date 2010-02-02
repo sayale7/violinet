@@ -1,19 +1,21 @@
 <ul id="jsddm">
-	<li><%= link_to_unless_current "Eingang", inbox_path %></li>
-	<li><%= link_to_unless_current "Gesendet", :controller => "sent", :action => "index" %></li>
-	<li><%= link_to_unless_current "Neue Nachricht", new_sent_path %></li>
+	<li>
+		<%= link_to_unless_current t('mail.inbox'), inbox_path %>
+	</li>
+	<li><%= link_to_unless_current t('mail.sent'), :controller => "sent", :action => "index" %></li>
+	<li><%= link_to_unless_current t('mail.new'), new_sent_path %></li>
 	<span class="wojs">
 	<li>
-		<%= link_to_unless_current "Eingang (gelöscht)", trash_in_path %>
+		<%= link_to_unless_current t('mail.inbox_trash'), trash_in_path %>
 	</li>
 	<li>
-		<%= link_to_unless_current "Gesendet (gelöscht)", trash_out_path %>
+		<%= link_to_unless_current t('mail.sent_trash'), trash_out_path %>
 	</li>
 	</span>
-	<li id="js" class="wjs"><a href="#">Papierkorb</a>
+	<li id="js" class="wjs"><a href="#"><%= t('mail.trash') %></a>
 		<ul>
-			<li><%= link_to "Eingang", trash_in_path %></li>
-			<li><%= link_to "Gesendet", trash_out_path %></li>
+			<li><%= link_to t('mail.inbox'), trash_in_path %></li>
+			<li><%= link_to t('mail.sent'), trash_out_path %></li>
 		</ul>
 	</li>
 </ul>

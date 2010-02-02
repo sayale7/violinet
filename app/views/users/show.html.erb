@@ -8,7 +8,7 @@
 		<%= render 'friendship_links_top' %>
 	</div>	
 	<% end %>
-	<h1><%= t "user.my_personals" %></h1>
+	<h1><%= t "user.common" %></h1>
 	<dl>
 		<% if !(@user_common.gender.to_s == "") %>
 		<dt>
@@ -112,6 +112,27 @@
 		</dd>
 		<% end %>
 	</dl>
+	
+	<% for assign in Assign.roots %>
+	<% unless (@user.assigns.uniq & Assign.find_all_by_parent_id(assign.id)).size == 0 %>
+	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
+	<dl>
+		<% for assign_child in assign.children %>
+			<% unless UserAssignValue.find_all_by_user_id_and_assign_id(@user.id, assign_child.id).empty? %>
+			<% unless UserAssignValue.find_all_by_user_id_and_assign_id(@user.id, assign_child.id).size == 1 && UserAssignValue.find_all_by_user_id_and_assign_id(@user.id, assign_child.id).first.value.to_s.eql?('') %>
+			<dt>
+				<%= assign_child.assign_names.find_by_language(get_locale.to_s).name + ":" %>
+			</dt>
+			<dd>
+				<%= UserAssignValue.find_all_by_user_id_and_assign_id(@user.id, assign_child.id).map(&:value).join(', ') %>
+			</dd>
+			<% end %>
+			<% end %>
+		<% end %>
+	</dl>
+	<% end %>
+	
+	<% end %>
 	
 	<div class="friends">
 		<%= render :partial => 'friends' %>

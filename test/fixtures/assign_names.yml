@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  assign_id: 1
+  german_name: MyString
+  english_name: MyString
+
+two:
+  assign_id: 1
+  german_name: MyString
+  english_name: MyString

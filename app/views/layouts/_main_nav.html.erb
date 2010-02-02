@@ -35,7 +35,12 @@
 		<%= link_to_unless_current t("common.blogs"), posts_path %>
 	</li>
 	<li>
-		<%= link_to_unless_current t("mail.inbox"), inbox_path %>
+		<% if unread_messages.empty? %>
+			<%= link_to_unless_current t("mail.inbox_main"), inbox_path %>
+		<% else %>
+			<%= link_to_unless_current t("mail.inbox_main"), inbox_path %>
+			<span style="margin-left:5px;"><%= unread_messages.size.to_s %></span>
+		<% end %>
 	</li>
 	<li>
 		<%= link_to_unless_current t("common.all_photo_album"), photo_albums_path %>

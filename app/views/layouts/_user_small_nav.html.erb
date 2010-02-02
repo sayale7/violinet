@@ -8,7 +8,18 @@
 	<li>
 		<%= link_to_unless_current t("user.commons"), :controller => "user_commons", :action => "edit", :id => current_user.id %>
 	</li>
+	<% unless user_assigns.empty? %>
+		<% user_assigns.each do |user_assign| %>
+		<li>
+			<% if get_locale.to_s.eql?('de') %>
+				<%= link_to user_assign.german_name, assign_path(user_assign) %>
+			<% else %>
+				<%= link_to user_assign.english_name, assign_path(user_assign) %>
+			<% end %>
+		</li>
+		<% end %>
+	<% end %>
 	<li>
-		<%= link_to t("user.my_personals") %>
+		<%= link_to_unless_current t('user.manage_assigns'), '/assigns?assignable_type=User' %>
 	</li>
 </ul>

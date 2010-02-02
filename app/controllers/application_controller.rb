@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   
   helper :all
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :get_locale
   
   def set_locale
     # if this is nil then I18n.default_locale will be used
@@ -39,6 +39,10 @@ class ApplicationController < ActionController::Base
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record
+  end
+  
+  def get_locale
+    return I18n.locale
   end
   
   rescue_from CanCan::AccessDenied do |exception|

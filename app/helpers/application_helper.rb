@@ -22,8 +22,22 @@ module ApplicationHelper
           }).result(binding)
         end
   
+        def admin_assign_values_checklist(collection, assign_id)  
+          selected ||= []
+          
+          ERB.new(%{
+            <% for item in collection %>
+            <%= check_box_tag('user_assign_collection_#{assign_id}[]', item.id, is_checked?(item, assign_id)) %><%= item.name %><br/>
+            <% end %>
+            }).result(binding)
+          end
 
-
+          def is_checked?(item, assign_id)
+            return !UserAssignValue.find_by_user_id_and_value_and_assign_id(current_user.id, item.name, assign_id).nil?
+          end
+          
+          
+          
   def recipients
     users = User.all(:joins  => :user_common, :conditions => "login LIKE '%#{params[:q]}%' or firstname LIKE '%#{params[:q]}%' or lastname LIKE '%#{params[:q]}%'") 
     friends = Array.new 
@@ -82,5 +96,13 @@ module ApplicationHelper
     return (User.find_all_by_id(current_user.id) & group.members).empty?
   end
 
-
+  def unread_messages
+    return MessageCopy.find_all_by_recipient_id_and_read_and_deleted(current_user.id, false, false)
+  end
+  
+  def user_assigns
+    return Assign.find_all_by_assignable_type_and_parent_id('User', nil)
+  end
+  
+  
 end

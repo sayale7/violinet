@@ -9,11 +9,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100127232726) do
+ActiveRecord::Schema.define(:version => 20100202080506) do
+
+  create_table "admin_assign_value_names", :force => true do |t|
+    t.integer  "admin_assign_value_id"
+    t.string   "name"
+    t.string   "language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "admin_assign_values", :force => true do |t|
+    t.integer  "assign_id"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "all_users", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "assign_names", :force => true do |t|
+    t.integer  "assign_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "language"
+  end
+
+  create_table "assigns", :force => true do |t|
+    t.integer  "parent_id"
+    t.integer  "ancestor_id"
+    t.string   "assignable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "html_attribute"
   end
 
   create_table "comments", :force => true do |t|
@@ -165,6 +197,14 @@ ActiveRecord::Schema.define(:version => 20100127232726) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "taggable_type"
+  end
+
+  create_table "user_assign_values", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "assign_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_commons", :force => true do |t|

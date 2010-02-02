@@ -120,8 +120,14 @@ de:
     subject: Betreff
     received_at: Empfangen am
     move_to: Verschieben nach
-    inbox: Mail
     box: Postfach
+    inbox_main: Mail
+    inbox: Eingang
+    sent: Gesendet
+    trash: Papierkorb
+    inbox_trash: Papierkorb (Eingang)
+    sent_trash: Papierkorb (Gesendet)
+    new: Neue Nachricht
   user:
     gender: Geschlecht
     title: Titel
@@ -162,6 +168,8 @@ de:
     destroyed_friendship: Freundschaft gelöscht
     search_field_description: Suchen Sie hier nach Namen, Usernamen oder Adresse eines Mitglieds
     register_success: Erfolgreich angemeldet
+    manage_assigns: Attribute bearbeiten
+    common: Allgemeines
   profile_image:
       created: Profilbild angelegt!
       error: Profilbild konnte nicht angelegt werden (sollte kleiner 0.5MB und jpeg, gif oder png sein)
@@ -199,6 +207,9 @@ de:
       jobs: Jobs
       living: Mit-Wohnen
       changing: Tauschen
+  admin_attribute:
+      add: Hinzufügen
+      remove: Entfernen
   date:
     formats:
       default: "%d.%m.%Y"

@@ -1,0 +1,43 @@
+<% form_for @assign do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :parent_id %><br />
+    <%= f.collection_select :parent_id, Assign.find_all_by_assignable_type(@assignable_type), :id, :german_name, :include_blank => true %>
+  </p>
+  <p>
+    <%= f.label :ancestor_id %><br />
+    <%= f.collection_select :ancestor_id, Assign.find_all_by_assignable_type(@assignable_type), :id, :german_name, :include_blank => true %>
+  </p>
+  <p>
+	<%= f.label :german_name %><br />
+	<%= f.text_field :german_name %>
+</p>
+
+<p>
+	<%= f.label :english_name %><br />
+	<%= f.text_field :english_name %>
+</p>
+<p>
+	<%= f.label :html_attribute %><br />
+   <%= f.select(:html_attribute, [['text_field'], ['text_area'], ['select_tag'], ['select_many']]) %> 
+</p>
+<p>
+	<% f.fields_for :admin_assign_values do |builder| %>
+	<p>
+		<%= builder.label :german_name %>
+		<%= builder.text_field :german_name %>
+		<%= builder.label :english_name %>
+		<%= builder.text_field :english_name %>
+		<%= builder.check_box :_destroy %>
+		<%= builder.label :_destroy, t('admin_attribute.remove') %>
+	</p>
+	<% end %>
+		<% unless @assign.html_attribute.to_s.eql?('text_field') || @assign.html_attribute.to_s.eql?('text_area') %>
+			<%= link_to t('admin_attribute.add'), build_admin_values_path(:id  => @assign.id) %>
+			<%= f.hidden_field :assignable_type, :value  => @assignable_type %>
+		<% end %>
+</p>
+
+<%= f.hidden_field :assignable_type, :value  => @assignable_type %>
+<p><%= f.submit "Submit" %></p>
+<% end %>

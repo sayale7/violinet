@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :assigns
+
   
   map.resources :usergroups
 
@@ -111,6 +113,14 @@ ActionController::Routing::Routes.draw do |map|
   map.manage_categories 'manage_categories', :controller  => 'tags', :action  => 'manage_categories'
   
   map.services 'services', :controller  => 'services'
+  
+  map.resources :users, :has_many => :assigns
+  
+  map.build_admin_values 'build_admin_values', :controller  => 'assigns', :action  => 'add_admin_assign_value'
+  
+  map.remove_admin_values 'remove_admin_values', :controller  => 'assigns', :action  => 'remove_admin_assign_value'
+  
+  map.set_user_assign_values 'set_user_assign_values', :controller  => 'assigns', :action  =>  'set_user_assign_values'
   
   map.root :controller => "welcome", :action => "index"
   

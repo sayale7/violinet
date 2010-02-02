@@ -1,0 +1,16 @@
+<% form_tag set_user_assign_values_path do %>
+<% unless @assign.children.empty? %>
+
+<% if get_locale.to_s.eql?('de') %>
+<%= render 'german_user_assigns'  %>
+<% end %>
+
+
+<% if get_locale.to_s.eql?('en') %>
+<%= render 'english_user_assigns'%>
+<% end %>
+
+<%= submit_tag t('common.submit') %>
+
+<% end %>
+<% end %>

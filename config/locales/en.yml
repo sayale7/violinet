@@ -123,8 +123,14 @@ en:
     subject: Subject
     received_at: Received at
     move_to: Move To
-    inbox: Mail
     box: Box
+    inbox_main: Mail
+    inbox: Inbox
+    sent: Sent
+    trash: Trash
+    inbox_trash: Trash (Inbox)
+    sent_trash: Trash (Sent)
+    new: New Message
   user:
     gender: Gender
     title: Title
@@ -164,6 +170,8 @@ en:
     destroyed_friendship: Friendship destroyed
     register_success: Registration successfull
     search_field_description: Search for Name, Username or Address of a Registered User
+    manage_assigns: Manage attributes
+    common: Common
   profile_image:
       created: Image created!
       error: Image could not be created (should be smaller than 0.5MB and jpeg, gif or png)
@@ -201,3 +209,6 @@ en:
       jobs: Jobs
       living: Flatsharing
       changing: Changing
+  admin_attribute:
+      add: Add
+      remove: Remove

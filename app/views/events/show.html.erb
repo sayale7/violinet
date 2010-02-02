@@ -27,7 +27,7 @@
 </p>
 <p>
 	<h2><%= t('event.description') + ": " unless @event.description.nil? %></h2>
-	<%= @event.description unless @event.description.nil? %>
+	<%= simple_format(h @event.description) unless @event.description.nil? %>
 </p>
 <% if can? :manage, @event %>
 <p>
