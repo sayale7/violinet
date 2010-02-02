@@ -1,25 +1,18 @@
 <% title "Assigns" %>
 
-<table>
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<% @_assigns.each do |assign| %>
-	<tbody>
-		<tr>
-			<td><%=h assign.assign_names.first.name %> / <%=h assign.assign_names.last.name %> 
-			<td><%= link_to 'Edit', edit_assign_path(assign) %></td>
-			<td><%= link_to 'Destroy', assign, :confirm => 'Are you sure?', :method => :delete %></td>
-		</tr>
-	</tbody>
-	<% end %>
-</table>
+<% for assign in Assign.roots %>
+	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
+	<dl style="padding-left:30px;">
+		<% for assign_child in assign.children %>
+			<dt>
+				<%= assign_child.assign_names.find_by_language(get_locale.to_s).name %> -
+				<%= link_to 'Edit', edit_assign_path(assign) %> /
+				<%= link_to 'Destroy', assign, :confirm => 'Are you sure?', :method => :delete %>
+			</dt>
+		<% end %>
+	</dl>
+<% end %>
 
-<br />
-
-
+<br/>
+<br/>
 <%= link_to t('common.new'), '/assigns/new?assignable_type=' + @assignable_type.to_s %>
