@@ -169,6 +169,7 @@
 	<% for assign in Assign.roots %>
 	<% unless (@user.assigns.uniq & Assign.find_all_by_parent_id(assign.id)).size == 0 %>
 	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
+	<%= link_to t('common.edit'), assign_path(assign) %>
 	<dl>
 		<% for assign_child in assign.children %>
 			<% unless UserAssignValue.find_all_by_user_id_and_assign_id(@user.id, assign_child.id).empty? %>
