@@ -39,11 +39,18 @@ class AssignsController < ApplicationController
   def update
     @assign = Assign.find(params[:id])
     @assignable_type = @assign.assignable_type
-    if @assign.update_attributes(params[:assign])
-      redirect_to edit_assign_path(:assign  => @assign, :assignable_type  => @assignable_type)
+    test_assign = Assign.new
+    test_assign.parent_id = params[:assign][:parent_id]
+    unless params[:assign][:parent_id].eql?(@assign.id.to_s) || (test_assign.parent.parent_id != nil)
+      if @assign.update_attributes(params[:assign])
+        redirect_to edit_assign_path(:assign  => @assign, :assignable_type  => @assignable_type)
+      else
+        flash[:error] = "verschachtelung zu tief oder falsch zugewiesen"
+        redirect_to edit_assign_path(:assign  => @assign, :assignable_type  => @assignable_type)
+      end
     else
-      render :layout  => '/layouts/users'
-      render :action => 'edit'
+       flash[:error] = "verschachtelung zu tief oder falsch zugewiesen"
+       redirect_to edit_assign_path(:assign  => @assign, :assignable_type  => @assignable_type)
     end
   end
   
