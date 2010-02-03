@@ -1,4 +1,5 @@
-<% title "Crop avatar" %>
+<% title t('profile_image.crop') %>
+<h1><%= t('profile_image.crop') %></h1>
 
 <% content_for(:head) do %>
 <%= stylesheet_link_tag "jquery.Jcrop" %>
@@ -30,13 +31,15 @@ function update_crop(coords) {
 }
 </script>
 <% end %>
-
+<p>
 <%= image_tag @profile_image.avatar.url(:large), :id => "cropbox" %>
-
-
+</p>
+<p>
 <% form_for @profile_image do |f| %>
   <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
     <%= f.hidden_field attribute, :id => attribute %>
   <% end %>
   <p><%= f.submit t('common.submit') %></p>
 <% end %>
+
+</p>

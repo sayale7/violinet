@@ -19,7 +19,7 @@ class ProfileImagesController < ApplicationController
     @profile_image = ProfileImage.new(params[:profile_image])
     if @profile_image.save
       if params[:profile_image][:avatar].blank?
-        flash[:notice] = "Successfully created user."
+        flash[:notice] = t('profile_image.created')
         redirect_to @profile_image
       else
         render :action => "crop"
@@ -33,7 +33,7 @@ class ProfileImagesController < ApplicationController
     @profile_image = ProfileImage.find_by_user_id(current_user.id)
     if @profile_image.update_attributes(params[:profile_image])
       if params[:profile_image][:avatar].blank?
-        flash[:notice] = "Successfully updated user."
+        flash[:notice] = t('profile_image.created')
         @user = User.find(@profile_image.user_id)
         redirect_to @user
       else

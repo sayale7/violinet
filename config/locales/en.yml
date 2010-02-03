@@ -31,7 +31,7 @@ en:
     create_profile_entry: Create Entry
     comments: Comments
     create: Create
-    submit: Submit
+    submit: Save
     delete: Delete
     new: New
     my_albums: My Photo Albums
@@ -69,6 +69,8 @@ en:
     events: Events
     error: An Error Occured
     service: Service
+    edit_attributes: Edit attributes
+    all_blogs: All Blogs (with Livesearch)
   event:
     begin: Begin
     end: End
@@ -172,9 +174,12 @@ en:
     destroyed_friendship: Removed Contact
     friend_confirm: Contact Requests
     not_confirmed_yet: Not yet confirmed Contact(s)
+    delete: Quit Violounge.com
   profile_image:
       created: Image created!
       error: Image could not be created (should be smaller than 0.5MB and jpeg, gif or png)
+      crop: Cropping Profile Image
+      my_profile_image: My Profile Image
   post:
     new: New Post
     edit: Edit Post
@@ -184,8 +189,9 @@ en:
     body: Body
     all_of_this_user: Show me all Posts of 
     new_comment: New Comment
-    my_posts: My Posts
+    my_posts: My Posts (with Livesearch)
     manage_tags: Manage Tags
+    search_field_description: Search for Title, Content und Creator of a Blog
   tag:
       remove_tags_from_post: Tags of this Post
       remove_from_post: Remove

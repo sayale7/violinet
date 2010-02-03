@@ -1,5 +1,5 @@
 <% if @box == 'in' %>
-<h2>Eingang</h2>
+<h1><%= t'mail.inbox_trash' %></h1>
 <br></br>
 <table>
 	<thead>
@@ -60,7 +60,7 @@
 <% end %>
 
 <% if @box == 'out' %>
-<h2>Ausgang</h2>
+<h1><%= t'mail.sent_trash' %></h1>
 <br></br>
 <table>
 	<thead>

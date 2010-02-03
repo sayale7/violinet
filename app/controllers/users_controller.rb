@@ -94,14 +94,16 @@ class UsersController < ApplicationController
   end
 
   def destroy_user
-    @user = User.find(params[:id])
-    if current_user && (current_user == @user)
-      @user = User.find(params[:id])
-      @user.destroy
-      flash[:notice] = t('common.destroyed')
+    if current_user 
+      @user = User.find(current_user)
+      if @user.destroy
+        flash[:notice] = t('common.destroyed')
+        redirect_to root_url
+      else
+        flash[:error] = t('common.access_denied')
+      end
     else
       flash[:error] = t('common.access_denied')
     end
-    redirect_to root_url
   end
 end

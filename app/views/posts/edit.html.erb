@@ -1,7 +1,9 @@
 <%= javascript 'jquery', 'application' %>
 
+<% title t 'post.edit' %>
 
 <div class="post"><h1><%= t "post.edit"%></h1>
+<%= link_to t('common.back'), post_path(@post) %>
 <%= render :partial => "form" %></div>
 
 <div class="tags">

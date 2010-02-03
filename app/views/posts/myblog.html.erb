@@ -6,8 +6,8 @@
 		$("#to").datepicker();
 	});
 </script>
-
-<h2><%= t('post.my_posts') %></h2>
+<% title t'post.my_posts' %>
+<h1><%= t'post.my_posts' %></h1>
 
 <% form_tag my_post_search_path, :id  => 'post_search',  :method => :get do %>
 
@@ -19,8 +19,8 @@
 	<span id="date_format"> (TT/MM/JJJJ)</span>
 	<%= submit_tag t('common.clear'), :id  => 'clear_tb_datepicker', :class  => 'hidden' %>
 </p>
-<p>	 
-	<%= text_field_tag :search, params[:search], :class  => 'tb', :autocomplete  => 'off' %>
+<p>	
+	<%= text_field_tag :search, t('post.search_field_description'), :class  => 'tb_extended', :autocomplete => "off", :onfocus  => "this.value = ''" %> 
 	<%= submit_tag t('common.search'), :id  => 'search_button' %>
 </p>
 

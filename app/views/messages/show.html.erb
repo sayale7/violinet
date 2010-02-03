@@ -1,3 +1,4 @@
+<% title @message.subject %>
 <div id="inbox">
     <p style="overflow:hidden;">
         <%= "<strong>Betreff: </strong>" + @message.subject %>
@@ -6,7 +7,7 @@
         <%= "<strong>Von: </strong>" + User.find_by_id(@message.author_id).login %>
     </p>
     <p>
-        <%= "<strong>Am: </strong>" + @message.created_at.to_s(:long) %>
+        <%= "<strong>Am: </strong>" + @message.created_at.to_s(:short) %>
     </p>
     <br/>
     <p>

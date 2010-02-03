@@ -9,6 +9,8 @@ $(document).ready(function(){
 });
 </script>
 
+<% title @photo_ablum.name %>
+
 <h1><%= @photo_ablum.name %></h1>
 <% if current_user && current_user.id.to_s.eql?(@photo_ablum.user_id.to_s) %>
 (<%= link_to t("common.edit"), edit_photo_album_path(@photo_ablum) %>)

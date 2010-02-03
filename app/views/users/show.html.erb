@@ -1,3 +1,4 @@
+<% title t('user.my_profile') %>
 <% if current_user %>
 <%= render :partial => 'write_message' %>
 <% end %>
@@ -125,6 +126,11 @@
 <div class="info_and_entry">
 	<div class="account_info">
 		<ul>
+			<% if current_user && @current_one %>
+			<li>
+				<%= link_to t('user.delete'), destroy_user_path, :confirm  => t("common.confirm") %>
+			</li>
+			<% end %>
 			<li>
 				<%= t "common.login_name" %>: <%=h @user.login %>
 			</li>

@@ -1,3 +1,4 @@
+<% title @message.subject %>
 <div id="inbox">
     <p style="overflow:hidden;">
         <%= "<strong>Betreff: </strong>" + @message.subject %>
@@ -7,7 +8,7 @@
         <%= @message.recipients.to_s[2, @message.recipients.to_s.size] %>
     </p>
     <p>
-        <%= "<strong>Am: </strong>" + @message.created_at.to_s(:long) %>
+        <%= "<strong>Am: </strong>" + @message.created_at.to_s(:short) %>
     </p>
     <br/>
     <p>

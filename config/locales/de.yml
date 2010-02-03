@@ -29,7 +29,7 @@ de:
     create_profile_entry: Eintrag erstellen
     comments: Kommentare
     create: Erstellen
-    submit: Abschicken
+    submit: Speichern
     delete: Löschen
     my_albums: Meine Foto Alben
     photo_album_name: Name des Albums
@@ -66,6 +66,8 @@ de:
     events: Veranstaltungen
     error: Ein Fehler ist aufgetreten
     service: Service
+    edit_attributes: Attribute bearbeiten
+    all_blogs: Alle Blogs (mit Livesuche)
   event:
     begin: Begin
     end: Ende
@@ -170,9 +172,12 @@ de:
     destroyed_friendship: Kontakt gelöscht
     friend_confirm: Kontaktanfragen
     not_confirmed_yet: Noch nicht bestätigt(e)r Kontakt(e)
+    delete: Aus Violounge.com austreten
   profile_image:
       created: Profilbild angelegt!
       error: Profilbild konnte nicht angelegt werden (sollte kleiner 0.5MB und jpeg, gif oder png sein)
+      crop: Profilbild zuschneiden
+      my_profile_image: Mein Profilbild
   post:
     new: Neuer Post
     edit: Post Pearbeiten
@@ -182,8 +187,9 @@ de:
     body: Content
     all_of_this_user: Alle Artikel von 
     new_comment: Neuer Kommentar
-    my_posts: Meine Posts
+    my_posts: Meine Posts (mit Livesuche)
     manage_tags: Tags verwalten
+    search_field_description: Suchen Sie hier nach Titeln, Content und Gründer eines Blogs
   tag:  
     remove_tags_from_post: Tags des Eintrags
     remove_from_post: Entfernen

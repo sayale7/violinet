@@ -1,5 +1,8 @@
+<% title t'common.new_ablum' %>
 <h1><%= t "common.new_ablum" %></h1>
+<p>
 <% form_for(@photo_ablum) do |f| %>
 	<%= render 'form', :f => f %>
 <%= f.submit t("common.create_ablum") %>
 <% end %>
+</p>

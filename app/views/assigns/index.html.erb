@@ -1,4 +1,4 @@
-<% title "Assigns" %>
+<% title t('common.edit_attributes') %>
 
 <% for assign in Assign.roots %>
 	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>

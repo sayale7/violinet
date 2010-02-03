@@ -10,6 +10,9 @@
 		});
 	});
 </script>
+<% title t'common.blogs' %>
+<h1><%= t'common.all_blogs' %></h1>
+
 
 <% form_tag post_search_url, :id  => 'post_search', :method => :get do %>
  
@@ -21,9 +24,9 @@
 	<span id="date_format"> (TT/MM/JJJJ)</span>
 	<%= submit_tag t('common.clear'), :id  => 'clear_tb_datepicker', :class  => 'hidden' %>
 </p>
-
+<!-- <input name="user_session[login]" type="text" value="<%= t('common.email') %>" onfocus="this.value = ''" class="tb_login"> -->
 <p>	 
-	<%= text_field_tag :search, params[:search], :class  => 'tb', :autocomplete => "off" %>
+	<%= text_field_tag :search, t('post.search_field_description'), :class  => 'tb_extended', :autocomplete => "off", :onfocus  => "this.value = ''" %>
 	
 	<% unless params[:user_id].nil? %>
 		<%= hidden_field_tag :user_id_for_search, params[:user_id] %>

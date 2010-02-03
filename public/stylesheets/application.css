@@ -540,13 +540,11 @@ table a:link {
 /* Tags and Posts */
 
 #not_tags_of_post{
-	width:950px;
 	float:left;
 	margin-bottom:10px;
 }
 #tags_of_post{
 	float:left;
-	width:950px;
 	margin-bottom:10px;
 }
 .tags{

@@ -92,6 +92,7 @@ ActionController::Routing::Routes.draw do |map|
   map.calendar "/calendar/:year/:month", :controller => "calendar", :action => "index", :year => Time.now.year, :month => Time.now.month
   
   map.destroy_friendship 'destroy_friendship', :controller => 'friendships', :action  => 'destroy'
+  
   map.add_friendship 'add_friendship', :controller => 'friendships', :action  => 'create'
   
   map.user_search 'user_search', :controller  => 'users', :action  => 'index'
@@ -121,6 +122,8 @@ ActionController::Routing::Routes.draw do |map|
   map.remove_admin_values 'remove_admin_values', :controller  => 'assigns', :action  => 'remove_admin_assign_value'
   
   map.set_user_assign_values 'set_user_assign_values', :controller  => 'assigns', :action  =>  'set_user_assign_values'
+  
+  map.destroy_user 'destroy_user', :controller  => 'users', :action  =>  'destroy_user'
   
   map.root :controller => "welcome", :action => "index"
   

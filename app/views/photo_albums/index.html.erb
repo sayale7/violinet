@@ -1,3 +1,8 @@
+<% if @photo_ablums.size > 0 %>
+<% id = @photo_ablums.first.user_id  %>
+<% title t('photo_album.of_this_user') + " " + User.find(id).login.to_s %>
+<% end %>
+
 <% @photo_ablums.each do |album| %>
 
 <div class="photo_album">
