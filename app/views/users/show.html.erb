@@ -9,6 +9,9 @@
 	</div>	
 	<% end %>
 	<h1><%= t "user.common" %></h1>
+	<% if current_user && @current_one %>
+		<%= link_to_unless_current t("common.edit"), :controller => "user_commons", :action => "edit", :id => current_user.id %>
+	<% end %>
 	<dl>
 		<% if !(@user_common.gender.to_s == "") %>
 		<dt>

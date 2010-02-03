@@ -18,7 +18,7 @@ class UserCommonsController < ApplicationController
     @user_common = UserCommon.find(params[:id])
     unauthorized! if cannot? :manage, @user_common
     if @user_common.update_attributes(params[:user_common])
-      flash[:notice] = "Successfully updated user common."
+      flash[:notice] = t('common.updated')
       redirect_to '/users/' + current_user.id.to_s
     else
       render :action => 'edit'

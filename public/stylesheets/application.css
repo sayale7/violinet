@@ -7,7 +7,7 @@ body {
 /*    background-color: #4B7399;*/
 	background: transparent;
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-    font-size: 0.8em;
+    font-size: 12px;
     background-image: url(/images/background.png);
 	background-repeat:repeat-x;
 }
@@ -247,11 +247,10 @@ table a:link {
     width: 950px;
     margin: 0 auto;
     background-color: transparent;
-
-	border-top: 1px solid silver;
+	border-top: 2px solid black;
 /*    border: solid 1px black;*/
     padding: 10px;
-padding-top:20px;
+	padding-top:20px;
 	overflow:hidden;
 } #content {
     width: 900px;
@@ -265,7 +264,7 @@ padding-top:20px;
 	background: transparent;
 	overflow:hidden;
 /*    border: solid 1px black; #F8F8F8s */
-    padding: 10px;
+    padding: 0px;
 } #user_nav ul {
 	float:left;
 	padding:0;
@@ -275,18 +274,18 @@ padding-top:20px;
 #user_nav ul li {
 	display: block;
 	float: left;
-	font-size: 13px;
 	font-family: Verdana;
 	background:transparent; 
 	color:#333;
 	font-weight:bold;
 	text-decoration: none;
 	padding:10px;
+	padding-top:0;
+	padding-bottom:0;
 }
 #user_nav ul li a {
 	display: block;
 	float: left;
-	font-size: 13px;
 	font-family: Verdana;
 	font-weight:normal;
 	background:transparent; 
@@ -305,8 +304,10 @@ padding-top:20px;
     width: 950px;
 	height:30px;
 	padding:10px;
+	padding-top:0;
+	padding-bottom:0;
 	background:transparent;
-	border-top: 1px solid silver;
+	border-top: 1px solid black;
 }
 
 .wjs{
@@ -366,7 +367,6 @@ padding-top:20px;
 }.account_info {
 	float:right;
     width: 410px;
-	font-size:13px;
 	text-align:right;
 	padding-bottom:10px;
 	margin-bottom:10px;
@@ -392,8 +392,8 @@ padding-top:20px;
     font-weight: bold;
 }.personal_info dd {
     margin-left: 13em;
-    margin-top: -1.8em;
-    padding: 0.5em;
+    margin-top: -1.6em;
+    padding: 0.3em;
 } 
 
 .attributes {
@@ -409,8 +409,8 @@ padding-top:20px;
     font-weight: bold;
 }.attributes dd {
     margin-left: 13em;
-    margin-top: -1.8em;
-    padding: 0.5em;
+    margin-top: -1.5em;
+    padding: 0.3em;
 }
 
 #users {

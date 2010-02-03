@@ -1,69 +1,64 @@
 <div id="choose_country">
-	<a href="http://de.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("de.png", :border=>0) %></a>
-	<a href="http://en.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("gb.png", :border=>0) %></a>
+	<a href="http://de.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("de.png", :border=>0, :width  => 20) %></a>
+	<a href="http://en.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("gb.png", :border=>0, :width  => 20) %></a>
 </div>
 <% if !current_user %>
 <ul>
 	<li>
-		<%= link_to_unless_current t("common.blogs"), posts_path %>
+		<%= link_to t("common.blogs"), posts_path %>
 	</li>
 	<li>
-		<%= link_to_unless_current t("common.registered_users"), users_path %>
+		<%= link_to t("common.registered_users"), users_path %>
 	</li>
 	<li>
-		<%= link_to_unless_current t('common.groups'), groups_path %>
+		<%= link_to t('common.groups'), groups_path %>
 	</li>
 	<li>
-		<%= link_to_unless_current t('common.events'), '/calendar' %>
+		<%= link_to t('common.events'), '/calendar' %>
 	</li>
 	<li>
-		<%= link_to_unless_current t('common.service'), '/services' %>
+		<%= link_to t('common.service'), '/services' %>
 	</li>
 	<li>
-		<%= link_to_unless_current t("common.register"), new_user_path %>
+		<%= link_to t("common.register"), new_user_path %>
 	</li>
 	<li>
-		<%= link_to_unless_current t("common.login"), new_user_session_path %>
+		<%= link_to t("common.login"), new_user_session_path %>
 	</li>
 </ul>
 <% else %>
 <ul>
 	<li>
-		<%= link_to_unless_current t("user.my_profile"), user_path(:current) %>
+		<%= link_to t("user.my_profile"), user_path(:current) %>
 	</li>
 	<li>
-		<%= link_to_unless_current t("common.blogs"), posts_path %>
+		<%= link_to t("common.blogs"), posts_path %>
 	</li>
 	<li>
 		<% if unread_messages.empty? %>
-			<%= link_to_unless_current t("mail.inbox_main"), inbox_path %>
+			<%= link_to t("mail.inbox_main"), inbox_path %>
 		<% else %>
-			<%= link_to_unless_current t("mail.inbox_main"), inbox_path %>
+			<%= link_to t("mail.inbox_main"), inbox_path %>
 			<span style="margin-left:5px;"><%= unread_messages.size.to_s %></span>
 		<% end %>
 	</li>
 	<li>
-		<%= link_to_unless_current t("common.all_photo_album"), photo_albums_path %>
+		<%= link_to t("common.all_photo_album"), photo_albums_path %>
 	</li>
 	<li>
-		<%= link_to_unless_current t("common.registered_users"), users_path %>
+		<%= link_to t("common.registered_users"), users_path %>
 	</li>
 	<li>
-		<%= link_to_unless_current t('common.groups'), groups_path %>
+		<%= link_to t('common.groups'), groups_path %>
 	</li>
 	<li>
-		<%= link_to_unless_current t('common.events'), '/calendar' %>
+		<%= link_to t('common.events'), '/calendar' %>
 	</li>
 	<li>
-		<%= link_to_unless_current t('common.service'), '/services' %>
+		<%= link_to t('common.service'), '/services' %>
 	</li>
 	<li>
-		<%= link_to_unless_current t("common.logout"), logout_path, :method => :delete, :confirm => t("common.confirm_logout") %>
+		<%= link_to t("common.logout"), logout_path, :method => :delete, :confirm => t("common.confirm_logout") %>
 	</li>
 </ul>
 <% end %>
-<div id="flash">
-	<% flash.each do |name, msg| %>
-	<%= content_tag :div, msg, :id => "flash_#{name}" %>
-	<% end %>
-</div>

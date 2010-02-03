@@ -11,7 +11,8 @@
 		list-style: none;
 		padding: 10px;
 		color:#333;
-		font: 13px Tahoma, Arial;
+		font: 13px:
+		font-family:Verdana;
 		font-weight:bold;
 		}
 
@@ -23,6 +24,7 @@
 			background:transparent; 
 			color:#333;
 			font-weight:normal;
+			font-family:Verdana;
 			}
 
 			#jsddm li a:hover

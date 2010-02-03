@@ -1,15 +1,15 @@
 <ul id="jsddm">
 	<li>
-		<%= link_to_unless_current t('mail.inbox'), inbox_path %>
+		<%= link_to t('mail.inbox'), inbox_path %>
 	</li>
-	<li><%= link_to_unless_current t('mail.sent'), :controller => "sent", :action => "index" %></li>
-	<li><%= link_to_unless_current t('mail.new'), new_sent_path %></li>
+	<li><%= link_to t('mail.sent'), :controller => "sent", :action => "index" %></li>
+	<li><%= link_to t('mail.new'), new_sent_path %></li>
 	<span class="wojs">
 	<li>
-		<%= link_to_unless_current t('mail.inbox_trash'), trash_in_path %>
+		<%= link_to t('mail.inbox_trash'), trash_in_path %>
 	</li>
 	<li>
-		<%= link_to_unless_current t('mail.sent_trash'), trash_out_path %>
+		<%= link_to t('mail.sent_trash'), trash_out_path %>
 	</li>
 	</span>
 	<li id="js" class="wjs"><a href="#"><%= t('mail.trash') %></a>
