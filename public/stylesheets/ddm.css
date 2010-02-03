@@ -37,7 +37,10 @@
 			{	margin: 0;
 				padding: 0;
 				position: absolute;
-				visibility: hidden;}
+				visibility: hidden;
+				width:80px;
+				background-image: url(/images/background.png);
+				}
 
 				#jsddm li ul li
 				{	float: none;
