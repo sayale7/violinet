@@ -211,6 +211,7 @@ en:
     kind: Images (smaller than 0.5MB and jpeg, gif or png)
   photo_album:
       of_this_user: Photoalbums of from
+      full: Full Screen Mode
   service:
       jobs: Jobs
       living: Flatsharing

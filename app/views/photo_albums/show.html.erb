@@ -32,7 +32,13 @@ $(document).ready(function(){
 	</ul>
 </div>
 
+<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= @photos.first.public_filename() %>"><%= t('photo_album.full') %></a>
 <% unless @photos.empty? %>
+<% @photos.each do |photo| %>
+	<% unless photo.id == @photos.first.id %>
+	<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= photo.public_filename() %>"></a>
+	<% end %>
+<% end %>
 <!-- Start Advanced Gallery Html Containers -->
 <div id="gallery" class="slide_show_content">
 	<div id="controls" class="controls"></div>
@@ -46,7 +52,7 @@ $(document).ready(function(){
 	<ul class="thumbs noscript">
 		<% @photos.each do |photo| %>
 		<li>
-			<a class="thumb" name="leaf" href="<%= photo.public_filename() %>" title="Title #0">
+			<a class="thumb" name="leaf" href="<%= photo.public_filename(:large) %>" title="Title #0">
 				<img src="<%= photo.public_filename(:thumb) %>" alt="Title #0" />
 			</a>
 			<div class="caption">

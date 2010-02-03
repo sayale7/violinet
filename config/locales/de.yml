@@ -209,6 +209,7 @@ de:
     kind: Bilder auswählen (kleiner 0.5MB und jpeg, gif oder png)
   photo_album:
       of_this_user: Fotoalben von
+      full: Vollbildanzeige
   service:
       jobs: Jobs
       living: Mit-Wohnen
