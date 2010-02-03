@@ -24,10 +24,10 @@
 	<span id="date_format"> (TT/MM/JJJJ)</span>
 	<%= submit_tag t('common.clear'), :id  => 'clear_tb_datepicker', :class  => 'hidden' %>
 </p>
-<!-- <input name="user_session[login]" type="text" value="<%= t('common.email') %>" onfocus="this.value = ''" class="tb_login"> -->
+
 <p>	 
-	<%= text_field_tag :search, t('post.search_field_description'), :class  => 'tb_extended', :autocomplete => "off", :onfocus  => "this.value = ''" %>
-	
+	<%= t('post.search_field_description') %>
+	<%= text_field_tag :search, params[:search], :class  => 'tb_extended', :autocomplete => "off" %>
 	<% unless params[:user_id].nil? %>
 		<%= hidden_field_tag :user_id_for_search, params[:user_id] %>
 	<% end %>
