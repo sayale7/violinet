@@ -16,12 +16,13 @@
 	<% end %>
 	
 	<!-- if attribute is a select_many -->
-	
 	<% if assign.html_attribute.to_s.eql?('select_many') %>
+		<div style="padding-left:20px; padding-bottom:15px">
 		<%= admin_assign_values_checklist(AdminAssignValueName.find_all_by_language_and_admin_assign_value_id(get_locale.to_s, assign.admin_assign_values), assign.id) %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
+			</div>
 	<% end %>
-	
+
 	
 	<!-- if attribute is a text_field -->
 	<% if assign.html_attribute.to_s.eql?('text_field') %>
