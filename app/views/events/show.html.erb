@@ -1,8 +1,6 @@
 <div id="event_flyer">
 	<% unless @event.flyer_file_name.nil? %>
 	<a href='<%= @event.flyer.url %>' rel='shadowbox'><%= image_tag @event.flyer.url(:small) %></a>
-	<% else %>
-	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
 	<% end %>
 
 </div>

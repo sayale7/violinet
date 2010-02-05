@@ -52,5 +52,12 @@ class EventsController < ApplicationController
     end
   end
   
+  def destroy_flyer
+    @event = Event.find(params[:id])
+    @event.flyer.clear
+    @event.save
+    edit
+    render :action  => 'edit'
+  end
   
 end

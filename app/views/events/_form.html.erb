@@ -16,13 +16,16 @@ $(document).ready(function(){
 <div id="event_flyer">
 <p>
 	<% unless @event.flyer_file_name.nil? %>
-	<a href='<%= @event.flyer.url %>' rel='shadowbox'><%= image_tag @event.flyer.url(:small) %></a>
+		<a href='<%= @event.flyer.url %>' rel='shadowbox'><%= image_tag @event.flyer.url(:small) %></a>
 	<% else %>
-	<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
+		<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
 	<% end %>
 </p>
 <p>
 	<%= t('event.flyer') %>
+	<% unless @event.flyer_file_name.nil? %>
+	<%= link_to t('common.delete'), destroy_flyer_path(:id  => @event.id), :confirm  => t('common.confirm') %>
+	<% end %>
 </p>
 <p>
 	<%= f.file_field :flyer %>

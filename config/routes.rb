@@ -125,6 +125,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.destroy_user 'destroy_user', :controller  => 'users', :action  =>  'destroy_user'
   
+  map.destroy_flyer 'destroy_flyer', :controller  => 'events', :action  => 'destroy_flyer'
+  
   map.root :controller => "welcome", :action => "index"
   
 
