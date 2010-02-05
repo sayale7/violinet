@@ -81,7 +81,7 @@ class AssignsController < ApplicationController
       unless value.to_s.size == 0
         if key.to_s.include?('_')
           key = key.split("_").first
-          user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_user_id_and_value(key, current_user.id, AdminAssignValueName.find(value).name)
+          user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_user_id_and_value_and_admin_assign_value_id(key, current_user.id, AdminAssignValueName.find(value).name, AdminAssignValueName.find(value).admin_assign_value_id)
           user_assign_value.update_attribute(:value, AdminAssignValueName.find(value).name)
         else
           user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_user_id(key, current_user.id) 

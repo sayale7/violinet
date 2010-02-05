@@ -33,7 +33,7 @@ module ApplicationHelper
           end
 
           def is_checked?(item, assign_id)
-            return !UserAssignValue.find_by_user_id_and_value_and_assign_id(current_user.id, item.name, assign_id).nil?
+            return !UserAssignValue.find_by_user_id_and_admin_assign_value_id_and_assign_id(current_user.id, item.admin_assign_value_id, assign_id).nil?
           end
           
           

@@ -1,5 +1,14 @@
 <% javascript 'jquery', 'swfupload', 'handlers', 'main' %>
 
+<script type="text/javascript">
+Shadowbox.init({
+	language: 'en',
+	players:  ['img', 'html', 'iframe'],
+	onClose:function(){ window.location.reload(true) }
+});
+
+</script>
+
 <% title t'common.edit_album' %>
  
 <div style="float:left;">
