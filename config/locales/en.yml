@@ -71,6 +71,7 @@ en:
     service: Service
     edit_attributes: Edit attributes
     all_blogs: All Blogs (with Livesearch)
+    manage: Manage
   event:
     begin: Begin
     end: End
@@ -97,7 +98,7 @@ en:
     escaped: Succesfully quit from Group
     attend_error: Error
     attended: You successfully joined this group
-    manage_tags: Manage Categories
+    manage_tags: Manage Group Categories
     of_this_user: Groups of
     all_of_this_user: All Groups of
   forgot_password:
@@ -162,7 +163,7 @@ en:
     my_profile_img: Profile Image
     register_success: Registration successfull
     search_field_description: Search for Name, Username or Address of a Registered User
-    manage_assigns: Manage attributes
+    manage_assigns: Manage user attributes
     common: Common
     add: Add Contact
     remove: Remove Contact
@@ -211,7 +212,7 @@ en:
     kind: Images (smaller than 0.5MB and jpeg, gif or png)
   photo_album:
       of_this_user: Photoalbums of from
-      full: Full Screen Mode
+      full: Full Screen Slideshow
   service:
       jobs: Jobs
       living: Flatsharing
@@ -219,3 +220,16 @@ en:
   admin_attribute:
       add: Add
       remove: Remove
+  job:
+      all: All Jobs
+      manage_assigns: Manage job attributes
+      manage_tags: Manage Job categories
+      title: Job Title
+      recent: Recent Jobs
+      new: New Jobinsert
+      manage: Manage Jobs
+      step1: Schritt 1
+      step2: Schritt 2
+      creat_job_insert: Create Job Entry
+      edit_job_insert: Check Job Entry
+      what_are_tags: What are Tags?

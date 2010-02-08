@@ -5,13 +5,16 @@
   	<title><%= h(yield(:title) || "Untitled") %></title>
 	<%= stylesheet_link_tag 'application', 'ddm' %>
 	<%= javascript_include_tag 'jqeury', 'application', 'ddm' %>
-	</script>
-	
 	<%= yield :head %>
 </head>
 <body>
 	<div id="user_nav">
 		<%= render :partial => '/layouts/main_nav' %>
+	</div>	
+	<div id="user_nav_two">
+		 <div id="jsddm">
+		<%= render "/layouts/services_nav" %>
+		</div>
 	</div>
 	<div id="container">
 		<div id="flash">

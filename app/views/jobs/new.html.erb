@@ -1,0 +1,11 @@
+<% title t('job.new') %>
+
+<div class="job_info_left">
+	<h2><%= t('job.step1') %></h1>
+	<h3><%= t('job.creat_job_insert') %></h3>
+</div>
+<div class="clear">
+<%= render :partial => 'form' %>
+
+<p><%= link_to t('common.back'), jobs_path %></p>
+</div>

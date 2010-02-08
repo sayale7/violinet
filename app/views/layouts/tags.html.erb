@@ -4,17 +4,13 @@
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   	<title><%= h(yield(:title) || "Untitled") %></title>
 	<%= stylesheet_link_tag 'application', 'ddm' %>
+	<%= javascript_include_tag 'jquery', 'application', 'ddm' %>
 	<%= yield :head %>
 </head>
 <body>
 	<div id="user_nav">
 		<%= render :partial => '/layouts/main_nav' %>
 	</div>	
-	<div id="user_nav_two">
-		 <div id="jsddm">
-		<%= render "/layouts/tags_nav" %>
-		</div>
-	</div>
 	<div id="container">
 		<div id="flash">
 			<% flash.each do |name, msg| %>

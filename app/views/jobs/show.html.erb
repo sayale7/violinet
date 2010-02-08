@@ -1,0 +1,26 @@
+<% title "Job" %>
+
+<% if current_user && current_user.role?('admin') %>
+<p>
+	<% if @job.active %>
+	<strong>Aktiv:</strong>
+	<% else %>
+	<strong>Inaktiv:</strong>
+	<% end %>
+	<%= link_to t('common.edit'), edit_job_path(@job) %>
+	<%= link_to t('common.delete'), job_path(@job), :confirm  => t('common.confirm'), :method  => :delete %>
+</p>
+<% end %>
+
+
+<div class="show_job_attributes">
+<h1><%= @job.title %></h1>
+<dl>
+<% @_assigns.each do |assign| %>
+	<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).empty? %>
+		<h2><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h2>
+		<p><%= simple_format(h UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).map(&:value).join(', ')) %></p>
+	<% end %>
+<% end %>
+</dl>
+</div>

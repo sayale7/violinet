@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :jobs
+
   map.resources :assigns
 
   
@@ -122,6 +124,8 @@ ActionController::Routing::Routes.draw do |map|
   map.remove_admin_values 'remove_admin_values', :controller  => 'assigns', :action  => 'remove_admin_assign_value'
   
   map.set_user_assign_values 'set_user_assign_values', :controller  => 'assigns', :action  =>  'set_user_assign_values'
+  
+  map.set_job_assign_values 'set_job_assign_values', :controller  => 'assigns', :action  => 'set_job_assign_values'
   
   map.destroy_user 'destroy_user', :controller  => 'users', :action  =>  'destroy_user'
   

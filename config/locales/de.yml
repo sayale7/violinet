@@ -68,6 +68,7 @@ de:
     service: Service
     edit_attributes: Attribute bearbeiten
     all_blogs: Alle Blogs (mit Livesuche)
+    manage: Verwaltung
   event:
     begin: Begin
     end: Ende
@@ -94,7 +95,7 @@ de:
     escaped: Aus Gruppe ausgetreten
     attend_error: Fehler beim Gruppenbeitritt
     attended: Beigetreten
-    manage_tags: Kategorien verwalten
+    manage_tags: Gruppen Kategorien verwalten
     of_this_user: Gruppen von
     all_of_this_user: Alle Gruppen von
   forgot_password:
@@ -160,7 +161,7 @@ de:
     my_profile_img: Profilfoto
     search_field_description: Suchen Sie hier nach Namen, Usernamen oder Adresse eines Mitglieds
     register_success: Erfolgreich angemeldet
-    manage_assigns: Attribute bearbeiten
+    manage_assigns: User Attribute verwalten
     common: Allgemeines
     add: Kontakt hinzufügen
     remove: Kontakt entfernen
@@ -192,8 +193,8 @@ de:
     search_field_description: Suchen Sie hier nach Titeln, Content und Gründer eines Blogs
   tag:  
     remove_tags_from_post: Tags des Eintrags
-    remove_from_post: Entfernen
     add_tags_to_post: Verfügbare Tags
+    remove_from_post: Entfernen
     add_to_post: Hinzufügen
     german_name: Deutscher Name
     english_name: Englischer Name
@@ -209,7 +210,7 @@ de:
     kind: Bilder auswählen (kleiner 0.5MB und jpeg, gif oder png)
   photo_album:
       of_this_user: Fotoalben von
-      full: Vollbildanzeige
+      full: Vollbild Diashow
   service:
       jobs: Jobs
       living: Mit-Wohnen
@@ -217,6 +218,20 @@ de:
   admin_attribute:
       add: Hinzufügen
       remove: Entfernen
+  job:
+      all: Alle Jobs
+      manage_assigns: Job Attribute verwalten
+      manage_tags: Job Kategorien verwalten
+      title: Job Titel
+      recent: Frische Jobangebote
+      new: Stellenanzeige aufgeben
+      manage: Jobs verwalten
+      step1: Schritt 1
+      step2: Schritt 2
+      creat_job_insert: Job Inserat erstellen
+      edit_job_insert: Job Inserat kontrollieren
+      what_are_tags: Was sind Tags?
+      tag_description: Tags sind Kategorien die Sie Ihren Jobinseraten zuweisen können. Ihr Inserat scheint z.B. dann auf, wenn Sie die Kategorie Violine zugewiesen haben, und ein Benutzer nach Jobs in der Kategorie Violine sucht. Bitte weisen Sie die Tags richtig zu, damit Ihr Inserat in den richtigen Kategorien aufscheint. Jobs werden, bevor sie online gestellt werden, von der Redaktion nochmals überprüft. Im Zuge dessen, werden falsch zugewiesene Tags wieder entfernt, damit die Jobbörse fair und übersichtlich bleibt.
   date:
     formats:
       default: "%d.%m.%Y"

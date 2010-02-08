@@ -180,25 +180,25 @@
 	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
 	<% if current_user %>
 	<% if @user == current_user %>
-		<%= link_to t('common.edit'), assign_path(assign) %>
+	<%= link_to t('common.edit'), assign_path(assign) %>
 	<% end %>
 	<% end %>
 	<dl>
 		<% for assign_child in assign.children %>
-			<% unless UserAssignValue.find_all_by_user_id_and_assign_id(@user.id, assign_child.id).empty? %>
-			<% unless UserAssignValue.find_all_by_user_id_and_assign_id(@user.id, assign_child.id).size == 1 && UserAssignValue.find_all_by_user_id_and_assign_id(@user.id, assign_child.id).first.value.to_s.eql?('') %>
-			<dt>
-				<%= assign_child.assign_names.find_by_language(get_locale.to_s).name + ":" %>
-			</dt>
-			<dd>
-				<%= UserAssignValue.find_all_by_user_id_and_assign_id(@user.id, assign_child.id).map(&:value).join(', ') %>
-			</dd>
-			<% end %>
-			<% end %>
+		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).empty? %>
+		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).size == 1 && UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).first.value.to_s.eql?('') %>
+		<dt>
+			<%= assign_child.assign_names.find_by_language(get_locale.to_s).name + ":" %>
+		</dt>
+		<dd>
+			<%= UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).map(&:value).join(', ') %>
+		</dd>
+		<% end %>
+		<% end %>
 		<% end %>
 	</dl>
 	<% end %>
-	
+
 	<% end %>
 	
 	<div class="friends">

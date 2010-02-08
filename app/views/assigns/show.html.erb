@@ -1,16 +1,29 @@
-<% form_tag set_user_assign_values_path do %>
-<% unless @assign.children.empty? %>
-
-<% if get_locale.to_s.eql?('de') %>
-<%= render 'german_user_assigns'  %>
+<!-- For User View -->
+<% if @assign.assignable_type.to_s.eql?('User') %>
+	<% form_tag set_user_assign_values_path do %>
+		<% if get_locale.to_s.eql?('de') %>
+			<% title @assign.german_name %>
+			<h1><%= @assign.german_name %></h1>
+		<% end %>
+		<% if get_locale.to_s.eql?('en') %>
+			<% title @assign.english_name %>
+			<h1><%= @assign.english_name %></h1>
+		<% end %>
+		<% unless @assign.children.empty? %>
+			<% for assign in @assign.children %>
+				<% if get_locale.to_s.eql?('de') %>
+					<%= render 'german_user_assigns', :assign  => assign  %>
+				<% end %>
+				<% if get_locale.to_s.eql?('en') %>
+					<%= render 'english_user_assigns', :assign  => assign%>
+				<% end %>
+			<% end %>
+		<% end %>
+		<%= submit_tag t('common.submit') %>
+	<% end %>
 <% end %>
 
 
-<% if get_locale.to_s.eql?('en') %>
-<%= render 'english_user_assigns'%>
-<% end %>
 
-<%= submit_tag t('common.submit') %>
 
-<% end %>
-<% end %>
+

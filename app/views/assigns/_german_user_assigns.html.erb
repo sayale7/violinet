@@ -1,17 +1,12 @@
-<% title @assign.german_name %>
-<h1><%= @assign.german_name %></h1>
-
-<% for assign in @assign.children %>
-
 <p>
 
 	<span style="font-weight:bold"><%= assign.german_name %></span> <br/>
 	<!-- if attribute is a select_tag -->
 	<% if assign.html_attribute.to_s.eql?('select_tag') %>
-	<% if UserAssignValue.find_by_user_id_and_assign_id(current_user.id, assign.id).nil? %>
+	<% if UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).nil? %>
 		<%= select_tag 'assign_id_' +assign.id.to_s + '[value]', "<option> </option>" + options_from_collection_for_select(AdminAssignValueName.find_all_by_language_and_admin_assign_value_id(get_locale.to_s, assign.admin_assign_values), :name, :name) %>
 	<% else %>
-		<%= select_tag 'assign_id_' +assign.id.to_s + '[value]', "<option> </option>" + options_from_collection_for_select(AdminAssignValueName.find_all_by_language_and_admin_assign_value_id(get_locale.to_s, assign.admin_assign_values), :name, :name, UserAssignValue.find_by_user_id_and_assign_id(current_user.id, assign.id).value) %>
+		<%= select_tag 'assign_id_' +assign.id.to_s + '[value]', "<option> </option>" + options_from_collection_for_select(AdminAssignValueName.find_all_by_language_and_admin_assign_value_id(get_locale.to_s, assign.admin_assign_values), :name, :name, UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).value) %>
 	<% end %>	
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
@@ -28,27 +23,23 @@
 	
 	<!-- if attribute is a text_field -->
 	<% if assign.html_attribute.to_s.eql?('text_field') %>
-		<% if UserAssignValue.find_by_user_id_and_assign_id(current_user.id, assign.id).nil? %>
+		<% if UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).nil? %>
 			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', '', :class  => 'tb'  %>
 		<% else %>
-			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_user_id_and_assign_id(current_user.id, assign.id).value, :class  => 'tb'  %>
+			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).value, :class  => 'tb'  %>
 		<% end %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
 	
 	<!-- if attribute is a text_area -->
 	<% if assign.html_attribute.to_s.eql?('text_area') %>
-		<% if UserAssignValue.find_by_user_id_and_assign_id(current_user.id, assign.id).nil? %>
+		<% if UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).nil? %>
 			<%= text_area_tag 'assign_id_' +assign.id.to_s + '[value]', '', :class  => 'tb'  %>
 		<% else %>
-			<%= text_area_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_user_id_and_assign_id(current_user.id, assign.id).value, :class  => 'tb_area'  %>
+			<%= text_area_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).value, :class  => 'tb_area'  %>
 		<% end %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
 	
 	
 </p>
-
-
-
-<% end %>

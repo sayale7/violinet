@@ -26,6 +26,7 @@
 		<%= link_to t("common.login"), new_user_session_path %>
 	</li>
 </ul>
+
 <% else %>
 <ul>
 	<li>
@@ -60,5 +61,19 @@
 	<li>
 		<%= link_to t("common.logout"), logout_path, :method => :delete, :confirm => t("common.confirm_logout") %>
 	</li>
+
 </ul>
+<% if current_user.role?('admin') %>
+<ul id="jsddm">
+	<li id="js" class="wjs_visible"><a href="#"><%= t('common.manage') %></a>
+		<ul>
+			<li><%= link_to t('job.manage_assigns'), '/assigns?assignable_type=Job' %></li>
+			<li><%= link_to t('job.manage_tags'), '/tags?taggable_type=Job' %></li>
+			<li><%= link_to t('user.manage_assigns'), '/assigns?assignable_type=User' %></li>
+			<li><%= link_to t('group.manage_tags'), '/tags?taggable_type=Group' %></li>
+			<li><%= link_to t('post.manage_tags'), '/tags?taggable_type=Post' %></li>
+		</ul>
+	</li>
+</ul>
+<% end %>
 <% end %>

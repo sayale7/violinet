@@ -1,0 +1,28 @@
+<%  form_tag set_job_assign_values_path do %>
+	<%= hidden_field_tag :job_id, '', :value  =>  @job.id %>
+	<% if current_user && current_user.role?('admin') %>
+	<p>
+	  <strong>Aktiv</strong>
+	  <%= check_box_tag :active, 1, @job.active %><br/>
+	</p>
+	<% end %>
+	<p>
+		<strong><%= label_tag t('job.title') %></strong><br/>
+		<%= text_field_tag :title, @job.title, :class  => 'tb' %>
+	</p>
+	<% unless all_assigns('Job').empty? %>
+		<% all_assigns('Job').each do |job_assign| %>
+		
+		<% if get_locale.to_s.eql?('de') %>
+		<%= render '/assigns/german_job_assigns', :assign  => job_assign  %>
+		<% end %>
+		
+		<% if get_locale.to_s.eql?('en') %>
+		<%= render '/assigns/english_job_assigns', :assign  => job_assign %>
+		<% end %>
+		
+		<% end %>
+	<% end %>
+  <p><%= submit_tag "Submit" %></p>
+<% end %>
+

@@ -8,8 +8,8 @@
 	<li>
 		<%= link_to t("user.commons"), :controller => "user_commons", :action => "edit", :id => current_user.id %>
 	</li>
-	<% unless user_assigns.empty? %>
-		<% user_assigns.each do |user_assign| %>
+	<% unless all_assigns('User').empty? %>
+		<% all_assigns('User').each do |user_assign| %>
 		<li>
 			<% if get_locale.to_s.eql?('de') %>
 				<%= link_to user_assign.german_name, assign_path(user_assign) %>
@@ -19,7 +19,4 @@
 		</li>
 		<% end %>
 	<% end %>
-	<li>
-		<%= link_to t('user.manage_assigns'), '/assigns?assignable_type=User' %>
-	</li>
 </ul>

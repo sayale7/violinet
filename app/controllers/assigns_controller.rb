@@ -4,20 +4,19 @@ class AssignsController < ApplicationController
     unless params[:assignable_type].nil?
       @assignable_type =  params[:assignable_type]
     end
-    @_assigns = Assign.find_all_by_assignable_type(@assignable_type)
-    render :layout  => '/layouts/users'
+    @_assigns = Assign.find_all_by_assignable_type_and_parent_id(@assignable_type, nil)
   end
   
   def show
     @assign = Assign.find(params[:id])
-    render :layout  => '/layouts/users'
+    render :layout  =>  '/layouts/' + @assign.assignable_type.to_s.downcase.pluralize
   end
   
   def new
     @assign = Assign.new
     @assign.html_attribute = 'text_field'
     @assignable_type =  params[:assignable_type]
-    render :layout  => '/layouts/users'
+    @_assigns = Assign.find_all_by_assignable_type_and_parent_id(@assignable_type, nil)
   end
   
   def create
@@ -33,7 +32,7 @@ class AssignsController < ApplicationController
   def edit
     @assign = Assign.find(params[:id]) 
     @assignable_type = @assign.assignable_type
-    render :layout  => '/layouts/users'
+    @_assigns = Assign.find_all_by_assignable_type_and_parent_id(@assignable_type, nil)
   end
   
   def update
@@ -65,13 +64,14 @@ class AssignsController < ApplicationController
     @assign = Assign.find(params[:id]) 
     @assignable_type = @assign.assignable_type 
     @assign.admin_assign_values.build
+    @_assigns = Assign.find_all_by_assignable_type_and_parent_id(@assignable_type, nil)
     render :action  => 'new'
   end
   
   def set_user_assign_values
     
-    unless UserAssignValue.find_all_by_assign_id_and_user_id(params[:select_many], current_user.id).nil?
-      UserAssignValue.find_all_by_assign_id_and_user_id(params[:select_many], current_user.id).each do |user_assign|
+    unless UserAssignValue.find_all_by_assign_id_and_assignable_id(params[:select_many], current_user.id).nil?
+      UserAssignValue.find_all_by_assign_id_and_assignable_id(params[:select_many], current_user.id).each do |user_assign|
         user_assign.destroy
       end
     end
@@ -81,15 +81,61 @@ class AssignsController < ApplicationController
       unless value.to_s.size == 0
         if key.to_s.include?('_')
           key = key.split("_").first
-          user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_user_id_and_value_and_admin_assign_value_id(key, current_user.id, AdminAssignValueName.find(value).name, AdminAssignValueName.find(value).admin_assign_value_id)
+          user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_assignable_id_and_value_and_admin_assign_value_id(key, current_user.id, AdminAssignValueName.find(value).name, AdminAssignValueName.find(value).admin_assign_value_id)
           user_assign_value.update_attribute(:value, AdminAssignValueName.find(value).name)
         else
-          user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_user_id(key, current_user.id) 
+          user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_assignable_id(key, current_user.id) 
           user_assign_value.update_attribute(:value, value)
         end
       end
     }
     redirect_to current_user
+    
+  end
+  
+  def set_job_assign_values
+    
+    if params[:job_id].to_s.eql?("")
+      @is_new = false
+      @job = Job.new
+      @job.active = params[:active]
+      @job.title = params[:title]
+      if @job.save
+        params[:job_id] = @job.id
+        @is_new = true
+      else
+        render :action => 'new'
+      end
+    else
+      @is_new = false
+      @job = Job.find(params[:job_id])
+      @job.update_attributes('active'  => params[:active], 'title'  => params[:title])
+    end
+    
+    unless UserAssignValue.find_all_by_assign_id_and_assignable_id(params[:select_many], params[:job_id]).nil?
+      UserAssignValue.find_all_by_assign_id_and_assignable_id(params[:select_many], params[:job_id]).each do |user_assign|
+        user_assign.destroy
+      end
+    end
+    
+    params_hash = find_assign_ids
+    params_hash.each {|key, value| 
+      unless value.to_s.size == 0
+        if key.to_s.include?('_')
+          key = key.split("_").first
+          user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_assignable_id_and_value_and_admin_assign_value_id(key,  params[:job_id], AdminAssignValueName.find(value).name, AdminAssignValueName.find(value).admin_assign_value_id)
+          user_assign_value.update_attribute(:value, AdminAssignValueName.find(value).name)
+        else
+          user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_assignable_id(key, params[:job_id]) 
+          user_assign_value.update_attribute(:value, value)
+        end
+      end
+    }
+    if @is_new
+      redirect_to edit_job_path(Job.find(params[:job_id]))
+    else
+      redirect_to job_path(Job.find(params[:job_id]))
+    end
     
   end
   

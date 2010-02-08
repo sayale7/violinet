@@ -1,8 +1,11 @@
 <% title t('common.edit_attributes') %>
 
-<% for assign in Assign.roots %>
+<% for assign in @_assigns %>
 	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
 	<%= link_to 'Bearbeiten', edit_assign_path(assign) %>
+	<% if assign.assignable_type.to_s.eql?('Job') %>
+		<%= link_to 'Löschen', assign, :confirm => 'Sicher?', :method => :delete %>
+	<% end %>
 	<dl style="padding-left:30px;">
 		<% for assign_child in assign.children %>
 			<dt>

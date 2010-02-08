@@ -4,7 +4,7 @@
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   	<title><%= h(yield(:title) || "Untitled") %></title>
 	<%= stylesheet_link_tag 'application', 'ddm', 'jquery_ui' %>
-	<%= javascript_include_tag   'jquery', 'jquery.url_utils',  'application', '/shadowbox/shadowbox' %>
+	<%= javascript_include_tag   'jquery', 'jquery.url_utils',  'application', '/shadowbox/shadowbox', 'ddm' %>
 	<link rel="stylesheet" type="text/css" href="/shadowbox/shadowbox.css">
 	<script type="text/javascript">
 	Shadowbox.init();

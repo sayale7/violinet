@@ -14,10 +14,41 @@ $(document).ready(function(){
 
 
 <script type="text/javascript">
-Shadowbox.init({
-	language: 'en',
-	overlayOpacity: 1
-});
+var shadowbox_conf = {
+            language: "de-DE",
+            players: ["flv", "html", "iframe", "img", "qt", "swf", "wmp"],
+            animate: true,
+            animateFade: true,
+            animSequence: "wh",
+            autoDimensions: false,
+            modal: false,
+            showOverlay: true,
+            overlayColor: "#000",
+            overlayOpacity: 1,
+            flashBgColor: "#000000",
+            autoplayMovies: true,
+            showMovieControls: true,
+            slideshowDelay: 0,
+            resizeDuration: 0.5,
+            fadeDuration: 0.5,
+            displayNav: true,
+            continuous: false,
+            displayCounter: true,
+            counterType: "default",
+            counterLimit: 10,
+            viewportPadding: 20,
+            handleOversize: "drag",
+            handleUnsupported: "link",
+            initialHeight: 160,
+            initialWidth: 320,
+            enableKeys: true,
+            skipSetup: false,
+            flashParams: { bgcolor: "#000000", allowFullScreen: true },
+            flashVars: {},
+            flashVersion: "9.0.0",
+            useSizzle: false
+        };
+        Shadowbox.init(shadowbox_conf);
 
 </script>
 

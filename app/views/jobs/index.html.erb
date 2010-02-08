@@ -1,0 +1,24 @@
+<% title t('job.all')%>
+
+<p><%= link_to t('job.new'), new_job_path %></p>
+
+<h1><%= t('job.recent') %></h1>
+<br/>
+<ul>
+<% @jobs.each do |job| %>
+<% if job.active || (current_user && current_user.role?('admin'))%>
+	<li>
+		<h2><%= link_to (h job.title), job_path(job) %></h2>
+		<% unless job.active %><h3>Inaktiv</h3><% end %>
+		<% job.job_assigns.each do |job_assign| %>
+			<% if job_assign.visible %>
+				<% unless job_assign.user_assign_values.find_all_by_assignable_id(job.id).to_s.eql?('') %>
+				<%= h job_assign.assign_names.find_by_language(get_locale.to_s).name + ":" %>
+				<%= h job_assign.user_assign_values.find_all_by_assignable_id(job.id).map(&:value).join(', ') %><br/>
+				<% end %>
+			<% end %>
+		<% end %>
+	</li>
+<% end %>
+<% end %>
+</ul>

@@ -33,7 +33,16 @@ module ApplicationHelper
           end
 
           def is_checked?(item, assign_id)
-            return !UserAssignValue.find_by_user_id_and_admin_assign_value_id_and_assign_id(current_user.id, item.admin_assign_value_id, assign_id).nil?
+            if(Assign.find(assign_id).assignable_type.to_s.eql?('User'))
+              return !UserAssignValue.find_by_assignable_id_and_admin_assign_value_id_and_assign_id(current_user.id, item.admin_assign_value_id, assign_id).nil?
+            end
+            if(Assign.find(assign_id).assignable_type.to_s.eql?('Job'))
+              if request.params[:action].to_s.eql?('new')
+                return false
+              else
+                return !UserAssignValue.find_by_assignable_id_and_admin_assign_value_id_and_assign_id(request.params[:id], item.admin_assign_value_id, assign_id).nil?
+              end
+            end
           end
           
           
@@ -100,8 +109,8 @@ module ApplicationHelper
     return MessageCopy.find_all_by_recipient_id_and_read_and_deleted(current_user.id, false, false)
   end
   
-  def user_assigns
-    return Assign.find_all_by_assignable_type_and_parent_id('User', nil)
+  def all_assigns(name)
+    return Assign.find_all_by_assignable_type_and_parent_id(name, nil)
   end
   
   
