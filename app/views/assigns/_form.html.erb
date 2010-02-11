@@ -11,10 +11,6 @@
     <span style="font-weight:bold"><%= f.label 'gehört zu' %></span><br />
     <%= f.collection_select :parent_id, Assign.find_all_by_assignable_type(@assignable_type), :id, :german_name, :include_blank => true %>
   </p>
-  <!-- <p>
-    <span style="font-weight:bold"><%= f.label :ancestor_id %></span><br />
-    <% f.collection_select :ancestor_id, Assign.find_all_by_assignable_type(@assignable_type), :id, :german_name, :include_blank => true %>
-  </p> -->
   <p>
 	<span style="font-weight:bold"><%= f.label :german_name %></span><br />
 	<%= f.text_field :german_name %>
