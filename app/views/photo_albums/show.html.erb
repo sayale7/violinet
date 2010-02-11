@@ -85,7 +85,7 @@ var shadowbox_conf = {
 		<% if photo.width < 1000 %>
 			<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= photo.public_filename() %>"></a>
 		<% else %>
-			<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= photo.public_filename(:large) %>"></a>
+			<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= photo.public_filename(:max) %>"></a>
 		<% end %>
 	<% end %>
 <% end %>
