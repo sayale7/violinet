@@ -1,3 +1,11 @@
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+		$(".tb_date").datepicker({ 
+		  dateFormat: 'yy-mm-dd'
+		});
+	});
+</script>
+
 <p>
 
 	<span style="font-weight:bold"><%= assign.english_name %></span> <br/>
@@ -27,6 +35,16 @@
 			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', '', :class  => 'tb'  %>
 		<% else %>
 			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).value, :class  => 'tb'  %>
+		<% end %>
+		<%= hidden_field_tag "select_many[]", assign.id %>
+	<% end %>
+	
+	<!-- if attribute is a text_field -->
+	<% if assign.html_attribute.to_s.eql?('date_select') %>
+		<% if UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).nil? || request.params[:id].nil? %>
+			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', '', :class  => 'tb_date'  %>
+		<% else %>
+			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).value, :class  => 'tb_date'  %>
 		<% end %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>

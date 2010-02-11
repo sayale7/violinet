@@ -73,6 +73,16 @@ li{
 	padding-bottom:0;
 }
 
+.tb_date{
+	width: 380px;
+	font-family:Verdana,Lucida Grande, Lucida Sans Unicode,  Helvetica, Arial, sans-serif;
+	font-size:15px;
+	color : #000000;
+	height:30px;
+	padding:8px;
+	padding-bottom:0;
+}
+
 .tb_login{
 	width: 170px;
 	font-family:Verdana,Lucida Grande, Lucida Sans Unicode,  Helvetica, Arial, sans-serif;

@@ -1,3 +1,11 @@
+<script type="text/javascript" charset="utf-8">
+	function proof_link(){
+		if(document.getElementById('user_common_www').value != ''){
+			window.open('http://' + document.getElementById('user_common_www').value);
+		}
+	}
+</script>
+
 <% form_for @user_common do |f| %>
 	<%= f.error_messages %>
 	<div class="left">
@@ -49,8 +57,9 @@
 <%= f.text_field :optional_address_attributes, :class  => 'tb'  %>
 </p>
 <p>
-<%= t "user.www" %><br></br>
+<%= t "user.www" %> (ohne http://)<br></br>
 <%= f.text_field :www, :class  => 'tb'  %>
+<a href="#" onclick="proof_link();return false;">Link überprüfen</a>
 </p>
 <p>
 <%= t "user.phone" %><br></br>

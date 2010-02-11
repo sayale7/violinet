@@ -103,7 +103,7 @@
 			<%= ":" %>
 		</dt>
 		<dd>
-			<%= @user_common.www %>
+			<%= link_to @user_common.www, "http://#{@user_common.www}", :popup  => true %>
 		</dd>
 		<% end %>
 		<% if !(@user_common.phone.to_s == "") %>

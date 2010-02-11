@@ -1,5 +1,6 @@
 <% title "Edit Job" %>
-<%= javascript 'jquery', 'application' %>
+<%= javascript 'jquery.datepicker'%>
+<%= stylesheet 'jquery_ui' %>
 <% if current_user && current_user.role?('admin') %>
 <div class="left" style="clear:left;">
 	<%= render :partial => 'form' %>

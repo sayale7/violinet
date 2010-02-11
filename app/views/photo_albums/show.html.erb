@@ -77,7 +77,7 @@ var shadowbox_conf = {
 <% if @photos.first.width < 1000 %>
 	<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= @photos.first.public_filename() %>"><%= t('photo_album.full') %></a>
 <% else %>
-	<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= @photos.first.public_filename(:large) %>"><%= t('photo_album.full') %></a>
+	<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= @photos.first.public_filename(:max) %>"><%= t('photo_album.full') %></a>
 <% end %>
 <% unless @photos.empty? %>
 <% @photos.each do |photo| %>
