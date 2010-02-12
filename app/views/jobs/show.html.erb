@@ -22,7 +22,7 @@
 	<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).empty? %>
 		<dt><strong><%= assign.assign_names.find_by_language(get_locale.to_s).name %></strong></dd>
 		<% if assign.html_attribute.to_s.eql?('mail_to') %>
-			<dd><%= mail_to UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).first.value %></dd>
+			<dd><p><%= mail_to UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).first.value %></p></dd>
 		<% else %>
 			<dd><%= simple_format(h UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).map(&:value).join(', ')) %></dd>
 		<% end %>

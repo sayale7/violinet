@@ -1,6 +1,10 @@
 <p>
 
-	<span style="font-weight:bold"><%= assign.german_name %></span> <br/>
+	<span style="font-weight:bold"><%= assign.german_name %>
+	<% if assign.html_attribute.to_s.eql?('mail_to') %>
+		(<%= t('common.email') %>)
+	<% end %>	
+	</span> <br/>
 	<!-- if attribute is a select_tag -->
 	<% if assign.html_attribute.to_s.eql?('select_tag') %>
 	<% if UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).nil? %>
