@@ -69,6 +69,7 @@ de:
     edit_attributes: Attribute bearbeiten
     all_blogs: Alle Blogs (mit Livesuche)
     manage: Verwaltung
+    fill_in_duty: Bitte Pflichtfelder ausfüllen!
   event:
     begin: Begin
     end: Ende
@@ -222,7 +223,7 @@ de:
       all: Alle Jobs
       manage_assigns: Job Attribute verwalten
       manage_tags: Job Kategorien verwalten
-      title: Job Titel
+      title: Jobtitel
       recent: Frische Jobangebote
       new: Stellenanzeige aufgeben
       manage: Jobs verwalten
@@ -232,6 +233,8 @@ de:
       edit_job_insert: Job Inserat kontrollieren
       what_are_tags: Was sind Tags?
       tag_description: Tags sind Kategorien die Sie Ihren Jobinseraten zuweisen können. Ihr Inserat scheint z.B. dann auf, wenn Sie die Kategorie Violine zugewiesen haben, und ein Benutzer nach Jobs in der Kategorie Violine sucht. Bitte weisen Sie die Tags richtig zu, damit Ihr Inserat in den richtigen Kategorien aufscheint. Jobs werden, bevor sie online gestellt werden, von der Redaktion nochmals überprüft. Im Zuge dessen, werden falsch zugewiesene Tags wieder entfernt, damit die Jobbörse fair und übersichtlich bleibt.
+      publish_date: Eingestellt am
+      publishing_date: Einstelldatum
   date:
     formats:
       default: "%d.%m.%Y"

@@ -112,6 +112,7 @@ module ApplicationHelper
   def all_assigns(name)
     return Assign.find_all_by_assignable_type_and_parent_id(name, nil)
   end
+
   
   
 end

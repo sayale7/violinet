@@ -13,13 +13,15 @@
 <% end %>
 
 
-<div class="show_job_attributes">
-<h1><%= @job.title %></h1>
+
+<div class="k">
+<h2><%= @job.title %></h2>
+<h3><%= t('job.publish_date') %>: <%= @job.puplish_date.strftime(" %d.%m.%Y ") %></h3>
 <dl>
 <% @_assigns.each do |assign| %>
 	<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).empty? %>
-		<h2><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h2>
-		<p><%= simple_format(h UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).map(&:value).join(', ')) %></p>
+		<dt><strong><%= assign.assign_names.find_by_language(get_locale.to_s).name %></strong></dd>
+		<dd><%= simple_format(h UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).map(&:value).join(', ')) %></dd>
 	<% end %>
 <% end %>
 </dl>

@@ -72,6 +72,7 @@ en:
     edit_attributes: Edit attributes
     all_blogs: All Blogs (with Livesearch)
     manage: Manage
+    fill_in_duty: Pleas fill in Mandatory Fields!
   event:
     begin: Begin
     end: End
@@ -224,7 +225,7 @@ en:
       all: All Jobs
       manage_assigns: Manage job attributes
       manage_tags: Manage Job categories
-      title: Job Title
+      title: Jobtitle
       recent: Recent Jobs
       new: New Jobinsert
       manage: Manage Jobs
@@ -233,3 +234,5 @@ en:
       creat_job_insert: Create Job Entry
       edit_job_insert: Check Job Entry
       what_are_tags: What are Tags?
+      publish_date: Published at
+      publishing_date: Publishing date

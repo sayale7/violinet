@@ -45,10 +45,23 @@ class ApplicationController < ActionController::Base
     return I18n.locale
   end
   
+  def is_admin?
+    @admin = false
+    if current_user
+      current_user.roles.each do |role|
+        if role.name.to_s.eql?('admin')
+          @admin = true
+        end
+      end
+    end
+  end
+  
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = t('common.access_denied')
     redirect_to root_url
   end
+  
+  
   
   # rescue_from ActiveRecord::RecordNotFound do |exception|
   #   flash[:error] = t('common.record_not_found')

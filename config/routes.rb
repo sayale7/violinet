@@ -125,7 +125,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.set_user_assign_values 'set_user_assign_values', :controller  => 'assigns', :action  =>  'set_user_assign_values'
   
-  map.set_job_assign_values 'set_job_assign_values', :controller  => 'assigns', :action  => 'set_job_assign_values'
+  map.set_job_assign_values 'set_job_assign_values', :controller  => 'jobs', :action  => 'set_job_assign_values'
   
   map.destroy_user 'destroy_user', :controller  => 'users', :action  =>  'destroy_user'
   

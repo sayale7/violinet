@@ -1,7 +1,11 @@
+
+<%= javascript 'jquery.datepicker'%>
+<%= stylesheet 'jquery_ui' %>
+
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function(){
 		$(".tb_date").datepicker({ 
-		  dateFormat: 'yy-mm-dd'
+		  dateFormat: 'dd.mm.yy'
 		});
 	});
 </script>
@@ -12,9 +16,17 @@
 	  <strong>Aktiv</strong>
 	  <%= check_box_tag :active, 1, @job.active %><br/>
 	</p>
+	<p>
+		<strong>* <%= label_tag t('job.publishing_date') %></strong><br/>
+		<% unless @job.puplish_date.nil? %>
+			<%= text_field_tag :puplish_date, @job.puplish_date.strftime("%d.%m.%Y"), :class  => 'tb_date' %>
+		<% else %>
+			<%= text_field_tag :puplish_date, @job.puplish_date, :class  => 'tb_date' %>
+		<% end %>
+	</p>
 	<% end %>
 	<p>
-		<strong><%= label_tag t('job.title') %></strong><br/>
+		<strong>* <%= label_tag t('job.title') %></strong><br/>
 		<%= text_field_tag :title, @job.title, :class  => 'tb' %>
 	</p>
 	<% unless all_assigns('Job').empty? %>
@@ -33,3 +45,4 @@
   <p><%= submit_tag "Submit" %></p>
 <% end %>
 
+* <%= t('common.duty') %>

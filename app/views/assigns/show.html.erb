@@ -1,3 +1,15 @@
+<%= javascript 'jquery.datepicker'%>
+<%= stylesheet 'jquery_ui' %>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+		$(".tb_date").datepicker({ 
+		  dateFormat: 'dd.mm.yy'
+		});
+	});
+</script>
+
+
 <!-- For User View -->
 <% if @assign.assignable_type.to_s.eql?('User') %>
 	<% form_tag set_user_assign_values_path do %>
