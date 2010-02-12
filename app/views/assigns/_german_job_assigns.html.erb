@@ -35,7 +35,7 @@
 		<% if UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).nil? || request.params[:id].nil? %>
 			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', '', :class  => 'tb_date'  %>
 		<% else %>
-			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).value.to_date.strftime("%d.%m.%Y"), :class  => 'tb_date'  %>
+			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).value, :class  => 'tb_date'  %>
 		<% end %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
