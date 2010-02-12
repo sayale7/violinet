@@ -40,6 +40,16 @@
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
 	
+	<!-- if attribute is a mail_to -->
+	<% if assign.html_attribute.to_s.eql?('mail_to') %>
+		<% if UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).nil? || request.params[:id].nil? %>
+			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', '', :class  => 'tb'  %>
+		<% else %>
+			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).value, :class  => 'tb'  %>
+		<% end %>
+		<%= hidden_field_tag "select_many[]", assign.id %>
+	<% end %>
+	
 	<!-- if attribute is a text_area -->
 	<% if assign.html_attribute.to_s.eql?('text_area') %>
 		<% if UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).nil? || request.params[:id].nil?  %>
