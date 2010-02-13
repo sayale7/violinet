@@ -17,33 +17,33 @@
 	<table>
 		<% if !(@user_common.gender.to_s == "") %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.gender" %>
 				<%= ":" %>
 			</td>
-			<td>
+			<td style="width:300px;">
 				<%= @user_common.gender %>
 			</td>
 		</tr>
 		<% end %>
 		<% if !(@user_common.title.to_s == "") %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.title" %>
 				<%= ":" %>
 			</td>
-			<td>
+			<td style="width:300px;">
 				<%= @user_common.title %>
 			</td>
 		</tr>
 		<% end %>
 		<% if !((@user_common.firstname.to_s == "") && (@user_common.lastname.to_s == "")) %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.name" %>
 				<%= ":" %>
 			</td>
-			<td>
+			<td style="width:300px;">
 				<%= @user_common.firstname %>
 				<%= " " %>
 				<%= @user_common.lastname %>
@@ -52,84 +52,84 @@
 		<% end %>
 		<% if !(@user_common.street.to_s == "") %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.street" %>
 				<%= ":" %>
 			</td>
-			<td>
+			<td style="width:300px;">
 				<%= @user_common.street %>
 			</td>
 		</tr>
 		<% end %>
 		<% if !(@user_common.zip.to_s == "") %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.zip" %>
 				<%= ":" %>
 			</td>
-			<td>
+			<td style="width:300px;">
 				<%= @user_common.zip %>
 			</td>
 		</tr>
 		<% end %>
 		<% if !(@user_common.city.to_s == "") %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.city" %>
 				<%= ":" %>
 			</td>
-			<td>
+			<td style="width:300px;">
 				<%= @user_common.city %>
 			</td>
 		</tr>
 		<% end %>
 		<% if !(@user_common.district.to_s == "") %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.district" %>
 				<%= ":" %>
 			</td>
-			<td>
+			<td style="width:300px;">
 				<%= @user_common.district %>
 			</td>
 		</tr>
 		<% end %>
 		<% if !(@user_common.administrative_area.to_s == "") %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.administrative_area" %>
 				<%= ":" %>
 			</td>
-			<td>
+			<td style="width:300px;">
 				<%= @user_common.administrative_area %>
 			</td>
 		</tr>
 		<% end %>
 		<% if !(@user_common.state.to_s == "") %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.state" %>
 				<%= ":" %>
 			</td>
-			<td>
+			<td style="width:300px;">
 				<%= @user_common.state %>
 			</td>
 		</tr>
 		<% end %>
 		<% if !(@user_common.www.to_s == "") %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.www" %>
 				<%= ":" %>
 			</td>
-			<td>
+			<td style="width:300px;">
 				<%= link_to @user_common.www, "http://#{@user_common.www}", :popup  => true %>
 			</td>
 		</tr>
 		<% end %>
 		<% if !(@user_common.phone.to_s == "") %>
 		<tr>
-			<td>
+			<td style="font-weight:bold;">
 				<%= t "user.phone" %>
 				<%= ":" %>
 			</td>
