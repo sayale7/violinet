@@ -110,7 +110,7 @@ module ApplicationHelper
   end
   
   def all_assigns(name)
-    return Assign.find_all_by_assignable_type_and_parent_id(name, nil)
+    return Assign.find_all_by_assignable_type_and_parent_id(name, nil, :order => 'position')
   end
 
   
