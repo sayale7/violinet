@@ -184,7 +184,7 @@
 	<% end %>
 	<% end %>
 	<dl>
-		<% for assign_child in assign.children %>
+		<% for assign_child in Assign.find_all_by_parent_id(assign.id, :order => 'position') %>
 		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).empty? %>
 		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).size == 1 && UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).first.value.to_s.eql?('') %>
 		<dt>
