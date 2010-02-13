@@ -14,109 +14,131 @@
 	<% if current_user && @current_one %>
 		<%= link_to_unless_current t("common.edit"), :controller => "user_commons", :action => "edit", :id => current_user.id %>
 	<% end %>
-	<dl>
+	<table>
 		<% if !(@user_common.gender.to_s == "") %>
-		<dt>
-			<%= t "user.gender" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= @user_common.gender %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.gender" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= @user_common.gender %>
+			</td>
+		</tr>
 		<% end %>
 		<% if !(@user_common.title.to_s == "") %>
-		<dt>
-			<%= t "user.title" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= @user_common.title %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.title" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= @user_common.title %>
+			</td>
+		</tr>
 		<% end %>
 		<% if !((@user_common.firstname.to_s == "") && (@user_common.lastname.to_s == "")) %>
-		<dt>
-			<%= t "user.name" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= @user_common.firstname %>
-			<%= " " %>
-			<%= @user_common.lastname %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.name" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= @user_common.firstname %>
+				<%= " " %>
+				<%= @user_common.lastname %>
+			</td>
+		</tr>
 		<% end %>
 		<% if !(@user_common.street.to_s == "") %>
-		<dt>
-			<%= t "user.street" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= @user_common.street %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.street" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= @user_common.street %>
+			</td>
+		</tr>
 		<% end %>
 		<% if !(@user_common.zip.to_s == "") %>
-		<dt>
-			<%= t "user.zip" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= @user_common.zip %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.zip" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= @user_common.zip %>
+			</td>
+		</tr>
 		<% end %>
 		<% if !(@user_common.city.to_s == "") %>
-		<dt>
-			<%= t "user.city" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= @user_common.city %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.city" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= @user_common.city %>
+			</td>
+		</tr>
 		<% end %>
 		<% if !(@user_common.district.to_s == "") %>
-		<dt>
-			<%= t "user.district" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= @user_common.district %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.district" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= @user_common.district %>
+			</td>
+		</tr>
 		<% end %>
 		<% if !(@user_common.administrative_area.to_s == "") %>
-		<dt>
-			<%= t "user.administrative_area" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= @user_common.administrative_area %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.administrative_area" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= @user_common.administrative_area %>
+			</td>
+		</tr>
 		<% end %>
 		<% if !(@user_common.state.to_s == "") %>
-		<dt>
-			<%= t "user.state" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= @user_common.state %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.state" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= @user_common.state %>
+			</td>
+		</tr>
 		<% end %>
 		<% if !(@user_common.www.to_s == "") %>
-		<dt>
-			<%= t "user.www" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= link_to @user_common.www, "http://#{@user_common.www}", :popup  => true %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.www" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= link_to @user_common.www, "http://#{@user_common.www}", :popup  => true %>
+			</td>
+		</tr>
 		<% end %>
 		<% if !(@user_common.phone.to_s == "") %>
-		<dt>
-			<%= t "user.phone" %>
-			<%= ":" %>
-		</dt>
-		<dd>
-			<%= @user_common.phone %>
-		</dd>
+		<tr>
+			<td>
+				<%= t "user.phone" %>
+				<%= ":" %>
+			</td>
+			<td>
+				<%= @user_common.phone %>
+			</td>
+		</tr>
 		<% end %>
-	</dl>
+	</table>
 	
 </div>
 

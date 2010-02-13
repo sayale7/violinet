@@ -393,17 +393,19 @@ table a:link {
 }.personal_info {
 	float:left;
 	width:350px;
-} .personal_info dl {
-    color: #000;
-    padding: 0.0em
-}.personal_info dt {
-    padding: 0.0em;
-    color: gray;
-    font-weight: bold;
-}.personal_info dd {
-    margin-left: 13em;
-    margin-top: -1.6em;
-    padding: 0.3em;
+}	 
+.personal_info table {
+	width:500px;
+	margin-bottom:15px;
+	color: #000;
+	padding: 0.0em;
+	border:none;
+}
+.personal_info td {
+	padding: 5px;
+	color: black;
+	border:none;
+	border-bottom:dashed thin gray;
 } 
 
 .attributes {
