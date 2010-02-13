@@ -4,94 +4,6 @@
 <% end %>
 
 
-<div class="info_and_entry">
-	<div class="account_info">
-		<div class="profile_image">
-		    <% if @profile_image %>
-				<a href='<%= @profile_image.avatar.url %>' rel='shadowbox'><%= image_tag @profile_image.avatar.url(:small) %></a>
-			 <% else %>
-			 <%= image_tag '/images/anonymous.jpg', :width  => 150 %>
-		    <% end %>
-		</div>
-		<ul>
-			<% if current_user && @current_one %>
-			<li>
-				<%= link_to t('user.delete'), destroy_user_path, :confirm  => t("common.confirm") %>
-			</li>
-			<% end %>
-			<li>
-				<%= t "common.login_name" %>: <%=h @user.login %>
-			</li>
-			<li>
-				<%= t "common.email" %>: <%= mail_to h@user.email %>
-			</li>
-			<% if current_user %>
-			<li>
-				<div id="button_popup">
-					<a href="/sent/new?user=<%= @user.id %>"><%= t("common.send_message_to_user") %></a>
-				</div>
-			</li>
-			<% end %>
-			<% unless @user.photo_albums.empty? %>
-			<li>
-				<%= link_to (t('photo_album.of_this_user').to_s << ' ' << @user.login.to_s), user_photo_albums_url(@user) %>
-			</li>
-			<% end %>
-			<% unless @user.own_groups.empty? %>
-			<li>
-				<%= link_to (t('group.of_this_user').to_s << ' ' << @user.login.to_s), user_groups_url(@user) %>
-			</li>
-			<% end %>
-			<% unless @user.posts.empty? %>
-			<li>
-				<%= link_to (t('post.of_this_user').to_s << ' ' << @user.login.to_s), user_posts_url(@user) %>
-			</li>
-			<% end %>
-		</ul>
-	</div>
-
-	<h1><%= t "common.profile_entries" %></h1>
-	<%= render '/comments/form' %>
-	<div id="comments">
-		<%= render :partial => '/comments/create' %>
-	</div>
-</div>
-
-<div class="attributes">
-	<% for assign in Assign.find_all_by_parent_id(nil, :order => 'position') %>
-	<% unless (@user.assigns.uniq & Assign.find_all_by_parent_id(assign.id)).size == 0 %>
-	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
-	<% if current_user %>
-	<% if @user == current_user %>
-	<%= link_to t('common.edit'), assign_path(assign) %>
-	<% end %>
-	<% end %>
-	<dl>
-		<% for assign_child in Assign.find_all_by_parent_id(assign.id, :order => 'position') %>
-		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).empty? %>
-		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).size == 1 && UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).first.value.to_s.eql?('') %>
-		<dt>
-			<%= assign_child.assign_names.find_by_language(get_locale.to_s).name + ":" %>
-		</dt>
-		<dd>
-			<%= UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).map(&:value).join(', ') %>
-		</dd>
-		<% end %>
-		<% end %>
-		<% end %>
-	</dl>
-	<% end %>
-
-	<% end %>
-	
-	<div class="friends">
-		<%= render :partial => 'friends' %>
-	</div>
-	<div class="friendship_links_bottom">
-		<%= render 'friendship_links_bottom' %>
-	</div>
-</div>
-
 <div class="personal_info">
 	<% if current_user && !@current_one %>
 	<div class="friendship_links_top">
@@ -207,5 +119,95 @@
 	</dl>
 	
 </div>
+
+<div class="info_and_entry">
+	<div class="account_info">
+		<div class="profile_image">
+		    <% if @profile_image %>
+				<a href='<%= @profile_image.avatar.url %>' rel='shadowbox'><%= image_tag @profile_image.avatar.url(:small) %></a>
+			 <% else %>
+			 <%= image_tag '/images/anonymous.jpg', :width  => 150 %>
+		    <% end %>
+		</div>
+		<ul>
+			<% if current_user && @current_one %>
+			<li>
+				<%= link_to t('user.delete'), destroy_user_path, :confirm  => t("common.confirm") %>
+			</li>
+			<% end %>
+			<li>
+				<%= t "common.login_name" %>: <%=h @user.login %>
+			</li>
+			<li>
+				<%= t "common.email" %>: <%= mail_to h@user.email %>
+			</li>
+			<% if current_user %>
+			<li>
+				<div id="button_popup">
+					<a href="/sent/new?user=<%= @user.id %>"><%= t("common.send_message_to_user") %></a>
+				</div>
+			</li>
+			<% end %>
+			<% unless @user.photo_albums.empty? %>
+			<li>
+				<%= link_to (t('photo_album.of_this_user').to_s << ' ' << @user.login.to_s), user_photo_albums_url(@user) %>
+			</li>
+			<% end %>
+			<% unless @user.own_groups.empty? %>
+			<li>
+				<%= link_to (t('group.of_this_user').to_s << ' ' << @user.login.to_s), user_groups_url(@user) %>
+			</li>
+			<% end %>
+			<% unless @user.posts.empty? %>
+			<li>
+				<%= link_to (t('post.of_this_user').to_s << ' ' << @user.login.to_s), user_posts_url(@user) %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+
+	<h1><%= t "common.profile_entries" %></h1>
+	<%= render '/comments/form' %>
+	<div id="comments">
+		<%= render :partial => '/comments/create' %>
+	</div>
+</div>
+
+<div class="attributes">
+	<% for assign in Assign.find_all_by_parent_id(nil, :order => 'position') %>
+	<% unless (@user.assigns.uniq & Assign.find_all_by_parent_id(assign.id)).size == 0 %>
+	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
+	<% if current_user %>
+	<% if @user == current_user %>
+	<%= link_to t('common.edit'), assign_path(assign) %>
+	<% end %>
+	<% end %>
+	<dl>
+		<% for assign_child in Assign.find_all_by_parent_id(assign.id, :order => 'position') %>
+		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).empty? %>
+		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).size == 1 && UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).first.value.to_s.eql?('') %>
+		<dt>
+			<%= assign_child.assign_names.find_by_language(get_locale.to_s).name + ":" %>
+		</dt>
+		<dd>
+			<%= UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).map(&:value).join(', ') %>
+		</dd>
+		<% end %>
+		<% end %>
+		<% end %>
+	</dl>
+	<% end %>
+
+	<% end %>
+	
+	<div class="friends">
+		<%= render :partial => 'friends' %>
+	</div>
+	<div class="friendship_links_bottom">
+		<%= render 'friendship_links_bottom' %>
+	</div>
+</div>
+
+
 
 
