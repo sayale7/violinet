@@ -9,7 +9,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-    @_assigns = Assign.find_all_by_assignable_type('Job')
+    @_assigns = Assign.find_all_by_assignable_type('Job', :order  => 'position')
   end
 
   def new
