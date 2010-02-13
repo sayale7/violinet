@@ -7,7 +7,7 @@ body {
 /*    background-color: #4B7399;*/
 	background: transparent;
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     background-image: url(/images/background.png);
 	background-repeat:repeat-x;
 }
@@ -372,12 +372,12 @@ table a:link {
 } .profile_image {
     width: 150px;
     display: table-cell;
-    text-align: center;
-	margin-right:20px;
+	float:left;
+	padding-right:20px;
 }.account_info {
 	float:right;
     width: 410px;
-	text-align:right;
+	text-align:left;
 	padding-bottom:10px;
 	margin-bottom:10px;
 	margin-right:-10px;
@@ -412,15 +412,19 @@ table a:link {
 	width:520px;
 } .attributes dl {
     color: #000;
-    padding: 0.0em
-}.attributes dt {
     padding: 0.0em;
+}.attributes dt {
+    padding: 5px;
     color: gray;
     font-weight: bold;
+	width:250px;
+	border-bottom:dashed thin black;
 }.attributes dd {
-    margin-left: 17em;
-    margin-top: -1.5em;
-    padding: 0.3em;
+	float:right;
+	width:250px;
+    margin-top: -24px;
+    padding: 5px;
+	border-bottom:dashed thin black;
 }
 .show_job_attributes{
 	float:left;
