@@ -22,7 +22,7 @@
 			<h1><%= @assign.english_name %></h1>
 		<% end %>
 		<% unless @assign.children.empty? %>
-			<% for assign in @assign.children %>
+			<% for assign in Assign.find_all_by_parent_id(@assign.id, :order => 'position') %>
 				<% if get_locale.to_s.eql?('de') %>
 					<%= render 'german_user_assigns', :assign  => assign  %>
 				<% end %>

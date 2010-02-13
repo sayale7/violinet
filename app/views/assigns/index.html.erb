@@ -12,7 +12,7 @@
 		<% unless assign.children.empty? %>
 			<p><%= link_to 'Reihenfolge der Liste ändern', sort_list_elements_path + '?parent_id=' + assign.id.to_s + ';assignable_type=' + @assignable_type.to_s %></p>
 		<% end %>
-		<% for assign_child in assign.children(:order => 'position') %>
+		<% for assign_child in Assign.find_all_by_parent_id(assign.id, :order => 'position') %>
 			<dt>
 				<%= assign_child.assign_names.find_by_language(get_locale.to_s).name %> -
 				<%= link_to 'Bearbeiten', edit_assign_path(assign_child) %> /
