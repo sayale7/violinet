@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100212181527) do
+ActiveRecord::Schema.define(:version => 20100212234348) do
 
   create_table "admin_assign_value_names", :force => true do |t|
     t.integer  "admin_assign_value_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20100212181527) do
     t.datetime "updated_at"
     t.string   "html_attribute"
     t.boolean  "visible"
+    t.integer  "position"
   end
 
   create_table "comments", :force => true do |t|

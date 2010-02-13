@@ -1,5 +1,7 @@
 <% title t('common.edit_attributes') %>
 
+<p><%= link_to 'Reihenfolge der Elternelemente ändern', sort_list_elements_path + '?parent_id=nil;assignable_type=' + @assignable_type.to_s %></p>
+
 <% for assign in @_assigns %>
 	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
 	<%= link_to 'Bearbeiten', edit_assign_path(assign) %>
@@ -7,7 +9,10 @@
 		<%= link_to 'Löschen', assign, :confirm => 'Sicher?', :method => :delete %>
 	<% end %>
 	<dl style="padding-left:30px;">
-		<% for assign_child in assign.children %>
+		<% unless assign.children.empty? %>
+			<p><%= link_to 'Reihenfolge der Liste ändern', sort_list_elements_path + '?parent_id=' + assign.id.to_s + ';assignable_type=' + @assignable_type.to_s %></p>
+		<% end %>
+		<% for assign_child in assign.children(:order => 'position') %>
 			<dt>
 				<%= assign_child.assign_names.find_by_language(get_locale.to_s).name %> -
 				<%= link_to 'Bearbeiten', edit_assign_path(assign_child) %> /

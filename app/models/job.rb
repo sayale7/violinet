@@ -11,7 +11,7 @@ class Job < ActiveRecord::Base
   validates_presence_of :title, :puplish_date
   
   def job_assigns
-    Assign.scoped(:conditions => { :assignable_type  => 'Job' })
+    Assign.scoped(:conditions => { :assignable_type  => 'Job' }, :order => 'position')
   end
   
 end

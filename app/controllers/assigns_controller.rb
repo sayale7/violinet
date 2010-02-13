@@ -6,7 +6,7 @@ class AssignsController < ApplicationController
     unless params[:assignable_type].nil?
       @assignable_type =  params[:assignable_type]
     end
-    @_assigns = Assign.find_all_by_assignable_type_and_parent_id(@assignable_type, nil)
+    @_assigns = Assign.find_all_by_assignable_type_and_parent_id(@assignable_type, nil, :order  => ['position'])
   end
   
   def show
@@ -85,8 +85,22 @@ class AssignsController < ApplicationController
     redirect_to current_user
 
   end
-
-
+  
+  def sort
+    params[:assigns].each_with_index do |id, index|
+      Assign.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render :nothing => true
+  end
+  
+  def sort_list_elements
+    parent_id = nil
+    unless params[:parent_id].to_s.eql?('nil')
+      parent_id = params[:parent_id]
+    end
+    @_assigns = Assign.find_all_by_parent_id_and_assignable_type(parent_id, params[:assignable_type].to_s, :order => ['position'])
+    render :layout => '/layouts/sort'
+  end
   
 
   

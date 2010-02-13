@@ -1114,4 +1114,18 @@ pre {
     color: #fff;
 }
 
+.categoies_for_assigns{
+	float:right;
+	width:500px;
+	text-align:center;
+}
+
+.categoy_for_assigns{
+	float:left;
+	width:120px;
+	padding:20px;
+	text-align:center;
+}
+
+
 

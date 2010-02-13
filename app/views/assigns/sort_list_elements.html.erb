@@ -1,0 +1,8 @@
+<ul id="assigns">
+<% for assign in @_assigns %>
+	<% content_tag_for :li, assign do %>
+		<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
+	<% end %>
+<% end %>
+</ul>
+<%= sortable_element ("assigns", :url => sort_assigns_path) %>

@@ -1,8 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :jobs
 
-  map.resources :assigns
-
+  map.resources :assigns, :collection => { :sort => :post }
   
   map.resources :usergroups
 
@@ -130,6 +129,10 @@ ActionController::Routing::Routes.draw do |map|
   map.destroy_user 'destroy_user', :controller  => 'users', :action  =>  'destroy_user'
   
   map.destroy_flyer 'destroy_flyer', :controller  => 'events', :action  => 'destroy_flyer'
+  
+  map.sort_list_elements 'sort_list_elements', :controller  =>  'assigns', :action  => 'sort_list_elements'
+  
+  
   
   map.root :controller => "welcome", :action => "index"
   
