@@ -182,20 +182,22 @@
 	<%= link_to t('common.edit'), assign_path(assign) %>
 	<% end %>
 	<% end %>
-	<dl>
+	<table>
 		<% for assign_child in Assign.find_all_by_parent_id(assign.id, :order => 'position') %>
 		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).empty? %>
 		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).size == 1 && UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).first.value.to_s.eql?('') %>
-		<dt>
-			<%= assign_child.assign_names.find_by_language(get_locale.to_s).name + ":" %>
-		</dt>
-		<dd>
-			<%= UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).map(&:value).join(', ') %>
-		</dd>
+		<tr>
+			<td style="font-weight:bold;">
+				<%= assign_child.assign_names.find_by_language(get_locale.to_s).name + ":" %>
+			</td>
+			<td style="width:300px;">
+				<%= UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).map(&:value).join(', ') %>
+			</td>
+		</tr>
 		<% end %>
 		<% end %>
 		<% end %>
-	</dl>
+	</table>
 	<% end %>
 
 	<% end %>

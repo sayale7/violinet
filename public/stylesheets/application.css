@@ -410,21 +410,17 @@ table a:link {
 	float:left;
 	clear:left;
 	width:520px;
-} .attributes dl {
+} .attributes table {
+	width:500px;
+	margin-bottom:15px;
     color: #000;
     padding: 0.0em;
-}.attributes dt {
+	border:none;
+}.attributes td {
     padding: 5px;
-    color: gray;
-    font-weight: bold;
-	width:250px;
-	border-bottom:dashed thin black;
-}.attributes dd {
-	float:right;
-	width:250px;
-    margin-top: -24px;
-    padding: 5px;
-	border-bottom:dashed thin black;
+    color: black;
+	border:none;
+	border-bottom:dashed thin gray;
 }
 .show_job_attributes{
 	float:left;
