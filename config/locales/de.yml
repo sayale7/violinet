@@ -72,7 +72,7 @@ de:
     fill_in_duty: Bitte Pflichtfelder ausfüllen
     visible: Für Alle Benutzer sichtbar
     important_notice: Wichtige Information zu Ihrer Privatsphäre
-    the_important_notice: Wenn Sie die Checkbox "Nur für meine Kontakte sichtbar" anklicken, kann diese Information auch nur Von Benutzern gesehen werden, welche Sie in ihrer Kontaktliste haben. Wenn sie die Checkbox nicht anklicken, können alle Benutzer dieser Seite die Information sehen.
+    the_important_notice: Wenn Sie die Checkbox "Für Alle Benutzer sichtbar" anklicken, kann diese Information auch von allen Benutzern gesehen werden. Wenn Sie die Checkbox nicht anklicken können nur die Benutzer Sie sehen, welche in Ihrer Kontaktliste sind
   event:
     begin: Begin
     end: Ende
