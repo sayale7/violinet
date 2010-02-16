@@ -78,6 +78,14 @@ module ApplicationHelper
       return true
     end
   end
+  
+  def is_confirmed_friend_of_current(user_id)
+    if Friendship.find_by_friend_id_and_user_id(current_user.id, user_id).nil?
+      return false
+    else
+      return true
+    end
+  end
 
   def confirmed_friendships(user)
     return (user.friends & user.inverse_friends)
@@ -113,6 +121,30 @@ module ApplicationHelper
     return Assign.find_all_by_assignable_type_and_parent_id(name, nil, :order => 'position')
   end
 
-  
+  def check_on_emptyness_of_children_through_privacy(user_id, assign_id, current_one)
+    array = Array.new
+
+    for assign_child in Assign.find_all_by_parent_id(assign_id, :order => 'position')
+      unless UserAssignValue.find_all_by_assignable_id_and_assign_id(user_id, assign_child.id).empty?
+        unless UserAssignValue.find_all_by_assignable_id_and_assign_id(user_id, assign_child.id).size == 1 && UserAssignValue.find_all_by_assignable_id_and_assign_id(user_id, assign_child.id).first.value.to_s.eql?('')
+          if current_user && is_confirmed_friend_of_current(user_id) 
+            array.push('element')
+          end
+          if current_user && !current_one && !is_confirmed_friend_of_current(user_id) && UserAssignValue.find_all_by_assignable_id_and_assign_id(user_id, assign_child.id).first.visible 
+            array.push('element')
+          end
+          if !current_user && UserAssignValue.find_all_by_assignable_id_and_assign_id(user_id, assign_child.id).first.visible 
+            array.push('element')
+          end 
+          if current_user && current_one 
+            array.push('element')
+          end 
+        end
+      end
+    end
+    
+    return array.empty?
+    
+  end
   
 end

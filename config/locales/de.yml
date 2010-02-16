@@ -48,7 +48,7 @@ de:
     max_count_photos_reached: Du hast das Maximum von 10 Bildern erreicht
     send_message_to_user: Diesem Benutzer eine Nachricht schicken
     close: Schließen
-    registered_users: Mitglieder
+    registered_users: Benutzer
     search: Suche
     from: Von
     to: Bis
@@ -69,7 +69,10 @@ de:
     edit_attributes: Attribute bearbeiten
     all_blogs: Alle Blogs (mit Livesuche)
     manage: Verwaltung
-    fill_in_duty: Bitte Pflichtfelder ausfüllen!
+    fill_in_duty: Bitte Pflichtfelder ausfüllen
+    visible: Für Alle Benutzer sichtbar
+    important_notice: Wichtige Information zu Ihrer Privatsphäre
+    the_important_notice: Wenn Sie die Checkbox "Nur für meine Kontakte sichtbar" anklicken, kann diese Information auch nur Von Benutzern gesehen werden, welche Sie in ihrer Kontaktliste haben. Wenn sie die Checkbox nicht anklicken, können alle Benutzer dieser Seite die Information sehen.
   event:
     begin: Begin
     end: Ende

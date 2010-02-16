@@ -14,7 +14,7 @@
 
 
 
-<div class="k">
+<div class="left">
 <h2><%= @job.title %></h2>
 <h3><%= t('job.publish_date') %>: <%= @job.puplish_date.strftime(" %d.%m.%Y ") %></h3>
 <dl>
@@ -29,4 +29,11 @@
 	<% end %>
 <% end %>
 </dl>
+</div>
+
+<div class="tags">
+	<h3>Tags</h3>
+	<p>
+		<%= @tags.collect {|tag| link_to(tag.name, "/jobs?tag=#{tag.id}")}.join(", ") %>
+	</p>
 </div>

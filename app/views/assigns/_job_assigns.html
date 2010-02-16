@@ -1,40 +1,37 @@
-<p>
-
-	<span style="font-weight:bold"><%= assign.english_name %>
+<span style="font-weight:bold"><%= assign.german_name %>
 	<% if assign.html_attribute.to_s.eql?('mail_to') %>
 		(<%= t('common.email') %>)
 	<% end %>	
 	</span> <br/>
 	<!-- if attribute is a select_tag -->
 	<% if assign.html_attribute.to_s.eql?('select_tag') %>
-	<% if UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).nil? %>
+	<% if UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).nil? || request.params[:id].nil?  %>
 		<%= select_tag 'assign_id_' +assign.id.to_s + '[value]', "<option> </option>" + options_from_collection_for_select(AdminAssignValueName.find_all_by_language_and_admin_assign_value_id(get_locale.to_s, assign.admin_assign_values), :name, :name) %>
 	<% else %>
-		<%= select_tag 'assign_id_' +assign.id.to_s + '[value]', "<option> </option>" + options_from_collection_for_select(AdminAssignValueName.find_all_by_language_and_admin_assign_value_id(get_locale.to_s, assign.admin_assign_values), :name, :name, UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).value) %>
+		<%= select_tag 'assign_id_' +assign.id.to_s + '[value]', "<option> </option>" + options_from_collection_for_select(AdminAssignValueName.find_all_by_language_and_admin_assign_value_id(get_locale.to_s, assign.admin_assign_values), :name, :name, UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).value) %>
 	<% end %>	
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
-	
+ 
 	<!-- if attribute is a select_many -->
-	
 	<% if assign.html_attribute.to_s.eql?('select_many') %>
 	<div style="padding-left:20px; padding-bottom:15px">
 		<%= admin_assign_values_checklist(AdminAssignValueName.find_all_by_language_and_admin_assign_value_id(get_locale.to_s, assign.admin_assign_values), assign.id) %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	</div>
 	<% end %>
-	
-	
+ 
+ 
 	<!-- if attribute is a text_field -->
 	<% if assign.html_attribute.to_s.eql?('text_field') %>
-		<% if UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).nil? %>
+		<% if UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).nil? || request.params[:id].nil? %>
 			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', '', :class  => 'tb'  %>
 		<% else %>
-			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).value, :class  => 'tb'  %>
+			<%= text_field_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).value, :class  => 'tb'  %>
 		<% end %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
-	
+ 
 	<!-- if attribute is a date_select -->
 	<% if assign.html_attribute.to_s.eql?('date_select') %>
 		<% if UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).nil? || request.params[:id].nil? %>
@@ -44,7 +41,7 @@
 		<% end %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
-	
+ 
 	<!-- if attribute is a mail_to -->
 	<% if assign.html_attribute.to_s.eql?('mail_to') %>
 		<% if UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).nil? || request.params[:id].nil? %>
@@ -54,16 +51,13 @@
 		<% end %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
-	
+ 
 	<!-- if attribute is a text_area -->
 	<% if assign.html_attribute.to_s.eql?('text_area') %>
-		<% if UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).nil? %>
+		<% if UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).nil? || request.params[:id].nil?  %>
 			<%= text_area_tag 'assign_id_' +assign.id.to_s + '[value]', '', :class  => 'tb'  %>
 		<% else %>
-			<%= text_area_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).value, :class  => 'tb_area'  %>
+			<%= text_area_tag 'assign_id_' +assign.id.to_s + '[value]', UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).value, :class  => 'tb_area'  %>
 		<% end %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
-	
-	
-</p>

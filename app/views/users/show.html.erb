@@ -19,7 +19,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.gender" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td style="width:300px;">
 				<%= @user_common.gender %>
@@ -30,7 +30,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.title" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td style="width:300px;">
 				<%= @user_common.title %>
@@ -41,7 +41,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.name" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td style="width:300px;">
 				<%= @user_common.firstname %>
@@ -54,7 +54,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.street" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td style="width:300px;">
 				<%= @user_common.street %>
@@ -65,7 +65,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.zip" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td style="width:300px;">
 				<%= @user_common.zip %>
@@ -76,7 +76,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.city" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td style="width:300px;">
 				<%= @user_common.city %>
@@ -87,7 +87,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.district" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td style="width:300px;">
 				<%= @user_common.district %>
@@ -98,7 +98,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.administrative_area" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td style="width:300px;">
 				<%= @user_common.administrative_area %>
@@ -109,7 +109,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.state" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td style="width:300px;">
 				<%= @user_common.state %>
@@ -120,7 +120,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.www" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td style="width:300px;">
 				<%= link_to @user_common.www, "http://#{@user_common.www}", :popup  => true %>
@@ -131,7 +131,7 @@
 		<tr>
 			<td style="font-weight:bold;">
 				<%= t "user.phone" %>
-				<%= ":" %>
+				<% ":" %>
 			</td>
 			<td>
 				<%= @user_common.phone %>
@@ -196,33 +196,9 @@
 </div>
 
 <div class="attributes">
-	<% for assign in Assign.find_all_by_parent_id(nil, :order => 'position') %>
-	<% unless (@user.assigns.uniq & Assign.find_all_by_parent_id(assign.id)).size == 0 %>
-	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
-	<% if current_user %>
-	<% if @user == current_user %>
-	<%= link_to t('common.edit'), assign_path(assign) %>
-	<% end %>
-	<% end %>
-	<table>
-		<% for assign_child in Assign.find_all_by_parent_id(assign.id, :order => 'position') %>
-		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).empty? %>
-		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).size == 1 && UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).first.value.to_s.eql?('') %>
-		<tr>
-			<td style="font-weight:bold;">
-				<%= assign_child.assign_names.find_by_language(get_locale.to_s).name + ":" %>
-			</td>
-			<td style="width:300px;">
-				<%= UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).map(&:value).join(', ') %>
-			</td>
-		</tr>
-		<% end %>
-		<% end %>
-		<% end %>
-	</table>
-	<% end %>
-
-	<% end %>
+	<div class="profile_info_extended" >
+		<%= render 'profile_info_extended' %>
+	</div>
 	
 	<div class="friends">
 		<%= render :partial => 'friends' %>

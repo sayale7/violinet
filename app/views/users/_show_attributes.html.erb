@@ -1,0 +1,13 @@
+
+<tr>
+	<td style="font-weight:bold;">
+		<%= assign_child.assign_names.find_by_language(get_locale.to_s).name  %>
+	</td>
+	<td style="width:300px;">
+		<% if assign_child.html_attribute.to_s.eql?('mail_to') %>
+		<%= mail_to UserAssignValue.find_by_assignable_id_and_assign_id(@user.id, assign_child.id).value %>
+		<% else %>
+		<%= UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).map(&:value).join(', ') %>
+		<% end %>
+	</td>
+</tr>

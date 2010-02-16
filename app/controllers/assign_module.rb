@@ -20,12 +20,24 @@ module AssignModule
           key = key.split("_").first
           user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_assignable_id_and_value_and_admin_assign_value_id(key,  assignable_id, AdminAssignValueName.find(value).name, AdminAssignValueName.find(value).admin_assign_value_id)
           user_assign_value.update_attribute(:value, AdminAssignValueName.find(value).name)
+          user_assign_value.update_attribute(:visible, get_visible_constant(user_assign_value.assign_id))
         else
           user_assign_value = UserAssignValue.find_or_create_by_assign_id_and_assignable_id(key, assignable_id) 
           user_assign_value.update_attribute(:value, value)
+          user_assign_value.update_attribute(:visible, get_visible_constant(user_assign_value.assign_id))
         end
       end
     }
+  end
+  
+  def get_visible_constant(id)
+    is_true = false
+    params.each do |name, value|
+      if name.to_s.eql?("visible_for_#{id}")
+        is_true = true
+      end
+    end
+    return is_true
   end
   
 end

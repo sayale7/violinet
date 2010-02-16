@@ -3,50 +3,61 @@
 <%= stylesheet 'jquery_ui' %>
 
 <script type="text/javascript" charset="utf-8">
-	$(document).ready(function(){
-		$(".tb_date").datepicker({ 
-			dateFormat: 'dd.mm.yy'
-		});
+$(document).ready(function(){
+	$(".tb_date").datepicker({ 
+		dateFormat: 'dd.mm.yy'
 	});
+});
 </script>
 
-
-
-
 <%  form_tag set_job_assign_values_path do %>
-	<%= hidden_field_tag :job_id, '', :value  =>  @job.id %>
-	<% if current_user && current_user.role?('admin') %>
-	<p>
-	  <strong>Aktiv</strong>
-	  <%= check_box_tag :active, 1, @job.active %><br/>
-	</p>
-	<p>
-		<strong>* <%= label_tag t('job.publishing_date') %></strong><br/>
-		<% unless @job.puplish_date.nil? %>
-			<%= text_field_tag :puplish_date, @job.puplish_date.strftime("%d.%m.%Y"), :class  => 'tb_date' %>
-		<% else %>
-			<%= text_field_tag :puplish_date, @job.puplish_date, :class  => 'tb_date' %>
-		<% end %>
-	</p>
+<%= hidden_field_tag :job_id, '', :value  =>  @job.id %>
+<% if current_user && current_user.role?('admin') %>
+<p>
+	<strong>Aktiv</strong>
+	<%= check_box_tag :active, 1, @job.active %><br/>
+</p>
+<p>
+	<strong>* <%= label_tag t('job.publishing_date') %></strong><br/>
+	<% unless @job.puplish_date.nil? %>
+	<%= text_field_tag :puplish_date, @job.puplish_date.strftime("%d.%m.%Y"), :class  => 'tb_date' %>
+	<% else %>
+	<%= text_field_tag :puplish_date, @job.puplish_date, :class  => 'tb_date' %>
 	<% end %>
-	<p>
-		<strong>* <%= label_tag t('job.title') %></strong><br/>
-		<%= text_field_tag :title, @job.title, :class  => 'tb' %>
-	</p>
-	<% unless all_assigns('Job').empty? %>
-		<% all_assigns('Job').each do |job_assign| %>
-		
-		<% if get_locale.to_s.eql?('de') %>
-		<%= render '/assigns/german_job_assigns', :assign  => job_assign  %>
-		<% end %>
-		
-		<% if get_locale.to_s.eql?('en') %>
-		<%= render '/assigns/english_job_assigns', :assign  => job_assign %>
-		<% end %>
-		
-		<% end %>
+</p>
+<% end %>
+<p>
+	<strong>* <%= label_tag t('job.title') %></strong><br/>
+	<%= text_field_tag :title, @job.title, :class  => 'tb' %>
+</p>
+<% unless all_assigns('Job').empty? %>
+<% all_assigns('Job').each do |job_assign| %>
+
+<p>
+	<% if get_locale.to_s.eql?('de') %>
+	<span style="font-weight:bold"><%= job_assign.german_name %>
+		<% if job_assign.html_attribute.to_s.eql?('mail_to') %>
+		(<%= t('common.email') %>)
+		<% end %>	
+	</span> 
 	<% end %>
-  <p><%= submit_tag "Submit" %></p>
+	<% if get_locale.to_s.eql?('en') %>
+	<span style="font-weight:bold"><%= job_assign.english_name %>
+		<% if job_assign.html_attribute.to_s.eql?('mail_to') %>
+		(<%= t('common.email') %>)
+		<% end %>	
+	</span> 
+	<% end %>
+	<br/>
+	<%= render '/assigns/job_assigns', :assign  => job_assign  %>
+</p>
+
+
+
+
+<% end %>
+<% end %>
+<p><%= submit_tag "Submit" %></p>
 <% end %>
 
 * <%= t('common.duty') %>
