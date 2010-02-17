@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   	<title><%= h(yield(:title) || "Untitled") %></title>
-	<%= stylesheet_link_tag 'drop_down_menu/dropdown.linear.columnar', 'drop_down_menu/default.advanced', 'application', '/shadowbox/shadowbox', :cache => 'common_styles'  %>
+	<%= stylesheet_link_tag 'drop_down_menu/dropdown.linear.columnar', 'drop_down_menu/default.advanced', 'application', '/shadowbox/shadowbox'  %>
 	<% if request.url.to_s.include?('sort_list_elements')%>
 		<%= javascript_include_tag 'proto/prototype', 'proto/controls', 'proto/effects', 'proto/dragdrop', :cache  => 'sort' %>
 	<% else %>
