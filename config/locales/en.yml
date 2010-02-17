@@ -76,6 +76,8 @@ en:
     visible: Für Alle Benutzer sichtbar
     important_notice: Wichtige Information zu Ihrer Privatsphäre
     the_important_notice: Wenn Sie die Checkbox "Für Alle Benutzer sichtbar" anklicken, kann diese Information auch von allen Benutzern gesehen werden. Wenn Sie die Checkbox nicht anklicken können nur die Benutzer Sie sehen, welche in Ihrer Kontaktliste sind
+    home: Home
+    all: All
   event:
     begin: Begin
     end: End
@@ -157,7 +159,7 @@ en:
     passwort_reset_instructions: Instructions to reset your password have been emailed to you. Please check your email.
     passwort_reset_instructions_no_email: No user was found with that email address
     my_personals: Personalities
-    commons: Common
+    commons: Contact Info
     my_blog: My Blog
     my_blog_archive: My Blog Archive
     my_profile: My Profile
@@ -180,6 +182,7 @@ en:
     friend_confirm: Contact Requests
     not_confirmed_yet: Not yet confirmed Contact(s)
     delete: Quit Violounge.com
+    special_info: Special Info
   profile_image:
       created: Image created!
       error: Image could not be created (should be smaller than 0.5MB and jpeg, gif or png)

@@ -73,6 +73,8 @@ de:
     visible: Für Alle Benutzer sichtbar
     important_notice: Wichtige Information zu Ihrer Privatsphäre
     the_important_notice: Wenn Sie die Checkbox "Für Alle Benutzer sichtbar" anklicken, kann diese Information auch von allen Benutzern gesehen werden. Wenn Sie die Checkbox nicht anklicken können nur die Benutzer Sie sehen, welche in Ihrer Kontaktliste sind
+    home: Home
+    all: Alle
   event:
     begin: Begin
     end: Ende
@@ -154,7 +156,7 @@ de:
     passwort_reset_instructions: Sie haben ein Mail mit Ihrer Passwort Rücksetz Anleitung bekommmen!
     passwort_reset_instructions_no_email: Kein Benutzer mit dieser Mailadresse gefunden!
     my_personals: Persönliches
-    commons: Allgemeines
+    commons: Kontakt Info
     my_blog: Mein Blog
     my_blog_archive: Mein Blog Archiv
     my_profile: Mein Profil
@@ -178,6 +180,7 @@ de:
     friend_confirm: Kontaktanfragen
     not_confirmed_yet: Noch nicht bestätigt(e)r Kontakt(e)
     delete: Aus Violounge.com austreten
+    special_info: Zur Person
   profile_image:
       created: Profilbild angelegt!
       error: Profilbild konnte nicht angelegt werden (sollte kleiner 0.5MB und jpeg, gif oder png sein)

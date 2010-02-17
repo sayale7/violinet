@@ -2,78 +2,154 @@
 	<a href="http://de.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("de.png", :border=>0, :width  => 20) %></a>
 	<a href="http://en.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("gb.png", :border=>0, :width  => 20) %></a>
 </div>
-<% if !current_user %>
-<ul>
-	<li>
-		<%= link_to t("common.blogs"), posts_path %>
+<ul id="nav" class="dropdown dropdown-linear dropdown-columnar">
+	<li><%= link_to t('common.home'), root_url %></li>
+	<% if current_user %>
+	<li class="dir"><%= link_to t("user.my_profile"), user_path(:current) %>
+		<ul>
+			<li class="dir"><%= t('user.common') %>
+				<ul>
+					<li><%= link_to t("user.my_profile"), user_path(:current) %></li>
+					<li><%= link_to t("user.my_account"), edit_user_path(:current) %></li>
+					<li><%= link_to t("user.my_profile_img"), new_profile_image_path %></li>
+					<li><%= link_to t("user.commons"), :controller => "user_commons", :action => "edit", :id => current_user.id %></li>
+				</ul>
+			</li>
+			<li class="dir"><%= t('user.special_info') %>
+				<ul>
+					<% unless all_assigns('User').empty? %>
+						<% all_assigns('User').each do |user_assign| %>
+						<li>
+							<% if get_locale.to_s.eql?('de') %>
+								<%= link_to user_assign.german_name, assign_path(user_assign) %>
+							<% else %>
+								<%= link_to user_assign.english_name, assign_path(user_assign) %>
+							<% end %>
+						</li>
+						<% end %>
+					<% end %>
+				</ul>
+			</li>
+		</ul>
 	</li>
-	<li>
-		<%= link_to t("common.registered_users"), users_path %>
+	<% end %>
+	<li class="dir"><%= link_to t("common.blogs"), posts_path %>
+		<% if current_user %>
+		<ul>
+			<li class="dir"><%= t("common.blogs") %>
+				<ul>
+					<li><%= link_to t("user.my_blog"), myblog_path %></li>
+					<li><%= link_to t('post.new'), new_post_path %></li>
+				</ul>
+			</li>
+		</ul>	
+		<% end %>
 	</li>
-	<li>
-		<%= link_to t('common.groups'), groups_path %>
-	</li>
-	<li>
-		<%= link_to t('common.events'), '/calendar' %>
-	</li>
-	<li>
-		<%= link_to t('common.service'), '/services' %>
-	</li>
-	<li>
-		<%= link_to t("common.register"), new_user_path %>
-	</li>
-	<li>
-		<%= link_to t("common.login"), new_user_session_path %>
-	</li>
-</ul>
-
-<% else %>
-<ul>
-	<li>
-		<%= link_to t("user.my_profile"), user_path(:current) %>
-	</li>
-	<li>
-		<%= link_to t("common.blogs"), posts_path %>
-	</li>
-	<li>
+	<% if current_user %>
+	<li class="dir">
 		<% if unread_messages.empty? %>
 			<%= link_to t("mail.inbox_main"), inbox_path %>
 		<% else %>
-			<%= link_to t("mail.inbox_main"), inbox_path %>
-			<span style="margin-left:5px;"><%= unread_messages.size.to_s %></span>
+			<%= link_to t("mail.inbox_main") + ' ' + unread_messages.size.to_s, inbox_path, :class => 'unread_mail' %>
 		<% end %>
-	</li>
-	<li>
-		<%= link_to t("common.all_photo_album"), photo_albums_path %>
-	</li>
-	<li>
-		<%= link_to t("common.registered_users"), users_path %>
-	</li>
-	<li>
-		<%= link_to t('common.groups'), groups_path %>
-	</li>
-	<li>
-		<%= link_to t('common.events'), '/calendar' %>
-	</li>
-	<li>
-		<%= link_to t('common.service'), '/services' %>
-	</li>
-	<li>
-		<%= link_to t("common.logout"), logout_path, :method => :delete, :confirm => t("common.confirm_logout") %>
-	</li>
-
-</ul>
-<% if current_user.role?('admin') %>
-<ul id="jsddm">
-	<li id="js" class="wjs_visible"><a href="#"><%= t('common.manage') %></a>
 		<ul>
-			<li><%= link_to t('job.manage_assigns'), '/assigns?assignable_type=Job' %></li>
-			<li><%= link_to t('job.manage_tags'), '/tags?taggable_type=Job' %></li>
-			<li><%= link_to t('user.manage_assigns'), '/assigns?assignable_type=User' %></li>
-			<li><%= link_to t('group.manage_tags'), '/tags?taggable_type=Group' %></li>
-			<li><%= link_to t('post.manage_tags'), '/tags?taggable_type=Post' %></li>
+			<li class="dir"><%= t('user.common') %>
+				<ul>
+					<li><%= link_to t('mail.inbox'), inbox_path %></li>
+					<li><%= link_to t('mail.sent'), :controller => "sent", :action => "index" %></li>
+					<li><%= link_to t('mail.new'), new_sent_path %></li>
+				</ul>
+			</li>
+			<li class="dir"><%= t('mail.trash') %>
+				<ul>
+					<li><%= link_to t('mail.inbox'), trash_in_path %></li>
+					<li><%= link_to t('mail.sent'), trash_out_path %></li>
+				</ul>
+			</li>
 		</ul>
 	</li>
+	<li class="dir">
+		<%= link_to t("common.all_photo_album"), photo_albums_path %>
+	</li>
+	<% end %>
+	<li class="dir">
+		<%= link_to t("common.registered_users"), users_path %>
+	</li>
+	<li class="dir"><%= link_to t('common.groups'), groups_path %>
+	<% if current_user %>
+		<ul>
+			<li class="dir"><%= t("common.groups") %>
+				<ul>
+					<li><%= link_to t('common.all'), groups_path %></li>
+					<li><%= link_to t("common.my_groups"), mygroups_path %></li>
+					<li><%= link_to t('group.new'), new_group_path %></li>
+				</ul>
+			</li>
+		</ul>	
+		<% end %>
+	</li>
+	<li class="dir"><%= link_to t('common.events'), '/calendar' %>
+		<% if current_user %>
+		<ul>
+			<li class="dir"><%= t("common.events") %>
+				<ul>
+					<li><%= link_to t("event.new"), new_event_path %></li>
+				</ul>
+			</li>
+		</ul>
+		<% end %>
+	</li>
+	<li class="dir"><%= link_to t('common.service'), '/services' %>
+		<ul>
+			<li class="dir"><%= t("service.jobs") %>
+				<ul>
+					<li><%= link_to t("service.jobs"), jobs_path %></li>
+				</ul>
+			</li>
+			<li class="dir"><%= t("service.living") %>
+				<ul>
+					<li><%= link_to t("service.living") %></li>
+				</ul>
+			</li>
+			<li class="dir"><%= t("service.changing") %>
+				<ul>
+					<li><%= link_to t("service.changing"), jobs_path %></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<% if current_user && current_user.role?('admin') %>
+	<li class="dir"><%= link_to t('common.manage') %>
+		<ul>
+			<li class="dir"><%= t("service.jobs") %>
+				<ul>
+					<li><%= link_to t('job.manage_assigns'), '/assigns?assignable_type=Job' %></li>
+					<li><%= link_to t('job.manage_tags'), '/tags?taggable_type=Job' %></li>
+				</ul>
+			</li>
+			<li class="dir"><%= t("common.registered_users") %>
+				<ul>
+					<li><%= link_to t('user.manage_assigns'), '/assigns?assignable_type=User' %></li>
+				</ul>
+			</li>
+			<li class="dir"><%= t("common.groups") %>
+				<ul>
+					<li><%= link_to t('group.manage_tags'), '/tags?taggable_type=Group' %></li>
+				</ul>
+			</li>
+			<li class="dir"><%= t("common.blogs") %>
+				<ul>
+					<li><%= link_to t('post.manage_tags'), '/tags?taggable_type=Post' %></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<% end %>
+	<li>
+	<% if !current_user %>
+		<%= link_to t("common.login"), new_user_session_path %>
+	<% else %>
+		<%= link_to t("common.logout"), logout_path, :method => :delete, :confirm => t("common.confirm_logout") %>
+	<% end %>
+	</li>
 </ul>
-<% end %>
-<% end %>

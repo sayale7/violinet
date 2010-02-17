@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   
   def show
     @message = current_user.received_messages.find(params[:id])
-    render :layout => "sent", :action => "show"
+    render :action => "show"
   end
   
   

@@ -4,7 +4,6 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all(:order  => 'active, updated_at DESC', :limit  => 20)
-    render :layout  => 'services'
   end
 
   def show
@@ -26,8 +25,6 @@ class JobsController < ApplicationController
     if @job.save
       flash[:notice] = "Successfully created job."
       redirect_to edit_job_path(@job)
-    else
-      render :layout  => 'services'
     end
   end
 
@@ -35,7 +32,6 @@ class JobsController < ApplicationController
     is_admin?
     @job = Job.find(params[:id])
     @not_in_job_tags = Tag.find_all_by_taggable_type('Job') - @job.tags
-    render :layout  => 'services'
   end
 
   def update
@@ -43,8 +39,6 @@ class JobsController < ApplicationController
     if @job.update_attributes(params[:job])
       flash[:notice] = "Successfully updated job."
       redirect_to @job
-    else
-      render :layout  => 'services'
     end
   end
 

@@ -8,7 +8,6 @@ class CalendarController < ApplicationController
     @first_day_of_week = 1
     @event_strips = Event.event_strips_for_month(@shown_month, @first_day_of_week)
     
-    render :layout  => '/layouts/events'
   end
   
 end

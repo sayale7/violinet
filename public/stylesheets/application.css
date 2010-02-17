@@ -272,10 +272,8 @@ table a:link {
     width: 950px;
 	margin: 0 auto;
 	background: transparent;
-	overflow:hidden;
-/*    border: solid 1px black; #F8F8F8s */
     padding: 0px;
-} #user_nav ul {
+} /*#user_nav ul {
 	float:left;
 	padding:0;
 	margin:0;
@@ -306,7 +304,7 @@ table a:link {
 #user_nav ul li a:hover {
 	color:#333;
 	font-weight:bold;
-}
+}*/
 
 
 #user_nav_two{
@@ -412,7 +410,11 @@ table a:link {
 	float:left;
 	clear:left;
 	width:520px;
-} .attributes table {
+}	
+.attributes a{
+	font-size:12px;
+}
+.attributes table {
 	width:500px;
 	margin-bottom:15px;
     color: #000;
@@ -1129,5 +1131,5 @@ pre {
 	text-align:center;
 }
 
-
+.unread_mail{ background-color: #ff6347; border:none; }
 

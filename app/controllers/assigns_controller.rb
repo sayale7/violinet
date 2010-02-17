@@ -11,7 +11,6 @@ class AssignsController < ApplicationController
   
   def show
     @assign = Assign.find(params[:id])
-    render :layout  =>  '/layouts/' + @assign.assignable_type.to_s.downcase.pluralize
   end
   
   def new
@@ -77,7 +76,7 @@ class AssignsController < ApplicationController
         user_assign.destroy
       end
     end
-
+    
     @params_hash = find_assign_ids
     
     find_and_save_user_values(current_user.id)
@@ -99,7 +98,7 @@ class AssignsController < ApplicationController
       parent_id = params[:parent_id]
     end
     @_assigns = Assign.find_all_by_parent_id_and_assignable_type(parent_id, params[:assignable_type].to_s, :order => ['position'])
-    render :layout => '/layouts/sort'
+    # render :layout => '/layouts/sort'
   end
   
 

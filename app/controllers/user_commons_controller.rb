@@ -11,7 +11,6 @@ class UserCommonsController < ApplicationController
   def edit
     @user_common = UserCommon.find_by_user_id(params[:id])
     unauthorized! if cannot? :manage, @user_common
-    render :layout => 'users'
   end
   
   def update

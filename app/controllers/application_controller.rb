@@ -60,23 +60,14 @@ class ApplicationController < ActionController::Base
     flash[:error] = t('common.access_denied')
     redirect_to root_url
   end
-  
-  
-  
+
   # rescue_from ActiveRecord::RecordNotFound do |exception|
   #   flash[:error] = t('common.record_not_found')
   #   redirect_to root_url
   # end
   
-#  def require_user
-#    unless current_user
-#      store_location
-#      flash[:notice] = "You must be logged in to access this page"
-#      redirect_to new_user_session_url
-#      return false
-#    end
-#  end
-#  
+  
+
  def require_no_user
    if current_user
      store_location
@@ -85,25 +76,11 @@ class ApplicationController < ActionController::Base
      return false
    end
  end
-#  
+
  def store_location
    session[:return_to] = request.request_uri
  end
-#  
-#  def redirect_back_or_default(default)
-#    redirect_to(session[:return_to] || default)
-#    session[:return_to] = nil
-#  end
-#  
- # def access_denied
- #   if current_user
- #     flash[:notice] = 'Access denied.'
- #     redirect_to root_url
- #   else
- #     flash[:notice] = 'Access denied. Try to log in first.'
- #     redirect_to root_url
- #   end
- # end    
+
   
   
   

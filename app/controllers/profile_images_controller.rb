@@ -4,7 +4,6 @@ class ProfileImagesController < ApplicationController
   def new
     unless params[:edit].eql?('true')
       @profile_image = ProfileImage.find_by_user_id(current_user.id)
-      render :layout  => '/layouts/users'
     else
       @profile_image = ProfileImage.find_by_user_id(current_user.id)
       render :action  => 'crop'

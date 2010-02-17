@@ -3,9 +3,71 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   	<title><%= h(yield(:title) || "Untitled") %></title>
-	<%= stylesheet_link_tag 'application', 'ddm' %>
-	<%= javascript_include_tag 'jqeury', 'application', 'ddm' %>
-	</script>
+	<%= stylesheet_link_tag 'drop_down_menu/dropdown.linear.columnar', 'drop_down_menu/default.advanced', 'application', '/shadowbox/shadowbox', :cache => 'common_styles'  %>
+	<% if request.url.to_s.include?('sort_list_elements')%>
+		<%= javascript_include_tag 'proto/prototype', 'proto/controls', 'proto/effects', 'proto/dragdrop', :cache  => 'sort' %>
+	<% else %>
+		<%= javascript_include_tag 'jquery', 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'mail', 'application', '/shadowbox/shadowbox', :cache => 'common_scripts'   %>
+		<% if request.url.to_s.include?('posts') || request.url.to_s.include?('myblog') %>
+			<%= include_tiny_mce_if_needed %>
+			<%= javascript_include_tag 'jquery.ui', 'jquery.datepicker', :cache => 'post_scripts' %>
+			<%= stylesheet_link_tag 'jquery_ui', :cache => 'post_styles' %>
+		<% end %>
+		<% if request.url.to_s.include?('photo_albums') && request.url.to_s.include?('edit') %>
+			<%= javascript_include_tag 'swfupload', 'handlers', 'main' %>
+		<% end %>
+	<% end %>
+	
+	<% unless request.url.to_s.include?('photo_albums') && request.url.to_s.include?('edit') %>
+		<script type="text/javascript">
+		var shadowbox_conf = {
+			language: "de-DE",
+			players: ["flv", "html", "iframe", "img", "qt", "swf", "wmp"],
+			animate: true,
+			animateFade: true,
+			animSequence: "wh",
+			autoDimensions: true,
+			modal: false,
+			showOverlay: true,
+			overlayColor: "#000",
+			overlayOpacity: 1,
+			flashBgColor: "#000000",
+			autoplayMovies: true,
+			showMovieControls: true,
+			slideshowDelay: 0,
+			resizeDuration: 0.5,
+			fadeDuration: 0.5,
+			displayNav: true,
+			continuous: false,
+			displayCounter: true,
+			counterType: "default",
+			counterLimit: 10,
+			viewportPadding: 20,
+			handleUnsupported: "link",
+			initialHeight: 160,
+			initialWidth: 320,
+			enableKeys: true,
+			skipSetup: false,
+			flashParams: { bgcolor: "#000000", allowFullScreen: true },
+			flashVars: {},
+			flashVersion: "9.0.0",
+			useSizzle: false
+		};
+		Shadowbox.init(shadowbox_conf);
+		</script>
+	<% else %>
+		<script type="text/javascript" charset="utf-8">
+			Shadowbox.init({
+				language: 'en',
+				players:  ['img', 'html', 'iframe'],
+				onClose:function(){ window.location.reload(true) }
+			});
+		</script>
+	<% end %>
+	
+	<!--[if lte IE 7]>
+		<%= javascript_include_tag 'jquery.dropdown' %>
+	<![endif]-->
 	
 	<%= yield :head %>
 </head>
