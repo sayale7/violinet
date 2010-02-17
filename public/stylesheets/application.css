@@ -391,6 +391,9 @@ table a:link {
 }.personal_info {
 	float:left;
 	width:350px;
+}
+.personal_info a {
+	font-size:12px;
 }	 
 .personal_info table {
 	width:500px;
