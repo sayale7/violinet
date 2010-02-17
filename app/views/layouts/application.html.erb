@@ -7,7 +7,7 @@
 	<% if request.url.to_s.include?('sort_list_elements')%>
 		<%= javascript_include_tag 'proto/prototype', 'proto/controls', 'proto/effects', 'proto/dragdrop', :cache  => 'sort' %>
 	<% else %>
-		<%= javascript_include_tag 'jquery', 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'mail', 'application', '/shadowbox/shadowbox', :cache => 'common_scripts'   %>
+		<%= javascript_include_tag 'jquery', 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'mail', 'application', '/shadowbox/shadowbox'   %>
 		<% if request.url.to_s.include?('posts') || request.url.to_s.include?('myblog') %>
 			<%= include_tiny_mce_if_needed %>
 			<%= javascript_include_tag 'jquery.ui', 'jquery.datepicker', :cache => 'post_scripts' %>
