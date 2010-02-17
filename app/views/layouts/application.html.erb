@@ -5,13 +5,13 @@
   	<title><%= h(yield(:title) || "Untitled") %></title>
 	<%= stylesheet_link_tag 'drop_down_menu/dropdown.linear.columnar', 'drop_down_menu/default.advanced', 'application', '/shadowbox/shadowbox'  %>
 	<% if request.url.to_s.include?('sort_list_elements')%>
-		<%= javascript_include_tag 'proto/prototype', 'proto/controls', 'proto/effects', 'proto/dragdrop', :cache  => 'sort' %>
+		<%= javascript_include_tag 'proto/prototype', 'proto/controls', 'proto/effects', 'proto/dragdrop' %>
 	<% else %>
 		<%= javascript_include_tag 'jquery', 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'mail', 'application', '/shadowbox/shadowbox'   %>
 		<% if request.url.to_s.include?('posts') || request.url.to_s.include?('myblog') %>
 			<%= include_tiny_mce_if_needed %>
-			<%= javascript_include_tag 'jquery.ui', 'jquery.datepicker', :cache => 'post_scripts' %>
-			<%= stylesheet_link_tag 'jquery_ui', :cache => 'post_styles' %>
+			<%= javascript_include_tag 'jquery.ui', 'jquery.datepicker' %>
+			<%= stylesheet_link_tag 'jquery_ui' %>
 		<% end %>
 		<% if request.url.to_s.include?('photo_albums') && request.url.to_s.include?('edit') %>
 			<%= javascript_include_tag 'swfupload', 'handlers', 'main' %>
