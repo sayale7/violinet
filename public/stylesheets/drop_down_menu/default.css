@@ -22,12 +22,14 @@
 
 
 ul.dropdown {
- 	font: normal 12px/normal Arial, Helvetica, sans-serif;
- /* letter-spacing: -1px;
-text-transform: uppercase;*/
+ 	font: bold 11px Arial, Helvetica, sans-serif;
+  	letter-spacing: -1px;
+	text-transform: uppercase;
 }
 	ul.dropdown a {
  		margin:3px;
+		margin-left:0;
+		margin-right:0;
 	}
 	ul.dropdown a:hover{
 		background-color:#0086E1;
