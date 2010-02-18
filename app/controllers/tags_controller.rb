@@ -41,12 +41,8 @@ class TagsController < ApplicationController
   # GET /tags/1/edit
   def edit
     @tag = Tag.find(params[:id])
-    unless @tag.parent_id.nil?
-      @tags = @tag.ancestors.last.children + @tag.ancestors.last.to_a - @tag.to_a
-    else
-      @tags = @tag.to_a
-    end
     @taggable_type =  @tag.taggable_type
+    @tags = Tag.find_all_by_taggable_type(@taggable_type)
   end
 
   # POST /tags
