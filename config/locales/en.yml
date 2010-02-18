@@ -109,6 +109,7 @@ en:
     of_this_user: Groups of
     all_of_this_user: All Groups of
     members: Members
+    member: Member
   forgot_password:
     password_reset: Reset Password
     forgot: Forgot Password?
