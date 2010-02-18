@@ -81,6 +81,7 @@ en:
     welcome: Welcome on Violounge.com
     proof_link: Proof Link
     url: insert without http://
+    parent_element: Parent Element
   event:
     begin: Begin
     end: End

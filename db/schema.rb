@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100215195358) do
+ActiveRecord::Schema.define(:version => 20100218173944) do
 
   create_table "admin_assign_value_names", :force => true do |t|
     t.integer  "admin_assign_value_id"
@@ -207,6 +207,8 @@ ActiveRecord::Schema.define(:version => 20100215195358) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "taggable_type"
+    t.integer  "parent_id"
+    t.integer  "position"
   end
 
   create_table "user_assign_values", :force => true do |t|
@@ -216,7 +218,7 @@ ActiveRecord::Schema.define(:version => 20100215195358) do
     t.datetime "updated_at"
     t.integer  "admin_assign_value_id"
     t.integer  "assignable_id"
-    t.boolean  "visible"
+    t.boolean  "visible",               :default => false
   end
 
   create_table "user_commons", :force => true do |t|

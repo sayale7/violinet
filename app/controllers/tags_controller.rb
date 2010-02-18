@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  
   # GET /tags
   # GET /tags.xml
   load_and_authorize_resource
@@ -7,7 +8,7 @@ class TagsController < ApplicationController
     unless params[:taggable_type].nil?
       @taggable_type =  params[:taggable_type]
     end
-    @tags = Tag.find_all_by_taggable_type(@taggable_type)
+    @tags = Tag.find_all_by_taggable_type_and_parent_id(@taggable_type, nil)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,7 +20,6 @@ class TagsController < ApplicationController
   # GET /tags/1.xml
   def show
     @tag = Tag.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @tag }
@@ -30,7 +30,8 @@ class TagsController < ApplicationController
   # GET /tags/new.xml
   def new
     @tag = Tag.new
-    @taggable_type =  params[:taggable_type]  
+    @taggable_type =  params[:taggable_type]
+    @tags = Tag.find_all_by_taggable_type_and_parent_id(@taggable_type, nil)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @tag }
@@ -40,6 +41,12 @@ class TagsController < ApplicationController
   # GET /tags/1/edit
   def edit
     @tag = Tag.find(params[:id])
+    unless @tag.parent_id.nil?
+      @tags = @tag.ancestors.last.children + @tag.ancestors.last.to_a - @tag.to_a
+    else
+      @tags = @tag.to_a
+    end
+    @taggable_type =  @tag.taggable_type
   end
 
   # POST /tags

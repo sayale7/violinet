@@ -1,5 +1,6 @@
 class Tag < ActiveRecord::Base
   
+  acts_as_tree
   
   has_many :taggings, :dependent => :destroy
 
@@ -7,6 +8,7 @@ class Tag < ActiveRecord::Base
   
   attr_writer :german_name
   attr_writer :english_name
+  
   
   after_save :assign_german_tag_name
   after_save :assign_english_tag_name

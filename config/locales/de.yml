@@ -78,6 +78,7 @@ de:
     welcome: Willkommen auf Violounge.com
     proof_link: Link überprüfen
     url: ohne http:// eingeben
+    parent_element: Elternelement
   event:
     begin: Begin
     end: Ende

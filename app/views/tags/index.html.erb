@@ -1,23 +1,34 @@
-<table>
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
+<% title t('common.edit_attributes') %>
 
-	<% @tags.each do |tag| %>
-	<tbody>
-		<tr>
-			<td><%=h tag.tag_names.first.name %> / <%=h tag.tag_names.last.name %> 
-			<td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-			<td><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></td>
-		</tr>
-	</tbody>
-	<% end %>
-</table>
+<p><% link_to 'Reihenfolge der Elternelemente ändern', sort_list_elements_path + '?parent_id=nil;assignable_type=' + @taggable_type.to_s %></p>
 
-<br />
+<% @tags.each do |tag| %>
+	<h2><%= tag.tag_names.find_by_language(get_locale.to_s).name %><span style="font-size:10px;">(<%= link_to t('common.edit'), edit_tag_path(tag) %> / <%= link_to t('common.delete'), tag, :confirm => 'Sicher?', :method => :delete %>)</span></h2>
+	
+	<dl style="padding-left:30px;">
+		<% unless tag.children.empty? %>
+			<p><% link_to 'Reihenfolge der Liste ändern', sort_list_elements_path + '?parent_id=' + tag.id.to_s + ';taggable_type=' + @taggable_type.to_s %></p>
+		<% end %>
+		<% for tag_child in Tag.find_all_by_parent_id(tag.id, :order => 'position') %>
+			<dt>
+				<%= tag_child.tag_names.find_by_language(get_locale.to_s).name %> -
+				<%= link_to t('common.edit'), edit_tag_path(tag_child) %> /
+				<%= link_to t('common.delete'), tag_child, :confirm => t('common.confirm'), :method => :delete %>
+			</dt>
+			<% unless tag.children.empty? %>
+				<p><% link_to 'Reihenfolge der Liste ändern', sort_list_elements_path + '?parent_id=' + tag.id.to_s + ';taggable_type=' + @taggable_type.to_s %></p>
+			<% end %>
+			<% for tag_child_child in tag_child.children %>
+				<dt style="margin-left:30px">
+					<%= tag_child_child.tag_names.find_by_language(get_locale.to_s).name %> -
+					<%= link_to t('common.edit'), edit_tag_path(tag_child_child) %> /
+					<%= link_to t('common.delete'), tag_child_child, :confirm => t('common.confirm'), :method => :delete %>
+				</dt>
+			<% end %>
+		<% end %>
+	</dl>
+<% end %>
 
+<br/>
+<br/>
 <%= link_to t('common.new'), '/tags/new?taggable_type=' + @taggable_type %>

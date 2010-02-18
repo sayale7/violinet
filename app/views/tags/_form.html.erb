@@ -2,13 +2,22 @@
 <%= f.error_messages %>
 
 <p>
+	<span style="font-weight:bold"><%= f.label t('common.parent_element') %></span><br />
+	<% if get_locale.to_s.eql?('de') %>
+		<%= f.collection_select :parent_id, @tags, :id, :german_name, :include_blank => true %>
+	<% else %>
+		<%= f.collection_select :parent_id, @tags, :id, :english_name, :include_blank => true %>
+	<% end %>
+</p>
+
+<p>
 	<%= f.label :german_name %><br />
-	<%= f.text_field :german_name %>
+	<%= f.text_field :german_name, :class => 'tb' %>
 </p>
 
 <p>
 	<%= f.label :english_name %><br />
-	<%= f.text_field :english_name %>
+	<%= f.text_field :english_name, :class => 'tb' %>
 </p>
 <%= f.hidden_field :taggable_type, :value  => @taggable_type %>
 
