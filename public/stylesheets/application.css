@@ -1136,12 +1136,12 @@ pre {
 
 .categoies_for_assigns{
 	float:right;
-	width:560px;
+	width:520px;
 	text-align:center;
 }
 
 .categoy_for_assigns{
-	width:130px;
+	width:160px;
 	height:80px;
 	text-align:center;
 	display: table-cell; 
