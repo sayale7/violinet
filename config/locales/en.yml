@@ -203,6 +203,7 @@ en:
     my_posts: My Posts (with Livesearch)
     manage_tags: Manage Tags
     search_field_description: Search for Title, Content und Creator of a Blog
+    all: All Posts
   tag:
       remove_tags_from_post: Tags of this Post
       remove_from_post: Remove

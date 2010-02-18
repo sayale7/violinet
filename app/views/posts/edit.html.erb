@@ -1,5 +1,3 @@
-<%= javascript 'jquery', 'application' %>
-
 <% title t 'post.edit' %>
 
 <div class="post"><h1><%= t "post.edit"%></h1>
@@ -11,7 +9,7 @@
 <div id="not_tags_of_post">
 	<% form_tag '/posts/add_tags', :id => "add_tags" do %>
 	<% unless @not_in_post_tags.empty?  %>
-	<br></br>
+	<br/>
 	<h2><%= t('tag.add_tags_to_post') %></h2>
 	<div class="new_click_boxes">
 		<% @not_in_post_tags.each do |tag|  %>
@@ -30,7 +28,7 @@
 <div id="tags_of_post">
 	<% form_tag '/posts/remove_tags', :id => "remove_tags" do %>
 	<% unless (@post.tags).empty?  %>
-	<br></br>
+	<br/>
 	<h2><%= t('tag.remove_tags_from_post') %></h2>
 	<div class="new_click_boxes">
 		<% for tag in (@post.tags) do %>

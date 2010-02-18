@@ -40,11 +40,11 @@
 			<input type="text" id="tokenize" name="blah2"/>	
 			<li></li>
 			<li>
-				Betreff *<br></br>
+				Betreff *<br/>
 				<%= f.text_field :subject, :class => "tb"%>
 			</li>
 			<li>
-				Nachricht *<br></br>
+				Nachricht *<br/>
 				<%= f.text_area :body, :class => "tb_area" %>
 				<%= f.hidden_field :author_id, :value  => current_user.id %>
 			</li>

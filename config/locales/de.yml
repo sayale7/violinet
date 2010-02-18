@@ -201,6 +201,7 @@ de:
     my_posts: Meine Posts (mit Livesuche)
     manage_tags: Tags verwalten
     search_field_description: Suchen Sie hier nach Titeln, Content und Gründer eines Blogs
+    all: Alle Artikel
   tag:  
     remove_tags_from_post: Tags des Eintrags
     add_tags_to_post: Verfügbare Tags

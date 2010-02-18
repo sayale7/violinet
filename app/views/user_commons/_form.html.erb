@@ -10,59 +10,59 @@
 	<%= f.error_messages %>
 	<div class="left">
 		<p>    
-		<%= t "user.gender" %><br></br>
+		<%= t "user.gender" %><br/>
 		<%= f.select(:gender, [['Weiblich'], ['Männlich']], :include_blank  => true) %>
 	</p>
 	<p>
-	<%= t "user.title" %><br></br>
+	<%= t "user.title" %><br/>
 	<%= f.text_field :title, :class  => 'tb'  %>
 </p>
 <p>
-<%= t "user.firstname" %><br></br>
+<%= t "user.firstname" %><br/>
 <%= f.text_field :firstname, :class  => 'tb'  %>
 </p>
 <p>
-<%= t "user.lastname" %><br></br>
+<%= t "user.lastname" %><br/>
 <%= f.text_field :lastname, :class  => 'tb'  %>
 </p>
 <p>
-<%= t "user.street" %><br></br>
+<%= t "user.street" %><br/>
 <%= f.text_field :street, :class  => 'tb'  %>
 </p>
 <p>
-<%= t "user.zip" %><br></br>
+<%= t "user.zip" %><br/>
 <%= f.text_field :zip, :class  => 'tb'  %>
 </p>
 	<p>
-	<%= t "user.city" %><br></br>
+	<%= t "user.city" %><br/>
 	<%= f.text_field :city, :class  => 'tb'  %>
 </p>
 
 </div>
 <div class="right">
 <p>
-<%= t "user.district" %><br></br>
+<%= t "user.district" %><br/>
 <%= f.text_field :district, :class  => 'tb'  %>
 </p>
 <p>
-<%= t "user.administrative_area" %><br></br>
+<%= t "user.administrative_area" %><br/>
 <%= f.text_field :administrative_area, :class  => 'tb'  %>
 </p>
 <p>
-<%= t "user.state" %><br></br>
+<%= t "user.state" %><br/>
 <%= f.text_field :state, :class  => 'tb'  %>
 </p>
 <p>
-<%= t "user.optional_address_attributes" %><br></br>
+<%= t "user.optional_address_attributes" %><br/>
 <%= f.text_field :optional_address_attributes, :class  => 'tb'  %>
 </p>
 <p>
-<%= t "user.www" %> (ohne http://)<br></br>
+<%= t "user.www" %> (ohne http://)<br/>
 <%= f.text_field :www, :class  => 'tb'  %>
 <a href="#" onclick="proof_link();return false;">Link überprüfen</a>
 </p>
 <p>
-<%= t "user.phone" %><br></br>
+<%= t "user.phone" %><br/>
 <%= f.text_field :phone, :class  => 'tb'  %>
 </p>
 <p>

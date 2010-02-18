@@ -9,7 +9,7 @@
 <% photo = Photo.first(:conditions => ["photo_album_id = ?", album.id]) %>
 
 <h2><%= album.name %></h2>
-<br></br><% unless photo.nil? %>
+<br/><% unless photo.nil? %>
 <%= image_tag(photo.public_filename(:medium)) %>
 <br/>
 <p>

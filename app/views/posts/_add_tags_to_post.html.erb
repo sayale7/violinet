@@ -1,6 +1,6 @@
 <% form_tag '/posts/add_tags', :id => "add_tags" do %>
 <% unless @not_in_post_tags.empty?  %>
-<br></br>
+<br/>
 <h2><%= t('tag.add_tags_to_post') %></h2>
 <% @not_in_post_tags.each do |tag|  %>
 <span class="clickable_items_to_add" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>

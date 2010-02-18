@@ -3,9 +3,9 @@
 <div class="group_description">
 	<h1>
 		<% if @group.members.size == 1 %>
-			<%=h @group.name %><span style="font-size:12px; color:black"> (<%= @group.members.size.to_s << ' ' << t('group.member') %>)</span>
+		<%=h @group.name %><span style="font-size:12px; color:black"> (<%= @group.members.size.to_s << ' ' << t('group.member') %>)</span>
 		<% else %>
-			<%=h @group.name %><span style="font-size:12px; color:black"> (<%= @group.members.size.to_s << ' ' << t('group.members') %>)</span>
+		<%=h @group.name %><span style="font-size:12px; color:black"> (<%= @group.members.size.to_s << ' ' << t('group.members') %>)</span>
 		<% end %>
 	</h1>
 	(<%= t('group.founder') %><%= ": " %>
@@ -13,8 +13,8 @@
 	<%= " - " unless ( @group.owner.user_common.firstname.nil? || @group.owner.user_common.firstname.empty?) && (@group.owner.user_common.lastname.nil? || @group.owner.user_common.lastname.empty?)  %>
 	<%= @group.owner.user_common.firstname.to_s + " " unless nil? %>
 	<%= @group.owner.user_common.lastname unless nil? %>)
-	
-	<br></br>
+
+	<br/>
 	<%= simple_format(h @group.description) %>
 </div>
 <div class="right">
@@ -47,23 +47,33 @@
 	<% end %>
 	<% end %>
 </p>
+<div class="whole_width"></div>
+<div class="group_member_container">
+	<% @group.members.each do |member| %>
+	<div class="group_members">
+		<p>
+			<% unless member.profile_image.nil? %>
+			<a href='<%= member.profile_image.avatar.url() %>' rel='shadowbox'><%= image_tag(member.profile_image.avatar.url(:thumb))%></a>
+			<% else %>
+			<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
+			<% end %>
+		</p>
+		<p>
+			<%= link_to member.login, user_path(member) %>	<%= " - " unless ( member.user_common.firstname.nil? || member.user_common.firstname.empty?) && (@group.owner.user_common.lastname.nil? || member.user_common.lastname.empty?)  %>
 
-<div class="whole_width">
-<% @group.members.each do |member| %>
-<div class="group_members">
-	<p>
-		<% unless member.profile_image.nil? %>
-		<a href='<%= member.profile_image.avatar.url() %>' rel='shadowbox'><%= image_tag(member.profile_image.avatar.url(:thumb))%></a>
-		<% else %>
-		<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
-		<% end %>
-	</p>
-	<p>
-		<%= link_to member.login, user_path(member) %>	<%= " - " unless ( member.user_common.firstname.nil? || member.user_common.firstname.empty?) && (@group.owner.user_common.lastname.nil? || member.user_common.lastname.empty?)  %>
+			<%= member.user_common.firstname.to_s + " " unless nil? %>
+			<%= member.user_common.lastname unless nil? %>
+		</p>
+	</div>
+	<% end %>
+	
 
-		<%= member.user_common.firstname.to_s + " " unless nil? %>
-		<%= member.user_common.lastname unless nil? %>
-	</p>
 </div>
-<% end %>
+
+<div class="comment_entry">
+	<h1><%= t "post.new_comment" %></h1>
+	<%= render '/comments/form' %>
+	<div id="comments">
+		<%= render :partial => '/comments/create' %>
+	</div>
 </div>

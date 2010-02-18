@@ -49,6 +49,8 @@ class GroupsController < ApplicationController
     TagName.find_all_by_language_and_tag_id(I18n.locale.to_s, @group.tags).each do |item|
       @tags.push(item)
     end
+    @comment = Comment.new
+    @comments = @group.comments
   end
   
   def new

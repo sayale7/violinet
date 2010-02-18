@@ -4,7 +4,7 @@
 <div id="not_tags_of_post">
 	<% form_tag '/groups/add_tags', :id => "add_tags" do %>
 	<% unless @not_in_group_tags.empty?  %>
-	<br></br>
+	<br/>
 	<h2><%= t('tag.add_tags_to_post') %></h2>
 	<div class="new_click_boxes">
 		<% @not_in_group_tags.each do |tag|  %>
@@ -23,7 +23,7 @@
 <div id="tags_of_post">
 	<% form_tag '/groups/remove_tags', :id => "remove_tags" do %>
 	<% unless (@group.tags).empty?  %>
-	<br></br>
+	<br/>
 	<h2><%= t('tag.remove_tags_from_post') %></h2>
 	<div class="new_click_boxes">
 		<% for tag in (@group.tags) do %>

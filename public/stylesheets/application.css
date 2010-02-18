@@ -215,9 +215,12 @@ table a:link {
 
 .whole_width{
     width: 950px;
-	overflow:hidden;
 	clear:both;
 	border-top:solid thin silver;
+}
+.group_member_container{
+	float:left;
+	width:540px;
 }
 
 #container_welcome {
@@ -518,6 +521,11 @@ table a:link {
 } .close{
 	visibility:hidden;
 }
+.comment_entry{
+	float:right;
+	width:405px;
+	padding-top:8px;
+}
 
 /* #comments {
  font-size: 12px;
@@ -615,7 +623,7 @@ table a:link {
 }
 .group_members{
 	float:left;
-	width:110px;
+	width:107px;
 }
 .group_edit{
 	float:left;

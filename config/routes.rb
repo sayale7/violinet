@@ -31,6 +31,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :groups, :has_many  => :taggings
   
+  map.resources :groups, :has_many  => :comments
+  
   map.resources :photo_albums
   
   map.resources :events
