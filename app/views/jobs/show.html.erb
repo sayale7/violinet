@@ -21,11 +21,15 @@
 <% @_assigns.each do |assign| %>
 	<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).empty? %>
 		<dt><strong><%= assign.assign_names.find_by_language(get_locale.to_s).name %></strong></dd>
-		<% if assign.html_attribute.to_s.eql?('mail_to') %>
-			<dd><p><%= mail_to UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).first.value %></p></dd>
-		<% else %>
+			<% if !assign.html_attribute.to_s.eql?('mail_to') && !assign.html_attribute.to_s.eql?('link_to') %>
 			<dd><%= simple_format(h UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).map(&:value).join(', ')) %></dd>
-		<% end %>
+			<% else %>
+				<% if assign.html_attribute.to_s.eql?('mail_to') %>
+				<dd><p><%= mail_to UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).first.value %></p></dd>
+				<% else assign.html_attribute.to_s.eql?('link_to') %>
+				<dd><p><%= link_to UserAssignValue.find_by_assignable_id_and_assign_id(@job.id, assign.id).value, "http://#{UserAssignValue.find_by_assignable_id_and_assign_id(@job.id, assign.id).value}", :popup  => true %></p></dd>
+				<% end %>
+			<% end %>
 	<% end %>
 <% end %>
 </dl>

@@ -33,20 +33,21 @@ $(document).ready(function(){
 <% all_assigns('Job').each do |job_assign| %>
 
 <p>
-	<% if get_locale.to_s.eql?('de') %>
-	<span style="font-weight:bold"><%= job_assign.german_name %>
+	<span style="font-weight:bold"><%= job_assign.assign_names.find_by_language(get_locale.to_s).name %>
 		<% if job_assign.html_attribute.to_s.eql?('mail_to') %>
 		(<%= t('common.email') %>)
 		<% end %>	
+		<% if job_assign.html_attribute.to_s.eql?('link_to') %>
+		<script type="text/javascript" charset="utf-8">
+			function proof_link(){
+				if(document.getElementById('user_common_www').value != ''){
+					window.open('http://' + document.getElementById('user_common_www').value);
+				}
+			}
+		</script>
+		(<%= t('common.url') %> -> <a href="#" onclick="proof_link();return false;"><%= t('common.proof_link') %></a>)
+		<% end %>
 	</span> 
-	<% end %>
-	<% if get_locale.to_s.eql?('en') %>
-	<span style="font-weight:bold"><%= job_assign.english_name %>
-		<% if job_assign.html_attribute.to_s.eql?('mail_to') %>
-		(<%= t('common.email') %>)
-		<% end %>	
-	</span> 
-	<% end %>
 	<br/>
 	<%= render '/assigns/job_assigns', :assign  => job_assign  %>
 </p>

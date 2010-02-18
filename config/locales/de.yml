@@ -76,6 +76,8 @@ de:
     home: Home
     all: Alle
     welcome: Willkommen auf Violounge.com
+    proof_link: Link überprüfen
+    url: ohne http:// eingeben
   event:
     begin: Begin
     end: Ende

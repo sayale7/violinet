@@ -1,11 +1,15 @@
 <script type="text/javascript" charset="utf-8">
-	$(document).ready(function(){
-		$(".tb_date").datepicker({ 
-		  dateFormat: 'dd.mm.yy'
-		});
+function proof_link(){
+	if(document.getElementById('user_common_www').value != ''){
+		window.open('http://' + document.getElementById('user_common_www').value);
+	}
+}
+$(document).ready(function(){
+	$(".tb_date").datepicker({ 
+		dateFormat: 'dd.mm.yy'
 	});
+});
 </script>
-
 <p><strong><%= t('common.important_notice') %></strong><%= ': ' %><%= t('common.the_important_notice') %></p>
 
 <!-- For User View -->
@@ -22,20 +26,22 @@
 <% unless @assign.children.empty? %>
 <% for assign in Assign.find_all_by_parent_id(@assign.id, :order => 'position') %>
 <p>
-	<% if get_locale.to_s.eql?('de') %>
-	<span style="font-weight:bold"><%= assign.german_name %>
+	<span style="font-weight:bold"><%= assign.assign_names.find_by_language(get_locale.to_s).name %>
 		<% if assign.html_attribute.to_s.eql?('mail_to') %>
 		(<%= t('common.email') %>)
+		<% end %>
+		<% if assign.html_attribute.to_s.eql?('link_to') %>
+		<script type="text/javascript" charset="utf-8">
+			function proof_link(){
+				if(document.getElementById('user_common_www').value != ''){
+					window.open('http://' + document.getElementById('user_common_www').value);
+				}
+			}
+		</script>
+		(<%= t('common.url') %> -> <a href="#" onclick="proof_link();return false;"><%= t('common.proof_link') %></a>)
+		<br/>
 		<% end %>	
 	</span> 
-	<% end %>
-	<% if get_locale.to_s.eql?('en') %>
-	<span style="font-weight:bold"><%= assign.english_name %>
-		<% if assign.html_attribute.to_s.eql?('mail_to') %>
-		(<%= t('common.email') %>)
-		<% end %>	
-	</span> 
-	<% end %>
 	
 	<!-- visible checkbox -->
 	<% if !UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).nil? && UserAssignValue.find_by_assignable_id_and_assign_id(current_user.id, assign.id).visible %>
