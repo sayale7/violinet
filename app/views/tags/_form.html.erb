@@ -1,7 +1,7 @@
 <% form_for(@tag) do |f| %>
 <%= f.error_messages %>
 
-<% if Tag.find(request.params[:id]).children.empty? %>
+<% if @tag.children.empty? %>
 <p>
 	<span style="font-weight:bold"><%= f.label t('common.parent_element') %></span><br />
 	<% if get_locale.to_s.eql?('de') %>
