@@ -55,7 +55,7 @@ class CommentsController < ApplicationController
     @comments = Comment.find_all_by_commentable_type_and_commentable_id(@comment.commentable_type, @comment.commentable_id)
     flash[:notice] = t('flash.comment_destroyed')
     unauthorized! if cannot? :manage, @comment
-   
+    
     respond_to do |format|
       format.html {  redirect_to '/' + @comment.commentable_type.to_s.downcase.pluralize + '/' + @comment.commentable_id.to_s }
       format.js
@@ -77,14 +77,12 @@ class CommentsController < ApplicationController
   end
   
   def is_owner?
-    no_user = true
+    no_user = false
     type = Kernel.const_get(@comment.commentable_type.to_s)
     type = type.find_by_id(@comment.commentable_id)
     type.attributes.each do |attribute_of_type|
       if attribute_of_type[0].to_s.eql?("user_id")
         no_user = true
-      else
-        no_user = false
       end
     end
     if no_user

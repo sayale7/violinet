@@ -54,7 +54,7 @@ class Ability
 
       # manage only own comments
       can :manage, Comment do |comment|  
-        comment[1].author_id == user.id || comment[1].commentable_id == user.id || (comment[1].commentable_type.to_s.eql?('Post') && Post.find(comment[1].commentable_id).user_id == user.id)
+        comment[1].author_id == user.id || comment[1].commentable_id == user.id || (comment[1].commentable_type.to_s.eql?('Post') && Post.find(comment[1].commentable_id).user_id == user.id) || (comment[1].commentable_type.to_s.eql?('Group') && Post.find(comment[1].commentable_id).user_id == user.id)
       end
 
     end

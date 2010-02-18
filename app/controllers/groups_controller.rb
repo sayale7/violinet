@@ -45,6 +45,11 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    if current_user && current_user.id.to_s.eql?(@group.user_id.to_s)
+      @current_one = true
+    else
+      @current_one = false
+    end
     @tags = Array.new
     TagName.find_all_by_language_and_tag_id(I18n.locale.to_s, @group.tags).each do |item|
       @tags.push(item)
