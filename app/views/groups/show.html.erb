@@ -2,7 +2,7 @@
 
 <div class="group_description">
 	<h1>
-		<%=h @group.name %>
+		<%=h @group.name %><span style="font-size:12px; color:black"> (<%= @group.members.size.to_s << ' ' << t('group.members') %>)</span>
 	</h1>
 	(<%= t('group.founder') %><%= ": " %>
 	<%= link_to @group.owner.login, user_path(@group.owner) %>

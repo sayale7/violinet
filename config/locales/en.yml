@@ -108,6 +108,7 @@ en:
     manage_tags: Manage Group Categories
     of_this_user: Groups of
     all_of_this_user: All Groups of
+    members: Members
   forgot_password:
     password_reset: Reset Password
     forgot: Forgot Password?
