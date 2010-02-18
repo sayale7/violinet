@@ -1,7 +1,7 @@
 <% @posts.reverse.each do |post| %>
 <div class="clear">
-    <h1><%= link_to_unless_current h(post.title), post %> 
-    </h1>
+	<h1><%= link_to_unless_current h(post.title), post %> 
+	</h1>
 	<p>
 		<%= t"common.created_at" %><%= post.created_at.strftime(" %d. %m. %Y um %H:%M Uhr ") %>
 		<%= t "common.by" %>

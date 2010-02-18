@@ -116,20 +116,24 @@ $(document).ready(function(){
 	
 	$('#user_search').keyup(function(e){
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
-		$('#loading_background').removeClass('loading_background_invisible');
-		$('#loading_background').addClass('loading_background_visible');
+		$('.users_list').html('');
+		$('.clear').remove();
+		$('#users').removeClass('loading_background_invisible');
+		$('#users').addClass('loading_search_background_visible');
 	});
 	
 	$('#goup_search').keyup(function(e){
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
-		$('#loading_background').removeClass('loading_background_invisible');
-		$('#loading_background').addClass('loading_background_visible');
+		$('.groups_list').html('');
+		$('#groups').removeClass('loading_background_invisible');
+		$('#groups').addClass('loading_search_background_visible');
 	});
 	
 	$('#post_search').keyup(function(e){
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
-		$('#loading_background').removeClass('loading_background_invisible');
-		$('#loading_background').addClass('loading_background_visible');
+		$('.clear').html('');
+		$('#posts').removeClass('loading_background_invisible');
+		$('#posts').addClass('loading_search_background_visible');
 	});
 	
 	
@@ -137,14 +141,18 @@ $(document).ready(function(){
 		$('.tb_datepicker').val("");
 		$('.tb').val("");
 		$.post($('#post_search').attr("action"), $('#post_search').serialize(), null, 'script');
-		$("#posts").html("loading ...");
+		$('.clear').html('');
+		$('#posts').removeClass('loading_background_invisible');
+		$('#posts').addClass('loading_search_background_visible');
 		return false;
 	});
 	
 	$('.tb_datepicker').live("change", function(e){
 		setTimeout(function() { 
 			$.post($('#post_search').attr("action"), $('#post_search').serialize(), null, 'script');
-			$("#posts").html("loading ...");
+			$('.clear').html('');
+			$('#posts').removeClass('loading_background_invisible');
+			$('#posts').addClass('loading_search_background_visible');
 		}, 500);
 		return false;
 	});

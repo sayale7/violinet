@@ -1,12 +1,12 @@
 <% for group in @groups %>
-<div class="users_list">
+<div class="groups_list">
 	<% unless group.photo_file_name.nil? %>
 		<%= image_tag group.photo.url(:small) %>
 	<% else %>
 		<%= image_tag '/images/anonymous.jpg', :width  => 100 %>
 	<% end %>
 </div>
-<div class="users_list">
+<div class="groups_list">
 	<% if group.members.size == 1 %>
 		<h3><%= link_to (h group.name), group_path(group) %><span style="font-size:12px; color:black"> (<%= group.members.size.to_s << ' ' << t('group.member') %>)</span></h3>
 	<% else %>
