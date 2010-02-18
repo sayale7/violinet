@@ -4,6 +4,14 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all(:order  => 'active, updated_at DESC', :limit  => 20)
+    if params[:job_category]
+      @taggings = Tagging.find_all_by_tag_id(params[:job_category])
+      jobs = Array.new
+      @taggings.each do |tagging|
+        jobs = jobs + Job.find_all_by_id(tagging.taggable_id)
+      end
+      @jobs = @jobs & jobs
+    end
   end
 
   def show

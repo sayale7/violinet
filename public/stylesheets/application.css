@@ -1141,11 +1141,26 @@ pre {
 }
 
 .categoy_for_assigns{
-	float:left;
 	width:120px;
-	padding:20px;
+	height:80px;
 	text-align:center;
+	display: table-cell; 
+	text-align:center;
+	vertical-align:middle;
+	background-color:#098A43;
+	-moz-border-radius:10px;
+	-khtml-border-radius:10px;
+}	
+.categoy_for_assigns a{
+	color:#fff;
 }
+.categoy_for_assigns:hover{
+	background-color:#0086E1;
+}
+.categoy_for_assigns:hover a{
+	color:#fff;
+}
+
 
 .unread_mail{ background-color: #ff6347; border:none; }
 

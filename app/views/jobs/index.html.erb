@@ -36,9 +36,17 @@
 
 <div class="categoies_for_assigns">
 	<h1><%= t('job.categories') %></h1>
-	<% Tag.find_all_by_taggable_type('Job').each do |tag| %>
+	<p></p>
+	<div style="padding:5px; float:left">
 		<div class="categoy_for_assigns">
-			<h2><%= link_to tag.tag_names.find_all_by_tag_id_and_language(tag.id, get_locale.to_s).first.name %></h2>
+			<h2><%= link_to t("job.all"), jobs_path %></h2>
 		</div>
+	</div>
+	<% Tag.find_all_by_taggable_type('Job').each do |tag| %>
+	<div style="padding:5px; float:left">
+		<div class="categoy_for_assigns">
+			<h2><%= link_to tag.tag_names.find_all_by_tag_id_and_language(tag.id, get_locale.to_s).first.name, :job_category => tag %></h2>
+		</div>
+	</div>
 	<% end %>
 </div>
