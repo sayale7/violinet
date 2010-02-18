@@ -1169,6 +1169,23 @@ pre {
 	background-position: center;
 	z-index:3000000000;
 }
+
+.loading_upload_background_visible{
+	margin:0;
+	padding:0;
+	width:99%; 
+	height:100%; 
+	position:absolute; 
+	opacity:0.5; 
+	filter: alpha(opacity=50); 
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	background-color:#000;
+	background-image: url('/images/background_loader.gif');
+	background-repeat:no-repeat;
+	background-position: center;
+	z-index:9999999999;
+}
+
 .loading_search_background_visible{
 	margin:0;
 	padding:0;

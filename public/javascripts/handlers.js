@@ -230,6 +230,10 @@ function fadeIn(element, opacity) {
  * ****************************************** */
 
 function FileProgress(file, targetID) {
+	
+	$('#loading_background').removeClass('loading_background_invisible');
+	$('#loading_background').addClass('loading_upload_background_visible');
+	
 	this.fileProgressID = "divFileProgress";
 
 	this.fileProgressWrapper = document.getElementById(this.fileProgressID);
