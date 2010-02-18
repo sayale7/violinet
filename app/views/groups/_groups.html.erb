@@ -7,7 +7,7 @@
 	<% end %>
 </div>
 <div class="users_list">
-	<% if group.members.size = 1 %>
+	<% if group.members.size == 1 %>
 		<h3><%= link_to (h group.name), group_path(group) %><span style="font-size:12px; color:black"> (<%= group.members.size.to_s << ' ' << t('group.member') %>)</span></h3>
 	<% else %>
 		<h3><%= link_to (h group.name), group_path(group) %><span style="font-size:12px; color:black"> (<%= group.members.size.to_s << ' ' << t('group.members') %>)</span></h3>

@@ -2,7 +2,7 @@
 
 <div class="group_description">
 	<h1>
-		<% if @group.members.size = 1 %>
+		<% if @group.members.size == 1 %>
 			<%=h @group.name %><span style="font-size:12px; color:black"> (<%= @group.members.size.to_s << ' ' << t('group.member') %>)</span>
 		<% else %>
 			<%=h @group.name %><span style="font-size:12px; color:black"> (<%= @group.members.size.to_s << ' ' << t('group.members') %>)</span>
