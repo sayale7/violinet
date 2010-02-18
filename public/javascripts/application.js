@@ -36,7 +36,8 @@ $(document).ready(function(){
 	});
  
 	$("#edit_messages a").live("click", function(){
-		$("#edit_messages").html("loading ...");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 		$.getScript(this.href);
 	  	return false;
 	});
@@ -62,22 +63,23 @@ $(document).ready(function(){
  
 	$("#add_tags").live("submit", function(){
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
-		$("#not_tags_of_post").html("loading ...");
-		$("#tags_of_post").html("");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 		return false;
 	});
 
 	$("#remove_tags").live("submit", function(){
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
-		$("#not_tags_of_post").html("loading ...");
-		$("#tags_of_post").html("");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 		return false;
 	});
  
 	// post new comment through ajax
  
 	$("#new_comment").live("submit", function(){
-		$(".loading").html("loading ...");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
 	  	return false;
 	});
@@ -85,7 +87,8 @@ $(document).ready(function(){
 	// destroy comment through ajax
  
 	$(".destroy_comment").live("click", function(){
-		$(".loading").html("loading ...");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 		$.getScript(this.href);
 		return false;
 	});
@@ -94,13 +97,15 @@ $(document).ready(function(){
  
 	$(".friendship_links_top a").live("click", function(){
 		$.getScript(this.href);
-		$("#friendship_links").html("loading ...");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 		return false;
 	});
 	
 	$(".friendship_links_bottom a").live("click", function(){
 		$.getScript(this.href);
-		$("#friendship_links").html("loading ...");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 		return false;
 	});
 	
@@ -111,17 +116,20 @@ $(document).ready(function(){
 	
 	$('#user_search').keyup(function(e){
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
-		$("#users").html("loading ...");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 	});
 	
 	$('#goup_search').keyup(function(e){
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
-		$("#groups").html("loading ...");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 	});
 	
 	$('#post_search').keyup(function(e){
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
-		$("#posts").html("loading ...");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 	});
 	
 	

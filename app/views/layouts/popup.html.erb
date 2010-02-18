@@ -6,10 +6,10 @@
   	<%= stylesheet_link_tag 'application' %>
   	<%= javascript_include_tag 'jquery', 'application', :cache  => 'popup' %>
 </head>
-<body>
+<body>	
+	<div id="loading_background" class="loading_background_invisible"></div>
 	<div id="popup_content_layout">
 		<%= yield %>
 	</div>
-
 </body>
 </html>

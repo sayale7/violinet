@@ -1,3 +1,5 @@
+$('#loading_background').removeClass('loading_background_visible');
+$('#loading_background').addClass('loading_background_invisible');
 $(".friendship_links_bottom").html("<%= escape_javascript(render('/users/friendship_links_bottom')) %>");
 $(".friendship_links_top").html("<%= escape_javascript(render('/users/friendship_links_top')) %>");
 $(".friends").html("<%= escape_javascript(render('/users/friends')) %>");

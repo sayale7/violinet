@@ -1,7 +1,3 @@
-
-<%= javascript 'jquery.datepicker'%>
-<%= stylesheet 'jquery_ui' %>
-
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function(){
 	$(".tb_date").datepicker({ 
@@ -30,6 +26,9 @@ $(document).ready(function(){
 	<strong>* <%= label_tag t('job.title') %></strong><br/>
 	<%= text_field_tag :title, @job.title, :class  => 'tb' %>
 </p>
+
+<% if request.url.to_s.include?('edit') %>
+
 <% unless all_assigns('Job').empty? %>
 <% all_assigns('Job').each do |job_assign| %>
 
@@ -52,11 +51,11 @@ $(document).ready(function(){
 	<%= render '/assigns/job_assigns', :assign  => job_assign  %>
 </p>
 
-
-
-
 <% end %>
 <% end %>
+
+<% end %>
+
 <p><%= submit_tag "Submit" %></p>
 <% end %>
 

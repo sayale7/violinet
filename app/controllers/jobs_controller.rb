@@ -79,11 +79,14 @@ class JobsController < ApplicationController
 
   def set_job_assign_values
     @params_hash = find_assign_ids
-    
+
     if params[:title].to_s.eql?('') || params[:puplish_date].to_s.eql?('')
       if params[:job_id].to_s.eql?("")
         flash[:error] = t('common.fill_in_duty')
         @job = Job.new
+        @job.active = params[:active]
+        @job.title = params[:title]
+        @job.puplish_date = params[:puplish_date]
         render :action => 'new'
       else
         find_and_save_user_values(params[:job_id])
@@ -116,9 +119,9 @@ class JobsController < ApplicationController
         end
       end
 
-      
+
       find_and_save_user_values(params[:job_id])
-       
+
       unless params[:job_id].to_s.eql?("")
         if @is_new
           redirect_to edit_job_path(Job.find(params[:job_id]))

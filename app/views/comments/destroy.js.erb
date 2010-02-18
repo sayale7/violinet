@@ -1,3 +1,5 @@
+$('#loading_background').removeClass('loading_background_visible');
+$('#loading_background').addClass('loading_background_invisible');
 $("#comments").html("<%= escape_javascript(render('create')) %>");
 $('#flash_notice').remove();
 $('#flash_error').remove();

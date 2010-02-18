@@ -1,3 +1,5 @@
+$('#loading_background').removeClass('loading_background_visible');
+$('#loading_background').addClass('loading_background_invisible');
 $("#edit_description").html("<%= escape_javascript(render('form')) %>");
 $("#edit_description").before('<div id="flash_notice" style="width:385px; float:right;"><%= escape_javascript(flash.delete(:notice)) %></div>');
 $('#flash_notice').fadeOut(1500);

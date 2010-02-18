@@ -2,7 +2,8 @@
 $(document).ready(function(){
 	// ajaxing photo description update
 	$("#edit_photo_<%= @photo.id %>").live("submit", function(){
-		$(".loading").html("loading ...");
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
 	  	return false;
 	});

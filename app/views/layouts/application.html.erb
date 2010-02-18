@@ -13,6 +13,10 @@
 			<%= javascript_include_tag 'jquery.ui', 'jquery.datepicker' %>
 			<%= stylesheet_link_tag 'jquery_ui' %>
 		<% end %>
+		<% if request.url.to_s.include?('assign') || (request.url.to_s.include?('jobs') && (request.url.to_s.include?('new') || request.url.to_s.include?('edit')))%>
+			<%= javascript_include_tag 'jquery.ui', 'jquery.datepicker' %>
+			<%= stylesheet_link_tag 'jquery_ui' %>
+		<% end %>
 		<% if request.url.to_s.include?('photo_albums') && request.url.to_s.include?('edit') %>
 			<%= javascript_include_tag 'swfupload', 'handlers', 'main' %>
 		<% end %>
@@ -69,9 +73,19 @@
 		<%= javascript_include_tag 'jquery.dropdown' %>
 	<![endif]-->
 	
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$('.loading_background_link').click(function() {
+				$('#loading_background').removeClass('loading_background_invisible');
+				$('#loading_background').addClass('loading_background_visible');
+			});
+		});
+	</script>
+	
 	<%= yield :head %>
 </head>
 <body>
+	<div id="loading_background" class="loading_background_invisible"></div>
 	<div id="user_nav">
 		<%= render :partial => '/layouts/main_nav' %>
 	</div>
