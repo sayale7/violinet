@@ -1,24 +1,13 @@
 <% form_for(@tag) do |f| %>
 <%= f.error_messages %>
 
-<% if @tag.children.empty? %>
 <p>
-	<span style="font-weight:bold"><%= f.label t('common.parent_element') %></span><br />
-	<% if get_locale.to_s.eql?('de') %>
-		<%= f.collection_select :parent_id, @tags, :id, :german_name, :include_blank => true %>
-	<% else %>
-		<%= f.collection_select :parent_id, @tags, :id, :english_name, :include_blank => true %>
-	<% end %>
-</p>
-<% end %>
-
-<p>
-	<%= f.label :german_name %><br />
+	<strong><%= f.label :german_name %></strong><br />
 	<%= f.text_field :german_name, :class => 'tb' %>
 </p>
 
 <p>
-	<%= f.label :english_name %><br />
+	<strong><%= f.label :english_name %></strong><br />
 	<%= f.text_field :english_name, :class => 'tb' %>
 </p>
 <%= f.hidden_field :taggable_type, :value  => @taggable_type %>

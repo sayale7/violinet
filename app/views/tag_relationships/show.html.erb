@@ -1,0 +1,16 @@
+<% title "Tag Relationship" %>
+
+<p>
+  <strong>Parent:</strong>
+  <%=h @tag_relationship.parent_id %>
+</p>
+<p>
+  <strong>Child:</strong>
+  <%=h @tag_relationship.child_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_tag_relationship_path(@tag_relationship) %> |
+  <%= link_to "Destroy", @tag_relationship, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", tag_relationships_path %>
+</p>

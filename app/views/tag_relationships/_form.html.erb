@@ -1,0 +1,12 @@
+<% form_for @tag_relationship do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :parent_id %><br />
+    <%= f.text_field :parent_id %>
+  </p>
+  <p>
+    <%= f.label :child_id %><br />
+    <%= f.text_field :child_id %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

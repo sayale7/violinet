@@ -12,7 +12,7 @@
 		<% end %>
 	</div>
 	<div class="plain_old_checkboxes">
-		<%= tag_checklist_to_add(@not_in_group_tags)  %>
+		<%= checklist(@not_in_group_tags)  %>
 	</div>
 	<%= hidden_field_tag 'id', @group.id %>
 	<%= submit_tag t("tag.add_to_post"), :class => "clear_both" %>
@@ -31,7 +31,7 @@
 		<% end %>
 	</div>
 	<div class="plain_old_checkboxes">
-		<%= tag_checklist_to_add(@group.tags)  %>
+		<%= checklist(@group.tags)  %>
 	</div>
 	<%= hidden_field_tag 'id', @group.id %>
 	<%= submit_tag t("tag.remove_from_post"), :class => "clear_both" %>

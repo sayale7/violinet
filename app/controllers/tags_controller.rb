@@ -8,7 +8,6 @@ class TagsController < ApplicationController
     unless params[:taggable_type].nil?
       @taggable_type =  params[:taggable_type]
     end
-    @tags = Tag.find_all_by_taggable_type_and_parent_id(@taggable_type, nil)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,7 +30,6 @@ class TagsController < ApplicationController
   def new
     @tag = Tag.new
     @taggable_type =  params[:taggable_type]
-    @tags = Tag.find_all_by_taggable_type_and_parent_id(@taggable_type, nil)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @tag }
@@ -42,7 +40,7 @@ class TagsController < ApplicationController
   def edit
     @tag = Tag.find(params[:id])
     @taggable_type =  @tag.taggable_type
-    @tags = Tag.find_all_by_taggable_type(@taggable_type)
+    @not_parent_tags = Tag.find_all_by_taggable_type('Job') - @tag.to_a - @tag.parents
   end
 
   # POST /tags

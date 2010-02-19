@@ -1,0 +1,19 @@
+<% title "Tag Relationships" %>
+
+<table>
+  <tr>
+    <th>Parent</th>
+    <th>Child</th>
+  </tr>
+  <% for tag_relationship in @tag_relationships %>
+    <tr>
+      <td><%=h tag_relationship.parent_id %></td>
+      <td><%=h tag_relationship.child_id %></td>
+      <td><%= link_to "Show", tag_relationship %></td>
+      <td><%= link_to "Edit", edit_tag_relationship_path(tag_relationship) %></td>
+      <td><%= link_to "Destroy", tag_relationship, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Tag Relationship", new_tag_relationship_path %></p>

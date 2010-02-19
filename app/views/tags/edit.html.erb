@@ -1,3 +1,50 @@
 <h1>Editing tag</h1>
 
+<div class="right">
+	<% for tag in root_tags %>
+		<h1><%= tag.tag_names.find_by_language(get_locale.to_s).name %></h1>
+		<dl style="padding-left:30px;">
+			<% tag.children.each do |child_tag| %>
+				<h2><%= child_tag.tag_names.find_by_language(get_locale.to_s).name %></h2>
+				<dl style="padding-left:30px;">
+					<% child_tag.children.each do |child_tag| %>
+						<h3><%= child_tag.tag_names.find_by_language(get_locale.to_s).name %></h3>
+					<% end %>
+				</dl>
+			<% end %>
+		</dl>
+	<% end %>
+</div>
+
+<div class="left">
 <%= render :partial => 'tags/form' %>
+</div>
+
+<div class="left" style="clear:left;">
+	<% form_tag '/tag_relationships/create', :method => :post do %>
+	<% unless @not_parent_tags.empty?  %>
+	<br/>
+	<h2><%= t('tag.add_tags_to_post') %></h2>
+	<div>
+		<%= checklist(@not_parent_tags)  %>
+	</div>
+	<%= hidden_field_tag 'tag_id', @tag.id %>
+	<%= submit_tag t("tag.add_to_post"), :class => "clear_both" %>
+	<% end %>
+	<% end %>
+</div>
+
+<div class="left" style="clear:left;">
+	<% form_tag '/tag_relationships/destroy', :method => :post do %>
+	<% unless @tag.parents.empty?  %>
+	<br/>
+	<h2><%= t('tag.parents') %></h2>
+	<div>
+		<%= checklist(@tag.parents)  %>
+	</div>
+	<%= hidden_field_tag 'tag_id', @tag.id %>
+	<%= submit_tag t("tag.remove_from_post"), :class => "clear_both" %>
+	<% end %>
+	<% end %>
+</div>
+

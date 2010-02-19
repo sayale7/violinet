@@ -78,7 +78,7 @@ de:
     welcome: Willkommen auf Violounge.com
     proof_link: Link überprüfen
     url: ohne http:// eingeben
-    parent_element: Elternelement
+    parent_elements: Elternelemente
   event:
     begin: Begin
     end: Ende
@@ -214,6 +214,7 @@ de:
     english_name: Englischer Name
     for: Für
     names: Tagnamen
+    parents: Eltern dieses Tags
   flash:
     comment_destroyed: Eintrag gelöscht
     comment_created: Eintrag erstellt

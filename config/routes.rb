@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :tag_relationships
+
   map.resources :jobs
 
   map.resources :assigns, :collection => { :sort => :post }

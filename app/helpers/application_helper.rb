@@ -12,7 +12,7 @@ module ApplicationHelper
         </div>}).result(binding)
       end
 
-      def tag_checklist_to_add(collection)  
+      def checklist(collection)  
         selected ||= []
 
         ERB.new(%{
@@ -21,6 +21,7 @@ module ApplicationHelper
           <% end %>
           }).result(binding)
         end
+      
   
         def admin_assign_values_checklist(collection, assign_id)  
           selected ||= []
@@ -145,6 +146,16 @@ module ApplicationHelper
     
     return array.empty?
     
+  end
+  
+  def root_tags
+    tags = Array.new
+    Tag.find_all_by_taggable_type('Job').each do |tag|
+      if tag.parents.empty?
+        tags.push(tag)
+      end
+    end
+    return tags
   end
   
 end
