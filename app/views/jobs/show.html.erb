@@ -36,8 +36,18 @@
 </div>
 
 <div class="tags">
-	<h3>Tags</h3>
-	<p>
-		<%= @tags.collect {|tag| link_to(tag.name, "/jobs?tag=#{tag.id}")}.join(", ") %>
-	</p>
+	<div class="categoies_for_assigns">
+		<div style="padding:5px; float:left;">
+			<div class="categoy_for_assigns">
+				<h2><%= link_to t("common.all"), jobs_path %></h2>
+			</div>
+		</div>
+		<% @tags.each do |tagname| %>
+		<div style="padding:5px; float:left">
+			<div class="categoy_for_assigns">
+				<h2><%= link_to tagname.name, ("/jobs?job_category=#{tagname.tag_id}"), :job_category => tagname %></h2>
+			</div>
+		</div>
+		<% end %>
+	</div>
 </div>

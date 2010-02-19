@@ -5,14 +5,17 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.all(:order  => 'active, updated_at DESC', :limit  => 20)
     @tags = root_tags
-    if params[:job_category]
+    if params[:job_category] && !params[:job_category].to_s.eql?('')
       taggings = Tagging.find_all_by_tag_id(params[:job_category])
       jobs = Array.new
       taggings.each do |tagging|
         jobs = jobs + Job.find_all_by_id(tagging.taggable_id)
       end
       @jobs = @jobs & jobs
-      @tags = Tag.find(params[:job_category]).children
+      @tag = Tag.find(params[:job_category])
+      @tags = @tag.children
+    else
+      @tag = ''
     end
     respond_to do |format|
       format.html

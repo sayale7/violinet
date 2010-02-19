@@ -1182,7 +1182,7 @@ pre {
 	background-image: url('/images/background_loader.gif');
 	background-repeat:no-repeat;
 	background-position: center;
-	z-index:3000000000;
+	z-index:300000;
 }
 
 .loading_upload_background_visible{
@@ -1212,4 +1212,22 @@ pre {
 	background-image: url('/images/background_loader.gif');
 	background-repeat:no-repeat;
 	background-position: center;
+}
+
+.job_index{
+	float:left;
+	background:#D9CCD9;
+	-moz-border-radius:10px;
+	-khtml-border-radius:10px;
+	padding:10px;
+	width:400px;
+}
+.job_index_entry{
+	float:left;
+	background:#fff;
+	-moz-border-radius:10px;
+	-khtml-border-radius:10px;
+	padding:10px;
+	margin-bottom:20px;
+	width:380px;
 }

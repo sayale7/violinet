@@ -34,29 +34,35 @@
 </dl>
 </div>
 
+<div class="categoies_for_assigns" style="border-bottom:dashed thin #000; margin-bottom:15px;padding-bottom:15px;">
+
+<% unless @tag.to_s.eql?('') %>
+	<h1><%= t('tag.actual') %>: <%= @tag.tag_names.find_by_language('de').name %></h1>
+	<p></p>
+	<div style="padding:5px; float:left;">
+		<div class="categoy_for_assigns">
+			<h2><%= link_to t("job.all"), jobs_path %></h2>
+		</div>
+	</div>
+	<div style="padding:5px; float:left; width:250px;">
+		<div class="categoy_for_assigns">
+			<h2><%= link_to t("common.back"), jobs_path %></h2>
+		</div>
+	</div>
+<% else %>
+	<h1><%= t('tag.actual') %>: <%= t('common.all') %></h1>
+	<p></p>
+	<div style="padding:5px; float:left; width:400px;">
+		<div class="categoy_for_assigns">
+			<h2><%= link_to t("job.all"), jobs_path %></h2>
+		</div>
+	</div>
+<% end %>
+
+</div>
+
 <div class="categoies_for_assigns">
-	<% if request.url.include?('job_category') %>
-		<h1><%= t('tag.actual') %>: <%= Tag.find(request.url.scan(/job_category=(\w+)/)).first.tag_names.find_by_language('de').name %></h1>
-		<p></p>
-		<div style="padding:5px; float:left;">
-			<div class="categoy_for_assigns">
-				<h2><%= link_to t("job.all"), jobs_path %></h2>
-			</div>
-		</div>
-		<div style="padding:5px; float:left; width:250px;">
-			<div class="categoy_for_assigns">
-				<h2><%= link_to t("common.back"), jobs_path %></h2>
-			</div>
-		</div>
-	<% else %>
-		<h1><%= t('tag.actual') %>: <%= t('common.all') %></h1>
-		<p></p>
-		<div style="padding:5px; float:left; width:400px;">
-			<div class="categoy_for_assigns">
-				<h2><%= link_to t("job.all"), jobs_path %></h2>
-			</div>
-		</div>
-	<% end %>
+
 
 
 	<% @tags.each do |tag| %>

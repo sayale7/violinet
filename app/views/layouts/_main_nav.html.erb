@@ -107,9 +107,9 @@
 					<li><%= link_to t("job.all"), jobs_path %></li>
 					<% form_tag '/jobs/index', :id => "with_category_form" do  %>
 					<% if get_locale.to_s.eql?('de') %>
-						<li><%= t('service.search_with_tag') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.find_all_by_taggable_type('Job'), :id, :german_name), :include_blank => true, :class => 'with_category' %></li>
+						<li><%= t('service.search_with_tag') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Job'), :id, :german_name),  :class => 'with_category' %></li>
 					<% else %>
-						<li><%= t('service.search_with_tag') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.find_all_by_taggable_type('Job'), :id, :english), :include_blank => true, :class => 'with_category' %></li>
+						<li><%= t('service.search_with_tag') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.find_all_by_taggable_type('Job'), :id, :english_name), :class => 'with_category' %></li>
 					<% end %>
 					<% end %>
 				</ul>
