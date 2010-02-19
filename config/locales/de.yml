@@ -215,6 +215,7 @@ de:
     for: Für
     names: Tagnamen
     parents: Eltern dieses Tags
+    actual: Aktuelle Kategorie
   flash:
     comment_destroyed: Eintrag gelöscht
     comment_created: Eintrag erstellt
@@ -230,7 +231,7 @@ de:
       jobs: Jobs
       living: Mit-Wohnen
       changing: Tauschen
-      search_with_tag: Nach Kategorie
+      search_with_tag: Auswahl
   admin_attribute:
       add: Hinzufügen
       remove: Entfernen
