@@ -1223,7 +1223,6 @@ pre {
 	width:400px;
 }
 .job_index_entry{
-	float:left;
 	background:#fff;
 	-moz-border-radius:10px;
 	-khtml-border-radius:10px;
@@ -1231,3 +1230,14 @@ pre {
 	margin-bottom:20px;
 	width:380px;
 }
+.job_show{
+	float:left;
+	background:#D9CCD9;
+	-moz-border-radius:10px;
+	-khtml-border-radius:10px;
+	padding:10px;
+	margin-bottom:20px;
+	margin-top:3px;
+	width:380px;
+}
+
