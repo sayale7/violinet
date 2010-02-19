@@ -1,5 +1,5 @@
-<% title t('job.all')%>
-<div class="left">
+<% title t('service.jobs')%>
+<div class="job_index">
 <p><%= link_to t('job.new'), new_job_path %></p>
 
 <h1><%= t('job.recent') %></h1>
@@ -7,28 +7,29 @@
 <dl>
 <% @jobs.each do |job| %>
 <% if job.active || (current_user && current_user.role?('admin'))%>
-		<dt>
-			<h2><%= link_to (h job.title), job_path(job) %></h2>
-			<%= t('job.publish_date') %>:<%= job.puplish_date.strftime(" %d.%m.%Y ") %><br/>
-		</dt>
-		<dd>
-		<% unless job.active %><h3>Inaktiv</h3><% end %>
-		<dl>
-		<% job.job_assigns.each do |job_assign| %>
-			<% if job_assign.visible %>
-				<% unless job_assign.user_assign_values.find_all_by_assignable_id(job.id).to_s.eql?('') %>
-					<dt>
-						<strong><%= h job_assign.assign_names.find_by_language(get_locale.to_s).name + ": " %></strong>
-					</dt>
-					<dd style="margin-top:-10px;">
-						<%= simple_format(h job_assign.user_assign_values.find_all_by_assignable_id(job.id).map(&:value).join(', ')) %>
-					</dd>
+		<div class="job_index_entry">
+			<dt>
+				<h2><%= link_to (h job.title), job_path(job) %></h2>
+				<%= t('job.publish_date') %>:<%= job.puplish_date.strftime(" %d.%m.%Y ") %><br/>
+			</dt>
+			<dd>
+			<% unless job.active %><h3>Inaktiv</h3><% end %>
+			<dl>
+			<% job.job_assigns.each do |job_assign| %>
+				<% if job_assign.visible %>
+					<% unless job_assign.user_assign_values.find_all_by_assignable_id(job.id).to_s.eql?('') %>
+						<dt>
+							<strong><%= h job_assign.assign_names.find_by_language(get_locale.to_s).name + ": " %></strong>
+						</dt>
+						<dd style="margin-top:-10px;">
+							<%= simple_format(h job_assign.user_assign_values.find_all_by_assignable_id(job.id).map(&:value).join(', ')) %>
+						</dd>
+					<% end %>
 				<% end %>
 			<% end %>
-		<% end %>
-		</dl>
-		</dd>
-		<div style="height:20px;"></div>
+			</dl>
+			</dd>
+		</div>
 <% end %>
 <% end %>
 </dl>
@@ -62,9 +63,6 @@
 </div>
 
 <div class="categoies_for_assigns">
-
-
-
 	<% @tags.each do |tag| %>
 	<div style="padding:5px; float:left">
 		<div class="categoy_for_assigns">
