@@ -40,7 +40,6 @@ class TagsController < ApplicationController
   def edit
     @tag = Tag.find(params[:id])
     @taggable_type =  @tag.taggable_type
-    @not_parent_tags = Tag.find_all_by_taggable_type('Job') - @tag.to_a - @tag.parents
   end
 
   # POST /tags
@@ -84,7 +83,7 @@ class TagsController < ApplicationController
   def destroy
     @tag = Tag.find(params[:id])
     @taggable_type = @tag.taggable_type
-    @tag.destroy
+    @tag.delete
 
     respond_to do |format|
       format.html { redirect_to tags_path(:taggable_type  => @taggable_type) }
@@ -92,13 +91,4 @@ class TagsController < ApplicationController
     end
   end
   
-  # def manage_tags
-  #   @taggable_type = 'Post'
-  #   render  :action  => 'index'
-  # end
-  # 
-  # def manage_categories
-  #   @taggable_type = 'Group'
-  #   render  :action  => 'index'
-  # end
 end

@@ -89,7 +89,7 @@
 	<div id="user_nav">
 		<%= render :partial => '/layouts/main_nav' %>
 	</div>
-	<div id="container">
+	<div id="container" class="container">
 		<div id="flash">
 			<% flash.each do |name, msg| %>
 			<%= content_tag :div, msg, :id => "flash_#{name}" %>

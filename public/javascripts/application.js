@@ -36,9 +36,9 @@ $(document).ready(function(){
 	});
  
 	$("#edit_messages a").live("click", function(){
+		$.getScript(this.href);
 		$('#loading_background').removeClass('loading_background_invisible');
 		$('#loading_background').addClass('loading_background_visible');
-		$.getScript(this.href);
 	  	return false;
 	});
  
@@ -78,18 +78,18 @@ $(document).ready(function(){
 	// post new comment through ajax
  
 	$("#new_comment").live("submit", function(){
+		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
 		$('#loading_background').removeClass('loading_background_invisible');
 		$('#loading_background').addClass('loading_background_visible');
-		$.post($(this).attr("action"), $(this).serialize(), null, 'script');
 	  	return false;
 	});
  
 	// destroy comment through ajax
  
 	$(".destroy_comment").live("click", function(){
+		$.getScript(this.href);
 		$('#loading_background').removeClass('loading_background_invisible');
 		$('#loading_background').addClass('loading_background_visible');
-		$.getScript(this.href);
 		return false;
 	});
  
@@ -138,9 +138,9 @@ $(document).ready(function(){
 	
 	
 	$('#clear_tb_datepicker').click(function(){
+		$.post($('#post_search').attr("action"), $('#post_search').serialize(), null, 'script')
 		$('.tb_datepicker').val("");
-		$('.tb').val("");
-		$.post($('#post_search').attr("action"), $('#post_search').serialize(), null, 'script');
+		$('.tb').val("");;
 		$('.clear').html('');
 		$('#posts').removeClass('loading_background_invisible');
 		$('#posts').addClass('loading_search_background_visible');
@@ -155,6 +155,12 @@ $(document).ready(function(){
 			$('#posts').addClass('loading_search_background_visible');
 		}, 500);
 		return false;
+	});
+	
+	$('.with_category').change(function(e){
+		$.post($('#with_category_form').attr("action"), $('.with_category').serialize(), null, 'script');
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
 	});
 	
  

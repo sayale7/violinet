@@ -6,9 +6,9 @@ class Tag < ActiveRecord::Base
 
   has_many :tag_names, :dependent => :destroy
   
-  has_many :tag_relationships, :foreign_key => "child_id", :dependent  => :destroy
+  has_many :tag_relationships, :foreign_key => "child_id"
   has_many :parents, :through => :tag_relationships
-  has_many :children_tag_relationships, :class_name => 'TagRelationship', :foreign_key => "parent_id", :dependent  => :destroy
+  has_many :children_tag_relationships, :class_name => 'TagRelationship', :foreign_key => "parent_id"
   has_many :children, :through => :children_tag_relationships
 
   attr_writer :german_name

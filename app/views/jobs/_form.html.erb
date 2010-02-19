@@ -13,6 +13,8 @@ $(document).ready(function(){
 	<strong>Aktiv</strong>
 	<%= check_box_tag :active, 1, @job.active %><br/>
 </p>
+<% end %>
+
 <p>
 	<strong>* <%= label_tag t('job.publishing_date') %></strong><br/>
 	<% unless @job.puplish_date.nil? %>
@@ -21,7 +23,7 @@ $(document).ready(function(){
 	<%= text_field_tag :puplish_date, @job.puplish_date, :class  => 'tb_date' %>
 	<% end %>
 </p>
-<% end %>
+
 <p>
 	<strong>* <%= label_tag t('job.title') %></strong><br/>
 	<%= text_field_tag :title, @job.title, :class  => 'tb' %>

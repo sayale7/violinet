@@ -158,4 +158,22 @@ module ApplicationHelper
     return tags
   end
   
+  def all_tags_without_deeply_nested(the_tag)
+    end_tags = Array.new
+    if !the_tag.parents.empty? || (the_tag.parents.empty? && the_tag.children.empty?)
+      Tag.find_all_by_taggable_type('Job').each do |tag|
+        unless tag.parents.empty?
+          tag.parents.each do |parent_tag|
+            unless parent_tag.parents.empty?
+              end_tags.push(tag)
+            end
+          end
+        end
+      end
+      return (Tag.find_all_by_taggable_type('Job') - end_tags - the_tag.to_a - the_tag.parents)
+    else
+      return end_tags
+    end
+  end
+  
 end

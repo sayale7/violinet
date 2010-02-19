@@ -15,5 +15,50 @@
 </div>
 <% end %>
 
+<% if current_user && current_user.role?('admin') %>
 
+<div class="job_info_right">
+	<h2><% t('job.what_are_tags') %></h2>
+	<p><% t('job.tag_description') %></p>
+	<div class="loading"></div>
+	<div id="not_tags_of_post">
+		<% form_tag '/jobs/add_tags', :id => "add_tags" do %>
+		<% unless @not_in_job_tags.empty?  %>
+		<br/>
+		<h2><%= t('tag.add_tags_to_post') %></h2>
+		<div class="new_click_boxes">
+			<% @not_in_job_tags.each do |tag|  %>
+			<span class="clickable_items_to_add" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>
+			<% end %>
+		</div>
+		<div class="plain_old_checkboxes">
+			<%= checklist(@not_in_job_tags)  %>
+		</div>
+		<%= hidden_field_tag 'id', @job.id %>
+		<%= submit_tag t("tag.add_to_post"), :class => "clear_both" %>
+		<% end %>
+		<% end %>
+	</div>
+
+	<div id="tags_of_post" style="clear:both;">
+		<% form_tag '/jobs/remove_tags', :id => "remove_tags" do %>
+		<% unless (@job.tags).empty?  %>
+		<br/>
+		<h2><%= t('tag.remove_tags_from_post') %></h2>
+		<div class="new_click_boxes">
+			<% for tag in (@job.tags) do %>
+			<span class="clickable_items_to_remove" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>
+			<% end %>
+		</div>
+		<div class="plain_old_checkboxes">
+			<%= checklist(@job.tags)  %>
+		</div>
+		<%= hidden_field_tag 'id', @job.id %>
+		<%= submit_tag t("tag.remove_from_post"), :class => "clear_both" %>
+		<% end %>
+		<% end %>
+	</div>
+</div>
+
+<% end %>
 

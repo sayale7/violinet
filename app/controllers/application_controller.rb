@@ -56,6 +56,16 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def root_tags
+    tags = Array.new
+    Tag.find_all_by_taggable_type('Job').each do |tag|
+      if tag.parents.empty?
+        tags.push(tag)
+      end
+    end
+    return tags
+  end
+  
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = t('common.access_denied')
     redirect_to root_url

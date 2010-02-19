@@ -22,11 +22,11 @@
 
 <div class="left" style="clear:left;">
 	<% form_tag '/tag_relationships/create', :method => :post do %>
-	<% unless @not_parent_tags.empty?  %>
+	<% unless all_tags_without_deeply_nested(@tag).empty?  %>
 	<br/>
 	<h2><%= t('tag.add_tags_to_post') %></h2>
 	<div>
-		<%= checklist(@not_parent_tags)  %>
+		<%= checklist(all_tags_without_deeply_nested(@tag))  %>
 	</div>
 	<%= hidden_field_tag 'tag_id', @tag.id %>
 	<%= submit_tag t("tag.add_to_post"), :class => "clear_both" %>

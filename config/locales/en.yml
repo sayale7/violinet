@@ -232,6 +232,7 @@ en:
       jobs: Jobs
       living: Flatsharing
       changing: Changing
+      search_with_tag: Tag
   admin_attribute:
       add: Add
       remove: Remove
