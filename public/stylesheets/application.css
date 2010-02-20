@@ -1141,6 +1141,7 @@ pre {
 }
 
 .categoy_for_assigns{
+	float:right;
 	width:100px;
 	height:50px;
 	text-align:center;
