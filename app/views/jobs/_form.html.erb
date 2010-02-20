@@ -3,9 +3,14 @@
 <% form_tag set_job_assign_values_path do %>
 <%= hidden_field_tag :job_id, '', :value  =>  @job.id %>
 <% if current_user && current_user.role?('admin') %>
+
 <p>
 	<strong>Aktiv</strong>
-	<%= check_box_tag :active, 1, @job.active %><br/>
+	<% unless @job.puplish_date.nil? %>
+		<%= check_box_tag :active, 1, @job.active %><br/>
+	<% else %>
+		<%= check_box_tag :active %><br/>
+	<% end %>
 </p>
 <% end %>
 

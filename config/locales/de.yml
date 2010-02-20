@@ -257,6 +257,7 @@ de:
       categories: Job Kategorien
       other_with_category: Ähnliche Jobs
       quick_nav: Schnell Navigation
+      overview: Zurück zur Übersicht
   date:
     formats:
       default: "%d.%m.%Y"
