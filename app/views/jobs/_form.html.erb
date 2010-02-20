@@ -6,7 +6,7 @@ $(document).ready(function(){
 });
 </script>
 <div class="job_edit">
-<%  form_tag set_job_assign_values_path do %>
+<% form_tag set_job_assign_values_path do %>
 <%= hidden_field_tag :job_id, '', :value  =>  @job.id %>
 <% if current_user && current_user.role?('admin') %>
 <p>

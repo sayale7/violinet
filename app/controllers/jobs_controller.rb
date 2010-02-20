@@ -30,15 +30,13 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
-    is_admin?
   end
 
   def create
     @job = Job.new(params[:job])
     if @job.save
-      flash[:notice] = "Successfully created job."
       redirect_to edit_job_path(@job)
-    end
+    end  
   end
 
   def edit

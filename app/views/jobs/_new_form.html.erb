@@ -1,0 +1,31 @@
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+	$(".tb_date").datepicker({ 
+		dateFormat: 'dd.mm.yy'
+	});
+});
+</script>
+<div class="job_edit">
+<% form_for @job, :method => :post do |f| %>
+<% if current_user && current_user.role?('admin') %>
+<p>
+	<strong>Aktiv</strong>
+	<%= f.check_box :active %><br/>
+</p>
+<% end %>
+
+<p>
+	<strong>* <%= f.label t('job.publishing_date') %></strong><br/>
+	<%= f.text_field :puplish_date, :class  => 'tb_date' %>
+</p>
+
+<p>
+	<strong>* <%= f.label t('job.title') %></strong><br/>
+	<%= f.text_field :title, :class  => 'tb' %>
+</p>
+
+<p><%= f.submit "Submit" %></p>
+<% end %>
+
+* <%= t('common.duty') %>
+</div>
