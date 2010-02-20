@@ -63,6 +63,7 @@
 </div>
 <% end %>
 
+<% unless @tags.empty? %>
 <div class="categoies_for_assigns">
 	<% if @tag.to_s.eql?('') && !@tags.empty? %>
 	<h2><%= t('tag.categories') %></h2>
@@ -86,3 +87,4 @@
 	<% end %>
 	<% end %>
 </div>
+<% end %>
