@@ -1136,13 +1136,13 @@ pre {
 
 .categoies_for_assigns{
 	float:right;
-	width:520px;
+	width:450px;
 	text-align:left;
 }
 
 .categoy_for_assigns{
-	width:160px;
-	height:80px;
+	width:100px;
+	height:50px;
 	text-align:center;
 	display: table-cell; 
 	text-align:center;
@@ -1220,7 +1220,7 @@ pre {
 	-moz-border-radius:10px;
 	-khtml-border-radius:10px;
 	padding:10px;
-	width:400px;
+	width:460px;
 }
 .job_index_entry{
 	background:#fff;
@@ -1228,7 +1228,7 @@ pre {
 	-khtml-border-radius:10px;
 	padding:10px;
 	margin-bottom:20px;
-	width:380px;
+	width:440px;
 }
 .job_show{
 	float:left;

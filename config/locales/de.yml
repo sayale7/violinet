@@ -216,7 +216,9 @@ de:
     names: Tagnamen
     parents: Eltern dieses Tags
     actual: Aktuelle Kategorie
-    sub: Unterkategorien
+    sub: Unterkategorien von
+    super_categories: Oberkategorien von
+    categories: Kategorien
   flash:
     comment_destroyed: Eintrag gelöscht
     comment_created: Eintrag erstellt
