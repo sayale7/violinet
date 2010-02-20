@@ -26,10 +26,6 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @_assigns = Assign.find_all_by_assignable_type('Job', :order  => 'position')
-    @tags = Array.new
-    TagName.find_all_by_language_and_tag_id(I18n.locale.to_s, @job.tags).each do |item|
-      @tags.push(item)
-    end
   end
 
   def new

@@ -218,6 +218,7 @@ en:
       names: Tagnames
       parents: Parents of this Tag
       actual: Current Category
+      sub: Subcategories
   flash:
     comment_destroyed: Entry deleted
     comment_created: Entry created
@@ -253,3 +254,5 @@ en:
       publish_date: Published at
       publishing_date: Publishing date
       categories: Job Categories
+      other_with_category: Similar Jobs
+      quick_nav: Quick Navigation

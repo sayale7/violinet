@@ -216,6 +216,7 @@ de:
     names: Tagnamen
     parents: Eltern dieses Tags
     actual: Aktuelle Kategorie
+    sub: Unterkategorien
   flash:
     comment_destroyed: Eintrag gelöscht
     comment_created: Eintrag erstellt
@@ -252,6 +253,8 @@ de:
       publish_date: Veröffentlicht am
       publishing_date: Veröffentlichungsdatum
       categories: Job Kategorien
+      other_with_category: Ähnliche Jobs
+      quick_nav: Schnell Navigation
   date:
     formats:
       default: "%d.%m.%Y"

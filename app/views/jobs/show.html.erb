@@ -1,21 +1,40 @@
 <% title "Job" %>
 
-<div class="right">
-	<div class="categoies_for_assigns">
-		<div style="padding:5px; float:left;">
-			<div class="categoy_for_assigns">
-				<h2><%= link_to t("common.all"), jobs_path %></h2>
-			</div>
-		</div>
-		<% @tags.each do |tagname| %>
-		<div style="padding:5px; float:left">
-			<div class="categoy_for_assigns">
-				<h2><%= link_to tagname.name, ("/jobs?job_category=#{tagname.tag_id}"), :job_category => tagname %></h2>
-			</div>
+<% unless get_jobs_from_tags(@job).empty? %>
+<div class="job_similar">
+	<h1><%= t('job.other_with_category') %></h1>
+	<p></p>
+	<div class="job_similar_entry">
+		<% get_jobs_from_tags(@job).each do |job| %>
+		<% if job.active %>
+		<div class="job_index_entry">
+			<dt>
+				<h2><%= link_to (h job.title), job_path(job) %></h2>
+				<%= t('job.publish_date') %>:<%= job.puplish_date.strftime(" %d.%m.%Y ") %><br/>
+			</dt>
+			<dd>
+				<dl>
+					<% job.job_assigns.each do |job_assign| %>
+					<% if job_assign.visible %>
+					<% unless job_assign.user_assign_values.find_all_by_assignable_id(job.id).to_s.eql?('') %>
+					<dt>
+						<strong><%= h job_assign.assign_names.find_by_language(get_locale.to_s).name + ": " %></strong>
+					</dt>
+					<dd style="margin-top:-10px;">
+						<%= simple_format(h job_assign.user_assign_values.find_all_by_assignable_id(job.id).map(&:value).join(', ')) %>
+					</dd>
+					<% end %>
+					<% end %>
+					<% end %>
+				</dl>
+			</dd>
 		</div>
 		<% end %>
+		<% end %>
 	</div>
-</div>
+</div>	
+<% end %>
+
 
 <% if current_user && current_user.role?('admin') %>
 <p>
@@ -28,15 +47,24 @@
 	<%= link_to t('common.delete'), job_path(@job), :confirm  => t('common.confirm'), :method  => :delete %>
 </p>
 <% end %>
-
-
+<h3>
+<% form_tag '/jobs/index', :id => "with_category_form" do  %>
+	<% if get_locale.to_s.eql?('de') %>
+		<%= t('job.quick_nav') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Job'), :id, :german_name),  :class => 'with_category' %>
+		<% else %>
+		<%= t('job.quick_nav') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Job'), :id, :english_name), :class => 'with_category' %>
+		<% end %>
+		<% end %>
+	</h3>
+	<p></p>
 <div class="job_show">
+
 <h2><%= @job.title %></h2>
 <h3><%= t('job.publish_date') %>: <%= @job.puplish_date.strftime(" %d.%m.%Y ") %></h3>
 <dl>
 <% @_assigns.each do |assign| %>
 	<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).empty? %>
-		<dt><strong><%= assign.assign_names.find_by_language(get_locale.to_s).name %></strong></dd>
+		<dt><strong><%= assign.assign_names.find_by_language(get_locale.to_s).name %></strong></dt>
 			<% if !assign.html_attribute.to_s.eql?('mail_to') && !assign.html_attribute.to_s.eql?('link_to') %>
 			<dd><%= simple_format(h UserAssignValue.find_all_by_assignable_id_and_assign_id(@job.id, assign.id).map(&:value).join(', ')) %></dd>
 			<% else %>
@@ -50,4 +78,5 @@
 <% end %>
 </dl>
 </div>
+
 

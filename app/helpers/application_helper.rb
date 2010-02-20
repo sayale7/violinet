@@ -176,4 +176,15 @@ module ApplicationHelper
     end
   end
   
+  def get_jobs_from_tags(job)
+    jobs = Array.new
+    @job.tags.each do |tag|
+      tag.taggings.each do |tagging|
+        jobs.push(tagging.taggable)
+      end
+    end
+    jobs = jobs.uniq - job.to_a
+    return jobs
+  end
+  
 end
