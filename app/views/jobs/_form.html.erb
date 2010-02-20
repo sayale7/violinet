@@ -6,12 +6,7 @@
 
 <p>
 	<strong>Aktiv</strong>
-	<%= @job.active %>
-	<% unless @job.active.nil? %>
-		<%= check_box_tag :active, 1, @job.active %><br/>
-	<% else %>
-		<%= check_box_tag :active %><br/>
-	<% end %>
+	<%= check_box_tag :active, '1', @job.active%><br/>
 </p>
 <% end %>
 
