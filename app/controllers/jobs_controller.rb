@@ -34,7 +34,10 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(params[:job])
+    @job.active = false
     if @job.save
+      redirect_to edit_job_path(@job)
+    else
       redirect_to edit_job_path(@job)
     end  
   end
