@@ -33,21 +33,17 @@ class JobsController < ApplicationController
   end
 
   def create
+    params[:job][:puplish_date] = params[:job][:puplish_date].to_date
     @job = Job.new(params[:job])
     @job.active = false
-    begin
-      if @job.save
-        redirect_to edit_job_path(@job)
-      else
-        redirect_to edit_job_path(@job)
-      end
-    rescue
-      redirect_to edit_job_path(@job)
+    if @job.save
+      redirect_to edit_job_url(@job)
+    else
+      redirect_to edit_job_url(@job)
     end  
   end
 
   def edit
-    is_admin?
     @job = Job.find(params[:id])
     @not_in_job_tags = Tag.find_all_by_taggable_type('Job') - @job.tags
   end
