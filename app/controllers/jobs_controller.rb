@@ -33,7 +33,6 @@ class JobsController < ApplicationController
   end
 
   def create
-    params[:job][:puplish_date] = params[:job][:puplish_date].to_date
     @job = Job.new(params[:job])
     @job.active = false
     if @job.save

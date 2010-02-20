@@ -1,3 +1,11 @@
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+	$(".tb_date").datepicker({ 
+		dateFormat: 'dd.mm.yy'
+	});
+});
+</script>
+
 <% title "Edit Job" %>
 
 <% if current_user && current_user.role?('admin') %>
