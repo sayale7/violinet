@@ -124,7 +124,7 @@ class JobsController < ApplicationController
         @is_new = false
         @job = Job.find(params[:job_id])
         active = 1
-        if !params[:active]
+        if params[:active].nil?
           active = 0
         end
         @job.update_attributes('active'  => active, 'title'  => params[:title], 'puplish_date'  => params[:puplish_date])

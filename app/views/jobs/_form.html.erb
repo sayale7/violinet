@@ -6,7 +6,11 @@
 
 <p>
 	<strong>Aktiv</strong>
-	<%= check_box_tag :active, 'yes', @job.active%><br/>
+	<% if @job.active %>
+		<input type="checkbox" name="active" value="<%= @job.active %>" checked="checked" />
+	<% else %>
+		<input type="checkbox" name="active" value="<%= @job.active %>" />
+	<% end %>
 </p>
 <% end %>
 
