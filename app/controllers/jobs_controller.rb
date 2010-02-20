@@ -41,7 +41,7 @@ class JobsController < ApplicationController
       else
         redirect_to edit_job_path(@job)
       end
-    rescue e
+    rescue
       redirect_to edit_job_path(@job)
     end  
   end
