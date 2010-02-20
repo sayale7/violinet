@@ -7,9 +7,9 @@
 <p>
 	<strong>Aktiv</strong>
 	<% if @job.active %>
-		<input type="checkbox" name="active" value="<%= @job.active %>" checked="checked" />
+		<input type="checkbox" name="active" checked="checked" />
 	<% else %>
-		<input type="checkbox" name="active" value="<%= @job.active %>" />
+		<input type="checkbox" name="active"  />
 	<% end %>
 </p>
 <% end %>
