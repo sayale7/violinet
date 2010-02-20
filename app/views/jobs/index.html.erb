@@ -13,7 +13,7 @@
 		<% job.job_assigns.each do |job_assign| %>
 		<% if job_assign.visible %>
 		<% unless job_assign.user_assign_values.find_all_by_assignable_id(job.id).to_s.eql?('') %>
-		<strong><%= simple_format(h job_assign.user_assign_values.find_all_by_assignable_id(job.id).map(&:value).join(', ')) %></strong>
+		<%= simple_format(h job_assign.user_assign_values.find_all_by_assignable_id(job.id).map(&:value).join(', ')) %>
 		<% end %>
 		<% end %>
 		<% end %>
