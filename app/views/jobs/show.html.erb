@@ -1,6 +1,6 @@
 <% title "Job" %>
 
-<% unless get_jobs_from_tags(@job).empty? %>
+<% unless get_active_jobs_from_tags(@job).empty? %>
 <div class="job_similar">
 	<h1><%= t('job.other_with_category') %></h1>
 	<p></p>
