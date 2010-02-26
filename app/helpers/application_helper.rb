@@ -12,7 +12,7 @@ module ApplicationHelper
         </div>}).result(binding)
       end
 
-      def checklist(collection)  
+      def checklist_job(collection)  
         selected ||= []
 
         ERB.new(%{

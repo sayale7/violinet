@@ -5,16 +5,21 @@
   	<title><%= h(yield(:title) || "Untitled") %></title>
 	<%= stylesheet_link_tag 'drop_down_menu/dropdown.linear.columnar', 'drop_down_menu/default.advanced', 'application', '/shadowbox/shadowbox'  %>
 	<% if request.url.to_s.include?('sort_list_elements')%>
-		<%= javascript_include_tag 'proto/prototype', 'proto/controls', 'proto/effects', 'proto/dragdrop' %>
+		<% javascript_include_tag 'proto/prototype', 'proto/controls', 'proto/effects', 'proto/dragdrop' %>
 	<% else %>
-		<%= javascript_include_tag 'jquery', 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'mail', 'application', '/shadowbox/shadowbox'   %>
+		<%# javascript_include_tag 'jquery', 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'mail', 'application', '/shadowbox/shadowbox'   %>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" charset="utf-8" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" charset="utf-8" />
+		<%= javascript_include_tag 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'mail', 'application', '/shadowbox/shadowbox'  %>
 		<% if request.url.to_s.include?('posts') || request.url.to_s.include?('myblog') %>
 			<%= include_tiny_mce_if_needed %>
-			<%= javascript_include_tag 'jquery.ui', 'jquery.datepicker' %>
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" charset="utf-8" />
+			<%= javascript_include_tag 'jquery.datepicker' %>
 			<%= stylesheet_link_tag 'jquery_ui' %>
 		<% end %>
 		<% if request.url.to_s.include?('assign') || (request.url.to_s.include?('jobs') && (request.url.to_s.include?('new') || request.url.to_s.include?('edit')))%>
-			<%= javascript_include_tag 'jquery.ui', 'jquery.datepicker' %>
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" charset="utf-8" />
+			<%= javascript_include_tag 'jquery.datepicker' %>
 			<%= stylesheet_link_tag 'jquery_ui' %>
 		<% end %>
 		<% if request.url.to_s.include?('photo_albums') && request.url.to_s.include?('edit') %>
