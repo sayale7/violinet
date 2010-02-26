@@ -39,4 +39,5 @@ config.action_mailer.delivery_method = :sendmail
 #   :domain         => '127.0.0.0',
 # }
 
-config.action_controller.session = {:domain => '.violination.com'}
+#config.action_controller.session = {:domain => '.violination.com'}
+config.action_controller.session = {:domain => '.kohler-it.net'}

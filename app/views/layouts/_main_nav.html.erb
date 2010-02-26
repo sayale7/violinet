@@ -1,6 +1,6 @@
 <div id="choose_country">
-	<a href="http://de.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("de.png", :border=>0, :width  => 20) %></a>
-	<a href="http://en.network.<%= request.domain %><%= request.request_uri %>"><%= image_tag("gb.png", :border=>0, :width  => 20) %></a>
+	<a href="http://de.<%= request.domain %><%= request.request_uri %>"><%= image_tag("de.png", :border=>0, :width  => 20) %></a>
+	<a href="http://en.<%= request.domain %><%= request.request_uri %>"><%= image_tag("gb.png", :border=>0, :width  => 20) %></a>
 </div>
 <ul id="nav" class="dropdown dropdown-linear dropdown-columnar">
 	<li><%= link_to t('common.home'), root_url %></li>
