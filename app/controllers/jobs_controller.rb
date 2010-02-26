@@ -124,11 +124,13 @@ class JobsController < ApplicationController
         @is_new = false
         @job = Job.find(params[:job_id])
         if params[:active].nil?
-          active = false
+          active = 0
         else
-          active = true
+          active = 1
         end
-        @job.update_attributes('active'  => active, 'title'  => params[:title], 'puplish_date'  => params[:puplish_date])
+        @job.update_attribute('active'  => active)
+        @job.update_attribute('title', params[:title])
+        @job.update_attribute('puplish_date', params[:puplish_date])
       end
 
       unless UserAssignValue.find_all_by_assign_id_and_assignable_id(params[:select_many], params[:job_id]).nil?
