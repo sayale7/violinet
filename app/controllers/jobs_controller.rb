@@ -128,7 +128,7 @@ class JobsController < ApplicationController
         else
           active = 1
         end
-        @job.update_attribute('active'  => active)
+        @job.update_attribute('active', active)
         @job.update_attribute('title', params[:title])
         @job.update_attribute('puplish_date', params[:puplish_date])
       end
