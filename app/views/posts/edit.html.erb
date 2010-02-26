@@ -16,7 +16,7 @@
 		<% end %>
 	</div>
 	<div class="plain_old_checkboxes">
-		<%= checklist(@not_in_post_tags)  %>
+		<%= checklist_tag(@not_in_post_tags)  %>
 	</div>
 	<%= hidden_field_tag 'id', @post.id %>
 	<%= submit_tag t("tag.add_to_post"), :class => "clear_both" %>

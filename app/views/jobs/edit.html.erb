@@ -60,7 +60,7 @@ $(document).ready(function(){
 			<% end %>
 		</div>
 		<div class="plain_old_checkboxes">
-			<%= checklist(@job.tags)  %>
+			<%= checklist_tag(@job.tags)  %>
 		</div>
 		<%= hidden_field_tag 'id', @job.id %>
 		<%= submit_tag t("tag.remove_from_post"), :class => "clear_both" %>
