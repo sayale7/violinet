@@ -41,7 +41,7 @@ $(document).ready(function(){
 			<% end %>
 		</div>
 		<div class="plain_old_checkboxes">
-			<%= checklist_job(@not_in_job_tags)  %>
+			<%= checklist_tag(@not_in_job_tags)  %>
 		</div>
 		<%= hidden_field_tag 'id', @job.id %>
 		<%= submit_tag t("tag.add_to_post"), :class => "clear_both" %>
