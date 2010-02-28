@@ -3,6 +3,7 @@
 		$('.toggle_div > table').css('display', 'none');
 		$(".toggle_div").toggle(
 			function () {
+				$('.toggle_div > table').css('display', 'none');
 				$(this).find('table').css('display', 'inline');
 			},
 			function () {
