@@ -1268,5 +1268,8 @@ pre {
 	padding:10px;
 	margin-bottom:20px;
 }
+.toggle_table{
+	display:inline;
+}
 
 

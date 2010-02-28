@@ -1,12 +1,27 @@
+	<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+		$('.toggle_table').css('display', 'none');
+		$(".toggle_link").toggle(
+			function () {
+				$('.toggle_table').css('display', 'inline');
+			},
+			function () {
+				$('.toggle_table').css('display', 'none');
+			}
+		);
+	});
+	</script>
+	
 	<% for assign in Assign.find_all_by_parent_id(nil, :order => 'position') %>
 	<% unless (@user.assigns.uniq & Assign.find_all_by_parent_id(assign.id)).size == 0 || check_on_emptyness_of_children_through_privacy(@user.id, assign.id, @current_one) %>
-	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
+	<h1  class="toggle_link"><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
 	<% if current_user %>
 	<% if @user == current_user %>
 	<%= link_to t('common.edit'), assign_path(assign) %>
 	<% end %>
 	<% end %>
-	<table>
+	
+	<table class="toggle_table">
 		<% for assign_child in Assign.find_all_by_parent_id(assign.id, :order => 'position') %>
 		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).empty? %>
 		<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).size == 1 && UserAssignValue.find_all_by_assignable_id_and_assign_id(@user.id, assign_child.id).first.value.to_s.eql?('') %>
@@ -29,6 +44,8 @@
 		<% end %>
 		<% end %>
 	</table>
+	
+	
 	<% end %>
 
 	<% end %>
