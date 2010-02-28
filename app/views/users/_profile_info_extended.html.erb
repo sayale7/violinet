@@ -15,6 +15,7 @@
 	
 	<% for assign in Assign.find_all_by_parent_id(nil, :order => 'position') %>
 	<% unless (@user.assigns.uniq & Assign.find_all_by_parent_id(assign.id)).size == 0 || check_on_emptyness_of_children_through_privacy(@user.id, assign.id, @current_one) %>
+	
 	<div class="toggle_div">
 		
 	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
