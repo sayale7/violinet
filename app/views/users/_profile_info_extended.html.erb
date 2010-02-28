@@ -1,13 +1,13 @@
 	<script type="text/javascript" charset="utf-8">
 	$(document).ready(function(){
 		$('.toggle_div > table').css('display', 'none');
-		$(".toggle_div").toggle(
+		$(".toggle_div h1").toggle(
 			function () {
 				$('.toggle_div > table').css('display', 'none');
-				$(this).find('table').css('display', 'inline');
+				$(this).parent().find('table').css('display', 'inline');
 			},
 			function () {
-				$(this).find('table').css('display', 'none');
+				$(this).parent().find('table').css('display', 'none');
 			}
 		);
 	});
