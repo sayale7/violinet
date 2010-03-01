@@ -1,0 +1,21 @@
+<% title "Flats" %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Title</th>
+    <th>Address</th>
+  </tr>
+  <% for flat in @flats %>
+    <tr>
+      <td><%=h flat.user_id %></td>
+      <td><%=h flat.title %></td>
+      <td><%=h flat.address %></td>
+      <td><%= link_to "Show", flat %></td>
+      <td><%= link_to "Edit", edit_flat_path(flat) %></td>
+      <td><%= link_to "Destroy", flat, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Flat", new_flat_path %></p>

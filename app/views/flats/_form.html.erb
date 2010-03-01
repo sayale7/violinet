@@ -1,0 +1,13 @@
+<% form_for @flat do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <p>
+    <strong><%= f.label :title %></strong><br />
+    <%= f.text_field :title, :class => 'tb' %>
+  </p>
+  <p>
+    <strong><%= f.label :address %></strong><br />
+    <%= f.text_field :address, :class => 'tb' %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

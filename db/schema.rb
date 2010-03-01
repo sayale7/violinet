@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100219083946) do
+ActiveRecord::Schema.define(:version => 20100228224241) do
 
   create_table "admin_assign_value_names", :force => true do |t|
     t.integer  "admin_assign_value_id"
@@ -74,6 +74,14 @@ ActiveRecord::Schema.define(:version => 20100219083946) do
     t.string   "flyer_content_type"
     t.integer  "flyer_file_size"
     t.datetime "flyer_updated_at"
+  end
+
+  create_table "flats", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "folders", :force => true do |t|
@@ -150,10 +158,11 @@ ActiveRecord::Schema.define(:version => 20100219083946) do
     t.integer  "size"
     t.integer  "width"
     t.integer  "height"
-    t.integer  "photo_album_id"
-    t.string   "description",    :limit => 1000
+    t.integer  "photo_container_id"
+    t.string   "description",          :limit => 1000
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_container_type"
   end
 
   create_table "posts", :force => true do |t|

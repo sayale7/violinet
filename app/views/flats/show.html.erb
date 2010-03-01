@@ -1,0 +1,20 @@
+<% title "Flat" %>
+
+<p>
+  <strong>User:</strong>
+  <%=h @flat.user_id %>
+</p>
+<p>
+  <strong>Title:</strong>
+  <%=h @flat.title %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%=h @flat.address %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_flat_path(@flat) %> |
+  <%= link_to "Destroy", @flat, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", flats_path %>
+</p>

@@ -178,7 +178,7 @@ module ApplicationHelper
   
   def get_jobs_from_tags(job)
     jobs = Array.new
-    @job.tags.each do |tag|
+    job.tags.each do |tag|
       tag.taggings.each do |tagging|
         jobs.push(tagging.taggable)
       end
@@ -188,10 +188,11 @@ module ApplicationHelper
   end
   
   def get_active_jobs_from_tags(job)
+    debugger
     jobs = Array.new
-    @job.tags.each do |tag|
+    job.tags.each do |tag|
       tag.taggings.each do |tagging|
-        if tagging.taggable.active
+        if tagging.taggable && tagging.taggable.active
           jobs.push(tagging.taggable)
         end
       end

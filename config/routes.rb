@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :flats
+
   map.resources :tag_relationships
 
   map.resources :jobs
