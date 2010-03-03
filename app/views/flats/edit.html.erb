@@ -2,6 +2,117 @@
 
 <%= render :partial => 'form' %>
 
+<script type="text/javascript">
+ 
+$(document).ready(function(){
+	$('#old_image_upload_form').remove();
+	$('#new_image_upload_form').show();
+	$('.no_js').each(function(){
+		$(this).remove();
+	});
+	$('.js').each(function(){
+		$(this).show();
+	});
+ 
+});
+ 
+var swfu;
+var max_file_size = 15 - <%= @photos.size %>;
+ 
+window.onload = function(){
+	swfu = new SWFUpload({
+		// Create the custom swfupload_photos_path in the routes.rb file
+		upload_url: "<%= swfupload_photos_path -%>?token=<%= @flat.id %>;type=Flat",
+		// flash_url : '/assets/swfupload_f9.swf',
+ 
+		file_size_limit: '0.5 MB',
+		file_types: '*',
+		file_types_description: 'All',
+		file_upload_limit: max_file_size,
+		file_queue_limit: '0',
+ 
+		file_queue_error_handler: fileQueueError,
+		file_dialog_complete_handler: fileDialogComplete,
+		upload_progress_handler: uploadProgress,
+		upload_error_handler: uploadError,
+		upload_success_handler: uploadSuccess,
+		upload_complete_handler: uploadComplete,
+ 
+		custom_settings: {
+			upload_target: 'divFileProgressContainer'
+		},
+ 
+		// Button Settings
+		button_image_url: "/images/spyglass.png",
+		button_placeholder_id: "spanButtonPlaceholder",
+		button_width: 400,
+		button_height: 40,
+		button_text: '<span class="button"><%= t("photo.upload") %>  ' + max_file_size + ' <%= t("photo.kind") %></span>',
+		button_text_style: '.button { font-family: Verdana, Lucida Grande,Lucida Sans Unicode,Helvetica,Arial,sans-serif; font-size: 10px; font-weight:bold; }',
+		button_text_top_padding: 12,
+		button_text_left_padding: 15,
+		button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+		button_cursor: SWFUpload.CURSOR.HAND,
+ 
+		// Flash Settings
+		flash_url: "/assets/swfupload.swf",
+ 
+		custom_settings: {
+			upload_target: "divFileProgressContainer"
+		},
+ 
+		debug: false
+ 
+	});
+};
+</script>
+ 
+<div class="flat_photo_upload">
+	<% unless @photos.size > 14 %>
+	<div id="old_image_upload_form" class="upload_form">
+		<% form_for(:photo, :url => photos_path,
+		:html => { :multipart => true }) do |f| -%>
+		<p><%= f.hidden_field :flat_id, :value => @flat.id %>
+		    <%= f.file_field :uploaded_data %>
+		</p>
+		<p>
+		    <%= submit_tag t("common.upload") %>
+		</p>
+		<% end -%>
+	</div>
+	<div id="new_image_upload_form">
+		<form>
+			<div style="border: solid 1px #7FAAFF; background-color: #C5D9FF; float:right; padding: 2px; margin-right:10px; height:40px; width: 450px;">
+				<span id="spanButtonPlaceholder"></span>
+			</div>
+		</form>
+ 
+	</div>
+	<% end %>
+	<div id="flat_thumbnails">
+		<% @photos.each do |photo| %>
+		<div class="new_thumbs_out">
+			<div class="new_thumbs">
+				<div class="js" style="display:none;">
+					<a href="<%= edit_photo_path(photo) %>" title="<%= h(photo.description) %>" rel="shadowbox;width=900;height=400"><%= image_tag(photo.public_filename(:thumb)) %></a>
+				</div>
+				<div class="no_js">
+					<a href="<%= edit_photo_path(photo) %>?js=false"  title="<%= h(photo.description) %>" ><%= image_tag(photo.public_filename(:thumb)) %></a>
+				</div>
+			</div>
+			<div class="new_thumbs_delete">
+				<%= link_to image_tag("delete.png"), :controller => 'photos', :action  => 'destroy', :id  => photo.id %>
+			</div>	
+		</div>
+		<% end %>
+	</div>
+ 
+</div>
+ 
+ 
+<div id="divFileProgressContainer" style=" float:right; margin-right:145px;">
+</div>
+
 
 <% if current_user && current_user.role?('admin') %>
 
