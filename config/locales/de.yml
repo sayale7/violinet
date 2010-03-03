@@ -207,9 +207,13 @@ de:
     all: Alle Artikel
   tag:  
     remove_tags_from_post: Tags des Eintrags
+    remove_tags_from_flat: Tags des Eintrags
     add_tags_to_post: Verfügbare Tags
+    add_tags_to_flat: Verfügbare Tags
     remove_from_post: Entfernen
+    remove_from_flat: Entfernen
     add_to_post: Hinzufügen
+    add_to_flat: Hinzufügen
     german_name: Deutscher Name
     english_name: Englischer Name
     for: Für

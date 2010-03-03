@@ -64,10 +64,9 @@ class PhotosController < ApplicationController
   
   def destroy
     @photo = Photo.find(params[:id])
-    @photo_album = PhotoAlbum.find(@photo.photo_container_id)
     if @photo.destroy
       flash[:notice] = t("common.delete_success")
-      redirect_to edit_photo_album_url(@photo_album)
+      redirect_to '/'+@photo.photo_container_type.to_s.downcase.pluralize+ '/' +@photo.photo_container_id.to_s+'/edit'
     end
   end
 end

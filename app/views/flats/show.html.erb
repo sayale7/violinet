@@ -1,40 +1,5 @@
 <% title "Flat" %>
 
-<% unless get_flats_from_tags(@flat).empty? %>
-<div class="flat_similar">
-	<h1><%= t('flat.other_with_category') %></h1>
-	<p></p>
-	<div class="flat_similar_entry">
-		<% get_flats_from_tags(@flat).each do |flat| %>
-		<% if flat.active %>
-		<div class="flat_index_entry">
-			<dt>
-				<h2><%= link_to (h flat.title), flat_path(flat) %></h2>
-				<%= t('flat.publish_date') %>:<%= flat.puplish_date.strftime(" %d.%m.%Y ") %><br/>
-			</dt>
-			<dd>
-				<dl>
-					<% flat.flat_assigns.each do |flat_assign| %>
-					<% if flat_assign.visible %>
-					<% unless flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).to_s.eql?('') %>
-					<dt>
-						<strong><%= h flat_assign.assign_names.find_by_language(get_locale.to_s).name + ": " %></strong>
-					</dt>
-					<dd style="margin-top:-10px;">
-						<%= simple_format(h flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).map(&:value).join(', ')) %>
-					</dd>
-					<% end %>
-					<% end %>
-					<% end %>
-				</dl>
-			</dd>
-		</div>
-		<% end %>
-		<% end %>
-	</div>
-</div>	
-<% end %>
-
 
 <% if current_user && current_user.role?('admin') %>
 <p>

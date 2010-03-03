@@ -24,7 +24,7 @@
 		<% end %>
 	<% end %>
 	
-	<% unless request.url.to_s.include?('photo_albums') && request.url.to_s.include?('edit') %>
+	<% unless (request.url.to_s.include?('photo_albums') || request.url.to_s.include?('flats')) && request.url.to_s.include?('edit') %>
 		<script type="text/javascript">
 		var shadowbox_conf = {
 			language: "de-DE",

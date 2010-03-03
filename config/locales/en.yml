@@ -209,9 +209,13 @@ en:
     all: All Posts
   tag:
       remove_tags_from_post: Tags of this Post
+      remove_tags_from_flat: Tags of this Flat
       remove_from_post: Remove
+      remove_from_flat: Remove
       add_tags_to_post: Available Tags
+      add_tags_to_flat: Available Tags
       add_to_post: Add
+      add_to_flat: Add
       german_name: German Name
       english_name: English Name
       for: For

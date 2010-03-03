@@ -73,7 +73,7 @@ var max_file_size = 15 - <%= @photos.size %>;
 window.onload = function(){
 	swfu = new SWFUpload({
 		// Create the custom swfupload_photos_path in the routes.rb file
-		upload_url: "<%= swfupload_photos_path -%>?token=<%= @photo_ablum.id %>;type=Flat",
+		upload_url: "<%= swfupload_photos_path -%>?token=<%= @flat.id %>;type=Flat",
 		// flash_url : '/assets/swfupload_f9.swf',
  
 		file_size_limit: '0.5 MB',
@@ -118,7 +118,7 @@ window.onload = function(){
 };
 </script>
  
-<div style="padding:20px 0 0 0;">
+<div class="flat_photo_upload">
 	<% unless @photos.size > 14 %>
 	<div id="old_image_upload_form" class="upload_form">
 		<% form_for(:photo, :url => photos_path,
@@ -133,14 +133,14 @@ window.onload = function(){
 	</div>
 	<div id="new_image_upload_form">
 		<form>
-			<div style="border: solid 1px #7FAAFF; background-color: #C5D9FF; float:right; padding: 2px; margin-right:70px; height:40px; width: 425px;">
+			<div style="border: solid 1px #7FAAFF; background-color: #C5D9FF; float:right; padding: 2px; margin-right:10px; height:40px; width: 450px;">
 				<span id="spanButtonPlaceholder"></span>
 			</div>
 		</form>
  
 	</div>
 	<% end %>
-	<div id="thumbnails">
+	<div id="flat_thumbnails">
 		<% @photos.each do |photo| %>
 		<div class="new_thumbs_out">
 			<div class="new_thumbs">

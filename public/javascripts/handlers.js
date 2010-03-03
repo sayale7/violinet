@@ -175,6 +175,7 @@ function addImage(src) {
 	newDiv.appendChild(newImg);
 	outerDiv.appendChild(newDiv);
 	document.getElementById("thumbnails").appendChild(outerDiv);
+	document.getElementById("thumbnails").appendChild(outerDiv);
 	if (newImg.filters) {
 		try {
 			newImg.filters.item("DXImageTransform.Microsoft.Alpha").opacity = 0;

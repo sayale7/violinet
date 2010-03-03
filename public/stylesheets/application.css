@@ -460,6 +460,33 @@ table a:link {
 	width:46%;
 }
 
+.flat_tags{
+	clear:left;
+	float:left;
+	width:46%;
+}
+.flat_edit{
+	float:left;
+	background-image: url('/images/background_flat_image.jpg');
+	background-repeat: repeat-x;
+	-moz-border-radius:10px;
+	-khtml-border-radius:10px;
+	padding:10px;
+	margin-bottom:20px;
+	margin-top:3px;
+	width:400px;
+}
+
+.flat_photo_upload{
+	float:right;
+	background-image: url('/images/background_flat_image.jpg');
+	background-repeat: repeat-x;
+	-moz-border-radius:10px;
+	-khtml-border-radius:10px;
+	padding:12px;
+	width:480px;
+}
+
 .users_list {
 	padding:10px;
     float:left;
@@ -1072,7 +1099,14 @@ a.progressCancel:hover {
 
 /* -- SWFUpload Object Styles ------------------------------- */ .swfupload {
     vertical-align: top;
-} #thumbnails {
+} 
+#flat_thumbnails {
+	padding-top:20px;
+	margin-right:10px;
+	float:right;
+	width:455px;
+}
+#thumbnails {
 	padding-top:20px;
 	float:right;
 	width:500px;

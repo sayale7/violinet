@@ -2,15 +2,10 @@
 
 <%= render :partial => 'form' %>
 
-<p>
-  <%= link_to "Show", @flat %> |
-  <%= link_to "View All", flats_path %>
-</p>
-
 
 <% if current_user && current_user.role?('admin') %>
 
-<div class="flat_info_right">
+<div class="flat_tags">
 	<h2><% t('flat.what_are_tags') %></h2>
 	<p><% t('flat.tag_description') %></p>
 	<div class="loading"></div>
