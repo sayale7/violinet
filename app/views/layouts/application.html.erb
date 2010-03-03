@@ -10,19 +10,16 @@
 		<% javascript_include_tag 'proto/prototype', 'proto/controls', 'proto/effects', 'proto/dragdrop' %>
 	<% else %>
 		<%= javascript_include_tag 'jquery', 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'mail', 'application', '/shadowbox/shadowbox'   %>
-		<%# javascript_include_tag 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'mail', 'application', '/shadowbox/shadowbox'  %>
 		<% if request.url.to_s.include?('posts') || request.url.to_s.include?('myblog') %>
 			<%= include_tiny_mce_if_needed %>
-			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" charset="utf-8" />
 			<%= javascript_include_tag 'jquery.datepicker' %>
 			<%= stylesheet_link_tag 'jquery_ui' %>
 		<% end %>
 		<% if request.url.to_s.include?('assign') || (request.url.to_s.include?('jobs') && (request.url.to_s.include?('new') || request.url.to_s.include?('edit')))%>
-			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" charset="utf-8" />
 			<%= javascript_include_tag 'jquery.datepicker' %>
 			<%= stylesheet_link_tag 'jquery_ui' %>
 		<% end %>
-		<% if request.url.to_s.include?('photo_albums') && request.url.to_s.include?('edit') %>
+		<% if (request.url.to_s.include?('photo_albums') || request.url.to_s.include?('flats')) && request.url.to_s.include?('edit') %>
 			<%= javascript_include_tag 'swfupload', 'handlers' %>
 		<% end %>
 	<% end %>

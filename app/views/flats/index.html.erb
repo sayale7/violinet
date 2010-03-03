@@ -1,21 +1,80 @@
-<% title "Flats" %>
+<% title t('service.flats')%>
+<div class="flat_index">
+<p><%= link_to t('flat.new'), new_flat_path %></p>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Title</th>
-    <th>Address</th>
-  </tr>
-  <% for flat in @flats %>
-    <tr>
-      <td><%=h flat.user_id %></td>
-      <td><%=h flat.title %></td>
-      <td><%=h flat.address %></td>
-      <td><%= link_to "Show", flat %></td>
-      <td><%= link_to "Edit", edit_flat_path(flat) %></td>
-      <td><%= link_to "Destroy", flat, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<h2><%= t('flat.recent') %></h2>
+<br/>
+<% @flats.each do |flat| %>
+	<% if current_user && current_user.role?('admin') %>
+	<div class="flat_index_entry">
+		<h2><%= link_to (h flat.title), flat_path(flat) %></h2>
+		<%= t('flat.publish_date') %>:<%= flat.updated_at.strftime(" %d.%m.%Y ") %><br/>
+		<% flat.flat_assigns.each do |flat_assign| %>
+		<% if flat_assign.visible %>
+		<% unless flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).to_s.eql?('') %>
+		<% if flat_assign.id.to_s.eql?('46') %>
+			<strong><%= simple_format(h flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).map(&:value).join(', ')) %></strong>
+		<% else %>
+			<%= simple_format(h flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).map(&:value).join(', ')) %>
+		<% end %>
+		<% end %>
+		<% end %>
+		<% end %>
+	</div>
+	<% end %>
+	<% end %>
+</div>
 
-<p><%= link_to "New Flat", new_flat_path %></p>
+<div class="categoies_for_assigns" style="border-bottom:dashed thin #000; margin-bottom:15px;padding-bottom:15px;">
+	<% unless @tag.to_s.eql?('') %>
+		<h2><%= t('tag.actual') %>: <%= @tag.tag_names.find_by_language('de').name %></h2>
+	<% else %>
+		<h2><%= t('tag.actual') %>: <%= t('common.all') %></h2>
+	<% end %>
+	<p></p>
+	<div style="padding:5px; float:left;">
+		<div class="categoy_for_assigns">
+			<p><%= link_to t("flat.all"), flats_path %></p>
+		</div>
+	</div>
+</div>
+
+<% if !@tag.to_s.eql?('') && !@tag.parents.empty? %>
+<div class="categoies_for_assigns" style="border-bottom:dashed thin #000; margin-bottom:15px;padding-bottom:15px;">
+	<h2><%= t('tag.super_categories') %> <%= @tag.tag_names.find_by_language('de').name %></h2>
+	<p></p>
+	<% @tag.parents.each do |tag| %>
+	<div style="padding:5px; float:left;">
+		<div class="categoy_for_assigns">
+			<p><%= link_to tag.tag_names.find_all_by_tag_id_and_language(tag.id, get_locale.to_s).first.name, :flat_category => tag %></p>
+		</div>
+	</div>
+	<% end %>
+</div>
+<% end %>
+
+<% unless @tags.empty? %>
+<div class="categoies_for_assigns">
+	<% if @tag.to_s.eql?('') && !@tags.empty? %>
+	<h2><%= t('tag.categories') %></h2>
+	<p></p>
+	<% root_tags('Flat').each do |tag| %>
+	<div style="padding:5px; float:left">
+		<div class="categoy_for_assigns">
+			<p><%= link_to tag.tag_names.find_all_by_tag_id_and_language(tag.id, get_locale.to_s).first.name, :flat_category => tag %></p>
+		</div>
+	</div>
+	<% end %>
+	<% else %>
+	<h2><%= t('tag.sub') %>  <%= @tag.tag_names.find_by_language('de').name %></h2>
+	<p></p>
+	<% @tags.each do |tag| %>
+	<div style="padding:5px; float:left">
+		<div class="categoy_for_assigns">
+			<p><%= link_to tag.tag_names.find_all_by_tag_id_and_language(tag.id, get_locale.to_s).first.name, :flat_category => tag %></p>
+		</div>
+	</div>
+	<% end %>
+	<% end %>
+</div>
+<% end %>

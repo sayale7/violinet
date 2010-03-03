@@ -132,6 +132,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.set_job_assign_values 'set_job_assign_values', :controller  => 'jobs', :action  => 'set_job_assign_values'
   
+  map.set_flat_assign_values 'set_flat_assign_values', :controller  => 'flats', :action  => 'set_flat_assign_values'
+  
   map.destroy_user 'destroy_user', :controller  => 'users', :action  =>  'destroy_user'
   
   map.destroy_flyer 'destroy_flyer', :controller  => 'events', :action  => 'destroy_flyer'

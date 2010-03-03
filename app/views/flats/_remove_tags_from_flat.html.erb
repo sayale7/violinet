@@ -1,0 +1,11 @@
+<% form_tag '/flats/remove_tags', :id => "remove_tags" do %>
+<% unless (@flat.tags).empty?  %>
+<br/>
+<h2><%= t('tag.remove_tags_from_flat') %></h2>
+<% for tag in (@flat.tags) do %>
+<span class="clickable_items_to_remove" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>
+<% end %>
+<%= hidden_field_tag 'id', @flat.id %>
+<%= submit_tag t("tag.remove_from_flat"), :class => "clear_both" %>
+<% end %>
+<% end %>

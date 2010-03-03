@@ -56,9 +56,9 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def root_tags
+  def root_tags(name)
     tags = Array.new
-    Tag.find_all_by_taggable_type('Job').each do |tag|
+    Tag.find_all_by_taggable_type(name).each do |tag|
       if tag.parents.empty?
         tags.push(tag)
       end

@@ -21,6 +21,7 @@ class ProfileImagesController < ApplicationController
         flash[:notice] = t('profile_image.created')
         redirect_to @profile_image
       else
+        debugger
         render :action => "crop"
       end
     else

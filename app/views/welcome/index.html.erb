@@ -26,3 +26,25 @@
 	<% end %>
 </div>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+
+jQuery.fn.extend({
+	fadeFirstOutAndSecondIn:function(){
+		jQuery(this).find('img').first().fadeOut('slow');
+		jQuery(this).find('img').last().fadeIn('slow');
+	},
+	fadeSecondOutAndFirstIn:function(){
+		jQuery(this).find('img').last().fadeOut('slow');
+		jQuery(this).find('img').first().fadeIn('slow');
+	}
+});
+
+jQuery(function(){
+	$('.change').toggle(
+		function() {$(this).fadeFirstOutAndSecondIn()},
+		function() {$(this).fadeSecondOutAndFirstIn()}
+	);
+});
+</script>
+

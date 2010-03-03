@@ -1,0 +1,11 @@
+<% form_tag '/flats/add_tags', :id => "add_tags" do %>
+<% unless @not_in_flat_tags.empty?  %>
+<br/>
+<h2><%= t('tag.add_tags_to_flat') %></h2>
+<% @not_in_flat_tags.each do |tag|  %>
+<span class="clickable_items_to_add" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>
+<% end %>
+<%= hidden_field_tag 'id', @flat.id %>
+<%= submit_tag t("tag.add_to_flat"), :class => "clear_both" %>
+<% end %>
+<% end %>

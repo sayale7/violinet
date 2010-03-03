@@ -10,7 +10,7 @@ class PhotoAlbumsController < ApplicationController
   
   def show
     @photo_ablum = PhotoAlbum.find(params[:id])
-    @photos = Photo.find_all_by_photo_album_id_and_thumbnail(@photo_ablum.id, nil)
+    @photos = Photo.find_all_by_photo_container_id_and_thumbnail(@photo_ablum.id, nil)
   end
   
   def new
@@ -21,7 +21,7 @@ class PhotoAlbumsController < ApplicationController
     @user = current_user
     @photo_ablum = PhotoAlbum.find(params[:id])
     @photo = Photo.new
-    @photos = Photo.find_all_by_photo_album_id_and_thumbnail(@photo_ablum.id, nil)
+    @photos = Photo.find_all_by_photo_container_id_and_thumbnail(@photo_ablum.id, nil)
     unauthorized! if cannot? :manage, @photo_ablum
   end
   

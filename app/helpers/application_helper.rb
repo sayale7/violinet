@@ -148,9 +148,9 @@ module ApplicationHelper
     
   end
   
-  def root_tags
+  def root_tags(name)
     tags = Array.new
-    Tag.find_all_by_taggable_type('Job').each do |tag|
+    Tag.find_all_by_taggable_type(name).each do |tag|
       if tag.parents.empty?
         tags.push(tag)
       end
@@ -199,6 +199,17 @@ module ApplicationHelper
     end
     jobs = jobs.uniq - job.to_a
     return jobs
+  end
+  
+  def get_flats_from_tags(flat)
+    flats = Array.new
+    flat.tags.each do |tag|
+      tag.taggings.each do |tagging|
+        flats.push(tagging.taggable)
+      end
+    end
+    flats = flats.uniq - flat.to_a
+    return flats
   end
   
 end

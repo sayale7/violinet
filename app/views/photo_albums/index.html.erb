@@ -6,7 +6,7 @@
 <% @photo_ablums.each do |album| %>
 
 <div class="photo_album">
-<% photo = Photo.first(:conditions => ["photo_album_id = ?", album.id]) %>
+<% photo = Photo.first(:conditions => ["photo_container_id = ?", album.id]) %>
 
 <h2><%= album.name %></h2>
 <br/><% unless photo.nil? %>

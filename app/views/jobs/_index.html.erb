@@ -59,7 +59,7 @@
 	<% if @tag.to_s.eql?('') && !@tags.empty? %>
 	<h2><%= t('tag.categories') %></h2>
 	<p></p>
-	<% root_tags.each do |tag| %>
+	<% root_tags('Job').each do |tag| %>
 	<div style="padding:5px; float:left">
 		<div class="categoy_for_assigns">
 			<p><%= link_to tag.tag_names.find_all_by_tag_id_and_language(tag.id, get_locale.to_s).first.name, :job_category => tag %></p>

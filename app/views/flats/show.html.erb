@@ -1,20 +1,78 @@
 <% title "Flat" %>
 
-<p>
-  <strong>User:</strong>
-  <%=h @flat.user_id %>
-</p>
-<p>
-  <strong>Title:</strong>
-  <%=h @flat.title %>
-</p>
-<p>
-  <strong>Address:</strong>
-  <%=h @flat.address %>
-</p>
+<% unless get_flats_from_tags(@flat).empty? %>
+<div class="flat_similar">
+	<h1><%= t('flat.other_with_category') %></h1>
+	<p></p>
+	<div class="flat_similar_entry">
+		<% get_flats_from_tags(@flat).each do |flat| %>
+		<% if flat.active %>
+		<div class="flat_index_entry">
+			<dt>
+				<h2><%= link_to (h flat.title), flat_path(flat) %></h2>
+				<%= t('flat.publish_date') %>:<%= flat.puplish_date.strftime(" %d.%m.%Y ") %><br/>
+			</dt>
+			<dd>
+				<dl>
+					<% flat.flat_assigns.each do |flat_assign| %>
+					<% if flat_assign.visible %>
+					<% unless flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).to_s.eql?('') %>
+					<dt>
+						<strong><%= h flat_assign.assign_names.find_by_language(get_locale.to_s).name + ": " %></strong>
+					</dt>
+					<dd style="margin-top:-10px;">
+						<%= simple_format(h flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).map(&:value).join(', ')) %>
+					</dd>
+					<% end %>
+					<% end %>
+					<% end %>
+				</dl>
+			</dd>
+		</div>
+		<% end %>
+		<% end %>
+	</div>
+</div>	
+<% end %>
 
+
+<% if current_user && current_user.role?('admin') %>
 <p>
-  <%= link_to "Edit", edit_flat_path(@flat) %> |
-  <%= link_to "Destroy", @flat, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", flats_path %>
+	<%= link_to t('common.edit'), edit_flat_path(@flat) %>
+	<%= link_to t('common.delete'), flat_path(@flat), :confirm  => t('common.confirm'), :method  => :delete %>
 </p>
+<% end %>
+<h3>
+<% form_tag '/flats/index', :id => "with_category_form" do  %>
+	<% if get_locale.to_s.eql?('de') %>
+		<%= t('flat.quick_nav') %> <%= select_tag :flat_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Flat'), :id, :german_name),  :class => 'with_category' %>
+		<% else %>
+		<%= t('flat.quick_nav') %> <%= select_tag :flat_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Flat'), :id, :english_name), :class => 'with_category' %>
+		<% end %>
+		<% end %>
+	</h3>
+	<p></p>
+<div class="flat_show">
+
+<h2><%= @flat.title %></h2>
+<h3><%= t('flat.publish_date') %>: <%= @flat.updated_at.strftime(" %d.%m.%Y ") %></h3>
+<dl>
+<% @_assigns.each do |assign| %>
+	<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@flat.id, assign.id).empty? %>
+		<dt><strong><%= assign.assign_names.find_by_language(get_locale.to_s).name %></strong></dt>
+			<% if !assign.html_attribute.to_s.eql?('mail_to') && !assign.html_attribute.to_s.eql?('link_to') %>
+			<dd><%= simple_format(h UserAssignValue.find_all_by_assignable_id_and_assign_id(@flat.id, assign.id).map(&:value).join(', ')) %></dd>
+			<% else %>
+				<% if assign.html_attribute.to_s.eql?('mail_to') %>
+				<dd><p><%= mail_to UserAssignValue.find_all_by_assignable_id_and_assign_id(@flat.id, assign.id).first.value %></p></dd>
+				<% else assign.html_attribute.to_s.eql?('link_to') %>
+				<dd><p><%= link_to UserAssignValue.find_by_assignable_id_and_assign_id(@flat.id, assign.id).value, "http://#{UserAssignValue.find_by_assignable_id_and_assign_id(@flat.id, assign.id).value}", :popup  => true %></p></dd>
+				<% end %>
+			<% end %>
+	<% end %>
+<% end %>
+</dl>
+</div>
+<div class="clear">
+<%= link_to t('flat.overview'), flats_path %>
+</div>

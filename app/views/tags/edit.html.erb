@@ -1,7 +1,7 @@
 <h1>Editing tag</h1>
 
 <div class="right">
-	<% for tag in root_tags %>
+	<% for tag in root_tags(@taggable_type.to_s) %>
 		<h1><%= tag.tag_names.find_by_language(get_locale.to_s).name %></h1>
 		<dl style="padding-left:30px;">
 			<% tag.children.each do |child_tag| %>

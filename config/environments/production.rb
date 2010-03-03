@@ -41,3 +41,5 @@ config.action_mailer.delivery_method = :sendmail
 
 config.action_controller.session = {:domain => '.violounge.com'}
 #config.action_controller.session = {:domain => '.kohler-it.net'}
+
+Paperclip.options[:image_magick_path] = '/opt/local/bin'

@@ -19,6 +19,8 @@ config.action_mailer.raise_delivery_errors = true
 # set delivery method to :smtp, :sendmail or :test
 config.action_mailer.delivery_method = :sendmail
 
+Paperclip.options[:image_magick_path] = '/opt/local/bin'
+
 #these options are only needed if you choose smtp delivery
 # config.action_mailer.smtp_settings = {
 #   :address        => 'mail.gmx.at',

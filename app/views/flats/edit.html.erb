@@ -6,3 +6,51 @@
   <%= link_to "Show", @flat %> |
   <%= link_to "View All", flats_path %>
 </p>
+
+
+<% if current_user && current_user.role?('admin') %>
+
+<div class="flat_info_right">
+	<h2><% t('flat.what_are_tags') %></h2>
+	<p><% t('flat.tag_description') %></p>
+	<div class="loading"></div>
+	<div id="not_tags_of_flat">
+		<% form_tag '/flats/add_tags', :id => "add_tags" do %>
+		<% unless @not_in_flat_tags.empty?  %>
+		<br/>
+		<h2><%= t('tag.add_tags_to_flat') %></h2>
+		<div class="new_click_boxes">
+			<% @not_in_flat_tags.each do |tag|  %>
+			<span class="clickable_items_to_add" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>
+			<% end %>
+		</div>
+		<div class="plain_old_checkboxes">
+			<%= checklist_tag(@not_in_flat_tags)  %>
+		</div>
+		<%= hidden_field_tag 'id', @flat.id %>
+		<%= submit_tag t("tag.add_to_flat"), :class => "clear_both" %>
+		<% end %>
+		<% end %>
+	</div>
+
+	<div id="tags_of_flat" style="clear:both;">
+		<% form_tag '/flats/remove_tags', :id => "remove_tags" do %>
+		<% unless (@flat.tags).empty?  %>
+		<br/>
+		<h2><%= t('tag.remove_tags_from_flat') %></h2>
+		<div class="new_click_boxes">
+			<% for tag in (@flat.tags) do %>
+			<span class="clickable_items_to_remove" id="<%= tag.id %>"><%= tag.tag_names.find_by_language(I18n.locale.to_s).name %></span>
+			<% end %>
+		</div>
+		<div class="plain_old_checkboxes">
+			<%= checklist_tag(@flat.tags)  %>
+		</div>
+		<%= hidden_field_tag 'id', @flat.id %>
+		<%= submit_tag t("tag.remove_from_flat"), :class => "clear_both" %>
+		<% end %>
+		<% end %>
+	</div>
+</div>
+
+<% end %>

@@ -2,7 +2,7 @@
 
 <p><% link_to 'Reihenfolge der Elternelemente ändern', sort_list_elements_path + '?parent_id=nil;assignable_type=' + @taggable_type.to_s %></p>
 
-<% for tag in root_tags %>
+<% for tag in root_tags(@taggable_type.to_s) %>
 <h1><%= tag.tag_names.find_by_language(get_locale.to_s).name %>
 	<span style="font-size:10px;">
 		(<%= link_to t('common.edit'), edit_tag_path(tag) %> / <%= link_to t('common.delete'), tag, :confirm => 'Sicher?', :method => :delete %>)
