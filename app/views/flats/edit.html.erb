@@ -10,7 +10,7 @@ var max_file_size = 15 - <%= @photos.size %>;
 window.onload = function(){
 	swfu = new SWFUpload({
 		// Create the custom swfupload_photos_path in the routes.rb file
-		upload_url: '<%= swfupload_photos_path -%>?token=<%= @flat.id %>;type=PhotoAlbum',
+		upload_url: '<%= swfupload_photos_path -%>?token=<%= @flat.id %>;type=Flat',
 		// flash_url : '/assets/swfupload_f9.swf',
  
 		file_size_limit: '0.5 MB',
