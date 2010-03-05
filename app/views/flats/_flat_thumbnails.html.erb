@@ -16,7 +16,7 @@
 <div class="new_thumbs_out">
 	<div class="new_thumbs">
 		<div class="js" style="display:none;">
-			<a href="<%= edit_photo_path(photo) %>" title="<%= h(photo.description) %>" id="<%= photo.id %>" class="popup" ><%= image_tag(photo.public_filename(:thumb)) %></a>
+			<a href="<%= edit_photo_path(photo) %>" title="<%= h(photo.description) %>" id="<%= photo.id %>" class="popup" rel="popupContact" ><%= image_tag(photo.public_filename(:thumb)) %></a>
 		</div>
 		<div class="no_js">
 			<a href="<%= edit_photo_path(photo) %>?container_type=Flat"  title="<%= h(photo.description) %>" ><%= image_tag(photo.public_filename(:thumb)) %></a>
