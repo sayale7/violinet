@@ -7,7 +7,7 @@ class Flat < ActiveRecord::Base
   has_many :taggings, :as  => :taggable, :dependent => :destroy
   has_many :tags, :through => :taggings
   
-  has_many :photos, :dependent  => :destroy
+  has_many :photos, :foreign_key => 'photo_container_id', :dependent  => :destroy
   
   def flat_assigns
     Assign.scoped(:conditions => { :assignable_type  => 'Flat' }, :order => 'position')
