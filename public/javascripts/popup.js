@@ -66,6 +66,7 @@ $(document).ready(function(){
 	//Click the x event!
 	$("#popupContactClose").click(function(){
 		disablePopup();
+		return false;
 	});
 	//Click out event!
 	$("#backgroundPopup").click(function(){
