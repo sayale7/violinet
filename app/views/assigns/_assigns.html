@@ -38,7 +38,7 @@
 		<% end %>
 		<%= hidden_field_tag "select_many[]", assign.id %>
 	<% end %>
- 
+	
 	<!-- if attribute is a mail_to -->
 	<% if assign.html_attribute.to_s.eql?('mail_to') %>
 		<% if UserAssignValue.find_by_assignable_id_and_assign_id(request.params[:id], assign.id).nil? || request.params[:id].nil? %>
