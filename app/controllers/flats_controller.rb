@@ -26,6 +26,7 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
     @_assigns = Assign.find_all_by_assignable_type('Flat', :order  => 'position')
+    @photos = Photo.find_all_by_photo_container_id_and_photo_container_type_and_parent_id(@flat.id, 'Flat', nil)
   end
   
   def new
@@ -148,6 +149,10 @@ class FlatsController < ApplicationController
       format.html { redirect_to('/flats/' + params[:id].to_s + '/edit') }
       format.js
     end
+  end
+  
+  def show_flat_photos
+    @photos = Photo.find_all_by_photo_container_id_and_photo_container_type_and_parent_id(params[:flat_id], 'Flat', nil)
   end
   
   

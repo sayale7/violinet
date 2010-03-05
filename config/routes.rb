@@ -139,6 +139,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.sort_list_elements 'sort_list_elements', :controller  =>  'assigns', :action  => 'sort_list_elements'
   
+  map.show_flat_photos 'show_flat_photos', :controller => 'flats', :action => 'show_flat_photos'
+  
   map.root :controller => "welcome", :action => "index"
   
 

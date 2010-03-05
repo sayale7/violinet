@@ -30,8 +30,14 @@
 		<% end %>
 	</h3>
 	<p></p>
-<div class="flat_show">
 
+<h2><%= link_to t('common.image_gallery'), "/show_flat_photos?flat_id=#{@flat.id}", :id => 'button_popup' %></h2>
+<p></p>
+
+
+
+<div class="flat_show">
+	
 <h2><%= @flat.title %></h2>
 <h3><%= t('flat.publish_date') %>: <%= @flat.updated_at.strftime(" %d.%m.%Y ") %></h3>
 <dl>
@@ -53,4 +59,69 @@
 </div>
 <div class="clear">
 <%= link_to t('flat.overview'), flats_path %>
+</div>
+
+
+
+<div id="popupContact" style="display: none; position: fixed; position: absolute; background: #FFFFFF; border: 5px solid #000000; z-index: 2; padding: 12px; font-size: 13px; width:1000px; height:600px; overflow:auto; ">
+<% javascript 'jquery.galleriffic.init', 'jquery.galleriffic', 'jquery.opacityrollover' %>
+<% stylesheet 'galleriffic/galleriffic-2' %>
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+	//hide none js div for image gallery
+	$('#all_images').remove();
+});
+</script>
+
+<h2><%= link_to t('common.close'), '', :id => 'popupContactClose' %></h2>
+
+<div id="all_images">
+	<ul>
+		<% @photos.each do |photo| %>
+		<li>
+			<div class="clear"><a href="<%= photo.public_filename() %>" title="<%= photo.filename %>">
+				<img src="<%= photo.public_filename(:medium) %>" alt="<%= h(photo.description) %>" />
+			</a>
+			<div class="image_description_without_js"><%= h(photo.description) %></div></div>
+		</li>
+		<% end %>
+	</ul>
+</div>
+
+
+<% unless @photos.empty? %>
+<% @photos.each do |photo| %>
+	<% unless photo.id == @photos.first.id %>
+		<% if photo.width < 1000 %>
+			<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= photo.public_filename() %>"></a>
+		<% else %>
+			<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= photo.public_filename(:max) %>"></a>
+		<% end %>
+	<% end %>
+<% end %>
+<!-- Start Advanced Gallery Html Containers -->
+<div id="gallery" class="slide_show_content">
+	<div id="controls" class="controls"></div>
+	<div class="slideshow-container">
+		<div id="loading" class="loader"></div>
+		<div id="slideshow" class="slideshow"></div>
+	</div>
+	<div id="caption" class="caption-container"></div>
+</div>
+<div id="thumbs" class="navigation">
+	<ul class="thumbs noscript">
+		<% @photos.each do |photo| %>
+		<li>
+			<a class="thumb" name="leaf" href="<%= photo.public_filename(:large) %>" title="Title #0">
+				<img src="<%= photo.public_filename(:thumb) %>" alt="Title #0" />
+			</a>
+			<div class="caption" style="margin-top:-50px">
+				<div class="image-desc"><%= h(photo.description) %></div>
+			</div>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 </div>

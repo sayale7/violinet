@@ -82,6 +82,7 @@ en:
     proof_link: Proof Link
     url: insert without http://
     parent_elements: Parent Elements
+    image_gallery: Image Gallery
   event:
     begin: Begin
     end: End

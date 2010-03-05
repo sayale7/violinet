@@ -79,6 +79,7 @@ de:
     proof_link: Link überprüfen
     url: ohne http:// eingeben
     parent_elements: Elternelemente
+    image_gallery: Bildergallerie
   event:
     begin: Begin
     end: Ende

@@ -1,0 +1,65 @@
+
+<% javascript 'jquery', 'jquery.galleriffic.init', 'jquery.galleriffic', 'jquery.opacityrollover' %>
+<% stylesheet 'galleriffic/galleriffic-2' %>
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+	//hide none js div for image gallery
+	$('#all_images').remove();
+});
+</script>
+
+
+<div id="all_images">
+	<ul>
+		<% @photos.each do |photo| %>
+		<li>
+			<div class="clear"><a href="<%= photo.public_filename() %>" title="<%= photo.filename %>">
+				<img src="<%= photo.public_filename(:medium) %>" alt="<%= h(photo.description) %>" />
+			</a>
+			<div class="image_description_without_js"><%= h(photo.description) %></div></div>
+		</li>
+		<% end %>
+	</ul>
+</div>
+
+
+<% if @photos.first.width < 1000 %>
+	<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= @photos.first.public_filename() %>"><%= t('photo_album.full') %></a>
+<% else %>
+	<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= @photos.first.public_filename(:max) %>"><%= t('photo_album.full') %></a>
+<% end %>
+<% unless @photos.empty? %>
+<% @photos.each do |photo| %>
+	<% unless photo.id == @photos.first.id %>
+		<% if photo.width < 1000 %>
+			<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= photo.public_filename() %>"></a>
+		<% else %>
+			<a rel="shadowbox[gruppe];options={slideshowDelay:5}" href="<%= photo.public_filename(:max) %>"></a>
+		<% end %>
+	<% end %>
+<% end %>
+<!-- Start Advanced Gallery Html Containers -->
+<div id="gallery" class="slide_show_content">
+	<div id="controls" class="controls"></div>
+	<div class="slideshow-container">
+		<div id="loading" class="loader"></div>
+		<div id="slideshow" class="slideshow"></div>
+	</div>
+	<div id="caption" class="caption-container"></div>
+</div>
+<div id="thumbs" class="navigation">
+	<ul class="thumbs noscript">
+		<% @photos.each do |photo| %>
+		<li>
+			<a class="thumb" name="leaf" href="<%= photo.public_filename(:large) %>" title="Title #0">
+				<img src="<%= photo.public_filename(:thumb) %>" alt="Title #0" />
+			</a>
+			<div class="caption">
+				<div class="image-desc"><%= h(photo.description) %></div>
+			</div>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
