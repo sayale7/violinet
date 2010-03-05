@@ -43,7 +43,7 @@
 	
 <h2><%= @flat.title %></h2>
 <h3><%= t('flat.publish_date') %>: <%= @flat.updated_at.strftime(" %d.%m.%Y ") %></h3>
-<h3><%= t('flat.posted_by') %>: <%= link_to User.find(@flat.user_id).login, user_url(User.find(@flat.user_id)) %> (<%= mail_to User.find(@flat.user_id).email %>) </h3>
+<h3><%= t('flat.posted_by') %>: <%= link_to User.find(@flat.user_id).login, user_url(User.find(@flat.user_id)), :popup  => true %> (<%= mail_to User.find(@flat.user_id).email %>) </h3>
 <dl>
 <% @_assigns.each do |assign| %>
 	<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@flat.id, assign.id).empty? %>
