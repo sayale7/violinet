@@ -11,11 +11,7 @@
 		<% flat.flat_assigns.each do |flat_assign| %>
 		<% if flat_assign.visible %>
 		<% unless flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).to_s.eql?('') %>
-		<% if flat_assign.id.to_s.eql?('46') %>
-			<strong><%= simple_format(h flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).map(&:value).join(', ')) %></strong>
-		<% else %>
-			<%= simple_format(h flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).map(&:value).join(', ')) %>
-		<% end %>
+		<strong><%= simple_format(h flat_assign.user_assign_values.find_all_by_assignable_id(flat.id).map(&:value).join(', ')) %></strong>
 		<% end %>
 		<% end %>
 		<% end %>
