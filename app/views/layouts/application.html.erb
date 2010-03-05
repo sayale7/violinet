@@ -15,7 +15,7 @@
 			<%= javascript_include_tag 'jquery.datepicker' %>
 			<%= stylesheet_link_tag 'jquery_ui' %>
 		<% end %>
-		<% if request.url.to_s.include?('assign') || (request.url.to_s.include?('jobs') && (request.url.to_s.include?('new') || request.url.to_s.include?('edit')))%>
+		<% if request.url.to_s.include?('assign') || (request.url.to_s.include?('jobs') || (request.url.to_s.include?('flats') && (request.url.to_s.include?('new') || request.url.to_s.include?('edit')))%>
 			<%= javascript_include_tag 'jquery.datepicker' %>
 			<%= stylesheet_link_tag 'jquery_ui' %>
 		<% end %>
