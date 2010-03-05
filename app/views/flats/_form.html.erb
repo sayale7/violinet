@@ -1,11 +1,11 @@
 
 <div class="flat_edit">
-	<p><%= link_to "Back to List", flats_path %></p>
+	<p><%= link_to t('flat.overview'), flats_path %></p>
 <% form_tag set_flat_assign_values_path do %>
 <%= hidden_field_tag :flat_id, '', :value  =>  @flat.id %>
 <%# if current_user && current_user.role?('admin') %>
 
-<%= hidden_field_tag :user_id, :value => current_user.id %>
+<%= hidden_field_tag :user_id,'', :value => current_user.id %>
 
 <p>
   <strong><%= label_tag :title %></strong><br />

@@ -1,0 +1,4 @@
+$('#loading_background').removeClass('loading_background_visible');
+$('#loading_background').addClass('loading_background_invisible');
+$('.container').css('background-image','url(/images/pagepic.jpg)'); 
+$(".container").html("<%= escape_javascript(render("/flats/index")) %>");

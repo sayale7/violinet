@@ -46,7 +46,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :messages, :member => { :reply => :get, :forward => :get, :reply_all => :get, :undelete => :put }
   
   map.resource :user_session
-  
   # Added custom post action (swfupload) to the photo resource
   map.resources :photos, :collection => { :swfupload => :post }
   

@@ -1,8 +1,12 @@
 $('#loading_background').removeClass('loading_background_visible');
 $('#loading_background').addClass('loading_background_invisible');
-$("#edit_description").html("<%= escape_javascript(render('form')) %>");
-$("#edit_description").before('<div id="flash_notice" style="width:385px; float:right;"><%= escape_javascript(flash.delete(:notice)) %></div>');
-$('#flash_notice').fadeOut(1500);
-setTimeout(function() { 
-	$('#flash_notice').remove();
-}, 1500);
+$('#popupContactClose').click();
+<% if @type.to_s.eql?('Flat')%>
+$("#flat_thumbnails").html("<%= escape_javascript(render("/flats/flat_thumbnails")) %>");
+<% end %>
+<% if @type.to_s.eql?('Photo_Album')%>
+$("#thumbnails").html("<%= escape_javascript(render("/photo_albums/photo_ablum_thumbnails")) %>");
+<% end %>
+$('#flash_notice').remove();
+$("#flash").prepend('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$('#flash_notice').fadeOut(2000);

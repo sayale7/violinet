@@ -2,3 +2,6 @@ $('#loading_background').removeClass('loading_background_visible');
 $('#loading_background').addClass('loading_background_invisible');
 $("#not_tags_of_flat").html("<%= escape_javascript(render("add_tags_to_flat")) %>");
 $("#tags_of_flat").html("<%= escape_javascript(render("remove_tags_from_flat")) %>");
+$('#flash_notice').remove();
+$("#flash").prepend('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$('#flash_notice').fadeOut(2000);

@@ -96,10 +96,7 @@ class JobsController < ApplicationController
     if params[:title].to_s.eql?('') || params[:puplish_date].to_s.eql?('')
       if params[:job_id].to_s.eql?("")
         flash[:error] = t('common.fill_in_duty')
-        @job = Job.new
-        @job.active = params[:active]
-        @job.title = params[:title]
-        @job.puplish_date = params[:puplish_date]
+        setJobAttributes
         render :action => 'new'
       else
         find_and_save_user_values(params[:job_id])
@@ -109,10 +106,7 @@ class JobsController < ApplicationController
     else
       if params[:job_id].to_s.eql?("")
         @is_new = false
-        @job = Job.new
-        @job.active = params[:active]
-        @job.title = params[:title]
-        @job.puplish_date = params[:puplish_date]
+        setJobAttributes
         if @job.save
           params[:job_id] = @job.id
           @is_new = true

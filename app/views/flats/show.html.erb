@@ -1,18 +1,31 @@
 <% title "Flat" %>
 
+<% unless get_flats_from_tags(@flat).empty? %>
+<div class="flat_similar">
+	<h1><%= t('flat.other_with_category') %></h1>
+	<p></p>
+	<div class="flat_similar_entry">
+		<% get_flats_from_tags(@flat).each do |flat| %>
+				<h2><%= link_to (h flat.title), flat_path(flat) %></h2>
+				<%= t('flat.publish_date') %>:<%= flat.updated_at.strftime(" %d.%m.%Y ") %>
+		<% end %>
+	</div>
+</div>	
+<% end %>
 
-<% if current_user && current_user.role?('admin') %>
+
+<% if current_user && (current_user.role?('admin') || current_user.id.to_s.eql?(@flat.user_id.to_s)) %>
 <p>
 	<%= link_to t('common.edit'), edit_flat_path(@flat) %>
 	<%= link_to t('common.delete'), flat_path(@flat), :confirm  => t('common.confirm'), :method  => :delete %>
 </p>
 <% end %>
 <h3>
-<% form_tag '/flats/index', :id => "with_category_form" do  %>
+<% form_tag '/flats/index', :id => "flat_with_category_form" do  %>
 	<% if get_locale.to_s.eql?('de') %>
-		<%= t('flat.quick_nav') %> <%= select_tag :flat_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Flat'), :id, :german_name),  :class => 'with_category' %>
+		<%= t('flat.quick_nav') %> <%= select_tag :flat_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Flat'), :id, :german_name),  :class => 'flat_with_category' %>
 		<% else %>
-		<%= t('flat.quick_nav') %> <%= select_tag :flat_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Flat'), :id, :english_name), :class => 'with_category' %>
+		<%= t('flat.quick_nav') %> <%= select_tag :flat_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Flat'), :id, :english_name), :class => 'flat_with_category' %>
 		<% end %>
 		<% end %>
 	</h3>

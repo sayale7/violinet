@@ -6,30 +6,10 @@
 	<p></p>
 	<div class="job_similar_entry">
 		<% get_jobs_from_tags(@job).each do |job| %>
-		<% if job.active %>
-		<div class="job_index_entry">
-			<dt>
+			<% if job.active %>
 				<h2><%= link_to (h job.title), job_path(job) %></h2>
-				<%= t('job.publish_date') %>:<%= job.puplish_date.strftime(" %d.%m.%Y ") %><br/>
-			</dt>
-			<dd>
-				<dl>
-					<% job.job_assigns.each do |job_assign| %>
-					<% if job_assign.visible %>
-					<% unless job_assign.user_assign_values.find_all_by_assignable_id(job.id).to_s.eql?('') %>
-					<dt>
-						<strong><%= h job_assign.assign_names.find_by_language(get_locale.to_s).name + ": " %></strong>
-					</dt>
-					<dd style="margin-top:-10px;">
-						<%= simple_format(h job_assign.user_assign_values.find_all_by_assignable_id(job.id).map(&:value).join(', ')) %>
-					</dd>
-					<% end %>
-					<% end %>
-					<% end %>
-				</dl>
-			</dd>
-		</div>
-		<% end %>
+				<%= t('job.publish_date') %>:<%= job.puplish_date.strftime(" %d.%m.%Y ") %>
+			<% end %>
 		<% end %>
 	</div>
 </div>	
@@ -48,11 +28,11 @@
 </p>
 <% end %>
 <h3>
-<% form_tag '/jobs/index', :id => "with_category_form" do  %>
+<% form_tag '/jobs/index', :id => "job_with_category_form" do  %>
 	<% if get_locale.to_s.eql?('de') %>
-		<%= t('job.quick_nav') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Job'), :id, :german_name),  :class => 'with_category' %>
+		<%= t('job.quick_nav') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Job'), :id, :german_name),  :class => 'job_with_category' %>
 		<% else %>
-		<%= t('job.quick_nav') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Job'), :id, :english_name), :class => 'with_category' %>
+		<%= t('job.quick_nav') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Job'), :id, :english_name), :class => 'job_with_category' %>
 		<% end %>
 		<% end %>
 	</h3>

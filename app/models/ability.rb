@@ -56,6 +56,11 @@ class Ability
       can :manage, Comment do |comment|  
         comment[1].author_id == user.id || comment[1].commentable_id == user.id || (comment[1].commentable_type.to_s.eql?('Post') && Post.find(comment[1].commentable_id).user_id == user.id) || (comment[1].commentable_type.to_s.eql?('Group') && Post.find(comment[1].commentable_id).user_id == user.id)
       end
+      
+      # manage only own events
+      can :manage, Flat do |flat|
+        flat[1].user_id == user.id
+      end
 
     end
   end

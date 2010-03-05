@@ -8,11 +8,12 @@ class PhotosController < ApplicationController
   
   def update
     @photo = Photo.find(params[:id])
-    @photo_album = PhotoAlbum.find_by_id(@photo.photo_container_id)
-    if @photo.update_attribute("description", params[:photo][:description])
+    @type = params[:container_type].to_s
+    if @photo.update_attribute("description", params[:description].to_s)
+        @photos = Photo.find_all_by_photo_container_id_and_thumbnail(@photo.photo_container_id, nil)
         flash[:notice] = t("common.updated")
         respond_to do |format|
-          format.html { redirect_to edit_photo_album_url(@photo_album) }
+          format.html { redirect_to '/'+params[:container_type].to_s.downcase.pluralize+ '/' +@photo.photo_container_id.to_s+'/edit'}
           format.js
         end
     end
@@ -24,11 +25,19 @@ class PhotosController < ApplicationController
   end
   
   def create
-    photo_album = PhotoAlbum.find(params[:photo][:photo_album_id])
-    @photo = Photo.new(params[:photo])
-    if @photo.save
-      flash[:notice] = t("common.created")
-      redirect_to edit_photo_album_url(photo_album)
+    if params[:photo] 
+      @photo = Photo.new(params[:photo])
+      @photo.photo_container_type = params[:container_type].to_s.gsub('_','')
+      @photo.photo_container_id = params[:container_id].to_s
+      if @photo.save
+        flash[:notice] = t("common.create_success")
+        respond_to do |format|
+          format.html { redirect_to '/'+params[:container_type].to_s.downcase.pluralize+ '/' +params[:container_id].to_s+'/edit'}
+          format.js { }
+        end
+      end
+    else
+      redirect_to '/'+params[:container_type].to_s.downcase.pluralize+ '/' +params[:container_id].to_s+'/edit'
     end
   end
   
@@ -54,19 +63,27 @@ class PhotosController < ApplicationController
   
   def edit
     @photo = Photo.find(params[:id])
-    unless params[:js].nil?
-      render :layout  => 'layouts/popup'
-    else  
-      render  :layout => 'layouts/popup'
-    end
   end
 
   
   def destroy
     @photo = Photo.find(params[:id])
+    photo = @photo
+    @type = params[:container_type].to_s
+    if @type.to_s.eql?('Photo_Album')
+      @photo_album = PhotoAlbum.find(photo.photo_container_id)
+    end
+    if @type.to_s.eql?('Flat')
+      @flat = Flat.find(photo.photo_container_id)
+    end
     if @photo.destroy
       flash[:notice] = t("common.delete_success")
-      redirect_to '/'+@photo.photo_container_type.to_s.downcase.pluralize+ '/' +@photo.photo_container_id.to_s+'/edit'
+      @photos = Photo.find_all_by_photo_container_id_and_thumbnail(photo.photo_container_id, nil)
+      respond_to do |format|
+        format.html { redirect_to '/'+@type.downcase.pluralize+ '/' +photo.photo_container_id.to_s+'/edit'}
+        format.js { }
+      end
+     
     end
   end
 end

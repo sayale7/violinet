@@ -238,6 +238,7 @@ en:
       full: Full Screen Slideshow
   service:
       jobs: Jobs
+      flats: Flatsharing
       living: Flatsharing
       changing: Changing
       search_with_tag: Choose
@@ -261,5 +262,24 @@ en:
       publishing_date: Publishing date
       categories: Job Categories
       other_with_category: Similar Jobs
+      quick_nav: Quick Navigation
+      overview: Back to the Overview
+  flat:
+      all: All Flats
+      manage_assigns: Manage job attributes
+      manage_taflatgs: Manage Flat categories
+      title: Flat title
+      recent: Recent Flats
+      new: New Flatinsert
+      manage: Manage Flats
+      step1: Schritt 1
+      step2: Schritt 2
+      creat_flat_insert: Create Flat Entry
+      edit_flat_insert: Check Flat Entry
+      what_are_tags: What are Tags?
+      publish_date: Published at
+      publishing_date: Publishing date
+      categories: Flat Categories
+      other_with_category: Similar Flats
       quick_nav: Quick Navigation
       overview: Back to the Overview

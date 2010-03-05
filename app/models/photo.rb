@@ -13,7 +13,8 @@ class Photo < ActiveRecord::Base
   before_thumbnail_saved do |thumbnail|
     image = Photo.find_by_id(thumbnail.parent_id)
     thumbnail.photo_container_id = image.photo_container_id
+    thumbnail.photo_container_type = image.photo_container_type
   end
-  
+
   
 end

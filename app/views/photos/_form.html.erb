@@ -11,12 +11,13 @@ $(document).ready(function(){
 </script>
 <div class="loading"></div>
 <h2><%= t("photo.description") %></h2>
-<% form_for(@photo) do |f| %>
+<% form_tag '/photos/' + @photo.id.to_s, :method => 'put' do |f| %>
 <br/>
 <p>
-	<%= f.text_area :description, :class  => 'tb_area_dark' %>
+	<%= hidden_field_tag :container_type,'', :value => request.url.scan(/container_type=(\w+)/) %>
+	<%= text_area_tag :description,'', :class  => 'tb_area_dark' %>
 </p>
 <p>
-	<%= f.submit  %>
+	<%= submit_tag  %>
 </p>
 <% end %>

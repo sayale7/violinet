@@ -105,23 +105,25 @@
 			<li class="dir"><%= t("service.jobs") %>
 				<ul>
 					<li><%= link_to t("job.all"), jobs_path %></li>
-					<% form_tag '/jobs/index', :id => "with_category_form" do  %>
+					<% form_tag '/jobs/index', :id => "job_with_category_form" do  %>
 					<% if get_locale.to_s.eql?('de') %>
-						<li><%= t('service.search_with_tag') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Job'), :id, :german_name),  :class => 'with_category' %></li>
+						<li><%= t('service.search_with_tag') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Job'), :id, :german_name),  :class => 'job_with_category' %></li>
 					<% else %>
-						<li><%= t('service.search_with_tag') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.find_all_by_taggable_type('Job'), :id, :english_name), :class => 'with_category' %></li>
+						<li><%= t('service.search_with_tag') %> <%= select_tag :job_category, options_from_collection_for_select(Tag.find_all_by_taggable_type('Job'), :id, :english_name), :class => 'job_with_category' %></li>
 					<% end %>
 					<% end %>
 				</ul>
 			</li>
 			<li class="dir"><%= t("service.living") %>
 				<ul>
-					<li><%= link_to t("service.living") %></li>
-				</ul>
-			</li>
-			<li class="dir"><%= t("service.changing") %>
-				<ul>
-					<li><%= link_to t("service.changing"), jobs_path %></li>
+					<li><%= link_to t("service.living"), flats_path %></li>
+					<% form_tag '/flats/index', :id => "flat_with_category_form" do  %>
+					<% if get_locale.to_s.eql?('de') %>
+						<li><%= t('service.search_with_tag') %> <%= select_tag :flat_category, options_from_collection_for_select(Tag.new.to_a + Tag.find_all_by_taggable_type('Flat'), :id, :german_name),  :class => 'flat_with_category' %></li>
+					<% else %>
+						<li><%= t('service.search_with_tag') %> <%= select_tag :flat_category, options_from_collection_for_select(Tag.find_all_by_taggable_type('Flat'), :id, :english_name), :class => 'flat_with_category' %></li>
+					<% end %>
+					<% end %>
 				</ul>
 			</li>
 		</ul>
@@ -133,6 +135,12 @@
 				<ul>
 					<li><%= link_to t('job.manage_assigns'), '/assigns?assignable_type=Job' %></li>
 					<li><%= link_to t('job.manage_tags'), '/tags?taggable_type=Job' %></li>
+				</ul>
+			</li>
+			<li class="dir"><%= t("service.living") %>
+				<ul>
+					<li><%= link_to t('flat.manage_assigns'), '/assigns?assignable_type=Flat' %></li>
+					<li><%= link_to t('flat.manage_tags'), '/tags?taggable_type=Flat' %></li>
 				</ul>
 			</li>
 			<li class="dir"><%= t("common.registered_users") %>

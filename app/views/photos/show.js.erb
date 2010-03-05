@@ -1,0 +1,65 @@
+$('#loading_background').removeClass('loading_background_visible');
+$('#loading_background').addClass('loading_background_invisible');
+<% if @type.to_s.eql?('Flat')%>
+$("#flat_thumbnails").html("<%= escape_javascript(render("/flats/flat_thumbnails")) %>");
+<% end %>
+<% if @type.to_s.eql?('Photo_Album')%>
+$("#thumbnails").html("<%= escape_javascript(render("/photo_albums/photo_ablum_thumbnails")) %>");
+<% end %>
+$('#flash_notice').remove();
+$("#flash").prepend('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$('#flash_notice').fadeOut(2000);
+
+$('#new_image_upload_form').html("<%= escape_javascript(render("/photos/upload_form")) %>");
+
+var swfu;
+var max_file_size = 15 - <%= @photos.size %>;
+
+swfu = new SWFUpload({
+	// Create the custom swfupload_photos_path in the routes.rb file
+	<% if @type.to_s.eql?('Flat')%>
+	upload_url: '<%= swfupload_photos_path -%>?token=<%= @flat.id %>;type=Flat',
+	<% end %>
+	<% if @type.to_s.eql?('Photo_Album')%>
+	upload_url: '<%= swfupload_photos_path -%>?token=<%= @photo_album.id %>;type=Photo_Album',
+	<% end %>
+	// flash_url : '/assets/swfupload_f9.swf',
+
+	file_size_limit: '0.5 MB',
+	file_types: '*',
+	file_types_description: 'All',
+	file_upload_limit: max_file_size,
+	file_queue_limit: '0',
+
+	file_queue_error_handler: fileQueueError,
+	file_dialog_complete_handler: fileDialogComplete,
+	upload_progress_handler: uploadProgress,
+	upload_error_handler: uploadError,
+	upload_success_handler: uploadSuccess,
+	upload_complete_handler: uploadComplete,
+
+	custom_settings: {
+		upload_target: 'divFileProgressContainer'
+	},
+
+	// Button Settings
+	button_image_url: "/images/spyglass.png",
+	button_placeholder_id: "spanButtonPlaceholder",
+	button_width: 400,
+	button_height: 40,
+	button_text: '<span class="button"><%= t("photo.upload") %>  ' + max_file_size + ' <%= t("photo.kind") %></span>',
+	button_text_style: '.button { font-family: Verdana, Lucida Grande,Lucida Sans Unicode,Helvetica,Arial,sans-serif; font-size: 10px; font-weight:bold; }',
+	button_text_top_padding: 12,
+	button_text_left_padding: 15,
+	button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+	button_cursor: SWFUpload.CURSOR.HAND,
+
+	// Flash Settings
+	flash_url: "/assets/swfupload.swf",
+
+	custom_settings: {
+		upload_target: "divFileProgressContainer"
+	},
+
+	debug: false
+});

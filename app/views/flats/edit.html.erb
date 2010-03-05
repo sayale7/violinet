@@ -3,26 +3,14 @@
 <%= render :partial => 'form' %>
 
 <script type="text/javascript">
- 
-$(document).ready(function(){
-	$('#old_image_upload_form').remove();
-	$('#new_image_upload_form').show();
-	$('.no_js').each(function(){
-		$(this).remove();
-	});
-	$('.js').each(function(){
-		$(this).show();
-	});
- 
-});
- 
+
 var swfu;
 var max_file_size = 15 - <%= @photos.size %>;
  
 window.onload = function(){
 	swfu = new SWFUpload({
 		// Create the custom swfupload_photos_path in the routes.rb file
-		upload_url: "<%= swfupload_photos_path -%>?token=<%= @flat.id %>;type=Flat",
+		upload_url: '<%= swfupload_photos_path -%>?token=<%= @flat.id %>;type=PhotoAlbum',
 		// flash_url : '/assets/swfupload_f9.swf',
  
 		file_size_limit: '0.5 MB',
@@ -65,14 +53,17 @@ window.onload = function(){
  
 	});
 };
+
 </script>
  
 <div class="flat_photo_upload">
 	<% unless @photos.size > 14 %>
-	<div id="old_image_upload_form" class="upload_form">
+	<div id="old_image_upload_form" class="upload_form_for_flat">
 		<% form_for(:photo, :url => photos_path,
 		:html => { :multipart => true }) do |f| -%>
-		<p><%= f.hidden_field :flat_id, :value => @flat.id %>
+		<%= hidden_field :container_id,'', :value => @flat.id %>
+		<%= hidden_field :container_type,'', :value => 'Flat' %>
+		<p>
 		    <%= f.file_field :uploaded_data %>
 		</p>
 		<p>
@@ -81,30 +72,11 @@ window.onload = function(){
 		<% end -%>
 	</div>
 	<div id="new_image_upload_form">
-		<form>
-			<div style="border: solid 1px #7FAAFF; background-color: #C5D9FF; float:right; padding: 2px; margin-right:10px; height:40px; width: 450px;">
-				<span id="spanButtonPlaceholder"></span>
-			</div>
-		</form>
- 
+		<%= render '/photos/upload_form' %>
 	</div>
 	<% end %>
 	<div id="flat_thumbnails">
-		<% @photos.each do |photo| %>
-		<div class="new_thumbs_out">
-			<div class="new_thumbs">
-				<div class="js" style="display:none;">
-					<a href="<%= edit_photo_path(photo) %>" title="<%= h(photo.description) %>" rel="shadowbox;width=900;height=400"><%= image_tag(photo.public_filename(:thumb)) %></a>
-				</div>
-				<div class="no_js">
-					<a href="<%= edit_photo_path(photo) %>?js=false"  title="<%= h(photo.description) %>" ><%= image_tag(photo.public_filename(:thumb)) %></a>
-				</div>
-			</div>
-			<div class="new_thumbs_delete">
-				<%= link_to image_tag("delete.png"), :controller => 'photos', :action  => 'destroy', :id  => photo.id %>
-			</div>	
-		</div>
-		<% end %>
+		<%= render 'flat_thumbnails' %>
 	</div>
  
 </div>
@@ -160,3 +132,19 @@ window.onload = function(){
 </div>
 
 <% end %>
+
+<div id="popupContact" style="display: none; position: fixed; text-align:center; position: absolute; background: #FFFFFF; border: 5px solid #000000; z-index: 2; padding: 12px; font-size: 13px; ">
+	<h2><%= t("photo.description") %></h2>
+	<% form_tag '', :class => 'id_of_photo', :method  => 'put' do %>
+	<br/>
+	<p>
+		<%= hidden_field :container_type,'', :value => 'Flat' %>
+		<%= text_area :description, '', :class  => 'tb_area' %>
+	</p>
+	<p>
+		<%= submit_tag  %>
+		<button type="button" id="popupContactClose">Abbrechen</button>
+	</p>
+	<% end %>
+</div>
+

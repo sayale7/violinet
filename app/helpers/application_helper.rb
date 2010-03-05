@@ -180,20 +180,23 @@ module ApplicationHelper
     jobs = Array.new
     job.tags.each do |tag|
       tag.taggings.each do |tagging|
-        jobs.push(tagging.taggable)
+        unless tagging.taggable.nil?
+          jobs.push(tagging.taggable)
+        end
       end
     end
     jobs = jobs.uniq - job.to_a
     return jobs
   end
-  
+
   def get_active_jobs_from_tags(job)
-    debugger
     jobs = Array.new
     job.tags.each do |tag|
       tag.taggings.each do |tagging|
-        if tagging.taggable && tagging.taggable.active
-          jobs.push(tagging.taggable)
+        unless tagging.taggable.nil?
+          if tagging.taggable && tagging.taggable.active
+            jobs.push(tagging.taggable)
+          end
         end
       end
     end

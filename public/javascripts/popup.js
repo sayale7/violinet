@@ -52,8 +52,10 @@ $(document).ready(function(){
 
 	//LOADING POPUP
 	//Click the button event!
-	$("#button_popup").click(function(){
+	$("#button_popup, .popup").live('click', function(){
 		//centering with css
+		$('.id_of_photo').attr('action', '/photos/'+ $(this).attr("id"));
+		$('.id_of_photo').find('.tb_area').attr('value', $(this).attr("title"));
 		centerPopup();
 		//load popup
 		loadPopup();

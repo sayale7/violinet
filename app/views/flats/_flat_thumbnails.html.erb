@@ -1,0 +1,31 @@
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+		$('#old_image_upload_form').remove();
+		$('#new_image_upload_form').show();
+		$('.no_js').each(function(){
+			$(this).remove();
+		});
+		$('.js').each(function(){
+			$(this).show();
+		});
+
+	});
+</script>
+
+<% @photos.each do |photo| %>
+<div class="new_thumbs_out">
+	<div class="new_thumbs">
+		<div class="js" style="display:none;">
+			<a href="<%= edit_photo_path(photo) %>" title="<%= h(photo.description) %>" id="<%= photo.id %>" class="popup" ><%= image_tag(photo.public_filename(:thumb)) %></a>
+		</div>
+		<div class="no_js">
+			<a href="<%= edit_photo_path(photo) %>?container_type=Flat"  title="<%= h(photo.description) %>" ><%= image_tag(photo.public_filename(:thumb)) %></a>
+		</div>
+	</div>
+	<div class="new_thumbs_delete">
+		<%= link_to image_tag("delete.png"), :controller => 'photos', :action  => 'destroy', :id  => photo.id, :container_type => 'Flat' %>
+	</div>	
+</div>
+<% end %>
+
+

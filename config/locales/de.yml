@@ -236,6 +236,7 @@ de:
       full: Vollbild Diashow
   service:
       jobs: Jobs
+      flats: Mit-Wohnangebote
       living: Mit-Wohnen
       changing: Tauschen
       search_with_tag: Auswahl
@@ -260,6 +261,24 @@ de:
       publishing_date: Veröffentlichungsdatum
       categories: Job Kategorien
       other_with_category: Ähnliche Jobs
+      quick_nav: Schnell Navigation
+      overview: Zurück zur Übersicht
+  flat:
+      all: Alle Mit-Wohnangebote
+      manage_assigns: Mit-Wohn Attribute verwalten
+      manage_tags: Mit-Wohn Kategorien verwalten
+      title: Mit-Wohn Titel
+      recent: Frische Mit-Wohn Angebote
+      new: Mit-Wohn Anzeige aufgeben
+      manage: Mit-Wohnen verwalten
+      creat_job_insert: Mit-Wohn Inserat erstellen
+      edit_job_insert: Mit-Wohn Inserat bearbeiten
+      what_are_tags: Was sind Tags?
+      tag_description: Tags sind Kategorien die Sie Ihren Jobinseraten zuweisen können. Ihr Inserat scheint z.B. dann auf, wenn Sie die Kategorie Violine zugewiesen haben, und ein Benutzer nach Jobs in der Kategorie Violine sucht. Bitte weisen Sie die Tags richtig zu, damit Ihr Inserat in den richtigen Kategorien aufscheint. Jobs werden, bevor sie online gestellt werden, von der Redaktion nochmals überprüft. Im Zuge dessen, werden falsch zugewiesene Tags wieder entfernt, damit die Jobbörse fair und übersichtlich bleibt.
+      publish_date: Veröffentlicht am
+      publishing_date: Veröffentlichungsdatum
+      categories: Mit-Wohn Kategorien
+      other_with_category: Ähnliche Mit-Wohn Angebote
       quick_nav: Schnell Navigation
       overview: Zurück zur Übersicht
   date:

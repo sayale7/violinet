@@ -1,6 +1,5 @@
 $(document).ready(function(){
- 
- 
+	
 	//hide normal textarea and textbox in posts
 	$('#post_form_area').removeClass('tb_area_extended').addClass('mceEditor');  
 	$('#post_form_text').removeClass('tb').addClass('tb_extended'); 
@@ -157,11 +156,40 @@ $(document).ready(function(){
 		return false;
 	});
 	
-	$('.with_category').change(function(e){
-		$.post($('#with_category_form').attr("action"), $('.with_category').serialize(), null, 'script');
+	$('.job_with_category').change(function(e){
+		$.post($('#job_with_category_form').attr("action"), $('.job_with_category').serialize(), null, 'script');
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
+		return false;
+	});
+	
+	$('.flat_with_category').change(function(e){
+		$.post($('#flat_with_category_form').attr("action"), $('.flat_with_category').serialize(), null, 'script');
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
+		return false;
+	});
+	
+	$('.flat_with_category').change(function(e){
+		//$.post($('#flat_with_category_form').attr("action"), $('.flat_with_category').serialize(), null, 'script');
 		$('#loading_background').removeClass('loading_background_invisible');
 		$('#loading_background').addClass('loading_background_visible');
 	});
 	
+	$('.new_thumbs_delete a').live('click', function(){
+		$.getScript(this.href);
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
+		return false;
+	});
+	
+	$('.id_of_photo').submit(function(e){
+		$.post($('.id_of_photo').attr("action"), $('.id_of_photo').serialize(), null, 'script');
+		$('#loading_background').removeClass('loading_background_invisible');
+		$('#loading_background').addClass('loading_background_visible');
+		return false;
+	});
+
+
  
 });

@@ -9,7 +9,7 @@
 	<% if request.url.to_s.include?('sort_list_elements')%>
 		<% javascript_include_tag 'proto/prototype', 'proto/controls', 'proto/effects', 'proto/dragdrop' %>
 	<% else %>
-		<%= javascript_include_tag 'jquery', 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'mail', 'application', '/shadowbox/shadowbox'   %>
+		<%= javascript_include_tag 'jquery', 'jquery.url_utils', 'pagination', 'jquery.tokeninput', 'popup', 'application', '/shadowbox/shadowbox'   %>
 		<% if request.url.to_s.include?('posts') || request.url.to_s.include?('myblog') %>
 			<%= include_tiny_mce_if_needed %>
 			<%= javascript_include_tag 'jquery.datepicker' %>
@@ -20,7 +20,7 @@
 			<%= stylesheet_link_tag 'jquery_ui' %>
 		<% end %>
 		<% if (request.url.to_s.include?('photo_albums') || request.url.to_s.include?('flats')) && request.url.to_s.include?('edit') %>
-			<%= javascript_include_tag 'swfupload', 'handlers' %>
+			<%= javascript_include_tag 'swfupload', 'handlers', 'popup' %>
 		<% end %>
 	<% end %>
 	

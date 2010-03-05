@@ -1,7 +1,7 @@
 <div class="left">
 <% form_for @assign do |f| %>
   <%= f.error_messages %>
-	<% if @assign.assignable_type.to_s.eql?('Job') %>
+	<% if !@assign.assignable_type.to_s.eql?('User') %>
   <p>
     <span style="font-weight:bold"><%= f.label 'sichtbar' %></span><br />
     <%= f.check_box :visible %>

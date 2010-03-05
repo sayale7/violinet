@@ -41,4 +41,18 @@ module AssignModule
   end
   
   
+  def setJobAttributes
+    @job = Job.new
+    @job.active = params[:active]
+    @job.title = params[:title]
+    @job.puplish_date = params[:puplish_date]
+  end
+  
+  def setFlatAttributes
+    @flat = Flat.new
+    @flat.user_id = params[:user_id]
+    @flat.title = params[:title]
+    @flat.address = params[:address]
+  end
+  
 end
