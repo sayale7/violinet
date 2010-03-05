@@ -282,6 +282,8 @@ de:
       other_with_category: Ähnliche Mit-Wohn Angebote
       quick_nav: Schnell Navigation
       overview: Zurück zur Übersicht
+      posted_by: Inseriert von
+      write_message: In Kontakt treten!
   date:
     formats:
       default: "%d.%m.%Y"

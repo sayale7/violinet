@@ -1,5 +1,7 @@
 <% title "Flat" %>
 
+<%# render :partial => 'write_message' %>
+
 <% unless get_flats_from_tags(@flat).empty? %>
 <div class="flat_similar">
 	<h1><%= t('flat.other_with_category') %></h1>
@@ -30,9 +32,10 @@
 		<% end %>
 	</h3>
 	<p></p>
-
-<h2><%= link_to t('common.image_gallery'), "/show_flat_photos?flat_id=#{@flat.id}", :id => 'button_popup' %></h2>
+<% unless @photos.size == 0 %>
+<h2><%= link_to t('common.image_gallery'), "/show_flat_photos?flat_id=#{@flat.id}", :class => 'popup', :rel => 'popupContactPhotos' %></h2>
 <p></p>
+<% end %>
 
 
 
@@ -40,6 +43,7 @@
 	
 <h2><%= @flat.title %></h2>
 <h3><%= t('flat.publish_date') %>: <%= @flat.updated_at.strftime(" %d.%m.%Y ") %></h3>
+<h3><%= t('flat.posted_by') %>: <%= link_to User.find(@flat.user_id).login, user_url(User.find(@flat.user_id)) %> (<%= mail_to User.find(@flat.user_id).email %>) </h3>
 <dl>
 <% @_assigns.each do |assign| %>
 	<% unless UserAssignValue.find_all_by_assignable_id_and_assign_id(@flat.id, assign.id).empty? %>
@@ -63,7 +67,7 @@
 
 
 
-<div id="popupContact" style="display: none; position: fixed; position: absolute; background: #FFFFFF; border: 5px solid #000000; z-index: 99999999; padding: 12px; font-size: 13px; width:900px; height:600px; overflow:auto; ">
+<div id="popupContactPhotos" style="display: none; position: fixed; position: absolute; background: #FFFFFF; border: 5px solid #000000; z-index: 99999999; padding: 12px; font-size: 13px; width:900px; height:600px; overflow:auto; ">
 <% javascript 'jquery.galleriffic.init', 'jquery.galleriffic', 'jquery.opacityrollover' %>
 <% stylesheet 'galleriffic/galleriffic-2' %>
 
@@ -74,7 +78,7 @@ $(document).ready(function(){
 });
 </script>
 
-<h2><%= link_to t('common.close'), '', :id => 'popupContactClose' %></h2>
+<h2><%= link_to t('common.close'), '#', :id => 'popupContactClose', :rel => 'popupContactPhotos'  %></h2>
 
 <div id="all_images">
 	<ul>

@@ -166,7 +166,7 @@
 			<% if current_user %>
 			<li>
 				<div id="button_popup">
-					<a href="/sent/new?user=<%= @user.id %>"><%= t("common.send_message_to_user") %></a>
+					<a href="/sent/new?user=<%= @user.id %>" class="popup" rel="popupContact"><%= t("common.send_message_to_user") %></a>
 				</div>
 			</li>
 			<% end %>
