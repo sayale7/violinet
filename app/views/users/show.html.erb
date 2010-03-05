@@ -10,7 +10,7 @@
 		<%= render 'friendship_links_top' %>
 	</div>	
 	<% end %>
-	<h1><%= t "user.common" %></h1>
+	<h2><%= t "user.common" %></h2>
 	<% if current_user && @current_one %>
 		<%= link_to_unless_current t("common.edit"), :controller => "user_commons", :action => "edit", :id => current_user.id %>
 	<% end %>

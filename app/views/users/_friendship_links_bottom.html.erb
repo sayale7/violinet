@@ -1,6 +1,7 @@
+<p></p>
 <% if current_user && @current_one %>
 <% unless friendship_requests.empty?  %>
-<h1><%= t('user.friend_confirm') %></h1>
+<h2><%= t('user.friend_confirm') %></h2>
 <ul>
 	<% for user in friendship_requests %>
 	<li>

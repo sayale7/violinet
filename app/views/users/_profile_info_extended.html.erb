@@ -18,7 +18,7 @@
 	
 	<div class="toggle_div">
 		
-	<h1><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h1>
+	<h2><%= assign.assign_names.find_by_language(get_locale.to_s).name %></h2>
 	<% if current_user %>
 	<% if @user == current_user %>
 	<%= link_to t('common.edit'), assign_path(assign) %>
