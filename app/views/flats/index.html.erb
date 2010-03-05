@@ -5,7 +5,6 @@
 <h2><%= t('flat.recent') %></h2>
 <br/>
 <% @flats.each do |flat| %>
-	<% if current_user  %>
 	<div class="flat_index_entry">
 		<h2><%= link_to (h flat.title), flat_path(flat) %></h2>
 		<%= t('flat.publish_date') %>:<%= flat.updated_at.strftime(" %d.%m.%Y ") %><br/>
@@ -21,7 +20,6 @@
 		<% end %>
 		<% end %>
 	</div>
-	<% end %>
 	<% end %>
 </div>
 
